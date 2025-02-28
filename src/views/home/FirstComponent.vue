@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full pt-[5.125rem] pb-[4.8rem] bg-[#C3FF79]">
+    <div class="w-full pt-[5.125rem] pb-[6rem] bg-[#C3FF79]">
         <div class="flex justify-center">
             <div class="flex pr-[1rem]">
                 <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
@@ -42,12 +42,13 @@
                 <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
             </div>
         </div>
-        <div class="flex justify-center items-center overflow-x-auto mt-[4.25rem] pl-[2rem] pr-[2rem] RectItems gap-[1rem]">
-            <FirstRectComponent class=" flex-shrink-0" />
-            <FirstRectComponent class=" flex-shrink-0" />
-            <FirstRectComponent class="flex-shrink-0" />
-            <FirstRectComponent class=" flex-shrink-0" />
-            <FirstRectComponent class=" flex-shrink-0" />
+        <div class="overflow-auto mt-[4.25rem] pl-[2rem] pr-[2rem] RectItems grid place-items-center">
+            
+            <div class="flex gap-[1rem]">
+                <FirstRectComponent 
+                class="flex-shrink-0 flex-grow-0" 
+                v-for="card in cardItems" :title="card.title" :content="card.content"/>
+            </div>
         </div>
     </div>
 </template>
@@ -56,7 +57,64 @@
     import RippleButton from '../../components/RippleButton.vue'
     import FirstRectComponent from './FirstRectComponent.vue'
     // import { ref } from 'vue'
+    import { computed } from 'vue'
     const { t } = useI18n()
+    // const cardItems = ref([
+    //     {
+    //         title: t('first.cardTitle1'),
+    //         content: t('first.cardContent1'),
+    //         img: ''
+    //     },
+    //     {
+    //         title: t('first.cardTitle2'),
+    //         content: t('first.cardContent2'),
+    //         img: ''
+    //     },
+    //     {
+    //         title: t('first.cardTitle3'),
+    //         content: t('first.cardContent3'),
+    //         img: ''
+    //     },
+    //     {
+    //         title: t('first.cardTitle4'),
+    //         content: t('first.cardContent4'),
+    //         img: ''
+    //     },
+    //     {
+    //         title: t('first.cardTitle5'),
+    //         content: t('first.cardContent5'),
+    //         img: ''
+    //     }
+    // ])
+    const cardItems = computed(() => {
+        return [
+        {
+            title: t('first.cardTitle1'),
+            content: t('first.cardContent1'),
+            img: ''
+        },
+        {
+            title: t('first.cardTitle2'),
+            content: t('first.cardContent2'),
+            img: ''
+        },
+        {
+            title: t('first.cardTitle3'),
+            content: t('first.cardContent3'),
+            img: ''
+        },
+        {
+            title: t('first.cardTitle4'),
+            content: t('first.cardContent4'),
+            img: ''
+        },
+        {
+            title: t('first.cardTitle5'),
+            content: t('first.cardContent5'),
+            img: ''
+        }
+    ]
+    })
     const OnFreeUse = () => {
         console.log('OnFreeUse')
     }
@@ -67,8 +125,11 @@
 <style scoped>
 /* WebKit 浏览器 (Chrome/Safari) 隐藏滚动条 */
 .RectItems::-webkit-scrollbar {
-  display: none; /* 完全隐藏滚动条 */
-  width: 0;      /* 移除滚动条占位空间 */
+  display: none;
+  width: 0;      
   height: 0;
+}
+.RectItems {
+    -webkit-overflow-scrolling: touch; /* 优化移动端滚动 */
 }
 </style>

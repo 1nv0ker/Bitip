@@ -44,7 +44,47 @@ export const en = {
         item3:'99.9% connectivity rate',
         item4:'24/7 AI Screening',
         freeUse: 'Free Trial',
-        contact: 'Contact Us'
+        contact: 'Contact Us',
+        cardTitle1:'Accurate city positioning',
+        cardContent1:'Dynamic global coverage and precise geolocation, supporting IP rotation',
+        cardTitle2:'High cost performance',
+        cardContent2: 'Relying on industry-leading agent resources to achieve automatic collection of global web page data',
+        cardTitle3: 'Residential ISP',
+        cardContent3: 'Select high-purity native static IPs to safely manage various e-commerce accounts.',
+        cardTitle4: 'Sub-account management',
+        cardContent4: 'Sub-account management Enterprise-level account management, real-time traffic monitoring',
+        cardTitle5: 'Technical Support',
+        cardContent5: 'Technical Support Professional team 1V1 full support, providing customized solutions'
+    },
+    second: {
+        title: 'High purity and high stability proxy IP',
+        select1:'Dynamic Residential Proxy',
+        select2: 'Static Residential Proxy',
+        dynamicContent: 'Real residential devices from around the world, suitable for business scenarios with large IP quantity requirements and short-term use',
+        dynamicItem1: 'million+ high-purity residential IP pools',
+        dynamicItem2: 'Unlimited concurrent requests',
+        dynamicItem3: '1-120min 可变IP时效',
+        dynamicItem4: 'Support Http/Https/Socks5 protocols',
+        dynamicItem5: 'Support API access, more stable network',
+        dynamicButton:'Free Trial'
+    },
+    third: {
+        title: 'Service and scale',
+        item1title: 'Global Resources',
+        item1Subtitle:'Billions of proxy resource pools',
+        item1Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item2title: 'Professional Team',
+        item2Subtitle:'Billions of proxy resource pools',
+        item2Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item3title: 'High cost performance',
+        item3Subtitle:'Billions of proxy resource pools',
+        item3Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item4title: 'Safe and reliable',
+        item4Subtitle:'Billions of proxy resource pools',
+        item4Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item5title: 'High anonymity',
+        item5Subtitle:'Billions of proxy resource pools',
+        item5Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.'
     }
 }
 
@@ -94,7 +134,46 @@ export const zh = {
         item3:'99.9%连通率',
         item4:'7X24 AI筛选',
         freeUse:'免费试用',
-        contact:'联系我们'
-
+        contact:'联系我们',
+        cardTitle1:'精确城市定位',
+        cardContent1:'动态全球覆盖和精准的地理定位，支持IP轮换',
+        cardTitle2:'高性价比',
+        cardContent2: '依托行业领先的代理资源,实现全球网页数据自动化采集',
+        cardTitle3: '住宅ISP',
+        cardContent3: '精选高纯净度原生静态IP，安全管理各类电商账号。',
+        cardTitle4: '子账号管理',
+        cardContent4: '子账号管理 企业级账号管理，实时监控流量',
+        cardTitle5: '技术支持',
+        cardContent5: '技术支持 专业团队1V1全程支持，提供定制化解决方案'
+    },
+    second: {
+        title: '高纯净、高稳定性代理IP',
+        select1:'动态住宅代理',
+        select2: '静态住宅代理',
+        dynamicContent: '来自全球真实家庭住宅设备，适用于IP数量需求 大且短时使用的业务场景',
+        dynamicItem1: '亿+高纯净家庭住宅IP池',
+        dynamicItem2: '无限并发请求',
+        dynamicItem3: '1-120min 可变IP时效',
+        dynamicItem4: '支持Http/Https/Socks5协议',
+        dynamicItem5: '支持API接入，网络更稳定',
+        dynamicButton:'免费试用'
+    },
+    third: {
+        title: '服务与规模',
+        item1title: '全球资源',
+        item1Subtitle:'亿级代理资源池',
+        item1Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item2title: '专业团队',
+        item2Subtitle:'亿级代理资源池',
+        item2Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item3title: '高性价比',
+        item3Subtitle:'亿级代理资源池',
+        item3Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item4title: '安全可靠',
+        item4Subtitle:'亿级代理资源池',
+        item4Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item5title: '高匿名性',
+        item5Subtitle:'亿级代理资源池',
+        item5Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本'
     }
 }
