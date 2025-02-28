@@ -1,0 +1,31 @@
+<template>
+    <div class="w-full h-full login-bg">
+        <div class="w-full row m-0">
+            <div class="col-12 offset-md-3 col-md-4 flex flex-col justify-center pt-[10rem] pr-[6rem] pl-[6rem]">
+                <img src="../../assets/logo.png" class="w-[15rem] h-[5rem]" />
+                <span class="text-[3.8rem] text-[#191919] font-bold pt-[1.75rem]">{{t('login.loginTitle')}}</span>
+            </div>
+            <div class="col-12 col-md-3 mt-[12.5rem] bitip_form">
+                <slot></slot>
+            </div>
+        </div>
+    </div>
+</template>
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n'
+  const { t } = useI18n()
+</script>
+<style lang="less">
+    .bitip_form {
+        .container {
+            box-shadow: 0px 1.5rem 2rem 0px rgba(2,112,45,0.08);
+        }
+        
+    }
+    .login-bg {
+        background-image: url('../../assets/login.png');
+        background-size:cover;
+        background-repeat: no-repeat;
+        
+    }
+</style>
