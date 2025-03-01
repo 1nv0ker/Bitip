@@ -44,17 +44,14 @@
 
 <style >
     .bitip_btn:hover .ripple {
-        transform: scale(20);
+        transform: scale(10);
         transition: transform 1.2sease;
     }
-    .bitip_btn:hover {
-        color: #01AA44;
-    }
     .bitip_btn {
-        border: none;
+        /* border: none; */
         overflow: hidden;
         transition: 0.3s;
-        color: white;
+        /* color: white; */
     }
     .ripple {
         border-radius: 50%;

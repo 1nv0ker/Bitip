@@ -36,7 +36,7 @@
             
         </div>
         <div class="flex justify-center items-center mt-[3.25rem]">
-            <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium" :text="t('first.freeUse')" @btn-click="OnFreeUse" />
+            <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]" :text="t('first.freeUse')" @btn-click="OnFreeUse" />
             <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem]" @click="onContact">
                 <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
                 <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>

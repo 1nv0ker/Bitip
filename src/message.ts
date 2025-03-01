@@ -63,7 +63,7 @@ export const en = {
         dynamicContent: 'Real residential devices from around the world, suitable for business scenarios with large IP quantity requirements and short-term use',
         dynamicItem1: 'million+ high-purity residential IP pools',
         dynamicItem2: 'Unlimited concurrent requests',
-        dynamicItem3: '1-120min 可变IP时效',
+        dynamicItem3: '1-120min variable IP validity',
         dynamicItem4: 'Support Http/Https/Socks5 protocols',
         dynamicItem5: 'Support API access, more stable network',
         dynamicButton:'Free Trial'
@@ -85,6 +85,40 @@ export const en = {
         item5title: 'High anonymity',
         item5Subtitle:'Billions of proxy resource pools',
         item5Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.'
+    },
+    fourth: {
+        title: 'Unlock global network resources to empower your digital business',
+        subtitle1: '220+',
+        content1: 'Available regions worldwide',
+        subtitle2: 'Billion level',
+        content2: 'Carrying Concurrency',
+        subtitle3: '99.9%',
+        content3: 'High IP availability'
+    },
+    fifth: {
+        title: 'Application Scenario',
+        subtitle1: 'Data scraping and crawling',
+        content1: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        subtitle2: 'Ad Verification',
+        content2: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        subtitle3: 'Price monitoring',
+        content3: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        subtitle4: 'Crawl Proxy',
+        content4: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        subtitle5: 'Crawl Proxy',
+        content5: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        subtitle6: 'Crawl Proxy',
+        content6: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        more: 'Learn more'
+    },
+    sixth: {
+        title: 'Open a new chapter of multi-account management with BitIP',
+        content: 'Free trial of 5 browser environments',
+        button1: 'Free Trial',
+        button2: 'Contact Us'
+    },
+    seventh: {
+        title: 'Many corporate brand cooperation'
     }
 }
 
@@ -175,5 +209,39 @@ export const zh = {
         item5title: '高匿名性',
         item5Subtitle:'亿级代理资源池',
         item5Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本'
+    },
+    fourth: {
+        title: '解锁全球网络资源，赋能您的数字业务',
+        subtitle1: '220+',
+        content1: '全球可选地区',
+        subtitle2: '亿级',
+        content2: '承载并发',
+        subtitle3: '99.9%',
+        content3: '高IP可用率'
+    },
+    fifth: {
+        title: '应用场景',
+        subtitle1: '数据抓取与爬虫',
+        content1: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        subtitle2: '广告验证',
+        content2: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        subtitle3: '价格监控',
+        content3: '掌握全球网络数据资源，从数千万网页中提取有价值的信息进行分析，为您的业务决策提供支持',
+        subtitle4: '抓取代理',
+        content4: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        subtitle5: '抓取代理',
+        content5: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        subtitle6: '抓取代理',
+        content6: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        more: '了解更多'
+    },
+    sixth: {
+        title: '与BitIP一起，开启多账号管理新篇章',
+        content: '免费体验5个浏览器环境',
+        button1: '免费试用',
+        button2: '联系我们'
+    },
+    seventh: {
+        title: '众多企业品牌合作'
     }
 }
