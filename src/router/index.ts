@@ -17,4 +17,13 @@ const router = createRouter({
   routes,
 })
 
+//路由前置
+router.beforeEach((to, from)=> {
+
+})
+
+//路由后置
+router.afterEach((to, from) => {
+    
+})
 export default router
