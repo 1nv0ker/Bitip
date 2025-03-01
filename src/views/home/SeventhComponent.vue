@@ -1,5 +1,5 @@
 <template>
-    <div ref="seventhRef" class="pt-[4rem] pb-[5rem]">
+    <div ref="seventhRef" class="pt-[4rem] pb-[5rem] overflow-hidden">
         <div class="flex justify-center">
             <span class="text-[#9398A8] text-[1.875rem] font-bold">{{t('seventh.title')}}</span>
         </div> 

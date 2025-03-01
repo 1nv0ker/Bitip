@@ -1,5 +1,5 @@
 <template>
-    <div class=" border-t-[1px] border-[#EBEFF8] pt-[6.25rem]">
+    <div class=" border-t-[1px] border-[#EBEFF8] pt-[6.25rem] w-full overflow-hidden">
         <div class="flex">
             <div class="">
                 <img src="../../assets/logo.png" class="w-[9.125rem] h-[3rem]"/>
