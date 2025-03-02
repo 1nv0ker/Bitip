@@ -1,4 +1,6 @@
 /// <reference types="vite/client" />
 interface Window {
-    bootstrap:any
+    bootstrap:any,
+    initAliyunCaptcha:any
 }
+

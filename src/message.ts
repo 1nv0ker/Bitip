@@ -119,6 +119,60 @@ export const en = {
     },
     seventh: {
         title: 'Many corporate brand cooperation'
+    },
+    acvitity: {
+        title: 'Residential Agency First Payment',
+        subtitle: '¥100 off'
+    },
+    contact: {
+        title1: 'QQ',
+        title2: 'WeChat',
+        title3: 'Official',
+        title4: 'Telegram'
+    },
+    navMenu: {
+        title1: 'Package Purchase',
+        package_title1:'Credit Recharge',
+        package_title2:'Product Packages',
+        package_subtitle1: 'Dynamic Residential IP',
+        package_subtitle2:'Static Residential IP',
+        package_subtitle3: 'Dynamic Residential Package',
+        package_subtitle4: 'Static Residential Package',
+        package_title3: 'Latest Events',
+        title2: 'Get a proxy',
+        title3:'Agent Products',
+        title4: 'Help Center',
+        title5: 'Safety and Compliance',
+        title6: 'Corporate Services',
+        title7: 'Promotion Plan'
+    },
+    footer: {
+        describe: 'With strong global underlying resources and understanding of business scenarios in various industries',
+        describe1:'bitip is providing nanny-level proxy IP services',
+        title1: '代理',
+        title1_subtitle1: '住宅代理',
+        title1_subtitle2: 'ISP代理',
+        title1_subtitle3:'不限量住宅代理',
+        title1_subtitle4:'数据中心代理',
+        title1_subtitle5: '获取代理',
+        title2: '代理',
+        title2_subtitle1: '住宅代理',
+        title2_subtitle2: 'ISP代理',
+        title2_subtitle3:'不限量住宅代理',
+        title2_subtitle4:'数据中心代理',
+        title2_subtitle5: '获取代理',
+        title3: '代理',
+        title3_subtitle1: '住宅代理',
+        title3_subtitle2: 'ISP代理',
+        title3_subtitle3:'不限量住宅代理',
+        title3_subtitle4:'数据中心代理',
+        title3_subtitle5: '获取代理',
+        title4: '代理',
+        title4_subtitle1: '住宅代理',
+        title4_subtitle2: 'ISP代理',
+        title4_subtitle3:'不限量住宅代理',
+        title4_subtitle4:'数据中心代理',
+        title4_subtitle5: '获取代理',
     }
 }
 
@@ -243,5 +297,59 @@ export const zh = {
     },
     seventh: {
         title: '众多企业品牌合作'
+    },
+    acvitity: {
+        title: '住宅代理首次支付',
+        subtitle: '立减¥100'
+    },
+    contact: {
+        title1: 'QQ客服',
+        title2: '微信客服',
+        title3: '微信公众号',
+        title4: '电报客服'
+    },
+    navMenu: {
+        title1: '套餐购买',
+        package_title1:'套餐购买',
+        package_title2:'产品套餐',
+        package_subtitle1: '动态住宅IP',
+        package_subtitle2:'静态住宅IP',
+        package_subtitle3: '动态住宅套餐',
+        package_subtitle4: '静态住宅套餐',
+        package_title3: '最新活动',
+        title2: '获取代理',
+        title3:'代理产品',
+        title4: '帮助中心',
+        title5: '安全合规',
+        title6: '企业服务',
+        title7: '推广计划'
+    },
+    footer: {
+        describe: '凭借着强大的全球底层资源及对各个行业业务场景的了解',
+        describe1:'bitip正以保姆级的代理IP服务',
+        title1: '代理',
+        title1_subtitle1: '住宅代理',
+        title1_subtitle2: 'ISP代理',
+        title1_subtitle3:'不限量住宅代理',
+        title1_subtitle4:'数据中心代理',
+        title1_subtitle5: '获取代理',
+        title2: '代理',
+        title2_subtitle1: '住宅代理',
+        title2_subtitle2: 'ISP代理',
+        title2_subtitle3:'不限量住宅代理',
+        title2_subtitle4:'数据中心代理',
+        title2_subtitle5: '获取代理',
+        title3: '代理',
+        title3_subtitle1: '住宅代理',
+        title3_subtitle2: 'ISP代理',
+        title3_subtitle3:'不限量住宅代理',
+        title3_subtitle4:'数据中心代理',
+        title3_subtitle5: '获取代理',
+        title4: '代理',
+        title4_subtitle1: '住宅代理',
+        title4_subtitle2: 'ISP代理',
+        title4_subtitle3:'不限量住宅代理',
+        title4_subtitle4:'数据中心代理',
+        title4_subtitle5: '获取代理',
     }
 }

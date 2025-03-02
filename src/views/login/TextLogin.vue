@@ -20,7 +20,7 @@
             <span class="text-[#FC4949] text-[1.1rem]">{{t('login.textValidate')}}</span>
         </div>
         <div class="flex h-[4rem] border-[#D9D9D9] rounded-[0.75rem] mt-[1.5rem] border-[1px]">
-
+            <AliyunCaptchaComponent class="w-full h-full" />
         </div>
         <!-- 验证码 -->
         <div class="flex h-[4rem] mt-[1.5rem] relative">
@@ -86,6 +86,7 @@
 </template>
 <script setup lang="ts">
     import { useForm } from 'vee-validate'
+    // import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
     import {  ref, onMounted, computed } from 'vue';
     import { useI18n } from 'vue-i18n'
     import phoneNumberJson from './phoneNumbers.json'
