@@ -1,12 +1,12 @@
 <template>
     <BasicLayout>
         <!-- <NavComponent /> -->
-        <FirstComponent  />
-        <SecondComponent ref="secondRef" class="hiddleClass"/>
+        <FirstComponent  @onFreeUse="onFreeUse"/>
+        <SecondComponent ref="secondRef" class="hiddleClass" @onFreeUse="onFreeUse"/>
         <ThirdCompoent class="hiddleClass" ref="thirdRef" />
         <FourthComponent class="hiddleClass" ref="fourthRef" />
         <FifthComponent class="hiddleClass" ref="fifthRef" />
-        <SixthComponent class="hiddleClass" ref="sixthRef" />
+        <SixthComponent class="hiddleClass" ref="sixthRef" @onFreeUse="onFreeUse" />
         <SeventhComponent class="hiddleClass" ref="seventhRef" />
         <!-- <FooterComponent /> -->
     </BasicLayout>
@@ -23,6 +23,12 @@
     // import FooterComponent from './FooterComponent.vue';
     import BasicLayout from '../BasicLayout.vue'
     import { ref, onMounted, onUnmounted } from 'vue'
+
+    import useUserStore from '../../store/user'
+    import { useRouter } from 'vue-router'
+    const userStore = useUserStore()
+    const router = useRouter()
+
     const secondRef = ref<any>()
     const thirdRef = ref<any>()
     const fourthRef = ref<any>()
@@ -56,7 +62,11 @@
     onUnmounted(() => {
         window.removeEventListener('scroll', onScroll);
     })
-    
+    const onFreeUse = () => {
+        if (!userStore.token) {
+            router.push('/login')
+        }
+    }
 </script>
 <style scoped>
     .activeClass {

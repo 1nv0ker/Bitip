@@ -53,7 +53,7 @@
                 </div>
                 <div class="mt-[1.5rem]">
                     <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')">
+                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')" @btnClick="onFreeUse">
                     </RippleButton>
                     <!-- <div class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] flex justify-center items-center cursor-pointer">
                         <span class="text-[white] text-[1.25rem] font-medium">{{t('second.dynamicButton')}}</span>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="mt-[1.5rem]">
                     <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')">
+                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')" @btnClick="onFreeUse">
                     </RippleButton>
                 </div>
             </div>
@@ -113,10 +113,14 @@
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
     import { ref } from 'vue'
+    const emit = defineEmits(['onFreeUse'])
     const selected = ref(0)
     const { t } = useI18n()
     const secondRef = ref<HTMLElement>()
     defineExpose({
         secondRef: secondRef
     })
+    const onFreeUse = () => {
+        emit('onFreeUse')
+    }
 </script>

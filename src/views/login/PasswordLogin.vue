@@ -82,6 +82,7 @@
     import * as bootstrap from 'bootstrap'
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
+    import UseUserStore from '../../store/user'
     const phoneCode = ref('')
     const passwordFocusStatus = ref(false)
     const focusStatus = ref(false)
@@ -107,6 +108,7 @@
         validationSchema: schema,
         
     })
+    const store = UseUserStore()
     const errormessage = computed(()=>errors.value)
     const [phoneNum, phonebumAttrs] = defineField('phoneNum');
     const [password, passwordAttrs] = defineField('password');
@@ -119,6 +121,7 @@
         }
     }) 
     const accountLogin = () => {
+        store.setToken('testToken')
         router.push({path:'/home'})
     }
     const onContinueLogin = () => {

@@ -1,5 +1,5 @@
 <template>
-    <div ref="seventhRef" class="pt-[4rem] pb-[5rem] overflow-hidden">
+    <div ref="seventhRef" class="pt-[4rem] pb-[4rem] overflow-hidden">
         <div class="flex justify-center">
             <span class="text-[#9398A8] text-[1.875rem] font-bold">{{t('seventh.title')}}</span>
         </div> 
@@ -7,7 +7,7 @@
             <div class="h-[5rem]  flex gap-[4.375rem] absolute" ref="list1Ref">
                 <img :src="image" v-for="image in imageLists.concat(imageLists)"/>
             </div>
-            <div class="h-[5rem]  flex justify-end gap-[4.375rem] absolute top-[12rem] right-0" ref="list2Ref">
+            <div class="h-[5rem]  flex justify-end gap-[4.375rem] absolute top-[10rem]" ref="list2Ref">
                 <img :src="image" v-for="image in imageLists2.concat(imageLists2)"/>
             </div>
         </div>

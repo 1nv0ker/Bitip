@@ -36,7 +36,7 @@
             
         </div>
         <div class="flex justify-center items-center mt-[3.25rem]">
-            <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]" :text="t('first.freeUse')" @btn-click="OnFreeUse" />
+            <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
             <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem]" @click="onContact">
                 <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
                 <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
@@ -56,36 +56,9 @@
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
     import FirstRectComponent from './FirstRectComponent.vue'
-    // import { ref } from 'vue'
     import { computed } from 'vue'
     const { t } = useI18n()
-    // const cardItems = ref([
-    //     {
-    //         title: t('first.cardTitle1'),
-    //         content: t('first.cardContent1'),
-    //         img: ''
-    //     },
-    //     {
-    //         title: t('first.cardTitle2'),
-    //         content: t('first.cardContent2'),
-    //         img: ''
-    //     },
-    //     {
-    //         title: t('first.cardTitle3'),
-    //         content: t('first.cardContent3'),
-    //         img: ''
-    //     },
-    //     {
-    //         title: t('first.cardTitle4'),
-    //         content: t('first.cardContent4'),
-    //         img: ''
-    //     },
-    //     {
-    //         title: t('first.cardTitle5'),
-    //         content: t('first.cardContent5'),
-    //         img: ''
-    //     }
-    // ])
+    const emit = defineEmits(['onFreeUse'])
     const cardItems = computed(() => {
         return [
         {
@@ -115,7 +88,9 @@
         }
     ]
     })
-    const OnFreeUse = () => {
+    const onFreeUse = () => {
+        emit('onFreeUse')
+        
         console.log('OnFreeUse')
     }
     const onContact = () => {

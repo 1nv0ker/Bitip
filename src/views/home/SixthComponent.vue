@@ -9,7 +9,7 @@
             </div>
             <div class="flex justify-center pt-[2.75rem] pb-[5rem] gap-[2rem]">
                 <RippleButton class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('sixth.button1')">
+                font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('sixth.button1')" @btnClick="onFreeUse">
                 </RippleButton>
 
                 <div class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem]  text-[white] text-[1.25rem] 
@@ -25,8 +25,12 @@
     import { ref } from 'vue'
     import RippleButton from '../../components/RippleButton.vue'
     const { t } = useI18n()
+    const emit = defineEmits(['onFreeUse'])
     const sixthRef = ref(null)
     defineExpose({
         sixthRef: sixthRef
     })
+    const onFreeUse = () => {
+        emit('onFreeUse')
+    }
 </script>

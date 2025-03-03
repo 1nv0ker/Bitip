@@ -93,6 +93,8 @@
     import * as bootstrap from 'bootstrap'
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
+    import UseUserStore from '../../store/user'
+    const store = UseUserStore()
     const phoneCode = ref('')
     const focusStatus = ref(false)
     const verityFocusStatus = ref(false)
@@ -133,7 +135,7 @@
         }
     }) 
     const accountLogin = () => {
-
+        store.setToken('testToken')
     }
     const onContinueLogin = () => {
         checked.value = true
