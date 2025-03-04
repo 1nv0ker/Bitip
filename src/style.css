@@ -111,3 +111,24 @@ input:-moz-placeholder { /* Firefox 18- */
 .collapse {
   visibility:none!important;
 }
+
+/* 阿里验证码样式 */
+#aliyunCaptcha-sliding-text,#aliyunCaptcha-sliding-failTip,#aliyunCaptcha-errorTip {
+  font-size:1.2rem;  
+}
+#aliyunCaptcha-window-embed {
+  z-index:0!important;
+}
+/* #aliyunCaptcha-sliding-body {
+  height:4rem!important;
+  width: 30rem!important;
+}
+#aliyunCaptcha-sliding-slider {
+  height:4rem!important;
+  width: 4rem!important;
+  font-size: 2rem!important;
+  line-height: 4rem!important;
+}
+#aliyunCaptcha-sliding-left {
+  width: 30rem!important;
+} */

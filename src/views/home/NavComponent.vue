@@ -5,7 +5,7 @@
             <div class="navbar-brand cursor-pointer ml-[2.625rem]" @click="onToHome">
                 <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
             </div>
-            <div class="flex items-center md:hidden">
+            <div class="flex items-center md:hidden" v-if="!userStore.userInfo?.tel">
                 <div class="w-4.5rem flex">
                     <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
                     <select class="w-[5rem] cursor-pointer ml-[0.5rem]" v-model="lan" @change="onLanauageChange">
@@ -20,7 +20,12 @@
                     {{t('login.register')}}
                 </div>
             </div>
-
+            <div class="flex items-center md:hidden" v-else>
+                <span>{{userStore.userInfo?.email}}</span>
+                <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
+                    {{t('login.exit')}}
+                </div>
+            </div>
             <!-- 桌面导航菜单 -->
             <NavMenu />
             <!-- 移动端菜单按钮 -->
@@ -47,7 +52,7 @@
             </div>
             <!-- 移动端下拉菜单 -->
             <NavMobieMenu v-show="showMobie" @onCloseNav="showMobie=false" :status="showMobie"/>
-            <div class="hidden items-center md:flex pr-[5.75rem]">
+            <div class="hidden items-center md:flex pr-[5.75rem]" v-if="!userStore.userInfo?.tel">
                 <div class="w-4.5rem flex">
                     <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
                     <select class="w-[3rem] cursor-pointer ml-[0.5rem]" v-model="lan" @change="onLanauageChange">
@@ -62,6 +67,12 @@
                     {{t('login.register')}}
                 </div>
             </div>
+            <div class="hidden items-center md:flex pr-[5.75rem]" v-else>
+                <span>{{userStore.userInfo?.email}}</span>
+                <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
+                    {{t('login.exit')}}
+                </div>
+            </div>
         </div>
     </nav>
 </template>
@@ -73,6 +84,7 @@
     import ActivityComponent from './ActivityComponent.vue';
     import NavMenu from './NavMenu.vue';
     import NavMobieMenu from './NavMobieMenu.vue';
+    import useUserStore from '../../store/user'
     const { t } = useI18n()
     const i18n = useI18n()
     const lan = ref()
@@ -80,6 +92,7 @@
     const router = useRouter()
     const acvitityStatus = ref(true)
     const showMobie = ref(false)
+    const userStore = useUserStore()
     onMounted(()=> {
         lan.value = i18n.locale.value || 'zh'
         store.changeLanauage(lan.value)
@@ -97,5 +110,10 @@
     }
     const onToHome = () => {
         router.push('/home')
+    }
+    const onLogout = () => {
+        userStore.setToken('')
+        userStore.setUserInfo(null)
+        router.push('/login')
     }
 </script>

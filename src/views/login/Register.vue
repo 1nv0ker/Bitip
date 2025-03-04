@@ -24,8 +24,11 @@
                 <div v-if="errormessage.hasOwnProperty('phoneNum')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.textValidate')}}</span>
                 </div>
-                <div class="flex h-[4rem] border-[#D9D9D9] rounded-[0.75rem] mt-[1.5rem] border-[1px]">
-
+                <!-- 阿里验证码 -->
+                <div class="mt-[1.5rem] w-[10rem] flex ">
+                    <AliyunCaptchaComponent 
+                    @getCaptchaVerifyParam="getCaptchaVerifyParam" 
+                    ref="capRef" :element="'textLogin'" :button="'register_button'" key="textLogin"  :auto-refresh="false" :immediate="true" />
                 </div>
                 <!-- 验证码 -->
                 <div class="flex h-[4rem] mt-[1.5rem] relative">
@@ -37,9 +40,9 @@
                     @focus="verityFocusStatus=true" @focusout="verityFocusStatus=false" v-model="verifyCode"/>
                     <div :class="`w-[12rem] border-[1px] border-[#D9D9D9] rounded-tr-[0.75rem] border-l-0 rounded-br-[0.75rem] flex cursor-pointer relative justify-center
                     items-center
-                    ${errormessage.hasOwnProperty('verifyCode')?verityFocusStatus?'VerityCodeError':'':(verityFocusStatus?'VerityCodeNormal':'')}`">
+                    ${errormessage.hasOwnProperty('verifyCode')?verityFocusStatus?'VerityCodeError':'':(verityFocusStatus?'VerityCodeNormal':'')}`" >
                         <div class="h-[70%] absolute left-0 top-[15%] bg-[#D9D9D9] w-[0.12rem]"></div>
-                        <span class="text-[#191919] text-[1.4rem]" @click="onSendCode">{{sendCodeStaus?codeCount+'s':t('login.sendCode')}}</span>
+                        <span class="text-[#191919] text-[1.4rem]" @click="onSendCode" id="register_button">{{sendCodeStaus?codeCount+'s':t('login.sendCode')}}</span>
                     </div>
                 </div>
                 <div v-if="errormessage.hasOwnProperty('verifyCode')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
@@ -55,6 +58,18 @@
                 </div>
                 <div v-if="errormessage.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.passwordValidateNew')}}</span>
+                </div>
+
+                <!-- 确认密码 -->
+                <div class="flex h-[4rem] mt-[1.5rem] relative">
+                    <div :class="`absolute left-[1.5rem] top-[-0.75rem] text-[${errormessage.hasOwnProperty('comfirmPass')?'#FC4949':'#01AA44'}] text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="confirmPassFocusStatus">{{t('login.confirmPassTips')}}</div>
+                    <input type="password" :class="`form-control customPassInput ${errormessage.hasOwnProperty('comfirmPass')?(confirmPassFocusStatus?'customPassError':''):(confirmPassFocusStatus?'customPassNormal':'')}`" :placeholder="t('login.confirmPassTips')" 
+                    @focus="confirmPassFocusStatus=true" @focusout="confirmPassFocusStatus=false"
+                    v-model="comfirmPass" v-bind="comfirmPassAttrs">
+                    
+                </div>
+                <div v-if="errormessage.hasOwnProperty('comfirmPass')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+                    <span class="text-[#FC4949] text-[1.1rem]">{{t('login.confirmPassword')}}</span>
                 </div>
 
                 <!-- 邮箱 -->
@@ -119,20 +134,28 @@
 <script setup lang="ts">
     import Layout from './Layout.vue';
     import { useForm } from 'vee-validate'
-    import {  ref, onMounted, computed } from 'vue';
+    import {  ref, onMounted, computed, onUnmounted } from 'vue';
     import { useI18n } from 'vue-i18n'
     import phoneNumberJson from './phoneNumbers.json'
     import * as bootstrap from 'bootstrap'
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
+    import { Register, SendSms } from '../../api/login'
+    import { ElMessage } from 'element-plus'
+    import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
+    import userStore from '../../store/user'
     const phoneCode = ref('')
     const focusStatus = ref(false)
     const verityFocusStatus = ref(false)
     const passwordFocusStatus = ref(false)
+    const confirmPassFocusStatus = ref(false)
     const emailFocusStatus = ref(false)
     const modalRef = ref(null)
     const sendCodeStaus = ref(false)
     const codeCount = ref(60)
+    const capRef = ref<any>()
+    const captchaVerifyParam = ref('')
+    const store = userStore()
     let codeCountInterval:any = null
     let modalInstance: any = null
     // const phoneNum = ref('')
@@ -146,11 +169,16 @@
     onMounted(() => {
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
+
+        capRef.value.loadCaptha()
     })
+    
     const schema = yup.object({
-        phoneNum: yup.string().required().length(12, t('login.textValidate')),
+        phoneNum: yup.string().required().length(11),
         verifyCode: yup.string().required(),
         password: yup.string().required().min(6).max(12),
+        comfirmPass: yup.string().required().min(6).max(12)
+        .oneOf([yup.ref('password')], t('login.confirmPassword')),
         email: yup.string().email().required()
     })
     const { defineField, errors, handleSubmit } = useForm({
@@ -161,7 +189,13 @@
     const [phoneNum, phonebumAttrs] = defineField('phoneNum');
     const [verifyCode, verityCodeAttrs ] = defineField('verifyCode')
     const [password, passwordAttrs] = defineField('password');
+    const [comfirmPass, comfirmPassAttrs] = defineField('comfirmPass');
     const [ email, emainAttrs] = defineField('email')
+
+    const getCaptchaVerifyParam = (value:string) => {
+        
+        captchaVerifyParam.value = value
+    }
     const onSubmit = handleSubmit((values) => {
         console.log('values', values)
         if (!checked.value) {
@@ -171,7 +205,19 @@
         }
     }) 
     const accountRegister = () => {
-
+        Register({
+            // captchaVerifyParam:'',
+            // account:'',
+            email: email.value,
+            tel: '' + phoneNum.value,
+            verifyCode:verifyCode.value,
+            passWord: password.value
+        })
+        .then((res:any) => {
+            console.log('res', res)
+            store.setToken(res.body.token)
+            router.push('/login')
+        })
     }
     const onContinueLogin = () => {
         checked.value = true
@@ -194,15 +240,50 @@
         if (sendCodeStaus.value) {
             return
         }
+        
+        // const res = capRef.value.test()
+        // captchaVerifyParam.value = res.
+        // console.log('sendCodeStaus', captchaVerifyParam.value)
+        if (!captchaVerifyParam.value) {
+            ElMessage.warning(t('login.captchaVerifyTitps'))
+            return
+        }
+        if (!phoneNum.value) {
+            ElMessage.warning(t('login.textLogin'))
+            return
+        }
+        if (errormessage.value.hasOwnProperty('phoneNum')) {
+            ElMessage.warning(t('login.textValidate'))
+            return
+        }
         sendCodeStaus.value = true
-        codeCountInterval = setInterval(() => {
-            codeCount.value--
-            if (codeCount.value<=0) {
-                sendCodeStaus.value = false
-                clearInterval(codeCountInterval)
-            }
-        }, 1000);
+        
+        SendSms({
+            tel:''+phoneNum.value,
+            smsType: 'register',
+            captchaVerifyParam:captchaVerifyParam.value
+        })
+        .then((res:any) => {
+            console.log('res', res)
+            ElMessage.success(t('login.sendSms'))
+            codeCountInterval = setInterval(() => {
+                codeCount.value--
+                if (codeCount.value<=0) {
+                    sendCodeStaus.value = false
+                    captchaVerifyParam.value = ''
+                    capRef.value && capRef.value.onRefresh()
+                    clearInterval(codeCountInterval)
+                }
+            }, 1000);
+        })
+        .catch(() => {
+            capRef.value && capRef.value.onRefresh()
+        })
+        
     }
+    onUnmounted(() => {
+        codeCountInterval && clearInterval(codeCountInterval)
+    })
 </script>
 
 <style>

@@ -27,6 +27,10 @@
         <div v-if="errormessage.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
             <span class="text-[#FC4949] text-[1.1rem]">{{t('login.passwordValidate')}}</span>
         </div>
+        <!-- 验证码 -->
+        <div class="mt-[1.5rem] w-[10rem] flex ">
+            <AliyunCaptchaComponent @getCaptchaVerifyParam="getCaptchaVerifyParam" :element="'passLogin'" :button="'passLogin_button'" ref="capRef" key="passlogin" />
+        </div>
         <!-- 用户协议 -->
         <div class="mt-[1.5rem] items-center flex">
             <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
@@ -35,7 +39,7 @@
             </label>
         </div>
         
-        <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit">
+        <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="passLogin_button">
             <span class="text-[white] text-[1.5rem]">{{t('login.login')}}</span>
         </button>
         <div class="w-full h-[4rem] mt-[2rem] border-[1px] border-[#D9D9D9]  rounded-[0.75rem] cursor-pointer flex items-center justify-center" @click="onForgetPass">
@@ -71,7 +75,9 @@
                 </div>
             </div>
         </div>
-        
+        <!-- <div class=" absolute top-0 bottom-0 left-0 right-0 m-auto w-[10rem] h-[5rem] bg-[red] z-1000">
+
+        </div> -->
     </form>
 </template>
 <script setup lang="ts">
@@ -83,10 +89,14 @@
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
     import UseUserStore from '../../store/user'
+    import { Login } from '../../api/login'
+    import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
     const phoneCode = ref('')
     const passwordFocusStatus = ref(false)
     const focusStatus = ref(false)
     const modalRef = ref(null)
+    const captchaVerifyParam = ref('')
+    const capRef = ref<any>(null)
     let modalInstance: any = null
     // const phoneNum = ref('')
     // const password = ref('')
@@ -99,7 +109,8 @@
     onMounted(() => {
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
-    })
+        capRef.value.loadCaptha()
+1    })
     const schema = yup.object({
         phoneNum: yup.string().required(),
         password: yup.string().required()
@@ -113,6 +124,9 @@
     const [phoneNum, phonebumAttrs] = defineField('phoneNum');
     const [password, passwordAttrs] = defineField('password');
     const onSubmit = handleSubmit((values) => {
+        if (!captchaVerifyParam.value) {
+            return
+        }
         console.log('values', values)
         if (!checked.value) {
             modalInstance.show() 
@@ -120,9 +134,23 @@
             accountLogin()
         }
     }) 
+    const getCaptchaVerifyParam = (value:string) => {
+        captchaVerifyParam.value = value
+    }
     const accountLogin = () => {
-        store.setToken('testToken')
-        router.push({path:'/home'})
+        Login({
+            loginType:'pwd',
+            tel: phoneNum.value,
+            account: phoneNum.value,
+            passWord: password.value,
+            captchaVerifyParam: captchaVerifyParam.value
+        })
+        .then((res:any) => {
+            console.log('res', res)
+            store.setToken(res.body.token)
+            router.push({path:'/home'})
+        })
+        
     }
     const onContinueLogin = () => {
         checked.value = true

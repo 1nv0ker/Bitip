@@ -32,15 +32,28 @@
     import FooterComponent from './home/FooterComponent.vue';
     import { useI18n } from 'vue-i18n'
     import { useRoute  } from 'vue-router'
-    import { ref, onBeforeMount } from 'vue'
+    import { ref, onBeforeMount, onMounted } from 'vue'
+    import userStore from '../store/user'
+    import { GetUserInfo } from '../api/login'
     const { t } = useI18n()
     const showContact = ref(false)
+    const store = userStore()
     const route = useRoute()
     onBeforeMount(() => {
         const paths = ['/home']
         if (paths.indexOf(route.path) !== -1) {
             showContact.value = true
         }
+        if (store.token) {
+            GetUserInfo()
+            .then((res1:any) => {
+                console.log('res1', res1)
+                store.setUserInfo(res1.body.userInfo)
+            })
+        }
+    })
+    onMounted(() => {
+        
     })
 </script>
 <style scoped>

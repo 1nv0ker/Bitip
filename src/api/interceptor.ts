@@ -1,5 +1,6 @@
 import axios from 'axios'
 import UseUserStore from '../store/user'
+import { ElMessage } from 'element-plus'
 axios.defaults.baseURL = 'https://www.bitip.com'
 axios.defaults.timeout = 1000
 
@@ -25,7 +26,11 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     console.log('error')
-    return response;
+    if (response.data.code && response.data.code !== 200) {
+      response.data.message && ElMessage.error(response.data.message)
+      throw Error(response.data.message)
+    }
+    return response.data;
   }, function (error) {
     // 对响应错误做点什么
     return Promise.reject(error);

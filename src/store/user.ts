@@ -1,10 +1,18 @@
 import { defineStore } from 'pinia'
-
+interface UserInfo_data {
+    email:string,
+    name:string,
+    remark:string,
+    tel:string
+}
 const store = defineStore('users', {
-    state:() => {
+    state:():{
+        token:string,
+        userInfo:UserInfo_data|null
+    } => {
         return {
             token: '',
-            userInfo:''
+            userInfo: null
         }
     },
     persist: true,
@@ -17,6 +25,9 @@ const store = defineStore('users', {
         setToken(token:string) {
             this.token = token
         },
+        setUserInfo(userInfo:UserInfo_data | any) {
+            this.userInfo = userInfo
+        }
     }
 })
 

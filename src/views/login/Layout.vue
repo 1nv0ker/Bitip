@@ -1,5 +1,6 @@
 <template>
-    <div class="w-full h-full login-bg">
+    <div class="w-full h-full login-bg" :style="`background-image:url(${loginBg})`">
+
         <div class="w-full row m-0">
             <div class="col-12 offset-md-3 col-md-4 flex flex-col justify-center pt-[10rem] pr-[6rem] pl-[6rem]">
                 <img src="../../assets/logo.png" class="w-[15rem] h-[5rem]" />
@@ -13,6 +14,7 @@
 </template>
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
+  import loginBg from '../../assets/login.png'
   const { t } = useI18n()
 </script>
 <style lang="less">
@@ -23,7 +25,7 @@
         
     }
     .login-bg {
-        background-image: url('../../assets/login.png');
+        // background-image: url('../../assets/login.png');
         background-size:cover;
         background-repeat: no-repeat;
         

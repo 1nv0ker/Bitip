@@ -34,7 +34,12 @@ export const en = {
         emailValidate: 'Please enter a valid email address',
         emailPlaceholder: 'Please enter your email address',
         finshSetting: 'Completed setup?',
-        newPassword: 'Please enter new password'
+        newPassword: 'Please enter new password',
+        confirmPassword:'The two passwords do not match',
+        confirmPassTips: 'Confirm Password',
+        captchaVerifyTitps: 'Please slide the verification code',
+        sendSms:'Sent, please check',
+        exit:'Log out'
     },
     first: {
         title:'Bit Global Residential Proxy IP',
@@ -212,7 +217,12 @@ export const zh = {
         emailValidate:'请输入合法的邮箱',
         emailPlaceholder: '请输入邮箱',
         finshSetting: '已完成设置?',
-        newPassword: '请输入新密码'
+        newPassword: '请输入新密码',
+        confirmPassword: '两次密码不一致',
+        confirmPassTips: '确认密码',
+        captchaVerifyTitps: '请滑动验证码',
+        sendSms:'已发送,请查收',
+        exit:'退出登录'
     },
     first: {
         title:'Bit全球住宅代理IP',

@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import './style.css'
 import 'animate.css';
 import App from './App.vue';
+import { ElMessage } from 'element-plus'
+import 'element-plus/dist/index.css'
 import router from './router'
 import i18n from './i18n'
 import './api/interceptor'
@@ -18,7 +20,7 @@ configure({
 const app = createApp(App)
 
 app.use(pinia)
-
+app.use(ElMessage)
 app.use(router)
 app.use(i18n)
 app.mount('#app')
