@@ -29,7 +29,10 @@
         </div>
         <!-- 验证码 -->
         <div class="mt-[1.5rem] w-[10rem] flex ">
-            <AliyunCaptchaComponent @getCaptchaVerifyParam="getCaptchaVerifyParam" :element="'passLogin'" :button="'passLogin_button'" ref="capRef" key="passlogin" />
+            <AliyunCaptchaComponent @getCaptchaVerifyParam="getCaptchaVerifyParam" :element="'passLogin'" :button="'passLogin_button'" ref="capRef" key="passlogin" :immediate="true" :auto-refresh="false" />
+        </div>
+        <div v-if="captchaStatus" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+            <span class="text-[#FC4949] text-[1.1rem]">{{t('login.captchaVerifyTitps')}}</span>
         </div>
         <!-- 用户协议 -->
         <div class="mt-[1.5rem] items-center flex">
@@ -96,6 +99,7 @@
     const focusStatus = ref(false)
     const modalRef = ref(null)
     const captchaVerifyParam = ref('')
+    const captchaStatus = ref(false)
     const capRef = ref<any>(null)
     let modalInstance: any = null
     // const phoneNum = ref('')
@@ -109,7 +113,7 @@
     onMounted(() => {
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
-        capRef.value.loadCaptha()
+        capRef.value && capRef.value.loadCaptha()
 1    })
     const schema = yup.object({
         phoneNum: yup.string().required(),
@@ -124,7 +128,9 @@
     const [phoneNum, phonebumAttrs] = defineField('phoneNum');
     const [password, passwordAttrs] = defineField('password');
     const onSubmit = handleSubmit((values) => {
+        // console.log('captchaVerifyParam', captchaVerifyParam.value, captchaStatus.value)
         if (!captchaVerifyParam.value) {
+            captchaStatus.value = true
             return
         }
         console.log('values', values)
@@ -136,6 +142,7 @@
     }) 
     const getCaptchaVerifyParam = (value:string) => {
         captchaVerifyParam.value = value
+        captchaStatus.value = false
     }
     const accountLogin = () => {
         Login({
@@ -149,6 +156,9 @@
             console.log('res', res)
             store.setToken(res.body.token)
             router.push({path:'/home'})
+        })
+        .catch(() => {
+            capRef.value && capRef.value.onRefresh()
         })
         
     }

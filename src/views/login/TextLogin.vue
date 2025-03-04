@@ -25,6 +25,9 @@
             @getCaptchaVerifyParam="getCaptchaVerifyParam" 
             ref="capRef" :element="'textLogin'" :button="'textLogin_button'" key="textLogin" :immediate="true" :auto-refresh="false"/>
         </div>
+        <div v-if="captchaStatus" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+            <span class="text-[#FC4949] text-[1.1rem]">{{t('login.captchaVerifyTitps')}}</span>
+        </div>
         <!-- 验证码 -->
         <div class="flex h-[4rem] mt-[1.5rem] relative">
             <div :class="`absolute left-[1.5rem] top-[-0.75rem] 
@@ -108,6 +111,7 @@
     const sendCodeStaus = ref(false)
     const codeCount = ref(60)
     const captchaVerifyParam = ref('')
+    const captchaStatus = ref(false)
     const capRef = ref<any>()
     let codeCountInterval:any = null
     let modalInstance: any = null
@@ -122,13 +126,13 @@
     onMounted(() => {
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
-        capRef.value.loadCaptha()
+        capRef.value && capRef.value.loadCaptha()
     })
     const schema = yup.object({
         phoneNum: yup.string().required().length(11),
         verifyCode: yup.string().required()
     })
-    const { defineField, errors, handleSubmit } = useForm({
+    const { defineField, errors, handleSubmit, validateField } = useForm({
         validationSchema: schema,
         
     })
@@ -137,6 +141,7 @@
     const [verifyCode, verityCodeAttrs ] = defineField('verifyCode')
     const getCaptchaVerifyParam = (value:string) => {
         captchaVerifyParam.value = value
+        captchaStatus.value = false
     }
     const onSubmit = handleSubmit((values) => {
         console.log('values', values)
@@ -186,19 +191,21 @@
         if (sendCodeStaus.value) {
             return
         }
+        
+        if (!captchaVerifyParam.value) {
+            captchaStatus.value = true
+            return
+        }
         if (!phoneNum.value) {
-            ElMessage.warning(t('login.textLogin'))
+            validateField('phoneNum')
             return
         }
         if (errormessage.value.hasOwnProperty('phoneNum')) {
-            ElMessage.warning(t('login.textValidate'))
-            return
-        }
-        if (!captchaVerifyParam.value) {
-            ElMessage.warning(t('login.captchaVerifyTitps'))
+            // ElMessage.warning(t('login.textValidate'))
             return
         }
         sendCodeStaus.value = true
+        
         SendSms({
             tel:''+phoneNum.value,
             smsType: 'login',
@@ -212,13 +219,13 @@
                 if (codeCount.value<=0) {
                     sendCodeStaus.value = false
                     captchaVerifyParam.value = ''
-                    capRef.value.onRefresh()
+                    capRef.value && capRef.value.onRefresh()
                     clearInterval(codeCountInterval)
                 }
             }, 1000);
         })
         .catch(() => {
-            capRef.value.onRefresh()
+            capRef.value && capRef.value.onRefresh()
         })
         
     }

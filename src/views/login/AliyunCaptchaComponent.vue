@@ -70,19 +70,16 @@
         captcha.value && captcha.value.refresh()
     }
     // const test = () => {
-    //     document.getElementById("cap_button")?.addEventListener("click", function(event) {
-    //         event.stopPropagation(); 
-    //         event.preventDefault()
-    //         console.log('captcha', captcha.value.captchaVerifyParam)
+    //     // document.getElementById("cap_button")?.addEventListener("click", function(event) {
+    //     //     event.stopPropagation(); 
+    //     //     event.preventDefault()
+    //     //     console.log('captcha', captcha.value.captchaVerifyParam)
             
-    //     });
+    //     // });
     //     // captcha.value.$button.stopPropagation()
     //     // captcha.value.$button.preventDefault()
-    //     captcha.value && captcha.value.$button.click()
-       
-    //     return {
-    //         captchaVerifyParam: captcha.value.captchaVerifyParam
-    //     }
+    //     console.log('captcha.value', captcha.value)
+    //     captcha.value.captchaVerifyCallback()
     // }
     defineExpose({
         loadCaptha: loadCaptha,
@@ -91,7 +88,7 @@
     })
     const captchaVerifyCallback = (captchaVerifyParam:string) => {
         emit('getCaptchaVerifyParam', captchaVerifyParam)
-        console.log('captchaVerifyParam', captchaVerifyParam)
+        // console.log('captchaVerifyParam', captchaVerifyParam)
         // return props.callback && props.callback()
         return {
             captchaResult: true,

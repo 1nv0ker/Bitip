@@ -30,6 +30,9 @@
                     @getCaptchaVerifyParam="getCaptchaVerifyParam" 
                     ref="capRef" :element="'textLogin'" :button="'register_button'" key="textLogin"  :auto-refresh="false" :immediate="true" />
                 </div>
+                <div v-if="captchaStatus" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+                    <span class="text-[#FC4949] text-[1.1rem]">{{t('login.captchaVerifyTitps')}}</span>
+                </div>
                 <!-- 验证码 -->
                 <div class="flex h-[4rem] mt-[1.5rem] relative">
                     <div :class="`absolute left-[1.5rem] top-[-0.75rem] 
@@ -155,6 +158,7 @@
     const codeCount = ref(60)
     const capRef = ref<any>()
     const captchaVerifyParam = ref('')
+    const captchaStatus = ref(false)
     const store = userStore()
     let codeCountInterval:any = null
     let modalInstance: any = null
@@ -170,7 +174,7 @@
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
 
-        capRef.value.loadCaptha()
+        capRef.value && capRef.value.loadCaptha()
     })
     
     const schema = yup.object({
@@ -181,7 +185,7 @@
         .oneOf([yup.ref('password')], t('login.confirmPassword')),
         email: yup.string().email().required()
     })
-    const { defineField, errors, handleSubmit } = useForm({
+    const { defineField, errors, handleSubmit, validateField } = useForm({
         validationSchema: schema,
         
     })
@@ -193,8 +197,8 @@
     const [ email, emainAttrs] = defineField('email')
 
     const getCaptchaVerifyParam = (value:string) => {
-        
         captchaVerifyParam.value = value
+        captchaStatus.value = false
     }
     const onSubmit = handleSubmit((values) => {
         console.log('values', values)
@@ -237,23 +241,21 @@
         router.push({path: '/login'})
     }
     const onSendCode = () => {
+        
         if (sendCodeStaus.value) {
             return
         }
         
-        // const res = capRef.value.test()
-        // captchaVerifyParam.value = res.
-        // console.log('sendCodeStaus', captchaVerifyParam.value)
         if (!captchaVerifyParam.value) {
-            ElMessage.warning(t('login.captchaVerifyTitps'))
+            captchaStatus.value = true
             return
         }
         if (!phoneNum.value) {
-            ElMessage.warning(t('login.textLogin'))
+            validateField('phoneNum')
             return
         }
         if (errormessage.value.hasOwnProperty('phoneNum')) {
-            ElMessage.warning(t('login.textValidate'))
+            // ElMessage.warning(t('login.textValidate'))
             return
         }
         sendCodeStaus.value = true
