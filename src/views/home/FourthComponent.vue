@@ -1,7 +1,7 @@
 <template>
     <div ref="fourthRef" class="bg-[#01AA44] pb-[4rem] w-full overflow-hidden">
         <div class="flex justify-center pt-[3.625rem]">
-            <span class="text-[white] text-[2.625rem] font-bold">{{t('fourth.title')}}</span>
+            <span class="text-[white] text-[2.625rem] font-bold text-center">{{t('fourth.title')}}</span>
         </div>
         <div class="flex justify-center gap-[11.25rem] mt-[1.875rem]">
            <div class="flex flex-col justify-center">

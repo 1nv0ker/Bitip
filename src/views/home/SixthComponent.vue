@@ -2,7 +2,7 @@
     <div ref="sixthRef" class="flex justify-center pt-[2rem] pb-[11rem] w-full overflow-hidden">
         <div class="max-w-[99vw] w-[auto] overflow-hidden bg-[#01AA44] rounded-[2rem] pl-[10rem] pr-[10rem]">
             <div class="flex justify-center pt-[7rem]">
-                <span class="text-[#FFFFFF] text-[3.5rem] font-bold">{{t('sixth.title')}}</span>
+                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center">{{t('sixth.title')}}</span>
             </div>
             <div class="flex justify-center pt-[0.75rem]">
                 <span class="text-[#FFFFFF] text-[1.625rem] font-light opacity-[0.7]">{{t('sixth.content')}}</span>

@@ -14,7 +14,7 @@
             <span class="text-[#191919] text-[3.43rem] font-bold">{{t('first.title')}}</span>
         </div>
         <div class="flex justify-center items-center">
-            <span class="text-[#191919] text-[3.43rem] font-bold">{{t('first.subtitle')}}</span>
+            <span class="text-[#191919] text-[3.43rem] font-bold text-center">{{t('first.subtitle')}}</span>
         </div>
         <div class="flex justify-center items-center mt-[2.5rem]">
             <div class="flex items-center">
