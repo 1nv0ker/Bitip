@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full p-[2rem] pt-[3.125rem] pb-[8rem] flex justify-center" ref="thirdRef" style="background: linear-gradient( 180deg, #FFFFFF 0%, #F4FAF6 100%);">
+    <div class="w-full p-[2rem] pt-[3.125rem] pb-[8rem] flex justify-center " ref="thirdRef" style="background: linear-gradient( 180deg, #F4FAF6 0%, #FFFFFF 100%) ;">
         <div class="w-[80rem]">
         <div class="flex items-center justify-center">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{ t('third.title') }}</span>
@@ -7,13 +7,14 @@
         <div class="mt-[4.5rem] mr-0 flex justify-between">
             <div class="flex flex-col  gap-[1.25rem] ">
                 <div :class="`w-[26.31rem] h-[5.75rem] rounded-[3.5rem] border-[1px] pl-[1.875rem] border-[#e2e7e4] ${selected==button.key?'selected text-[white]':'unSelected text-[#191919]'} 
-                cursor-pointer flex items-center`" 
+                cursor-pointer flex items-center relative`" 
                 @mouseenter="onMouseEnter(button.key)"
                 @mouseleave="onMouseLeave"
-                style="transition: background-color 0.5s ease-in-out"
+                style="transition: background-color 0.5s ease-in-out;"
                 v-for="button in buttons" @click="selected=button.key">
                     <img :src="button.img" :class="selected==button.key?'changeColor-img w-[1.5rem] h-[1.5rem]':'w-[1.5rem] h-[1.5rem]'" v-if="button.key!==1" />
                     <img :src="button.img" :class="selected==button.key?'w-[1.5rem] h-[1.5rem]':'changeColor-img w-[1.5rem] h-[1.5rem]'" v-else />
+                    <img  src="../../assets/button_arrow.png" :class=" `absolute top-0 right-0 left-0 bottom-0 ${selected==button.key?'change_arrow_img':''}`"/>
                     <span class=" text-[1.5rem] pl-[1.25rem] font-medium">{{button.title}}</span>
                 </div>
             </div>
@@ -24,8 +25,8 @@
                 <div>
                     <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                 </div>
-                <div class="w-[20rem] h-[20rem] bg-[green] mt-[2rem]">
-                    
+                <div class="w-[30rem] h-[21rem] md:w-[40rem] md:h-[28rem] mt-[2rem]">
+                    <img src="../../assets/globalSource.png" class="w-full h-full"/>
                 </div>
             </div>
             <div class="flex flex-col animate__animated animate__fadeIn w-[37.5rem]" v-show="selected==2">
@@ -35,8 +36,8 @@
                 <div>
                     <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                 </div>
-                <div class="w-[20rem] h-[20rem] bg-[green] mt-[2rem]">
-                    
+                <div class="w-[30rem] h-[21rem] md:w-[40rem] md:h-[28rem] mt-[2rem]">
+                    <img src="../../assets/globalSource.png" class="w-full h-full"/>
                 </div>
             </div>
             <div class="flex  flex-col animate__animated animate__fadeIn w-[37.5rem]" v-show="selected==3">
@@ -46,8 +47,8 @@
                 <div>
                     <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                 </div>
-                <div class="w-[20rem] h-[20rem] bg-[green] mt-[2rem]">
-                    
+                <div class="w-[30rem] h-[21rem] md:w-[40rem] md:h-[28rem] mt-[2rem]">
+                    <img src="../../assets/globalSource.png" class="w-full h-full"/>
                 </div>
             </div>
             <div class="flex flex-col animate__animated animate__fadeIn w-[37.5rem]" v-show="selected==4">
@@ -57,8 +58,8 @@
                 <div>
                     <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                 </div>
-                <div class="w-[20rem] h-[20rem] bg-[green] mt-[2rem]">
-                    
+                <div class="w-[30rem] h-[21rem] md:w-[40rem] md:h-[28rem] mt-[2rem]">
+                    <img src="../../assets/globalSource.png" class="w-full h-full"/>
                 </div>
             </div>
             <div class="flex  flex-col animate__animated animate__fadeIn w-[37.5rem]" v-show="selected==5">
@@ -68,8 +69,8 @@
                 <div>
                     <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                 </div>
-                <div class="w-[20rem] h-[20rem] bg-[green] mt-[2rem]">
-                    
+                <div class="w-[30rem] h-[21rem] md:w-[40rem] md:h-[28rem] mt-[2rem]">
+                    <img src="../../assets/globalSource.png" class="w-full h-full"/>
                 </div>
             </div>
         </div>
@@ -201,5 +202,8 @@
     }
     .changeColor-img {
         filter: invert(100%)     
+    }
+    .change_arrow_img {
+        filter: invert(96%) brightness(2000%) saturate(100%);
     }
 </style>

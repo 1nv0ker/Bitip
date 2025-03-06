@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-[white] p-[2rem] pt-[6.5625rem] pb-[8.25rem]" ref="secondRef">
+    <div class="w-full bg-[white] pl-[2rem] pr-[2rem] mt-[6rem] pb-[8.25rem]" ref="secondRef">
         <div class="flex justify-center items-center">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('second.title')}}</span>
         </div>
@@ -18,7 +18,11 @@
             </div>
         </div>
         <div class="flex justify-center mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==0">
-            <div class="w-[36.25rem] h-[25rem] bg-[#01AA44]"></div>
+            <div class="w-[36.25rem] h-[25rem] relative">
+                
+                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
+                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
+            </div>
             <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
                 <div class="flex">
                     <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
@@ -67,7 +71,11 @@
         </div>
 
         <div class="flex justify-center mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==1">
-            <div class="w-[36.25rem] h-[25rem] bg-[#01AA44]"></div>
+            <div class="w-[36.25rem] h-[25rem] relative">
+                
+                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
+                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
+            </div>
             <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
                 <div class="flex">
                     <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
@@ -135,7 +143,7 @@
     onMounted(() => {
         interval = setInterval(() => {
             selected.value===0?selected.value=1:selected.value=0
-        }, 3000);
+        }, 5000);
     })
     onBeforeUnmount(() => {
         interval && clearInterval(interval)
@@ -143,6 +151,6 @@
     const onMouseLeave = () => {
         interval = setInterval(() => {
             selected.value===0?selected.value=1:selected.value=0
-        }, 3000);
+        }, 5000);
     }
 </script>

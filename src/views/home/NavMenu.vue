@@ -22,6 +22,11 @@
     import NavMenuItem  from './NavMenuItem.vue'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
+    import menu1 from '../../assets/menu1_1.png'
+    import menu2 from '../../assets/menu1_2.png'
+    import menu3 from '../../assets/menu1_3.png'
+    import menu4 from '../../assets/menu1_4.png'
+    import menu5 from '../../assets/menu1_5.png'
     const { t } = useI18n()
     const packageItems = computed(() => {
         return [
@@ -30,13 +35,15 @@
                 items: [
                     {
                         title: t('navMenu.package_subtitle1'),
-                        img: '',
-                        path:'/setMeal?1'
+                        img: menu1,
+                        path:'/setMeal?1',
+                        subtitle: t('navMenu.package_subtitle1_tips')
                     },
                     {
                         title: t('navMenu.package_subtitle2'),
-                        img: '',
-                        path:'/setMeal?2'
+                        img: menu2,
+                        path:'/setMeal?2',
+                        subtitle: t('navMenu.package_subtitle2_tips')
                     }
                 ]
             },
@@ -45,18 +52,34 @@
                 items: [
                     {
                         title: t('navMenu.package_subtitle3'),
-                        img: '',
-                        path:'/setMeal?3'
+                        img: menu3,
+                        path:'/setMeal?3',
+                        subtitle: t('navMenu.package_subtitle3_tips')
                     },
-                    {
-                        title: t('navMenu.package_subtitle4'),
-                        img: '',
-                        path:'/setMeal?4'
-                    }
+                    // {
+                    //     title: t('navMenu.package_subtitle4'),
+                    //     img: menu3,
+                    //     path:'/setMeal?4'
+                    // }
                 ]
             },
             {
                 title: t('navMenu.package_title3'),
+                special: true,
+                items:[
+                    {
+                        // title: t('navMenu.package_subtitle2'),
+                        img: menu4,
+                        path:'/setMeal?2',
+
+                    },
+                    {
+                        // title: t('navMenu.package_subtitle2'),
+                        img: menu5,
+                        path:'/setMeal?2',
+                       
+                    }
+                ]
             }
         ]
     })

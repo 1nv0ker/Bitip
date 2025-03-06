@@ -1,17 +1,18 @@
 <template>
-    <div class="w-full h-[2.8125rem] bg-[#EDFBF7] flex gap-[1.5rem] justify-center items-center" v-show="status">
-        <div class="bg-[#01AA44]">
-            <img class="w-[2rem] h-[2rem]" />
+    <div class="w-full h-[full] flex gap-[1.5rem] relative justify-center items-center" v-show="status">
+        <img class=" absolute top-0 left-0 right-0 bottom-0 h-[2rem]" src="../../assets/mask.png" v-show="status" />
+        <div class="">
+            <img class="w-[2rem] h-[2rem]" src="../../assets/activity1.png" />
         </div>
         <div class="flex items-center cursor-pointer" @click="onLogin">
             <span class="text-[#0C311A] text-[1rem] font-medium">{{t('acvitity.title')}}</span>
             <span class="text-[#01AA44] text-[1rem] font-bold pl-[0.25rem]">{{t('acvitity.subtitle')}}</span>
         </div>
-        <div class="bg-[#01AA44]">
-            <img class="w-[2rem] h-[2rem]" />
+        <div class="">
+            <img class="w-[2rem] h-[2rem]" src="../../assets/activity2.png" />
         </div>
         <div class="w-[1.5rem] h-[1.5rem] flex justify-center items-center rounded-[50%] bg-[#FFFFFF] absolute right-[4rem] ">
-            <div class="close-icon cursor-pointer" @click="onClose"></div>
+            <div class="close-icon cursor-pointer " @click="onClose"></div>
         </div>
     </div>
 </template>

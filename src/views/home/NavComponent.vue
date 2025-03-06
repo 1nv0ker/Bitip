@@ -1,7 +1,9 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top p-0">
-        <ActivityComponent class="fixed top-0" @onCloseActivity="acvitityStatus=false"/>
-        <div :class="`container-fluid h-[4rem] relative ${acvitityStatus?'mt-[2.8125rem]':''} `">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top p-0 flex flex-col">
+        <div class="w-full h-[2.8125rem] bg-[#EDFBF7] relative flex items-center" v-show="acvitityStatus">
+            <ActivityComponent class="fixed top-0" @onCloseActivity="acvitityStatus=false" />
+        </div>
+        <div :class="`container-fluid h-[4rem] relative ${acvitityStatus?'':''} `">
             <div class="navbar-brand cursor-pointer ml-[2.625rem]" @click="onToHome">
                 <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
             </div>
