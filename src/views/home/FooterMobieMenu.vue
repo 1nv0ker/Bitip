@@ -8,13 +8,13 @@
                     style="visibility:visible"
                     type="button" 
                     data-bs-toggle="collapse" :data-bs-target="`#${item.id}`" aria-expanded="false" :aria-controls="`#${item.id}`">
-                        {{item.title}}
+                        <span>{{item.title}}</span>
                     </button>
                     </h2>
                     <div :id="item.id" class="accordion-collapse collapse" :aria-labelledby="item.title" data-bs-parent="#accordionFlushExample" style="visibility:visible">
                         <div class="accordion-body flex flex-col gap-[1.2rem]">
                             <div v-for="item1 in item.items" class="text-[2rem] text-[black]">
-                                {{item1.title}}
+                                <span>{{item1.title}}</span>
                             </div>
                         </div>
                         

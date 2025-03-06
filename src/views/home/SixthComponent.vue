@@ -5,7 +5,7 @@
                 <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center">{{t('sixth.title')}}</span>
             </div>
             <div class="flex justify-center pt-[0.75rem]">
-                <span class="text-[#FFFFFF] text-[1.625rem] font-light opacity-[0.7]">{{t('sixth.content')}}</span>
+                <span class="text-[rgba(255,255,255,0.7)] text-[1.625rem]">{{t('sixth.content')}}</span>
             </div>
             <div class="flex justify-center pt-[2.75rem] pb-[5rem] gap-[2rem]">
                 <RippleButton class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
@@ -14,7 +14,7 @@
 
                 <div class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem]  text-[white] text-[1.25rem] 
                 font-medium border-[white] border-[1px] flex justify-center items-center cursor-pointer">
-                    {{t('sixth.button2')}}
+                    <span>{{t('sixth.button2')}}</span>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
             <form class="mt-[2rem]" @submit.prevent="onSubmit">
                 <!-- 手机号 -->
                 <div class="flex h-[4rem] relative">
-                    <select :class="`form-select customSelect w-[7.2rem] font-normal text-[1.375rem] text-[#191919] 
+                    <select :class="`form-select customSelect w-[7.2rem] font-normal text-[1.375rem] text-[#999999] 
                     ${errormessage.hasOwnProperty('phoneNum')?focusStatus?'customSelectError':'':(focusStatus?'customFocus':'')}`" v-model="phoneCode">
                         <option v-for="number in phoneNumbers" :value="number.phone_code" :selected="number.chinese_name==='中国'?true:false">
                             {{number.phone_code}}+
@@ -80,14 +80,14 @@
                 <!-- 用户协议 -->
                 <div class="mt-[1.5rem] items-center flex">
                     <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
-                    <label class=" text-[#111111] text-[0.875rem] pl-[0.75rem]" for="flexCheckDefault">
+                    <label class=" text-[#111111] text-[0.875rem] bitip_font_family pl-[0.75rem]" for="flexCheckDefault">
                         {{t('login.agree')}} <span class="text-[#01AA44] cursor-pointer">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
                     </label>
                 </div>
                 
 
                 <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit">
-                    <span class="text-[white] text-[1.5rem]">{{t('login.confirmMessage')}}</span>
+                    <span class="text-[white] text-[1.5rem] font-medium">{{t('login.confirmMessage')}}</span>
                 </button>
                 <div class="w-full flex items-center mt-[1.5rem] justify-center">
                     <span class="text-[#191919] font-medium text-[1.25rem]">{{t('login.finshSetting')}}<span class="text-[#01AA44] pl-[0.2rem] cursor-pointer" @click="onToLogin">{{t('login.login')}}</span></span>
@@ -100,20 +100,20 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="flex justify-center text-[1.2rem]">
-                                {{t('login.modalPolicy')}}
+                                <span class=" font-bold">{{t('login.modalPolicy')}}</span>
                             </div>
                             <div class="flex flex-wrap pt-[0.5rem]">  
                                 <span>{{t('login.modalTips')}}
                                     <span class="text-[#01AA44] cursor-pointer">《{{t('login.userServiceAgreement')}}》</span>
-                                <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                                    <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
                                 </span>
                             </div>
                             <div class="flex justify-evenly mt-[1.2rem]   ">
                                 <div class="w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
-                                    {{t('login.agreeLogin')}}
+                                    <span class=" font-medium">{{t('login.agreeLogin')}}</span>
                                 </div>
                                 <div class="w-[6.75rem] h-[2rem] flex justify-center items-center rounded-[0.4rem] border-[#D9D9D9] border-[1px] text-[0.8rem] cursor-pointer" @click="onCancelLogin">
-                                    {{t('login.disagree')}}
+                                    <span class=" font-medium">{{t('login.disagree')}}</span>
                                 </div>
                             </div>
                         </div>
@@ -337,8 +337,9 @@
         border-top-right-radius: 0.75rem;
         border-bottom-right-radius: 0.75rem;
         color:#191919;
-        font-size: 1.75rem;
+        font-size: 1.375rem;
         text-transform: none;
+        font-family: "Alibaba Sans";
         &::placeholder {
             color: #999999; /* 改变文字颜色 */
             font-size: 1.375rem;
@@ -356,7 +357,8 @@
         border-top-left-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
         color:#191919;
-        font-size: 1.75rem;
+        font-size: 1.375rem;
+        font-family: "Alibaba Sans";
         text-transform: none;
         &::placeholder {
             color: #999999; /* 改变文字颜色 */
@@ -382,8 +384,9 @@
         border: 1px solid #D9D9D9;
         border-radius: 0.75rem;
         color:#191919;
-        font-size: 1.75rem;
+        font-size: 1.375rem;
         text-transform: none;
+        font-family: "Alibaba Sans";
         &::placeholder {
             color: #999999; /* 改变文字颜色 */
             font-size: 1.375rem;

@@ -5,10 +5,14 @@
         </div>
         <div class="flex mt-[2rem] justify-center items-center">
             <div class="w-[26.5rem] h-[3.25rem] border-[1px] border-[#191919] rounded-[6.25rem] flex p-[0.2rem]">
-                <div :class="`w-[50%] h-full flex justify-center items-center rounded-[6.25rem] cursor-pointer ${selected==0?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=0">
+                <div :class="`w-[50%] h-full flex justify-center items-center rounded-[6.25rem] cursor-pointer ${selected==0?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=0" 
+                style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
+                @mouseenter="onMouseEnter(0)" @mouseleave="onMouseLeave">
                     <span class="text-[1.25rem] font-medium">{{t('second.select1')}}</span>
                 </div>
-                <div :class="`w-[50%] h-full justify-center items-center flex rounded-[6.25rem] cursor-pointer ${selected==1?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=1">
+                <div :class="`w-[50%] h-full justify-center items-center flex rounded-[6.25rem] cursor-pointer ${selected==1?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=1"
+                 style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
+                @mouseenter="onMouseEnter(1)" @mouseleave="onMouseLeave">
                     <span class=" text-[1.25rem] font-medium">{{t('second.select2')}}</span>
                 </div>
             </div>
@@ -112,15 +116,33 @@
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
-    import { ref } from 'vue'
+    import { ref, onMounted, onBeforeUnmount } from 'vue'
     const emit = defineEmits(['onFreeUse'])
     const selected = ref(0)
     const { t } = useI18n()
     const secondRef = ref<HTMLElement>()
+    let interval:any = null
     defineExpose({
         secondRef: secondRef
     })
     const onFreeUse = () => {
         emit('onFreeUse')
+    }
+    const onMouseEnter = (key:number) => {
+        selected.value = key
+        interval && clearInterval(interval)
+    }
+    onMounted(() => {
+        interval = setInterval(() => {
+            selected.value===0?selected.value=1:selected.value=0
+        }, 3000);
+    })
+    onBeforeUnmount(() => {
+        interval && clearInterval(interval)
+    })
+    const onMouseLeave = () => {
+        interval = setInterval(() => {
+            selected.value===0?selected.value=1:selected.value=0
+        }, 3000);
     }
 </script>

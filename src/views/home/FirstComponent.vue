@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full pt-[5.125rem] pb-[6rem] bg-[#C3FF79]">
+    <div class="w-full pt-[5.125rem] pb-[6rem] " style="background: linear-gradient( 180deg, #FFFFFF 0%, #F4FAF6 100%);">
         <div class="flex justify-center">
             <div class="flex pr-[1rem]">
                 <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>

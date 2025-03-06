@@ -8,22 +8,22 @@
             <div class="flex items-center md:hidden" v-if="!userStore.userInfo?.tel">
                 <div class="w-4.5rem flex">
                     <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
-                    <select class="w-[5rem] cursor-pointer ml-[0.5rem]" v-model="lan" @change="onLanauageChange">
+                    <select class="w-[5rem] cursor-pointer ml-[0.5rem] bitip_font_family font-medium" v-model="lan" @change="onLanauageChange">
                         <option value="zh">中</option>
                         <option value="en">EN</option>
                     </select>
                 </div>
                 <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem]" @click="onLogin">
-                    {{t('login.login')}}
+                    <span>{{t('login.login')}}</span>
                 </div>
                 <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
-                    {{t('login.register')}}
+                    <span>{{t('login.register')}}</span>
                 </div>
             </div>
             <div class="flex items-center md:hidden" v-else>
-                <span>{{userStore.userInfo?.email}}</span>
+                <span class=" font-medium">{{userStore.userInfo?.email}}</span>
                 <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
-                    {{t('login.exit')}}
+                    <span>{{t('login.exit')}}</span>
                 </div>
             </div>
             <!-- 桌面导航菜单 -->
@@ -55,22 +55,22 @@
             <div class="hidden items-center md:flex pr-[5.75rem]" v-if="!userStore.userInfo?.tel">
                 <div class="w-4.5rem flex">
                     <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
-                    <select class="w-[3rem] cursor-pointer ml-[0.5rem]" v-model="lan" @change="onLanauageChange">
+                    <select class="w-[3rem] cursor-pointer font-medium ml-[0.5rem] bitip_font_family" v-model="lan" @change="onLanauageChange">
                         <option value="zh">中</option>
                         <option value="en">EN</option>
                     </select>
                 </div>
                 <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem]" @click="onLogin">
-                    {{t('login.login')}}
+                    <span>{{t('login.login')}}</span>
                 </div>
                 <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
-                    {{t('login.register')}}
+                    <span class=" font-medium">{{t('login.register')}}</span>
                 </div>
             </div>
             <div class="hidden items-center md:flex pr-[5.75rem]" v-else>
                 <span>{{userStore.userInfo?.email}}</span>
                 <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
-                    {{t('login.exit')}}
+                    <span class="font-medium">{{t('login.exit')}}</span>
                 </div>
             </div>
         </div>

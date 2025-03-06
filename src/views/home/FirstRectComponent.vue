@@ -4,7 +4,7 @@
             <span class="text-[#191919] font-bold text-[1.1rem]">{{props.title}}</span>
         </div>
         <div class="pt-[0.75rem]">
-            <span class="text-[#191919] font-light text-[0.8rem]">{{props.content}}</span>
+            <span class="text-[#191919] text-[0.8rem]">{{props.content}}</span>
         </div>
         <div class="pt-[0.2rem] flex justify-center items-center ">
             <img :src="props.img" v-if="props.img" class="w-[11.375rem] h-[10.125rem]" />

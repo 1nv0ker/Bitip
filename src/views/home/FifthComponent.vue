@@ -3,7 +3,7 @@
         <div class="flex justify-center mt-[5rem]">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('fifth.title')}}</span>
         </div>
-        <div class="grid grid-cols-3 gap-[4rem] flex-wrap mt-[2rem] cursor-default place-items-center">
+        <div class="grid gap-x-[8.125rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center" style="grid-template-columns: repeat(3, 20rem);">
             <div class="w-[20rem] h-[16rem] hover:border-[#01AA44] p-[1rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 " v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
@@ -14,10 +14,10 @@
                     <span class="text-[1.75rem] font-bold">{{item.title}}</span>
                 </div>
                 <div class="mt-[1rem]">
-                    <span class="text-[1rem] font-light">{{item.content}}</span>
+                    <span class="text-[1rem]">{{item.content}}</span>
                 </div>
                 <div class="pt-[1.3rem] cursor-pointer flex items-center" v-show="key==item.key" @click="onGetMore">
-                    <span class="text-[#01AA44] pr-[1.25rem]">{{t('fifth.more')}}</span>
+                    <span class="text-[#01AA44] pr-[1.25rem] font-medium">{{t('fifth.more')}}</span>
                     <img src="../../assets/arrow.png" class="w-[2rem] h-[2rem]" />
                 </div>
             </div>

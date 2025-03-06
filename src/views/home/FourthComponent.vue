@@ -6,15 +6,15 @@
         <div class="flex justify-center gap-[11.25rem] mt-[1.875rem]">
            <div class="flex flex-col justify-center">
                 <span class="text-[white] text-[2rem] font-bold text-center">{{t('fourth.subtitle1')}}</span>
-                <span class="text-[white] text-[1.25rem] font-light text-center">{{t('fourth.content1')}}</span>
+                <span class="text-[white] text-[1.25rem]  text-center">{{t('fourth.content1')}}</span>
            </div>
            <div class="flex flex-col justify-center">
                 <span class="text-[white] text-[2rem] font-bold text-center">{{t('fourth.subtitle2')}}</span>
-                <span class="text-[white] text-[1.25rem] font-light text-center">{{t('fourth.content2')}}</span>
+                <span class="text-[white] text-[1.25rem]  text-center">{{t('fourth.content2')}}</span>
            </div>
            <div class="flex flex-col justify-center">
                 <span class="text-[white] text-[2rem] font-bold text-center">{{t('fourth.subtitle3')}}</span>
-                <span class="text-[white] text-[1.25rem] font-light text-center">{{t('fourth.content3')}}</span>
+                <span class="text-[white] text-[1.25rem]  text-center">{{t('fourth.content3')}}</span>
            </div>
         </div>
         <div class=" pt-[4rem] w-full flex justify-center">
@@ -57,7 +57,7 @@
         // return pathData
     }
     onMounted(() => {
-        d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+        d3.json("/worldMap.json")
         .then((data:any) => {
             const targetCountry = ['Brazil', 'United States of America', 'Algeria', 'Iceland', 'Japan', 'Madagascar']
             const countries = topojson.feature(data, data.objects.countries) as any;
