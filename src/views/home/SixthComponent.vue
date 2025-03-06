@@ -1,6 +1,6 @@
 <template>
-    <div ref="sixthRef" class="flex justify-center pt-[2rem] pb-[11rem] w-full overflow-hidden">
-        <div class="max-w-[99vw] w-[auto] overflow-hidden bg-[#01AA44] rounded-[2rem] pl-[10rem] pr-[10rem]">
+    <div ref="sixthRef" class="flex justify-center p-[2rem] pt-[2rem] pb-[11rem] w-full overflow-hidden">
+        <div class="max-w-[99vw] w-[80rem] overflow-hidden bg-[#01AA44] rounded-[2rem] pl-[10rem] pr-[10rem]">
             <div class="flex justify-center pt-[7rem]">
                 <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center">{{t('sixth.title')}}</span>
             </div>

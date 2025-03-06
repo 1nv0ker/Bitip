@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-[white] pt-[6.5625rem] pb-[8.25rem]" ref="secondRef">
+    <div class="w-full bg-[white] p-[2rem] pt-[6.5625rem] pb-[8.25rem]" ref="secondRef">
         <div class="flex justify-center items-center">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('second.title')}}</span>
         </div>
