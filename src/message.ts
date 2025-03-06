@@ -178,6 +178,24 @@ export const en = {
         title4_subtitle3:'不限量住宅代理',
         title4_subtitle4:'数据中心代理',
         title4_subtitle5: '获取代理',
+    },
+    safety: {
+        title: 'Build a safe, compliant and healthy big data service ecosystem',
+        subtitle: 'IPIDEA always adheres to the principles of security and compliance, and is committed to providing safe, stable, and high-quality big data proxy services, protecting the legitimate rights and interests of users, and promoting the healthy and orderly development of global big data business.',
+        title2: 'Safety and Compliance Management',
+        subtitle2: 'Comply with national laws and regulations and implement industry safety control measures',
+        title2_item1_title: 'Real-name authentication',
+        title2_item1_content: 'Users need to complete real-name authentication and pass verification before they can use IPIDEA proxy products',
+        title2_item2_title: 'Account Security',
+        title2_item2_content: 'Users need to complete real-name authentication and pass verification before they can use IP IDEA proxy products.',
+        title2_item3_title: 'Risk Management',
+        title2_item3_content: 'Conduct risk management on product usage scenarios and objectives, and implement supervision and handling measures for improper behavior',
+        title3: 'Safety Standards',
+        subtitle3: 'Comply with ISO9001 quality management system, ISO27001 information security management system and other high industry standards',
+        title3_item1_title1: 'ISO 27001',
+        title3_item1_content: 'Information Security Management System',
+        title3_item2_title2:'ISO 9001',
+        title3_item2_content: 'Quality Management System'
     }
 }
 
@@ -361,5 +379,23 @@ export const zh = {
         title4_subtitle3:'不限量住宅代理',
         title4_subtitle4:'数据中心代理',
         title4_subtitle5: '获取代理',
+    },
+    safety: {
+        title: '构建安全、合规、健康的 大数据服务生态',
+        subtitle: 'IPIDEA始终坚守安全合规原则，致力于提供安全、稳定、优质的大数据代理服务，保障用户合法权益，推动 全球大数据业务的健康有序发展',
+        title2: '安全合规管理',
+        subtitle2: '遵守国家法律法规，实施行业安全管控措施',
+        title2_item1_title: '实名认证',
+        title2_item1_content: '用户需要完成实名认证并核验通过， 才能使用IPIDEA代理产品',
+        title2_item2_title: '账户安全',
+        title2_item2_content: '用户需要完成实名认证并核验通过，用户需要完成实名认证并核验通过，才能使用IP IDEA代理产品才能使用IPIDEA代理产品',
+        title2_item3_title: '风险管控',
+        title2_item3_content: '对产品使用场景、目标进行风险管控， 且针对不当行为执行监管、处理措施',
+        title3: '安全标准',
+        subtitle3: '符合ISO9001质量管理体系，ISO27001信息安全管理体系等行业高标准',
+        title3_item1_title1: 'ISO 27001',
+        title3_item1_content: '信息安全管理体系',
+        title3_item2_title2:'ISO 9001',
+        title3_item2_content: '质量管理体系'
     }
 }

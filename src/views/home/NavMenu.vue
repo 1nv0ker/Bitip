@@ -12,9 +12,10 @@
         <NavMenuItem :text="t('navMenu.title3')" :key="'product'"
          />
 
-        <NavMenuItem :text="t('navMenu.title4')" :key="'safety'"  :show-arrow="false" :path="'/safety'"/>
-        <NavMenuItem :text="t('navMenu.title5')" :key="'service'" :show-arrow="false" :path="'/service'"/>
-        <NavMenuItem :text="t('navMenu.title6')" :key="'plan'" :show-arrow="false" :path="'/plan'"/>
+        <NavMenuItem :text="t('navMenu.title4')" :key="'help'"   :path="'/help'" />
+        <NavMenuItem :text="t('navMenu.title5')" :key="'safety'" :show-arrow="false" :path="'/safety'"/>
+        <NavMenuItem :text="t('navMenu.title6')" :key="'service'" :show-arrow="false" :path="'/service'"/>
+        <NavMenuItem :text="t('navMenu.title7')" :key="'plan'" :show-arrow="false" :path="'/plan'"/>
     </div>
 </template>
 <script setup lang="ts">

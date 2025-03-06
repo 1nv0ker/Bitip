@@ -7,7 +7,7 @@
             <div class="h-[5rem]  flex gap-[4.375rem] absolute" ref="list1Ref">
                 <img :src="image" v-for="image in imageLists.concat(imageLists)"/>
             </div>
-            <div class="h-[5rem]  flex justify-end gap-[4.375rem] absolute top-[10rem]" ref="list2Ref">
+            <div class="h-[5rem]  flex  gap-[4.375rem] justify-end absolute top-[10rem]" ref="list2Ref">
                 <img :src="image" v-for="image in imageLists2.concat(imageLists2)"/>
             </div>
         </div>
@@ -61,10 +61,16 @@
         }, 16);
 
         let index1 = 0
+        // const scrollWidth = list2Ref.value.scrollWidth
+        // console.log([list2Ref.value.clientWidth, scrollWidth])
         list2Interval = setInterval(() => {
-            if ((list2Ref.value.clientWidth+index1)<list2Ref.value.scrollWidth) {
+            // console.log([list2Ref.value.scrollWidth, list2Ref.value.clientWidth, list2Ref.value.offsetWidth, list2Ref.value.scrollLeft])
+            // console.log([list2Ref.value])
+            // console.log((list2Ref.value.clientWidth-scrollWidth), scrollWidth)
+            if (index1>=1200) {
                 index1 = 0
-                
+                // console.log('1')
+                // console.log([list2Ref.value])
             } else {
                 index1 = index1 + 0.5
             }

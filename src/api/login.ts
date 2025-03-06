@@ -1,4 +1,4 @@
-import axios, { type AxiosResponse } from 'axios'
+import axios from 'axios'
 
 const BASIC_MODULE = '/api/SysLogin'
 
