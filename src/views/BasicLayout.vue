@@ -21,8 +21,10 @@
                 <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title4') }}</span>
             </div>
         </div>
-        <NavComponent />
-        <slot></slot>
+        <NavComponent ref="navRef" @onCloseActivity="onCloseActivity"/>
+        <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`">
+            <slot></slot>
+        </div>
         <FooterComponent />
     </div>
 </template>
@@ -37,6 +39,7 @@
     import { GetUserInfo } from '../api/login'
     const { t } = useI18n()
     const showContact = ref(false)
+    const acvitityStatus = ref(true)
     const store = userStore()
     const route = useRoute()
     onBeforeMount(() => {
@@ -55,6 +58,10 @@
     onMounted(() => {
         
     })
+    const onCloseActivity = (status:boolean) => {
+        console.log('acvitityStatus', status, acvitityStatus.value)
+        acvitityStatus.value = status
+    }
 </script>
 <style scoped>
     .activeClass {

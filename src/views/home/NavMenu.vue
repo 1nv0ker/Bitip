@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden md:flex space-x-[4rem] w-auto h-full">
+    <div class="hidden md:flex  w-auto h-full justify-center sm:gap-[1rem] md:gap-[2rem] lg:gap-[3rem]">
         <NavMenuItem 
         :items="packageItems"
         :text="t('navMenu.title1')" 

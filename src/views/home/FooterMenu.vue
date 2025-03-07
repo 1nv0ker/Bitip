@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden md:flex justify-center gap-[10rem] pt-[4rem] pb-[4rem] h-auto">
+    <div class="hidden md:flex justify-between gap-[10rem] pt-[4rem] pb-[4rem] h-auto">
         <div class="flex flex-col gap-[1rem] justify-start">
             <img src="../../assets/logo.png" class="w-[9.125rem] h-[3rem]"/>
             <span class=" text-[#666666] text-[1rem] font-normal">{{t('footer.describe')}}</span>

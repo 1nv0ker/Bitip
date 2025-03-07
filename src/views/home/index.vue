@@ -45,7 +45,8 @@
     }
     const ComponentActive = (targetRef:any,) => {
         let showStatus = false
-        const target = targetRef as HTMLElement
+        const target = targetRef.$el || targetRef as HTMLElement
+        if (!target) return
         const rect = target.getBoundingClientRect()
         const windowHeight = window.innerHeight;
 

@@ -1,19 +1,19 @@
 <template>
-    <div ref="sixthRef" class="flex justify-center p-[2rem] pt-[2rem] pb-[11rem] w-full overflow-hidden">
-        <div class="max-w-[99vw] w-[80rem] overflow-hidden relative rounded-[2rem] pl-[10rem] pr-[10rem]" ref="boxRef">
+    <ComponentLayout ref="sixthRef" class="pb-[11rem]">
+        <div class="w-full md:h-[27rem] h-[24rem] overflow-hidden relative rounded-[2rem] pl-[10rem] pr-[10rem] pb-[10rem]" ref="boxRef">
             <div class=" absolute top-0 bottom-0 left-0 right-0" >
-                <img src="../../assets/card_bg.png"/>
+                <img src="../../assets/card_bg.png" class="w-full h-full" />
             </div>
             <div class=" absolute bg-[#6DFFEB] w-[10rem] h-[10rem] z-1" ref="imgRef" style="transition: all 2s ease-in-out;;will-change: transform;filter: blur(100px);">
 
             </div>
-            <div class="flex justify-center pt-[7rem]">
-                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center">{{t('sixth.title')}}</span>
+            <div class="flex justify-center pt-[7.625rem] z-10">
+                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center z-10">{{t('sixth.title')}}</span>
             </div>
-            <div class="flex justify-center pt-[0.75rem]">
-                <span class="text-[rgba(255,255,255,0.7)] text-[1.625rem]">{{t('sixth.content')}}</span>
-            </div>
-            <div class="flex justify-center pt-[2.75rem] pb-[5rem] gap-[2rem] z-10" >
+            <!-- <div class="flex justify-center pt-[0.75rem] z-10">
+                <span class="text-[rgba(255,255,255,0.7)] text-[1.625rem] z-10">{{t('sixth.content')}}</span>
+            </div> -->
+            <div class="flex justify-center pt-[2.625rem] pb-[5rem] gap-[2rem] z-10" >
                 <RippleButton class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
                 font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('sixth.button1')" @btnClick="onFreeUse">
                 </RippleButton>
@@ -24,11 +24,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </ComponentLayout>
 </template>
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import { ref, onMounted, onBeforeUnmount } from 'vue'
+    import ComponentLayout from '../ComponentLayout.vue'
     import RippleButton from '../../components/RippleButton.vue'
     const { t } = useI18n()
     const emit = defineEmits(['onFreeUse'])

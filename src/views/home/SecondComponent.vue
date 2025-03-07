@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-[white] pl-[2rem] pr-[2rem] mt-[6rem] pb-[8.25rem]" ref="secondRef">
+    <ComponentLayout ref="secondRef" class="bg-[white] pt-[6.5625rem] pb-[8.25rem]">
         <div class="flex justify-center items-center">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('second.title')}}</span>
         </div>
@@ -17,60 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==0">
-            <div class="w-[36.25rem] h-[25rem] relative">
-                
-                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
-                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
-            </div>
-            <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
-                <div class="flex">
-                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
-                </div>
-                <div class="flex flex-col mt-[1.5rem] gap-[1rem]">
-                    <div class="flex items-center">
-                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
-
-                        </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem1') }}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
-
-                        </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem2') }}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
-
-                        </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem3') }}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
-
-                        </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem4') }}</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
-
-                        </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem5') }}</span>
-                    </div>
-                </div>
-                <div class="mt-[1.5rem]">
-                    <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')" @btnClick="onFreeUse">
-                    </RippleButton>
-                    <!-- <div class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] flex justify-center items-center cursor-pointer">
-                        <span class="text-[white] text-[1.25rem] font-medium">{{t('second.dynamicButton')}}</span>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="flex justify-center mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==1">
+        <div class="flex justify-between mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==0">
             <div class="w-[36.25rem] h-[25rem] relative">
                 
                 <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
@@ -119,11 +66,62 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="flex justify-between w-full mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==1">
+            <div class="w-[36.25rem] h-[25rem] relative">
+                
+                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
+                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
+            </div>
+            <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
+                <div class="flex">
+                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
+                </div>
+                <div class="flex flex-col mt-[1.5rem] gap-[1rem]">
+                    <div class="flex items-center">
+                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
+
+                        </div>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem1') }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
+
+                        </div>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem2') }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
+
+                        </div>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem3') }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
+
+                        </div>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem4') }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
+
+                        </div>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem5') }}</span>
+                    </div>
+                </div>
+                <div class="mt-[1.5rem]">
+                    <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
+                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')" @btnClick="onFreeUse">
+                    </RippleButton>
+                </div>
+            </div>
+        </div>
+    </ComponentLayout>
 </template>
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
+    import ComponentLayout from '../ComponentLayout.vue'
     import { ref, onMounted, onBeforeUnmount } from 'vue'
     const emit = defineEmits(['onFreeUse'])
     const selected = ref(0)

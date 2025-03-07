@@ -1,9 +1,9 @@
 <template>
-    <div ref="fourthRef" class="bg-[#01AA44] pb-[4rem] w-full overflow-hidden">
-        <div class="flex justify-center pt-[3.625rem]">
+    <ComponentLayout ref="fourthRef" class="bg-[#01AA44] pb-[4rem] pt-[3.625rem] overflow-hidden">
+        <div class="flex justify-center w-full">
             <span class="text-[white] text-[2.625rem] font-bold text-center">{{t('fourth.title')}}</span>
         </div>
-        <div class="flex justify-center gap-[11.25rem] mt-[1.875rem]">
+        <div class="flex justify-center gap-[11.25rem] mt-[2rem] w-full">
            <div class="flex flex-col justify-center">
                 <span class="text-[white] text-[2rem] font-bold text-center">{{t('fourth.subtitle1')}}</span>
                 <span class="text-[white] text-[1.25rem]  text-center">{{t('fourth.content1')}}</span>
@@ -17,18 +17,19 @@
                 <span class="text-[white] text-[1.25rem]  text-center">{{t('fourth.content3')}}</span>
            </div>
         </div>
-        <div class=" pt-[4rem] w-full flex justify-center">
+        <div class="mt-[4rem] w-full flex justify-center">
             <div class="world-map" id="world-map">
 
             </div>
         </div>
-    </div>
+    </ComponentLayout>
 </template>
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import {ref, onMounted} from 'vue'
     import * as d3 from 'd3';
     import * as topojson from "topojson-client";
+    import ComponentLayout from '../ComponentLayout.vue'
     const { t } = useI18n()
     const fourthRef = ref<HTMLElement>()
     defineExpose({
@@ -94,7 +95,7 @@
         function animate(timestamp:any) {
             if (!startTime) startTime = timestamp;
             const progress = timestamp - startTime;
-            const t = (progress % 5000) / 5000; // 3秒循环
+            const t = (progress % 5000) / 5000; // 5秒循环
             
             const posIndex = Math.floor(t * points.length);
             const {x, y} = points[posIndex];
@@ -135,7 +136,7 @@
             const Madagascar = countryCentroids.find((d:any) => d.name === "Madagascar");
 
             const projection = d3.geoMercator()
-            .fitSize([window.innerWidth*0.8, window.innerHeight*0.5], newData)
+            .fitSize([window.innerWidth*8/12, window.innerHeight*0.5], newData)
 
             const path = d3.geoPath().projection(projection) as any;
             const svg = d3.select("#world-map").append("svg")

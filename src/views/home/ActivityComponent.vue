@@ -1,6 +1,8 @@
 <template>
     <div class="w-full h-[full] flex gap-[1.5rem] relative justify-center items-center" v-show="status">
-        <img class=" absolute top-0 left-0 right-0 bottom-0 h-[2rem]" src="../../assets/mask.png" v-show="status" />
+        <div class="absolute top-0 left-0 right-0 bottom-0 h-[2rem]"  v-show="status">
+            <img class="w-full h-full" src="../../assets/mask.png" />
+        </div>
         <div class="">
             <img class="w-[2rem] h-[2rem]" src="../../assets/activity1.png" />
         </div>

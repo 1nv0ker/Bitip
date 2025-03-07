@@ -170,3 +170,10 @@ span {
   font-family: "Alibaba Sans";
 }
 
+.ellipsis-single {
+  overflow: hidden;      /* 隐藏溢出内容 */
+  text-overflow: ellipsis; /* 显示省略符号 */
+  white-space: nowrap;   /* 禁止文本换行 */
+  /* width:2rem; */
+}
+

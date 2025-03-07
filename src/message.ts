@@ -117,7 +117,7 @@ export const en = {
         more: '了解更多'
     },
     sixth: {
-        title: 'Open a new chapter of multi-account management with BitIP',
+        title: 'Opening the borderless door to the global network',
         content: 'Free trial of 5 browser environments',
         button1: 'Free Trial',
         button2: 'Contact Us'
@@ -321,7 +321,7 @@ export const zh = {
         more: '了解更多'
     },
     sixth: {
-        title: '与BitIP一起，开启多账号管理新篇章',
+        title: '开启全球网络的无界之门',
         content: '免费体验5个浏览器环境',
         button1: '免费试用',
         button2: '联系我们'

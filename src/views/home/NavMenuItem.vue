@@ -1,9 +1,9 @@
 <template>
     <div @mouseenter="status=true" 
         @mouseleave="status=false" class="h-full">
-        <div class="cursor-pointer text-[1rem] h-full hover:text-[#01AA44] flex items-center gap-[0.4rem] text-[#191919] font-medium" 
+        <div class="cursor-pointer text-[1rem] h-full hover:text-[#01AA44] flex items-center gap-[0.4rem]  text-[#191919] font-medium" 
         >
-            <span @click="onPage(props.path)">{{props.text}}</span>
+            <span @click="onPage(props.path)" class="ellipsis-single">{{props.text}}</span>
             <img class="w-[0.625rem] h-[0.625rem]" :src="(selected==props.key || !status )?downImg:upImg" v-if="props.showArrow"/>
         </div>
         <div class="absolute top-[4rem] right-0 left-0 m-0 pb-[2rem] bg-[white] flex justify-center animate__fadeIn animate__animated" 
@@ -19,7 +19,7 @@
                         <div class="flex hover:bg-[#EDFBF7] p-[1rem] justify-between items-center w-auto rounded-[1rem] cursor-pointer" @click="onPage(item1?.path)" v-for="item1 in item.items" v-if="!item.special">
                             <div class="flex items-center">
                                 <img  :src="item1.img" class="w-[1.5rem] h-[1.5rem] "/>
-                                <span class="pl-[0.5rem] cursor-pointer" >{{item1.title}}</span>
+                                <span class="pl-[0.5rem] cursor-pointer">{{item1.title}}</span>
                             </div>
                             <span class="text-[#5D7404] text-[1rem] pl-[3.375rem]  ">{{ item1.subtitle }}</span>
                         </div>

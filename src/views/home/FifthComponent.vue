@@ -1,9 +1,9 @@
 <template>
-    <div ref="fifthRef" class="pb-[8rem] w-full">
-        <div class="flex justify-center mt-[5rem]">
+    <ComponentLayout ref="fifthRef" class="pb-[8rem] w-full">
+        <div class="flex justify-center mt-[5rem] w-full">
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('fifth.title')}}</span>
         </div>
-        <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:hidden grid" style="grid-template-columns: repeat(2, 20rem);">
+        <div class="gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between md:hidden grid w-full" style="grid-template-columns: repeat(2, 20rem);">
             <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
@@ -22,8 +22,8 @@
                 </div> -->
             </div>
         </div>
-        <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:grid hidden" style="grid-template-columns: repeat(3, 20rem);">
-            <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+        <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between md:grid hidden w-full" style="grid-template-columns: repeat(3, 20rem);">
+            <div class="w-[20rem] hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -41,10 +41,11 @@
                 </div> -->
             </div>
         </div>
-    </div>
+    </ComponentLayout>
 </template>
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
+    import ComponentLayout from '../ComponentLayout.vue'
     import { ref, computed } from 'vue'
     import imag1 from '../../assets/hold.png'
     import imag2 from '../../assets/ad.png'

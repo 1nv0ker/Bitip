@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed top-0 overflow-hidden right-0 left-0 bottom-0 z-1000">
+    <div class="fixed top-0 overflow-hidden right-0 left-0 bottom-0 z-50">
         <div class=" absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-[#000] opacity-[0.5]" @click="onCloseNav">
 
         </div>

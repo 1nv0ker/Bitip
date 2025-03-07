@@ -1,59 +1,80 @@
 <template>
-    <div class="w-full mt-[5.125rem] relative h-[54rem] first_class" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
+    <div class="w-full row gx-0 pt-[5.125rem] pb-[4.8125rem] relative" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
+        <!-- 移动渐变区块 -->
         <img src="../../assets/bg_hover.png" class=" absolute w-[17rem] h-[17rem] pointer-events-none hidden" 
         ref="hoverbgRef" style="transform: translate(-50%, -50%);"/>
-        <img src="../../assets/mask_bg.png" class=" absolute h-full w-full" />
-        <div class="flex justify-center">
-            <div class="flex pr-[1rem]">
-                <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
-                <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">Trustpilot</span>
-            </div>
-            <div class="flex pl-[1rem]">
-                <img src="../../assets/star_1.png" class="w-[1.375rem] h-[1.375rem]"/>
-                <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">G2</span>
+        <!-- 背景图片 -->
+        <div class="absolute top-0 right-0 left-0 bottom-0">
+            <img src="../../assets/mask_bg.png" class="  w-full h-full" />
+        </div>
+
+        <div class="col"></div>
+
+        <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+            <div class="flex justify-center flex-col items-center">
+
+
+                <div class="flex">
+                    <div class="flex pr-[1rem]">
+                        <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">Trustpilot</span>
+                    </div>
+                    <div class="flex pl-[1rem]">
+                        <img src="../../assets/star_1.png" class="w-[1.375rem] h-[1.375rem]"/>
+                        <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">G2</span>
+                    </div>
+                </div>
+
+
+                <div class="flex justify-center items-center mt-[1.5rem]">
+                <span class="text-[#191919] text-[3.43rem] font-bold">{{t('first.title')}}</span>
+                </div>
+                <div class="flex justify-center items-center w-full">
+                    <span class="text-[#191919] text-[3.43rem] font-bold text-center">{{t('first.subtitle')}}</span>
+                </div>
+
+
+                <div class="flex justify-center items-center mt-[2.5rem]">
+                    <div class="flex items-center">
+                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item1')}}</span>
+                    </div>
+                    <div class="flex items-center pl-[5.3rem]">
+                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item2')}}</span>
+                    </div>
+                    <div class="flex items-center pl-[5.3rem]">
+                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item3')}}</span>
+                    </div>
+                    <div class="flex items-center pl-[5.3rem]">
+                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item4')}}</span>
+                    </div>
+                </div>
+
+
+                <div class="flex justify-center items-center mt-[3.25rem] ">
+                    <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]
+                    border-[1px] border-[#01AA44]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
+                    <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem] z-50" @click="onContact">
+                        <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
+                    </div>
+                </div>
+
+
+                <div class="overflow-auto mt-[4.25rem] w-full RectItems grid place-items-center">
+                    <div class="flex gap-[1rem] w-full justify-between">
+                        <FirstRectComponent 
+                        class="flex-shrink-0 flex-grow-0" 
+                        v-for="card in cardItems" :title="card.title" :content="card.content" :img="card.img"/>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex justify-center items-center mt-[1.5rem]">
-            <span class="text-[#191919] text-[3.43rem] font-bold">{{t('first.title')}}</span>
-        </div>
-        <div class="flex justify-center items-center">
-            <span class="text-[#191919] text-[3.43rem] font-bold text-center">{{t('first.subtitle')}}</span>
-        </div>
-        <div class="flex justify-center items-center mt-[2.5rem]">
-            <div class="flex items-center">
-                <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
-                <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item1')}}</span>
-            </div>
-            <div class="flex items-center pl-[5.3rem]">
-                <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
-                <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item2')}}</span>
-            </div>
-            <div class="flex items-center pl-[5.3rem]">
-                <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
-                <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item3')}}</span>
-            </div>
-            <div class="flex items-center pl-[5.3rem]">
-                <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
-                <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item4')}}</span>
-            </div>
-            
-        </div>
-        <div class="flex justify-center items-center mt-[3.25rem]">
-            <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]
-            border-[1px] border-[#01AA44]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
-            <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem]" @click="onContact">
-                <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
-                <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
-            </div>
-        </div>
-        <div class="overflow-auto mt-[4.25rem] pl-[2rem] pr-[2rem] RectItems grid place-items-center">
-            
-            <div class="flex gap-[1rem]">
-                <FirstRectComponent 
-                class="flex-shrink-0 flex-grow-0" 
-                v-for="card in cardItems" :title="card.title" :content="card.content" :img="card.img"/>
-            </div>
-        </div>
+
+        <div class="col"></div>
     </div>
 </template>
 <script setup lang="ts">
