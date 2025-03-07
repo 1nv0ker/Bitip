@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "win:zip": "powershell Compress-Archive -Path './dist/*' -DestinationPath './dist.zip' -Force"
   },
   "dependencies": {
     "@types/d3": "^7.4.3",
