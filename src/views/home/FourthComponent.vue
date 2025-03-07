@@ -47,16 +47,69 @@
             .x(d => d[0])
             .y(d => d[1]);
         // console.log(point1, point2)
-        const path = lineGenerator([point1Pos, controlPoint, point2Pos]);
-        svg.append("path")
+        const path:any = lineGenerator([point1Pos, controlPoint, point2Pos]);
+ 
+
+        // const totalLength = path.getTotalLength();
+        // const totalLength = path.getTotalLength();
+        // const points = Array.from({length: totalLength}, (_, i) => 
+        //     path.getPointAtLength(i)
+        // );
+        
+        const path2 = svg.append("path")
                     .datum(path)
                     .attr("d", (d:any) => d)
                     .attr("stroke", "url(#bezierGradient)")
                     .attr("stroke-width", '3px')
-                    .attr("fill", "none");
+                    .attr("fill", "none").node()
         // return pathData
+        dotLinearGradient()
+
+        // const svg = d3.select("svg");
+         // 定义线性渐变
+        const gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "dot-linearGradient")
+            .attr("x1", "0%").attr("y1", "0%")
+            .attr("x2", "100%").attr("y2", "0%"); // 水平渐变
+        // 添加颜色停止点
+        gradient.append("stop")
+            .attr("offset", "0%")
+            .style("stop-color", "rgba(247,255,190)");
+
+        gradient.append("stop")
+            .attr("offset", "100%")
+            .style("stop-color", "rgba(247,255,190)");
+        const dot = svg.append("circle")
+        .attr("r", 8)
+        // .attr("fill", "steelblue")
+        .style("fill", "url(#dot-linearGradient)");
+        // 4. 获取路径点序列
+        const totalLength = path2.getTotalLength();
+        const points = Array.from({length: totalLength}, (_, i) => 
+            path2.getPointAtLength(i)
+        );
+
+        let startTime:any;
+        function animate(timestamp:any) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const t = (progress % 5000) / 5000; // 3秒循环
+            
+            const posIndex = Math.floor(t * points.length);
+            const {x, y} = points[posIndex];
+            
+            dot.attr("transform", `translate(${x},${y})`);
+            requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+    }
+    //设置移动点的渐变
+    const dotLinearGradient = () => {
+        
     }
     onMounted(() => {
+        
         d3.json("/worldMap.json")
         .then((data:any) => {
             const targetCountry = ['Brazil', 'United States of America', 'Algeria', 'Iceland', 'Japan', 'Madagascar']
@@ -70,6 +123,7 @@
                 const centroid = d3.geoCentroid(d);
                 return {name: d.properties.name, coordinates: centroid};
             });
+           
             //美国和巴西
             const brazil = countryCentroids.find((d:any) => d.name === "Brazil");
             const us = countryCentroids.find((d:any) => d.name === "United States of America");
@@ -141,7 +195,6 @@
                 createLine(Algeria, Madagascar, projection, svg)
                 createLine(Japan, Madagascar, projection, svg)
                 //坐标点添加圆环
-                // const usCenter = projection(us.coordinates)
                 addRing(us, projection, svg)
                 addRing(brazil, projection, svg)
                 addRing(Algeria, projection, svg)
@@ -157,14 +210,14 @@
                 .attr("cx", center[0])
                 .attr("cy", center[1])
                 .attr("r", 20)  // 外层圆半径
-                .attr("fill", "rgba(66,246,255,0.18)");  // 外层颜色[1](@ref)
+                .attr("fill", "rgba(247,255,190,0.38)");  // 外层颜色[1](@ref)
             
             // 绘制内层圆（后绘制）
             svg.append("circle")
                 .attr("cx", center[0])
                 .attr("cy", center[1])
                 .attr("r", 10)   // 内层圆半径
-                .attr("fill", "#42F6FF");      // 内层颜色[1](@ref)
+                .attr("fill", "rgba(247,255,190,0.6)");      // 内层颜色[1](@ref)
             }
 </script>
 <style>

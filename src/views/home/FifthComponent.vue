@@ -4,7 +4,7 @@
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('fifth.title')}}</span>
         </div>
         <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:hidden grid" style="grid-template-columns: repeat(2, 20rem);">
-            <div class="w-[20rem] h-[16rem] hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+            <div class="w-[20rem]  hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:grid hidden" style="grid-template-columns: repeat(3, 20rem);">
-            <div class="w-[20rem] h-[18rem] hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+            <div class="w-[20rem]  hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -102,5 +102,6 @@
         background: #fff;
         box-shadow: 0 2px 3px 0 transparent, 0 8px 7px 0 rgba(0, 0, 0, .01), 0 20px 13px 0 rgba(0, 0, 0, .01), 0 39px 25px 0 rgba(0, 0, 0, .01), 0 65px 47px 0 rgba(0, 0, 0, .02), 0 100px 80px 0 rgba(0, 0, 0, .02);
         border: 1px solid #f5f5f5;
+        transition: box-shadow 1s ease;
     }
 </style>

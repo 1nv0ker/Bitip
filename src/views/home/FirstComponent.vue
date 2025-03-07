@@ -108,11 +108,11 @@
         
     }
     const onMouseMove = (event:MouseEvent) => {
-        console.log('MouseEvent')
+        // console.log('MouseEvent')
         if (mouseBoxRef.value) {
             const boxRect = mouseBoxRef.value.getBoundingClientRect();
             const mouseX = event.clientX - boxRect.left;
-            console.log('mouseX', mouseX )
+            // console.log('mouseX', mouseX )
             const mouseY = event.clientY - boxRect.top;
             hoverbgRef.value.style.top = `${mouseY}px`
 

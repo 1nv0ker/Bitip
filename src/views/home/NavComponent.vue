@@ -15,7 +15,7 @@
                         <option value="en">EN</option>
                     </select>
                 </div>
-                <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem]" @click="onLogin">
+                <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem] hover:text-[#01AA44]" @click="onLogin">
                     <span>{{t('login.login')}}</span>
                 </div>
                 <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
@@ -62,10 +62,10 @@
                         <option value="en">EN</option>
                     </select>
                 </div>
-                <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem]" @click="onLogin">
+                <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem] hover:text-[#01AA44]" @click="onLogin">
                     <span>{{t('login.login')}}</span>
                 </div>
-                <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
+                <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] hover:bg-[#008836] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center register_hover" @click="onRegister">
                     <span class=" font-medium">{{t('login.register')}}</span>
                 </div>
             </div>
@@ -119,3 +119,6 @@
         router.push('/login')
     }
 </script>
+<style scoped>
+ 
+</style>
