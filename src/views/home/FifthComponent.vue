@@ -46,7 +46,12 @@
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import { ref, computed } from 'vue'
-    import handImg from '../../assets/hand.png'
+    import imag1 from '../../assets/hold.png'
+    import imag2 from '../../assets/ad.png'
+    import imag3 from '../../assets/sign.png'
+    import imag4 from '../../assets/seo.png'
+    import imag5 from '../../assets/media.png'
+    import imag6 from '../../assets/marker.png'
     const { t } = useI18n()
     const fifthRef = ref<HTMLElement>()
     const key = ref(0)
@@ -58,37 +63,37 @@
             {
                 title: t('fifth.subtitle1'),
                 content: t('fifth.content1'),
-                img: handImg,
+                img: imag1,
                 key: 1
             },
             {
                 title: t('fifth.subtitle2'),
                 content: t('fifth.content2'),
-                img: handImg,
+                img: imag2,
                 key: 2
             },
             {
                 title: t('fifth.subtitle3'),
                 content: t('fifth.content3'),
-                img: handImg,
+                img: imag3,
                 key: 3
             },
             {
                 title: t('fifth.subtitle4'),
                 content: t('fifth.content4'),
-                img: handImg,
+                img: imag4,
                 key: 4
             },
             {
                 title: t('fifth.subtitle5'),
                 content: t('fifth.content5'),
-                img: handImg,
+                img: imag5,
                 key: 5
             },
             {
                 title: t('fifth.subtitle6'),
                 content: t('fifth.content6'),
-                img: handImg,
+                img: imag6,
                 key: 6
             }
         ]
