@@ -4,7 +4,7 @@
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('fifth.title')}}</span>
         </div>
         <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:hidden grid" style="grid-template-columns: repeat(2, 20rem);">
-            <div class="w-[20rem]  hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+            <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class=" gap-x-[10.5rem] gap-y-[4rem] mt-[2rem] cursor-default justify-center md:grid hidden" style="grid-template-columns: repeat(3, 20rem);">
-            <div class="w-[20rem]  hover:border-[#01AA44] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+            <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
