@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full row gx-0 pt-[5.125rem] pb-[4.8125rem] relative" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
+    <div class="w-full row gx-0 pt-[5.125rem] pb-[7.8125rem] relative" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
         <!-- 移动渐变区块 -->
         <img src="../../assets/bg_hover.png" class=" absolute w-[17rem] h-[17rem] pointer-events-none hidden" 
         ref="hoverbgRef" style="transform: translate(-50%, -50%);"/>
@@ -27,14 +27,27 @@
 
 
                 <div class="flex justify-center items-center mt-[1.5rem]">
-                <span class="text-[#191919] text-[3.43rem] font-bold">{{t('first.title')}}</span>
+                    <span class="text-[#01AA44] text-[3.75rem] font-extrabold">{{ t('first.title1') }}</span>
+                    <span class="text-[#191919] text-[3.43rem] font-bold"> {{t('first.title')}}</span>
+                    <span class="text-[3.75rem] text-[#01AA44] font-extrabold"> IP</span>
                 </div>
                 <div class="flex justify-center items-center w-full">
                     <span class="text-[#191919] text-[3.43rem] font-bold text-center">{{t('first.subtitle')}}</span>
                 </div>
 
+                <div class="flex justify-center items-center w-full mt-[1.875rem]">
+                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}</span>
+                </div>
 
-                <div class="flex justify-center items-center mt-[2.5rem]">
+                <div class="flex justify-center items-center mt-[3.75rem] ">
+                    <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]
+                    border-[1px] border-[#01AA44]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
+                    <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem] z-50" @click="onContact">
+                        <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center mt-[5.125rem]">
                     <div class="flex items-center">
                         <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item1')}}</span>
@@ -54,23 +67,16 @@
                 </div>
 
 
-                <div class="flex justify-center items-center mt-[3.25rem] ">
-                    <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]
-                    border-[1px] border-[#01AA44]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
-                    <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem] z-50" @click="onContact">
-                        <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
-                    </div>
-                </div>
+                
 
 
-                <div class="overflow-auto mt-[4.25rem] w-full RectItems grid place-items-center">
+                <!-- <div class="overflow-auto mt-[4.25rem] w-full RectItems grid place-items-center">
                     <div class="flex gap-[1rem] w-full justify-between">
                         <FirstRectComponent 
                         class="flex-shrink-0 flex-grow-0" 
                         v-for="card in cardItems" :title="card.title" :content="card.content" :img="card.img"/>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -80,44 +86,44 @@
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
-    import FirstRectComponent from './FirstRectComponent.vue'
-    import img1 from '../../assets/first_1.png'
-    import img2 from '../../assets/first_2.png'
-    import img3 from '../../assets/first_3.png'
-    import img4 from '../../assets/first_4.png'
-    import img5 from '../../assets/first_5.png'
-    import { computed, ref } from 'vue'
+    // import FirstRectComponent from './FirstRectComponent.vue'
+    // import img1 from '../../assets/first_1.png'
+    // import img2 from '../../assets/first_2.png'
+    // import img3 from '../../assets/first_3.png'
+    // import img4 from '../../assets/first_4.png'
+    // import img5 from '../../assets/first_5.png'
+    import {  ref } from 'vue'
     const { t } = useI18n()
     const emit = defineEmits(['onFreeUse'])
-    const cardItems = computed(() => {
-        return [
-        {
-            title: t('first.cardTitle1'),
-            content: t('first.cardContent1'),
-            img: img1
-        },
-        {
-            title: t('first.cardTitle2'),
-            content: t('first.cardContent2'),
-            img: img2
-        },
-        {
-            title: t('first.cardTitle3'),
-            content: t('first.cardContent3'),
-            img: img3
-        },
-        {
-            title: t('first.cardTitle4'),
-            content: t('first.cardContent4'),
-            img: img4
-        },
-        {
-            title: t('first.cardTitle5'),
-            content: t('first.cardContent5'),
-            img: img5
-        }
-    ]
-    })
+    // const cardItems = computed(() => {
+    //     return [
+    //     {
+    //         title: t('first.cardTitle1'),
+    //         content: t('first.cardContent1'),
+    //         img: img1
+    //     },
+    //     {
+    //         title: t('first.cardTitle2'),
+    //         content: t('first.cardContent2'),
+    //         img: img2
+    //     },
+    //     {
+    //         title: t('first.cardTitle3'),
+    //         content: t('first.cardContent3'),
+    //         img: img3
+    //     },
+    //     {
+    //         title: t('first.cardTitle4'),
+    //         content: t('first.cardContent4'),
+    //         img: img4
+    //     },
+    //     {
+    //         title: t('first.cardTitle5'),
+    //         content: t('first.cardContent5'),
+    //         img: img5
+    //     }
+    // ]
+    // })
     const hoverbgRef = ref<any>()
     const mouseBoxRef = ref<HTMLElement|null>()
     const onFreeUse = () => {

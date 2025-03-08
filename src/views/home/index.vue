@@ -3,6 +3,7 @@
         <!-- <NavComponent /> -->
         <FirstComponent  @onFreeUse="onFreeUse"/>
         <SecondComponent ref="secondRef" class="hiddleClass" @onFreeUse="onFreeUse"/>
+        <ExtraComponent ref="extraRef" class="hiddleClass" />
         <ThirdCompoent class="hiddleClass" ref="thirdRef" />
         <FourthComponent class="hiddleClass" ref="fourthRef" />
         <FifthComponent class="hiddleClass" ref="fifthRef" />
@@ -20,6 +21,7 @@
     import FifthComponent from './FifthComponent.vue';
     import SixthComponent from './SixthComponent.vue';
     import SeventhComponent from './SeventhComponent.vue';
+    import ExtraComponent from './ExtraComponent.vue';
     // import FooterComponent from './FooterComponent.vue';
     import BasicLayout from '../BasicLayout.vue'
     import { ref, onMounted, onUnmounted } from 'vue'
@@ -35,6 +37,7 @@
     const fifthRef = ref<any>()
     const sixthRef = ref<any>()
     const seventhRef = ref<any>()
+    const extraRef = ref<any>()
     const onScroll = () => {
         ComponentActive(secondRef.value.secondRef)
         ComponentActive(thirdRef.value.thirdRef)
@@ -42,6 +45,7 @@
         ComponentActive(fifthRef.value.fifthRef)
         ComponentActive(sixthRef.value.sixthRef)
         ComponentActive(seventhRef.value.seventhRef)
+        ComponentActive(extraRef.value.extraRef)
     }
     const ComponentActive = (targetRef:any,) => {
         let showStatus = false

@@ -18,12 +18,11 @@
             </div>
         </div>
         <div class="flex justify-between mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==0">
-            <div class="w-[36.25rem] h-[25rem] relative">
+            <div class="w-[38.8215rem] h-[26.5rem] relative">
                 
-                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
-                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
+                <img src="../../assets/group.png" class="w-full h-full" />
             </div>
-            <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
+            <div class="w-[38.625rem] flex flex-col  justify-center">
                 <div class="flex">
                     <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
                 </div>
@@ -68,12 +67,11 @@
         </div>
 
         <div class="flex justify-between w-full mt-[5.375rem] animate__animated animate__fadeIn" v-show="selected==1">
-            <div class="w-[36.25rem] h-[25rem] relative">
+            <div class="w-[38.8215rem] h-[26.5rem] relative">
                 
-                <img src="../../assets/group.png" class=" absolute top-[3rem] right-0 left-[2rem] bottom-0" />
-                <img src="../../assets/top.png" class=" absolute w-[7.625rem] h-[6.25rem] top-0 left-0" />
+                <img src="../../assets/group.png" class="w-full h-full" />
             </div>
-            <div class="w-[38.625rem] flex flex-col ml-[5.6rem]">
+            <div class="w-[38.625rem] flex flex-col justify-center">
                 <div class="flex">
                     <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
                 </div>

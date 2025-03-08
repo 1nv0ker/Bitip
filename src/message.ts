@@ -42,7 +42,10 @@ export const en = {
         exit:'Log out'
     },
     first: {
-        title:'Bit Global Residential Proxy IP',
+        title:' Global Residential Proxy',
+        // title:'全球住宅代理IP',
+        title1:'Bit',
+        content:'Enterprise-level big data collection solution Enterprise-level big data collection solution Enterprise-level big data collection solution Industry-level big data collection solution Collection solution',
         subtitle:'Enterprise-level big data collection solutions',
         item1:'Billion+ Real Residential Network',
         item2:'IP Pure Source Compliance',
@@ -50,7 +53,7 @@ export const en = {
         item4:'24/7 AI Screening',
         freeUse: 'Free Trial',
         contact: 'Contact Us',
-        cardTitle1:'Accurate city positioning',
+        cardTitle1:'City-level positioning',
         cardContent1:'Dynamic global coverage and precise geolocation, supporting IP rotation',
         cardTitle2:'High cost performance',
         cardContent2: 'Relying on industry-leading agent resources to achieve automatic collection of global web page data',
@@ -246,7 +249,9 @@ export const zh = {
         exit:'退出登录'
     },
     first: {
-        title:'Bit全球住宅代理IP',
+        title:'全球住宅代理',
+        title1:'比特',
+        content:'企业级大数据采集解决方案企业级大数据采集解决方案企业级大数据采集解决方案业级大数据采集解决方案采集解决方案',
         subtitle:'企业级大数据采集解决方案',
         item1:'亿+真实住宅网络',
         item2:'IP纯净来源合规',
@@ -254,7 +259,7 @@ export const zh = {
         item4:'7X24 AI筛选',
         freeUse:'免费试用',
         contact:'联系我们',
-        cardTitle1:'精确城市定位',
+        cardTitle1:'城市级定位',
         cardContent1:'动态全球覆盖和精准的地理定位，支持IP轮换',
         cardTitle2:'高性价比',
         cardContent2: '依托行业领先的代理资源,实现全球网页数据自动化采集',
@@ -403,5 +408,8 @@ export const zh = {
         title3_item1_content: '信息安全管理体系',
         title3_item2_title2:'ISO 9001',
         title3_item2_content: '质量管理体系'
+    },
+    extra: {
+        title: '最适合您的代理方案'
     }
 }
