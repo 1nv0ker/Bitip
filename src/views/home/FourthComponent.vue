@@ -83,7 +83,7 @@
             }
         ]
     })
-    const createLine = (point1:any, point2:any, projection:any, svg:any, type:string) => {
+    const createLine = (point1:any, point2:any, projection:any, svg:any, type:string='') => {
         const point1Pos = projection(point1.coordinates) as any;
         const point2Pos = projection(point2.coordinates) as any;
        
@@ -152,7 +152,7 @@
             const currentCycle = Math.floor(progress / 5000); // 当前循环次数
 
             // 检测是否进入新周期
-            if ((currentCycle > lastCycle) && !boxStatus) {
+            if ((currentCycle > lastCycle) && !boxStatus && type) {
                 lastCycle = currentCycle;
                 boxStatus = true
                 dotEndBox(dot, svg)
