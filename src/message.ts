@@ -350,7 +350,7 @@ export const zh = {
         title1: 'QQ客服',
         title2: '微信客服',
         title3: '微信公众号',
-        title4: '电报客服'
+        title4: 'Telegram'
     },
     navMenu: {
         title1: '套餐购买',

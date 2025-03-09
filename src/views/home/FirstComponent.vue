@@ -26,7 +26,7 @@
                 </div>
 
 
-                <div class="flex justify-center items-center mt-[1.5rem]">
+                <div class="flex justify-center items-end mt-[1.5rem]">
                     <span class="text-[#01AA44] text-[3.75rem] font-extrabold">{{ t('first.title1') }}</span>
                     <span class="text-[#191919] text-[3.43rem] font-bold"> {{t('first.title')}}</span>
                     <span class="text-[3.75rem] text-[#01AA44] font-extrabold"> IP</span>

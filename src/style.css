@@ -142,6 +142,11 @@ input:-moz-placeholder { /* Firefox 18- */
 #aliyunCaptcha-sliding-text,#aliyunCaptcha-sliding-failTip,#aliyunCaptcha-errorTip {
   font-size:1.2rem;  
 }
+#aliyunCaptcha-sliding-slider {
+  font-size: 1rem!important;
+  line-height: 4rem!important;
+  /* left:1rem!important; */
+}
 #aliyunCaptcha-window-embed {
   z-index:0!important;
 }
@@ -161,6 +166,14 @@ input:-moz-placeholder { /* Firefox 18- */
 #aliyunCaptcha-sliding-left {
   width: 30rem!important;
 } */
+ #aliyunCaptcha-sliding-body,#aliyunCaptcha-sliding-left, #aliyunCaptcha-sliding-text-box {
+  /* width: 28rem!important; */
+  height: 4rem!important;
+}
+#aliyunCaptcha-sliding-slider {
+  /* left: 28rem!important; */
+  height: 4rem!important;
+}
 .bitip_font_family {
   font-family: "Alibaba Sans";
 }

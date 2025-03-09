@@ -45,9 +45,10 @@
         <!-- 用户协议 -->
         <div class="mt-[1.5rem] items-center flex">
             <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
-            <label class=" text-[#111111] text-[0.875rem] pl-[0.75rem] bitip_font_family font-normal" for="flexCheckDefault">
-                {{t('login.agree')}} <span class="text-[#01AA44] cursor-pointer font-normal">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] cursor-pointer ">《{{t('login.privacyPolicy')}}》</span>
+            <label class="text-[#111111] text-[0.875rem] pl-[0.75rem] bitip_font_family font-normal" for="flexCheckDefault">
+                {{t('login.agree')}} 
             </label>
+            <span class="text-[#01AA44] cursor-pointer font-normal text-[0.875rem]">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] text-[0.875rem] cursor-pointer ">《{{t('login.privacyPolicy')}}》</span>
         </div>
         
         <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="passLogin_button">
