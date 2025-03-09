@@ -39,13 +39,17 @@
                     <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}</span>
                 </div>
 
-                <div class="flex justify-center items-center mt-[3.75rem] ">
+                <div class="flex justify-center items-center mt-[3.75rem] gap-[2rem]">
                     <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[#01AA44] text-[1.25rem] font-medium hover:text-[#01AA44] text-[white]
                     border-[1px] border-[#01AA44]" :text="t('first.freeUse')" @btn-click="onFreeUse" />
-                    <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem] z-50" @click="onContact">
+                    <!-- <div class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] flex items-center justify-center cursor-pointer border-[1px] border-[#191919] ml-[2rem] z-50" @click="onContact">
                         <img src="../../assets/contact.png" class="w-[1.5rem] h-1.5rem" />
                         <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
-                    </div>
+                    </div> -->
+                    <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[white] text-[1.25rem] font-medium hover:text-[white] text-[#191919]
+                    border-[1px] border-[#191919]" :text="t('first.contact')" :color="'#01AA44'" @btn-click="onContact" @mouse-enter="(v)=>hoverStatus=v" @mouse-out="(v)=>hoverStatus=v">
+                        <img src="../../assets/contact.png" :class="`w-[1.5rem] h-1.5rem mr-[0.5rem] z-10 ${hoverStatus?'change_color':''}`"/>
+                    </RippleButton>
                 </div>
                 <div class="flex justify-center items-center mt-[5.125rem]">
                     <div class="flex items-center">
@@ -95,6 +99,7 @@
     import {  ref } from 'vue'
     const { t } = useI18n()
     const emit = defineEmits(['onFreeUse'])
+    const hoverStatus = ref(false)
     // const cardItems = computed(() => {
     //     return [
     //     {
@@ -169,4 +174,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 } */
+ .change_color {
+    filter:invert(100%)
+ }
 </style>

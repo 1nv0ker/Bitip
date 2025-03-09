@@ -6,7 +6,7 @@
         <div class="flex justify-center w-full">
             <span class="text-[#191919] text-[2.625rem] font-bold text-center whitespace-nowrap">{{t('fourth.title')}}</span>
         </div>
-        <div class="flex justify-center gap-[11.25rem] mt-[2rem] w-full">
+        <!-- <div class="flex justify-center gap-[11.25rem] mt-[2rem] w-full">
            <div class="flex flex-col justify-center">
                 <span class="text-[#191919] text-[2rem] font-bold text-center whitespace-nowrap">{{t('fourth.subtitle1')}}</span>
                 <span class="text-[#191919] text-[1.25rem]  text-center whitespace-nowrap">{{t('fourth.content1')}}</span>
@@ -19,7 +19,7 @@
                 <span class="text-[#191919] text-[2rem] font-bold text-center whitespace-nowrap">{{t('fourth.subtitle3')}}</span>
                 <span class="text-[#191919] text-[1.25rem]  text-center whitespace-nowrap">{{t('fourth.content3')}}</span>
            </div>
-        </div>
+        </div> -->
         <div class="mt-[4rem] w-full flex justify-center relative">
             <div class="world-map" id="world-map">
 
@@ -109,7 +109,7 @@
                     .datum(path)
                     .attr("d", (d:any) => d)
                     .attr("stroke", "url(#bezierGradient)")
-                    .attr("stroke-width", '3px')
+                    .attr("stroke-width", '4px')
                     .attr("fill", "none").node()
         // return pathData
         // dotLinearGradient()
@@ -130,9 +130,14 @@
             .attr("offset", "100%")
             .style("stop-color", "rgba(247,255,190)");
         const dot = svg.append("circle")
-        .attr("r", 8)
-        // .attr("fill", "steelblue")
+        .attr("r", 3)
+        
         .style("fill", "url(#dot-linearGradient)");
+
+        // const movingLine = svg.append("line")
+        // .attr("stroke", "red")
+        // .attr("stroke-width", 4)
+        // .attr("fill", "steelblue")
         // 4. 获取路径点序列
         const totalLength = path2.getTotalLength();
         const points = Array.from({length: totalLength}, (_, i) => 

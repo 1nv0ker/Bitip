@@ -5,8 +5,9 @@
         @mouseout="onMouseOut"
         @click="onClick"
         ref="bitip_btn_ref">
+        <slot></slot>
         <span class="z-20">{{props.text}}</span>
-        <div class="ripple bg-[white]" ref="rippleRef"></div>
+        <div :class="`ripple bg-[${props.color}]`" ref="rippleRef"></div>
     </div>
 </template>
 <script setup lang="ts">
@@ -15,14 +16,20 @@
     const bitip_btn_ref = ref<any>(null)
     const is_in = ref(false)
     const props = defineProps({
-        text: {type:String}
+        text: {type:String},
+        color:{
+            type: String,
+            default:'white'
+        }
     })
-    const emit = defineEmits(['btnClick'])
+    const emit = defineEmits(['btnClick', 'mouseEnter', 'mouseOut'])
     const onMouseEnter = () => {
         is_in.value = true
+        emit('mouseEnter', is_in.value)
     }
     const onMouseOut = () => {
         is_in.value = false
+        emit('mouseOut', is_in.value)
     }
     const onMousemove = (event:MouseEvent) => {
         if (!is_in.value) {
