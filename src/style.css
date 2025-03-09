@@ -83,10 +83,35 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
 @media (max-width: 576px) { /* 手机端 */
   :root {
     font-size:6px;
+  }
+}
+@media (min-width: 576px) { /* 手机端 */
+  :root {
+    font-size:6px;
+  }
+}
+@media ( min-width: 720px) { /* 手机端 */
+  :root {
+    font-size:6px;
+  }
+}
+@media (min-width 720px)  { /* 手机端 */
+  :root {
+    font-size:8px;
+  }
+}
+@media (min-width: 960px) { /* 手机端 */
+  :root {
+    font-size:10px;
+  }
+}
+
+@media (min-width: 1140px)  { /* 手机端 */
+  :root {
+    font-size:16px;
   }
 }
 input::-webkit-input-placeholder {    /* Chrome/Opera/Safari */

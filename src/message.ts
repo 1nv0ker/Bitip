@@ -101,7 +101,11 @@ export const en = {
         subtitle2: 'Billion level',
         content2: 'Carrying Concurrency',
         subtitle3: '99.9%',
-        content3: 'High IP availability'
+        content3: 'High IP availability',
+        ger:'GER',
+        us: 'US',
+        uk:'UK',
+        can:'CAN'
     },
     fifth: {
         title: 'Application Scenario',
@@ -307,7 +311,11 @@ export const zh = {
         subtitle2: '亿级',
         content2: '承载并发',
         subtitle3: '99.9%',
-        content3: '高IP可用率'
+        content3: '高IP可用率',
+        ger:'德国',
+        us: '美国',
+        uk:'英国',
+        can:'加拿大'
     },
     fifth: {
         title: '应用场景',

@@ -6,7 +6,7 @@
             </div>
             <div class="gap-x-[1rem] gap-y-[1rem] grid-cols-4 grid grid-rows-3 pt-[3.75rem]">
                 <div v-for="content in contents" class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[2rem] h-[9.125rem]">
-
+                    {{content}}
                 </div>
             </div>
         </div>

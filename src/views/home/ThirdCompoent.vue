@@ -1,6 +1,6 @@
 <template>
     <ComponentLayout class="pt-[3.125rem] pb-[8rem]" ref="thirdRef" style="background: linear-gradient( 180deg, #F4FAF6 0%, #FFFFFF 100%) ;">
-        <div class="w-[full]">
+        <div class="w-full">
             <div class="flex items-center justify-center">
                 <span class="text-[#191919] text-[2.625rem] font-bold">{{ t('third.title') }}</span>
             </div>
@@ -155,12 +155,12 @@
         thirdRef: thirdRef
     })
     onMounted(() => {
-        interval = setInterval(() => {
-            if (selected.value ===5) {
-                selected.value = 0
-            }
-            selected.value = selected.value + 1
-        }, 3000);
+        // interval = setInterval(() => {
+        //     if (selected.value ===5) {
+        //         selected.value = 0
+        //     }
+        //     selected.value = selected.value + 1
+        // }, 3000);
         // selected.value = 1
     })
     onBeforeUnmount(() => {
