@@ -52,19 +52,19 @@
                     </RippleButton>
                 </div>
                 <div class="flex justify-center items-center mt-[5.125rem]">
-                    <div class="flex items-center">
+                    <div :class="`flex items-center  ${number>0?'show_class':'hidden_class'}`" >
                         <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item1')}}</span>
                     </div>
-                    <div class="flex items-center pl-[5.3rem]">
+                    <div :class="`flex items-center pl-[5.3rem]  ${number>1?'show_class':'hidden_class'}`"  >
                         <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item2')}}</span>
                     </div>
-                    <div class="flex items-center pl-[5.3rem]">
+                    <div :class="`flex items-center pl-[5.3rem]  ${number>2?'show_class':'hidden_class'}`" >
                         <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item3')}}</span>
                     </div>
-                    <div class="flex items-center pl-[5.3rem]">
+                    <div :class="`flex items-center pl-[5.3rem] ${number>3?'show_class':'hidden_class'}`">
                         <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item4')}}</span>
                     </div>
@@ -96,10 +96,23 @@
     // import img3 from '../../assets/first_3.png'
     // import img4 from '../../assets/first_4.png'
     // import img5 from '../../assets/first_5.png'
-    import {  ref } from 'vue'
+    import {  ref, onMounted, onBeforeUnmount } from 'vue'
     const { t } = useI18n()
     const emit = defineEmits(['onFreeUse'])
     const hoverStatus = ref(false)
+    const number = ref(0)
+    let interval:any = null
+    onMounted(() => {
+        interval = setInterval(() => {
+            number.value = number.value + 1
+            if (number.value>4) {
+                clearInterval(interval)
+            }
+        }, 1000);
+    })
+    onBeforeUnmount(() => {
+        interval && clearInterval(interval)
+    }) 
     // const cardItems = computed(() => {
     //     return [
     //     {
@@ -177,4 +190,10 @@
  .change_color {
     filter:invert(100%)
  }
+.hidden_class {
+    visibility: hidden;
+}
+.show_class {
+    animation: fadeIn 1s ease; /* referring directly to the animation's @keyframe declaration */
+}
 </style>
