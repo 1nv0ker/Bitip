@@ -206,6 +206,44 @@ export const en = {
         title3_item1_content: 'Information Security Management System',
         title3_item2_title2:'ISO 9001',
         title3_item2_content: 'Quality Management System'
+    },
+    service: {
+        title1: 'Corporate Service Center',
+        content1: 'Tailor-made service plans for large, medium and small enterprises, providing customized solutions and exclusive discounts for multiple business scenarios, helping enterprises reduce business costs and achieve data-driven business growth and global development',
+        title2: 'Industry Pain Points',
+        title2_subtitle1: 'Crawl Proxy',
+        title2_content1: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        title2_subtitle2: 'Crawl Proxy',
+        title2_content2: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        title2_subtitle3: 'Crawl Proxy',
+        title2_content3: 'Master global network data resources, extract valuable information from tens of millions of web pages for analysis, and support your business decisions',
+        title3:'Corporate Rights and Services',
+        subtitle3: 'Providing multi-dimensional support such as resources, technology, and services to more than 30,000 companies worldwide, and opening up IPIDEA is global ecological resources for win-win cooperation',
+        title3_card1_title: 'Corporate Rights and Services',
+        title3_card1_subtitle:'Providing multi-dimensional support such as resources, technology, and services to more than 30,000 companies around the world, and opening up IPIDEA is global ecological resources for win-win cooperation',
+        title3_card1_content:'Provide resources and technologies to more than 30,000 companies around the world.',
+        title3_card1_content1:'Provide resources and technologies to more than 30,000 companies around the world.',
+        title3_card1_content2:'Provide resources and technologies to more than 30,000 companies around the world.',
+        title3_card2_title: 'Corporate Rights and Services',
+        title3_card2_subtitle:'It provides multi-dimensional support such as resources and technical services to more than 30,000 companies around the world, and opens IPIDEA.',
+        title3_card3_title: 'Corporate Rights and Services',
+        title3_card3_subtitle:'It provides multi-dimensional support such as resources and technical services to more than 30,000 companies around the world, and opens IPIDEA.。',
+
+        title4: 'Basic information of the company',
+        form1_label:'Your scope of use',
+        form1_placeholder1:'Monthly Package',
+        form1_placeholder2: 'Monthly Package',
+        form2_label:'Agent Type',
+        form2_placeholder: 'Monthly Package',
+
+        form3_label: 'Basic information of the company',
+        form3_placeholder1: 'Company Name',
+        form3_placeholder2: 'Phone number',
+        form3_placeholder3: 'Email (optional)',
+
+        form4_label: 'Agent Type',
+        form4_placeholder: 'Other notes',
+        button:'Submit'
     }
 }
 
@@ -419,5 +457,43 @@ export const zh = {
     },
     extra: {
         title: '最适合您的代理方案'
+    },
+    service: {
+        title1: '企业服务中心',
+        content1: '专为大中小企业量身打造服务计划，提供多元业务场景的定制方案和专属优惠，帮助 企业降低业务成本，实现数据驱动的业务增长和全球化发展',
+        title2: '行业痛点',
+        title2_subtitle1: '抓取代理',
+        title2_content1: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        title2_subtitle2: '抓取代理',
+        title2_content2: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        title2_subtitle3: '抓取代理',
+        title2_content3: '掌握全球网络数据资源，从数千万网页中提取有价值 的信息进行分析，为您的业务决策提供支持',
+        title3:'企业权益与服务',
+        subtitle3: '为全球30000+企业提供资源、技术、服务等多维度支持，并开放IPIDEA全球生态资源，合作共赢',
+        title3_card1_title: '企业权益与服务',
+        title3_card1_subtitle:'为全球30000+企业提供资源、技术、服务等多维度 支持，并开放IPIDEA全球生态资源，合作共赢',
+        title3_card1_content:'为全球30000+企业提供资源、技术。',
+        title3_card1_content1:'为全球30000+企业提供资源、技术。',
+        title3_card1_content2:'为全球30000+企业提供资源、技术。',
+        title3_card2_title: '企业权益与服务',
+        title3_card2_subtitle:'为全球30000+企业提供资源、技术 服务等多维度支持，并开放IPIDEA。',
+        title3_card3_title: '企业权益与服务',
+        title3_card3_subtitle:'为全球30000+企业提供资源、技术 服务等多维度支持，并开放IPIDEA。',
+
+        title4: '企业基本信息',
+        form1_label:'您的使用范围',
+        form1_placeholder1:'包月套餐',
+        form1_placeholder2: '包月套餐',
+        form2_label:'代理类型',
+        form2_placeholder: '包月套餐',
+
+        form3_label: '企业基本信息',
+        form3_placeholder1: '公司名称',
+        form3_placeholder2: '手机号',
+        form3_placeholder3: '邮箱（选填）',
+
+        form4_label: '代理类型',
+        form4_placeholder: '其他说明',
+        button:'提交'
     }
 }

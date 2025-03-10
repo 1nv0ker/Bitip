@@ -9,7 +9,7 @@ import i18n from './i18n'
 import './api/interceptor'
 import pinia from './store'
 import { configure } from 'vee-validate'
-
+import 'ant-design-vue/dist/reset.css';
 
 configure({
   validateOnBlur: false, // 关闭全局 blur 事件验证
