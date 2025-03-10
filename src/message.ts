@@ -105,7 +105,8 @@ export const en = {
         ger:'GER',
         us: 'US',
         uk:'UK',
-        can:'CAN'
+        can:'CAN',
+        ind:'IND'
     },
     fifth: {
         title: 'Application Scenario',
@@ -133,8 +134,9 @@ export const en = {
         title: 'Many corporate brand cooperation'
     },
     acvitity: {
-        title: 'Residential Agency First Payment',
-        subtitle: '¥100 off'
+        title: 'Register and get 200M dynamic traffic',
+        subtitle: '¥100 off',
+        
     },
     contact: {
         title1: 'QQ',
@@ -244,6 +246,12 @@ export const en = {
         form4_label: 'Agent Type',
         form4_placeholder: 'Other notes',
         button:'Submit'
+    },
+    setmenu: {
+        title: 'Find the right plan for your business',
+        subtitle1: 'Dy Setmenu',
+        subtitle2: 'Static Setmenu',
+        subtitle3: 'Balance Recharge'
     }
 }
 
@@ -353,7 +361,8 @@ export const zh = {
         ger:'德国',
         us: '美国',
         uk:'英国',
-        can:'加拿大'
+        can:'加拿大',
+        ind:'印度'
     },
     fifth: {
         title: '应用场景',
@@ -381,7 +390,7 @@ export const zh = {
         title: '众多企业品牌合作'
     },
     acvitity: {
-        title: '住宅代理首次支付',
+        title: '注册就送200M动态流量',
         subtitle: '立减¥100'
     },
     contact: {
@@ -495,5 +504,11 @@ export const zh = {
         form4_label: '代理类型',
         form4_placeholder: '其他说明',
         button:'提交'
+    },
+    setmenu: {
+        title: '为您的业务提供合适的套餐类型',
+        subtitle1: '动态套餐',
+        subtitle2: '静态套餐',
+        subtitle3: '余额充值'
     }
 }

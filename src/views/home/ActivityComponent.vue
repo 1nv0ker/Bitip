@@ -8,7 +8,7 @@
         </div>
         <div class="flex items-center cursor-pointer" @click="onLogin">
             <span class="text-[#0C311A] text-[1rem] font-medium">{{t('acvitity.title')}}</span>
-            <span class="text-[#01AA44] text-[1rem] font-bold pl-[0.25rem]">{{t('acvitity.subtitle')}}</span>
+            <!-- <span class="text-[#01AA44] text-[1rem] font-bold pl-[0.25rem]">{{t('acvitity.subtitle')}}</span> -->
         </div>
         <div class="">
             <img class="w-[2rem] h-[2rem]" src="../../assets/activity2.png" />

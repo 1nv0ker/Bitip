@@ -13,11 +13,11 @@ axios.interceptors.request.use(function (config) {
     if (userStore.token) {
       config.headers.Authorization = `Bearer ${userStore.token}`
     }
-    console.log('error')
+    // console.log('error')
     return config;
   }, function (error) {
     // 对请求错误做些什么
-    console.log('error')
+    ElMessage.error('server error')
     return Promise.reject(error);
 });
 
@@ -25,7 +25,7 @@ axios.interceptors.request.use(function (config) {
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
-    console.log('error')
+    // console.log('error')
     if (response.data.code && response.data.code !== 200) {
       response.data.message && ElMessage.error(response.data.message)
       throw Error(response.data.message)
@@ -33,6 +33,7 @@ axios.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
     // 对响应错误做点什么
+    ElMessage.error('server error')
     return Promise.reject(error);
 });
 

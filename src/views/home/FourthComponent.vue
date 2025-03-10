@@ -53,6 +53,7 @@
     import usImg from '../../assets/us.png'
     import ukImg from '../../assets/uk.png'
     import canImg from '../../assets/can.png'
+    import indImg from '../../assets/india.png'
     const { t } = useI18n()
     const fourthRef = ref<HTMLElement>()
     const remInPixels = ref(0)
@@ -79,6 +80,11 @@
             {
                 name: t('fourth.can'),
                 img:canImg,
+                value: 10
+            },
+            {
+                name: t('fourth.ind'),
+                img:indImg,
                 value: 10
             }
         ]
@@ -241,7 +247,7 @@
         remInPixels.value = parseFloat(remValue); 
         d3.json("/worldMap.json")
         .then((data:any) => {
-            const targetCountry = ['Brazil', 'United States of America', 'Algeria', 'Iceland', 'Japan', 'Madagascar']
+            const targetCountry = ['Brazil', 'United States of America', 'Algeria', 'Iceland', 'Japan', 'Madagascar', 'Russia', 'France', 'India']
             const countries = topojson.feature(data, data.objects.countries) as any;
             const newData = Object.assign({}, countries, {
                 features: countries.features.filter((d:any) => 

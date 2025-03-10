@@ -5,13 +5,13 @@
         </div>
         <!-- 移动端下拉菜单 -->
         <NavMobieMenu v-show="showMobie" @onCloseNav="showMobie=false" :status="showMobie"/>
-        <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'} border-[1px] border-[#EBEFF8]`">
+        <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`">
             <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="w-full flex justify-center cursor-pointer ml-[2.625rem]" @click="onToHome">
                     <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
                 </div>
             </div>
-            <div class="col-8 col-sm-6 col-md-8 col-lg-8 col-xl-8 col-xxl-8 justify-center">
+            <div class="col-8 col-sm-6 col-md-8 col-lg-8 col-xl-8 col-xxl-8 justify-center h-full">
                 <!-- 桌面导航菜单 -->
                 <NavMenu />
                 <div class="flex items-center md:hidden justify-center" v-if="!userStore.userInfo?.tel">
@@ -81,37 +81,8 @@
                     </button>
                 </div>
             </div>
-            <!-- <div :class="`flex h-[4rem] fixed top-[2.8125rem] container-fluid items-center ${acvitityStatus?'top-[2.8125rem]':'top-0'} bg-white`"> -->
-                <!-- <div class="navbar-brand cursor-pointer ml-[2.625rem]" @click="onToHome">
-                    <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
-                </div>
-                <div class="flex items-center md:hidden" v-if="!userStore.userInfo?.tel">
-                    <div class="w-4.5rem flex">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
-                        <select class="w-[5rem] cursor-pointer ml-[0.5rem] bitip_font_family font-medium" v-model="lan" @change="onLanauageChange">
-                            <option value="zh">中</option>
-                            <option value="en">EN</option>
-                        </select>
-                    </div>
-                    <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem] hover:text-[#01AA44] ellipsis-single" @click="onLogin">
-                        <span>{{t('login.login')}}</span>
-                    </div>
-                    <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
-                        <span>{{t('login.register')}}</span>
-                    </div>
-                </div>
-                <div class="flex items-center md:hidden" v-else>
-                    <span class=" font-medium">{{userStore.userInfo?.email}}</span>
-                    <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
-                        <span>{{t('login.exit')}}</span>
-                    </div>
-                </div> -->
-                
-                
-                
-                
-            </div>
-        <!-- </div> -->
+        </div>
+        <div :class="`w-full top-[6.8125rem] h-[1px] items-center fixed z-30 bg-[#EBEFF8] ${acvitityStatus?'top-[6.8125rem]':'top-[4rem]'}`"></div>
     </div>
 </template>
 <script setup lang="ts">

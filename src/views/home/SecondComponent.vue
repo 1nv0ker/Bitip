@@ -4,13 +4,13 @@
             <span class="text-[#191919] text-[2.625rem] font-bold">{{t('second.title')}}</span>
         </div>
         <div class="flex mt-[2rem] justify-center items-center">
-            <div class="w-[26.5rem] h-[3.25rem] border-[1px] border-[#191919] rounded-[6.25rem] flex p-[0.2rem]">
-                <div :class="`w-[50%] h-full flex justify-center items-center rounded-[6.25rem] cursor-pointer ${selected==0?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=0" 
+            <div class="w-[26.5rem] h-[3.25rem]  rounded-[6.25rem] flex p-[0.2rem] gap-[1rem]">
+                <div :class="`w-[50%] h-full flex justify-center items-center rounded-[6.25rem] cursor-pointer ${selected==0?'bg-[#01AA44] text-[white]':'text-[#191919] bg-[#F4F4F4]'}`" @click="selected=0" 
                 style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
                 @mouseenter="onMouseEnter(0)" @mouseleave="onMouseLeave">
                     <span class="text-[1.25rem] font-medium">{{t('second.select1')}}</span>
                 </div>
-                <div :class="`w-[50%] h-full justify-center items-center flex rounded-[6.25rem] cursor-pointer ${selected==1?'bg-[#01AA44] text-[white]':'text-[#191919]'}`" @click="selected=1"
+                <div :class="`w-[50%] h-full justify-center items-center flex rounded-[6.25rem] cursor-pointer ${selected==1?'bg-[#01AA44] text-[white]':'text-[#191919] bg-[#F4F4F4]'}`" @click="selected=1"
                  style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
                 @mouseenter="onMouseEnter(1)" @mouseleave="onMouseLeave">
                     <span class=" text-[1.25rem] font-medium">{{t('second.select2')}}</span>

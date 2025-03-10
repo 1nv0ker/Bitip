@@ -4,18 +4,18 @@
         :items="packageItems"
         :text="t('navMenu.title1')" 
         :key="'package'"
+        name="setmenu"
          />
 
         <NavMenuItem :text="t('navMenu.title2')" :key="'getProxy'" 
         />
 
-        <NavMenuItem :text="t('navMenu.title3')" :key="'product'"
-         />
+        <NavMenuItem :text="t('navMenu.title3')" :key="'product'"/>
 
-        <NavMenuItem :text="t('navMenu.title4')" :key="'help'"   :path="'/help'" />
-        <NavMenuItem :text="t('navMenu.title5')" :key="'safety'" :show-arrow="false" :path="'/safety'"/>
-        <NavMenuItem :text="t('navMenu.title6')" :key="'service'" :show-arrow="false" :path="'/service'"/>
-        <NavMenuItem :text="t('navMenu.title7')" :key="'plan'" :show-arrow="false" :path="'/plan'"/>
+        <NavMenuItem :text="t('navMenu.title4')" :key="'help'"   :path="'/help'" name="help"  />
+        <NavMenuItem :text="t('navMenu.title5')" :key="'safety'" :show-arrow="false" :path="'/safety'" name="safety"/>
+        <NavMenuItem :text="t('navMenu.title6')" :key="'service'" :show-arrow="false" :path="'/service'" name="service"/>
+        <NavMenuItem :text="t('navMenu.title7')" :key="'plan'" :show-arrow="false" :path="'/plan'" name="plan"/>
     </div>
 </template>
 <script setup lang="ts">
@@ -36,13 +36,17 @@
                     {
                         title: t('navMenu.package_subtitle1'),
                         img: menu1,
-                        path:'/setMeal?1',
+                        path:'/setmenu',
+                        type: 0,
+                        name:'setmenu',
                         subtitle: t('navMenu.package_subtitle1_tips')
                     },
                     {
                         title: t('navMenu.package_subtitle2'),
                         img: menu2,
-                        path:'/setMeal?2',
+                        path:'/setmenu',
+                        name:'setmenu',
+                        type: 1,
                         subtitle: t('navMenu.package_subtitle2_tips')
                     }
                 ]
@@ -53,7 +57,8 @@
                     {
                         title: t('navMenu.package_subtitle3'),
                         img: menu3,
-                        path:'/setMeal?3',
+                        path:'/setmenu',
+                        type: 0,
                         subtitle: t('navMenu.package_subtitle3_tips')
                     },
                     // {
@@ -70,13 +75,13 @@
                     {
                         // title: t('navMenu.package_subtitle2'),
                         img: menu4,
-                        path:'/setMeal?2',
+                        // path:'/setMeal',
 
                     },
                     {
                         // title: t('navMenu.package_subtitle2'),
                         img: menu5,
-                        path:'/setMeal?2',
+                        // path:'/setMeal',
                        
                     }
                 ]

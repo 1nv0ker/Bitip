@@ -1,8 +1,8 @@
 <template>
     <ComponentLayout ref="sixthRef" class="pb-[7.125rem]">
         <div class="w-full md:h-[27rem] h-[24rem] overflow-hidden relative rounded-[2rem] pl-[10rem] pr-[10rem] pb-[10rem]" ref="boxRef">
-            <div class=" absolute top-0 bottom-0 left-0 right-0 smoke-element" >
-                <!-- <img src="" class="w-full h-full smoke-element" /> -->
+            <div class=" absolute top-0 bottom-0 left-0 right-0" >
+                <img src="../../assets/card_bg.png" class="w-full h-full smoke-element" />
             </div>
             
             <div class=" absolute bg-[#6DFFEB] w-[10rem] h-[10rem] z-1" ref="imgRef" style="transition: all 2s ease-in-out;;will-change: transform;filter: blur(100px);">
@@ -79,24 +79,3 @@
         }, { once: true });
     }
 </script> 
-<style scoped>
-@keyframes drift {
-  0%, 100% { background-position: 95% 65%; }
-  10% { background-position: 70% 30%; }
-  20% { background-position: 60% 32%; }
-  30% { background-position: 70% 76%; }
-  40% { background-position: 60% 20%; }
-  60% { background-position: 60% 54%; }
-  70% { background-position: 20% 22%; }
-  80% { background-position: 80% 15%; }
-  90% { background-position: 20% 45%; }
-  50% { background-position: 50% 10%; }
-}
-
-.smoke-element {
-    background-image: url("../../assets/card_bg.png");
-
-    animation: drift 20s linear infinite;
-    
-}
-</style>

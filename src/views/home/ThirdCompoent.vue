@@ -28,6 +28,16 @@
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
+                <!-- <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==2">
+                    <div class="flex flex-col gap-[0.75rem] pl-[6rem]">
+                        <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
+                        <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
+                    </div>
+
+                    <div class="w-[50rem] h-[21rem]  mt-[2rem]">
+                        <img src="../../assets/globalSource.png" class="w-full h-full"/>
+                    </div>
+                </div> -->
                 <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==2">
                     <div class="flex flex-col gap-[0.75rem] pl-[6rem]">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
@@ -58,16 +68,6 @@
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
-                <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==5">
-                    <div class="flex flex-col gap-[0.75rem] pl-[6rem]">
-                        <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
-                        <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
-                    </div>
-
-                    <div class="w-[50rem] h-[21rem]  mt-[2rem]">
-                        <img src="../../assets/globalSource.png" class="w-full h-full"/>
-                    </div>
-                </div>
             </div>
         </div>
     </ComponentLayout>
@@ -77,7 +77,7 @@
     import ComponentLayout from '../ComponentLayout.vue'
     import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
     import dome1 from '../../assets/dome1.png'
-    import dome2 from '../../assets/dome2.png'
+    // import dome2 from '../../assets/dome2.png'
     import dome3 from '../../assets/dome3.png'
     import dome4 from '../../assets/dome4.png'
     import dome5 from '../../assets/dome5.png'
@@ -92,25 +92,25 @@
                 img: dome1,
                 key: 1
             },
-            {
-                title: t('third.item2title'),
-                img: dome2,
-                key: 2
-            },
+            // {
+            //     title: t('third.item2title'),
+            //     img: dome2,
+            //     key: 2
+            // },
             {
                 title: t('third.item3title'),
                 img: dome3,
-                key:3
+                key:2
             },
             {
                 title: t('third.item4title'),
                 img: dome4,
-                key: 4
+                key: 3
             },
             {
                 title: t('third.item5title'),
                 img: dome5,
-                 key: 5
+                key: 4
             }
         ]
     })
@@ -121,23 +121,23 @@
                 subtitle: t('third.item1Subtitle'),
                 content: t('third.item1Content')
             },
+            // {
+            //     key: 2,
+            //     subtitle: t('third.item2Subtitle'),
+            //     content: t('third.item2Content')
+            // },
             {
                 key: 2,
-                subtitle: t('third.item2Subtitle'),
-                content: t('third.item2Content')
-            },
-            {
-                key: 3,
                 subtitle: t('third.item3Subtitle'),
                 content: t('third.item3Content')
             },
             {
-                key: 4,
+                key: 3,
                 subtitle: t('third.item4Subtitle'),
                 content: t('third.item4Content')
             },
             {
-                key: 5,
+                key: 4,
                 subtitle: t('third.item5Subtitle'),
                 content: t('third.item5Content')
             }
@@ -151,7 +151,7 @@
     })
     onMounted(() => {
         interval = setInterval(() => {
-            if (selected.value ===5) {
+            if (selected.value ===4) {
                 selected.value = 0
             }
             selected.value = selected.value + 1

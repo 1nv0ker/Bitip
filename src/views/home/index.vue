@@ -2,7 +2,8 @@
     <BasicLayout>
         <!-- <NavComponent /> -->
         <FirstComponent  @onFreeUse="onFreeUse"/>
-        <SecondComponent ref="secondRef" class="hiddleClass" @onFreeUse="onFreeUse"/>
+        <!-- <SecondComponent ref="secondRef" class="hiddleClass" @onFreeUse="onFreeUse"/> -->
+        <SecondComponent ref="secondRef" @onFreeUse="onFreeUse"/>
         <ExtraComponent ref="extraRef" class="hiddleClass" />
         <ThirdCompoent class="hiddleClass" ref="thirdRef" />
         <FourthComponent class="hiddleClass" ref="fourthRef" />
@@ -39,7 +40,8 @@
     const seventhRef = ref<any>()
     const extraRef = ref<any>()
     const onScroll = () => {
-        ComponentActive(secondRef.value.secondRef)
+        // ComponentActive(secondRef.value.secondRef)
+        
         ComponentActive(thirdRef.value.thirdRef)
         ComponentActive(fourthRef.value.fourthRef)
         ComponentActive(fifthRef.value.fifthRef)
@@ -47,7 +49,7 @@
         ComponentActive(seventhRef.value.seventhRef)
         ComponentActive(extraRef.value.extraRef)
     }
-    const ComponentActive = (targetRef:any,) => {
+    const ComponentActive = (targetRef:any) => {
         let showStatus = false
         const target = targetRef.$el || targetRef as HTMLElement
         if (!target) return

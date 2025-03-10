@@ -56,24 +56,20 @@
                 title: t('navMenu.title1'),
                 id: 'navMenu_1',
                 items: [
+                   
+
                     {
                         title: t('navMenu.package_subtitle1'),
-                        path:'/setMeal?1'
+                        path:'/setmenu?1',
                     },
                     {
                         title: t('navMenu.package_subtitle2'),
-                        path:'/setMeal?2'
+                        path:'/setmenu?2',
                     },
                     {
                         title: t('navMenu.package_subtitle3'),
-                        img: '',
-                        path:'/setMeal?3'
+                        path:'/setmenu?3'
                     },
-                    {
-                        title: t('navMenu.package_subtitle4'),
-                        img: '',
-                        path:'/setMeal?4'
-                    }
                 ]
             },
             {

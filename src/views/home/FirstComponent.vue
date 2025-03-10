@@ -11,17 +11,29 @@
         <div class="col"></div>
 
         <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
-            <div class="flex justify-center flex-col items-center">
-
-
-                <div class="flex">
-                    <div class="flex pr-[1rem]">
+            <div class="flex justify-center flex-col items-center w-full">
+                <div class="flex justify-center gap-[2.5rem] z-20">
+                    <div class="flex cursor-pointer items-center">
                         <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">Trustpilot</span>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">Trustpilot</span>
+                        <div class="flex gap-[0.25rem] items-center">
+                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                        </div>
                     </div>
-                    <div class="flex pl-[1rem]">
+                    <div class="flex cursor-pointer items-center">
                         <img src="../../assets/star_1.png" class="w-[1.375rem] h-[1.375rem]"/>
-                        <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium">G2</span>
+                        <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">G2</span>
+                        <div class="flex gap-[0.25rem] items-center">
+                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                        </div>
                     </div>
                 </div>
 
