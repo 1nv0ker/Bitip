@@ -15,8 +15,8 @@
                 <!-- 桌面导航菜单 -->
                 <NavMenu />
                 <div class="flex items-center md:hidden justify-center" v-if="!userStore.userInfo?.tel">
-                    <div class="w-4.5rem flex">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
+                    <div class="w-[4.5rem] flex">
+                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
                         <select class="w-[5rem] cursor-pointer ml-[0.5rem] bitip_font_family font-medium" v-model="lan" @change="onLanauageChange">
                             <option value="zh">中</option>
                             <option value="en">EN</option>
@@ -29,17 +29,20 @@
                         <span>{{t('login.register')}}</span>
                     </div>
                 </div>
-                <div class="flex items-center md:hidden" v-else>
+                <div class="flex items-center md:hidden gap-[1rem]" v-else>
                     <span class=" font-medium">{{userStore.userInfo?.email}}</span>
-                    <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
+                    <div class=" bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
+                        <span class="font-medium">{{t('login.Backstage')}}</span>
+                    </div>
+                    <div class="text-[white] cursor-pointer text-[1rem] font-medium bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
                         <span>{{t('login.exit')}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem] justify-center" v-if="!userStore.userInfo?.tel">
-                    <div class="w-4.5rem flex">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-1.5rem"/>
+                    <div class="w-[4.5rem] flex">
+                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
                         <select class="w-[3rem] cursor-pointer font-medium ml-[0.5rem] bitip_font_family" v-model="lan" @change="onLanauageChange">
                             <option value="zh">中</option>
                             <option value="en">EN</option>
@@ -52,8 +55,11 @@
                         <span class=" font-medium">{{t('login.register')}}</span>
                     </div>
                 </div>
-                <div class="hidden items-center md:flex " v-else>
+                <div class="hidden items-center md:flex gap-[1rem] " v-else>
                     <span>{{userStore.userInfo?.email}}</span>
+                    <div class=" bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
+                        <span class="font-medium">{{t('login.Backstage')}}</span>
+                    </div>
                     <div class="text-[white] cursor-pointer text-[1rem] font-medium bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
                         <span class="font-medium">{{t('login.exit')}}</span>
                     </div>
@@ -125,6 +131,9 @@
         userStore.setToken('')
         userStore.setUserInfo(null)
         router.push('/login')
+    }
+    const OnEnterBackend = () => {
+        router.push('/usercenter')
     }
 </script>
 <style scoped>

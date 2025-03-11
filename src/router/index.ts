@@ -8,6 +8,8 @@ import SafetyComponent from '../views/safety/index.vue'
 import SeviceComponent from '../views/service/index.vue'
 import PlanComponent from '../views/plan/index.vue'
 import setmenuComponent from '../views/setmenu/index.vue'
+import usercenterComponent from '../views/usercenter/index.vue'
+import proxycityComponent from '../views/usercenter/proxycity/index.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/home', component: HomeComponent},
@@ -18,6 +20,13 @@ const routes = [
     { path: '/safety', component: SafetyComponent, name:'safety'},
     { path: '/service', component: SeviceComponent, name:'service'},
     { path: '/plan', component: PlanComponent, name:'plan'},
+    { path: '/usercenter', component: usercenterComponent, name:'usercenter', children:[
+      {
+        path:'proxycity',
+        name:'proxyCity',
+        component: proxycityComponent
+      }
+    ]},
     { path: '/:catchAll(.*)', redirect: '/home'}
 ]
 

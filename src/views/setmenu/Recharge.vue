@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full animate__fadeIn animate__animated">
+    <div class="w-full animate__slideInRight animate__animated">
         <div class="w-full flex gap-x-[1.25rem] justify-center">
             <div v-for="card in cards.slice(0,3)" class="p-[2rem] flex flex-col justify-evenly relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
                 <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">

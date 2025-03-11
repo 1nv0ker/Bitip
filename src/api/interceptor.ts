@@ -1,7 +1,8 @@
 import axios from 'axios'
 import UseUserStore from '../store/user'
 import { ElMessage } from 'element-plus'
-axios.defaults.baseURL = 'https://www.bitip.com'
+// axios.defaults.baseURL = 'https://www.bitip.com'
+axios.defaults.baseURL = 'http://47.102.127.12'
 axios.defaults.timeout = 1000
 
 

@@ -39,7 +39,8 @@ export const en = {
         confirmPassTips: 'Confirm Password',
         captchaVerifyTitps: 'Please slide the verification code',
         sendSms:'Sent, please check',
-        exit:'Log out'
+        exit:'Log out',
+        Backstage: 'Enter Backend'
     },
     first: {
         title:' Global Residential Proxy',
@@ -156,12 +157,13 @@ export const en = {
         package_subtitle2_tips:'Exclusive original ultra-pure',
         package_subtitle3_tips:'Dynamic Residential Package',
         package_title3: 'Latest Events',
-        title2: 'Get a proxy',
+        title2: 'Dy Agent',
         title3:'Agent Products',
         title4: 'Help Center',
         title5: 'Safety and Compliance',
         title6: 'Corporate Services',
-        title7: 'Promotion Plan'
+        title7: 'Promotion Plan',
+        title8: 'Static agency'
     },
     footer: {
         describe: 'With strong global underlying resources and understanding of business scenarios in various industries',
@@ -308,6 +310,23 @@ export const en = {
         recharge_title: 'Recharge the balance',
         recharge_subtitle: 'The balance can be used to purchase dynamic and static packages and renewals',
         illustrate: 'Optimized price instructions'
+    },
+    backend_menu: {
+        menu1:'Dynamic Residence',
+        menu1_sub1:'Proxy Generation - City',
+        menu1_sub2:'Purchase process',
+        menu1_sub3: 'Traffic Management',
+        menu2: 'Static Residence',
+        menu2_sub1: 'Purchase Agent',
+        menu2_sub2:'Purchased Details',
+        menu3: 'Purchase history',
+        local:'Local IP',
+        Balance:'Balance',
+        recharge:'Recharge',
+        welcome:'Welcome',
+        account: 'Account',
+        authentication:'Real-name authentication',
+        setting:'Account Settings'
     }
 }
 
@@ -352,7 +371,8 @@ export const zh = {
         confirmPassTips: '确认密码',
         captchaVerifyTitps: '请滑动验证码',
         sendSms:'已发送,请查收',
-        exit:'退出登录'
+        exit:'退出登录',
+        Backstage:'进入后台'
     },
     first: {
         title:'全球住宅代理',
@@ -467,12 +487,13 @@ export const zh = {
         package_subtitle3_tips:'动态住宅套餐',
         package_subtitle4: '静态住宅套餐',
         package_title3: '最新活动',
-        title2: '获取代理',
+        title2: '动态住宅代理',
         title3:'代理产品',
         title4: '帮助中心',
         title5: '安全合规',
         title6: '企业服务',
-        title7: '推广计划'
+        title7: '推广计划',
+        title8: '静态住宅代理'
     },
     footer: {
         describe: '凭借着强大的全球底层资源及对各个行业业务场景的了解',
@@ -621,5 +642,22 @@ export const zh = {
         recharge_title: '充值余额就送,享受更多优惠',
         recharge_subtitle: '余额可用于购买动、静态套餐及续费',
         illustrate: '优化价格说明'
+    },
+    backend_menu: {
+        menu1:'动态住宅',
+        menu1_sub1:'代理生成-城市',
+        menu1_sub2:'购买流程',
+        menu1_sub3: '流量管理',
+        menu2: '静态住宅',
+        menu2_sub1: '购买代理',
+        menu2_sub2:'已购明细',
+        menu3: '购买记录',
+        local:'本地IP',
+        Balance:'账户余额',
+        recharge:'充值',
+        welcome:'欢迎你',
+        account:'账户总览',
+        authentication:'实名认证',
+        setting:'账户设置'
     }
 }
