@@ -248,10 +248,66 @@ export const en = {
         button:'Submit'
     },
     setmenu: {
-        title: 'Find the right plan for your business',
+        title: 'BitIP Agent Discount Package Type',
         subtitle1: 'Dy Setmenu',
         subtitle2: 'Static Setmenu',
-        subtitle3: 'Balance Recharge'
+        subtitle3: 'Balance Recharge',
+        discount:'Discount Purchase',
+        menu1: 'Started',
+        price:'Unit price',
+        originPrice:'Original Price',
+        menu2: 'Base',
+
+        menu3: 'Routine',
+
+        menu4: 'Pro',
+
+        menu5: 'Company',
+
+        menu6: 'Company',
+
+        title2:'What is included in the setmenu?',
+        content1: 'Data usage does not expire',
+        content2: 'Large IP pool of 100 million',
+        content3: 'Unlimited concurrency',
+        content4: 'Variable time limit',
+        content5: 'Accurate city positioning',
+
+        bottom_title: 'Frequently asked questions',
+        question1:'What is the difference between product packages and using agents for credit recharge?',
+        answer1: '',
+        question2:'What is the difference between product packages and using agents for credit recharge?',
+        answer2: '',
+        question3:'What is the difference between product packages and using agents for credit recharge?',
+        answer3: '',
+        question4:'What is the difference between product packages and using agents for credit recharge?',
+        answer4: '',
+        question5:'What is the difference between product packages and using agents for credit recharge?',
+        answer5: '',
+        question6:'What is the difference between product packages and using agents for credit recharge?',
+        answer6: '',
+
+        location:'Recommended Regions',
+        timeSelect:'Time selection',
+        time1:'1 month',
+        time2:'2 months',
+        time3: 'One quarter',
+        time4:'Half a year',
+        time5: 'one year',
+        off: 'off',
+        clear:'clear',
+        areas:'Total Region',
+        ips: 'Total IP',
+        allPrice: 'Total price',
+        buyButton: 'Buy it now',
+        number:'each one',
+        arrival: 'Arrival',
+        recharge: 'Recharge',
+        deliver: 'Ddeliver',
+
+        recharge_title: 'Recharge the balance',
+        recharge_subtitle: 'The balance can be used to purchase dynamic and static packages and renewals',
+        illustrate: 'Optimized price instructions'
     }
 }
 
@@ -506,9 +562,64 @@ export const zh = {
         button:'提交'
     },
     setmenu: {
-        title: '为您的业务提供合适的套餐类型',
+        title: 'BitIP代理优惠套餐类型',
         subtitle1: '动态套餐',
         subtitle2: '静态套餐',
-        subtitle3: '余额充值'
+        subtitle3: '余额充值',
+        discount:'优惠购买',
+        menu1: '入门',
+        price:'单价',
+        originPrice:'原价',
+        menu2: '基础',
+
+        menu3: '常规',
+
+        menu4: '专业',
+
+        menu5: '企业',
+
+        menu6: '企业',
+
+        title2:'套餐包括什么？',
+        content1: '流量用不过期',
+        content2: '亿级超大 IP池',
+        content3: '无限并发',
+        content4: '可变时效',
+        content5: '精准城市定位',
+        bottom_title: '常见问题',
+        question1:'产品套餐和额度充值使用代理有什么区别？',
+        answer1: '',
+        question2:'产品套餐和额度充值使用代理有什么区别？',
+        answer2: '',
+        question3:'产品套餐和额度充值使用代理有什么区别？',
+        answer3: '',
+        question4:'产品套餐和额度充值使用代理有什么区别？',
+        answer4: '',
+        question5:'产品套餐和额度充值使用代理有什么区别？',
+        answer5: '',
+        question6:'产品套餐和额度充值使用代理有什么区别？',
+        answer6: '',
+
+        location:'推荐地区',
+        timeSelect:'时间选择',
+        time1:'1个月',
+        time2:'2个月',
+        time3: '一季度',
+        time4:'半年',
+        time5: '一年',
+        off: '折',
+        clear:'清空',
+        areas:'总地区',
+        ips: '总IP数',
+        allPrice: '总价',
+        buyButton: '立即购买',
+        number: '个',
+        arrival: '到账',
+        recharge: '充值',
+        deliver: '送',
+
+        recharge_title: '充值余额就送,享受更多优惠',
+        recharge_subtitle: '余额可用于购买动、静态套餐及续费',
+        illustrate: '优化价格说明'
     }
 }

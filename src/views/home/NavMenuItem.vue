@@ -19,7 +19,8 @@
                         <div class="flex hover:bg-[#EDFBF7] p-[1rem] justify-between items-center w-auto rounded-[1rem] cursor-pointer" @click="onPage(item1?.path, item1?.name, item1?.type)" v-for="item1 in item.items" v-if="!item.special">
                             <div class="flex items-center">
                                 <img  :src="item1.img" class="w-[1.5rem] h-[1.5rem] "/>
-                                <span class="pl-[0.5rem] cursor-pointer">{{item1.title}}</span>
+                                <span class="pl-[0.5rem] cursor-pointer pr-[0.5rem]">{{item1.title}}</span>
+                                <img  :src="item1.img" class="w-[6rem] h-[1.5rem] bg-[#01AA44] "/>
                             </div>
                             <span class="text-[#5D7404] text-[1rem] pl-[3.375rem]  ">{{ item1.subtitle }}</span>
                         </div>
