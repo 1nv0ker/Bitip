@@ -43,8 +43,8 @@ const routes = [
         }
       },
       {
-        path:'purchasedprocess',
-        name:'purchasedprocess',
+        path:'purchasedflow',
+        name:'purchasedflow',
         component: PurchasedProcess,
         meta: {
           parent:'1'
@@ -77,6 +77,11 @@ const routes = [
       {
         path:'purchasedhistory',
         name:'purchasedhistory',
+        component: PurchasedHistory
+      },
+      {
+        path:'promotionrebate',
+        name:'promotionrebate',
         component: PurchasedHistory
       }
     ]},

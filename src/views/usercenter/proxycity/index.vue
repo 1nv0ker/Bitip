@@ -73,7 +73,8 @@
     </div>
 </template>
 <script setup lang="ts">
-
+    //选择数量1-1000 1 10 100 1000
+    
     import { computed , onMounted, ref } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

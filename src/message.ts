@@ -313,14 +313,15 @@ export const en = {
     },
     backend_menu: {
         menu1:'Dynamic Residence',
-        menu1_sub1:'Proxy Generation - City',
-        menu1_sub2:'Purchase process',
+        menu1_sub1:'Proxy Generation',
+        menu1_sub2:'Purchase Flow',
         menu1_sub3: 'Traffic Management',
         menu2: 'Static Residence',
         menu2_sub1: 'Purchase Agent',
         menu2_sub2:'Purchased Details',
         menu3: 'Purchase history',
-        local:'Local IP',
+        menu4: 'Promotion rebate',
+        local:'Current IP',
         Balance:'Balance',
         recharge:'Recharge',
         welcome:'Welcome',
@@ -354,6 +355,16 @@ export const en = {
         button2: 'Generate API links',
         copy: 'copy',
         switch: 'Switch IP'
+    },
+
+    trafficmanager: {
+        title: 'Account amount',
+        time_placeholder: 'Please select a date',
+        placeholder1: 'Start date',
+        placeholder2:'End date',
+        day:'day',
+        month:'month',
+        year:'year'
     }
 }
 
@@ -672,14 +683,15 @@ export const zh = {
     },
     backend_menu: {
         menu1:'动态住宅',
-        menu1_sub1:'代理生成-城市',
-        menu1_sub2:'购买流程',
+        menu1_sub1:'代理生成',
+        menu1_sub2:'购买流量',
         menu1_sub3: '流量管理',
         menu2: '静态住宅',
         menu2_sub1: '购买代理',
         menu2_sub2:'已购明细',
         menu3: '购买记录',
-        local:'本地IP',
+        menu4: '推广返利',
+        local:'当前IP',
         Balance:'账户余额',
         recharge:'充值',
         welcome:'欢迎你',
@@ -712,5 +724,14 @@ export const zh = {
         button2: '生成API链接',
         copy: '复制',
         switch: '切换IP'
+    },
+    trafficmanager: {
+        title: '账户额度',
+        time_placeholder: '请选择日期',
+        placeholder1: '开始日期',
+        placeholder2:'结束日期',
+        day:'日',
+        month:'月',
+        year:'年'
     }
 }

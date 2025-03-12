@@ -38,7 +38,7 @@
                     title: t('backend_menu.menu1_sub1'),
                 },
                 {
-                    key: 'purchasedprocess',
+                    key: 'purchasedflow',
                     label:t('backend_menu.menu1_sub2'),
                     title: t('backend_menu.menu1_sub2')
                 },
@@ -73,6 +73,12 @@
             // icon: () => '',
             label: t('backend_menu.menu3'),
             title: t('backend_menu.menu3'),
+        },
+        {
+            key: 'promotionrebate',
+            // icon: () => '',
+            label: t('backend_menu.menu4'),
+            title: t('backend_menu.menu4'),
         }
     ])
     const onHome = () => {

@@ -1,7 +1,7 @@
 <template>
     <BasicLayout>
         <ComponentLayout :bg="'#F8CFA2'">
-            <div class="w-full pt-[3.375rem] pb-[6.75rem] z-10">
+            <div class="w-full pt-[3.375rem] pb-[6.75rem] z-10 overflow-hidden">
                 <div class="w-full flex justify-center" v-show="selected!==2">
                     <span class="text-[#702B12] text-[2.625rem] z-10 font-semibold">{{t('setmenu.title')}}</span>
                 </div>

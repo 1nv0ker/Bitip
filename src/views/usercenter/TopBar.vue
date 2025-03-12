@@ -61,7 +61,7 @@
         </div>
         <!-- 用户下拉框 -->
         <div class="fixed w-[21.75rem] h-[24.3125rem] bg-[white] top-[5.875rem] right-[3.5rem] rounded-[1.5rem] border-[1px] border-[#E2E7E4] p-[1.75rem]" 
-        style="box-shadow: 0px 16px 26px 0px rgba(4,27,13,0.06);" v-show="showUser" @mouseenter="showUser=true" @mouseleave="showUser=false">
+        style="box-shadow: 0px 16px 26px 0px rgba(4,27,13,0.06);z-index: 50;" v-show="showUser" @mouseenter="showUser=true" @mouseleave="showUser=false">
             <div class="w-full flex items-center  pb-[1.5rem] border-[#EBEFF8] border-b-[1px]">
                 <div class="w-[4.25rem] h-[4.25rem] bg-[#01AA44] rounded-[3.625rem]">
 
