@@ -52,7 +52,7 @@
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.verifyCode')}}</span>
                 </div>
                 <!-- 密码 -->
-                <div class="flex h-[4rem] mt-[1.5rem] relative">
+                <!-- <div class="flex h-[4rem] mt-[1.5rem] relative">
                     <div :class="`absolute left-[1.5rem] top-[-0.75rem] text-[${errormessage.hasOwnProperty('password')?'#FC4949':'#01AA44'}] text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="passwordFocusStatus">{{t('login.passwordTips')}}</div>
                     <input type="password" :class="`form-control customPassInput ${errormessage.hasOwnProperty('password')?(passwordFocusStatus?'customPassError':''):(passwordFocusStatus?'customPassNormal':'')}`" :placeholder="t('login.passwordPlaceholder')" 
                     @focus="passwordFocusStatus=true" @focusout="passwordFocusStatus=false"
@@ -61,10 +61,14 @@
                 </div>
                 <div v-if="errormessage.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.passwordValidateNew')}}</span>
-                </div>
-
+                </div> -->
+                <PasswordInput :password-attrs="passwordAttrs" 
+                :errormessage="errormessage"
+                v-model="password" 
+                :tips="t('login.passwordTips')" :error-tips="t('login.passwordValidateNew')" 
+                :placeholder="t('login.passwordPlaceholder')" />
                 <!-- 确认密码 -->
-                <div class="flex h-[4rem] mt-[1.5rem] relative">
+                <!-- <div class="flex h-[4rem] mt-[1.5rem] relative">
                     <div :class="`absolute left-[1.5rem] top-[-0.75rem] text-[${errormessage.hasOwnProperty('comfirmPass')?'#FC4949':'#01AA44'}] text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="confirmPassFocusStatus">{{t('login.confirmPassTips')}}</div>
                     <input type="password" :class="`form-control customPassInput ${errormessage.hasOwnProperty('comfirmPass')?(confirmPassFocusStatus?'customPassError':''):(confirmPassFocusStatus?'customPassNormal':'')}`" :placeholder="t('login.confirmPassTips')" 
                     @focus="confirmPassFocusStatus=true" @focusout="confirmPassFocusStatus=false"
@@ -73,8 +77,12 @@
                 </div>
                 <div v-if="errormessage.hasOwnProperty('comfirmPass')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.confirmPassword')}}</span>
-                </div>
-
+                </div> -->
+                <PasswordInput :password-attrs="comfirmPassAttrs" 
+                :errormessage="errormessage"
+                v-model="comfirmPass" 
+                :tips="t('login.confirmPassTips')" :error-tips="t('login.confirmPassword')" 
+                :placeholder="t('login.confirmPassTips')" />
                 <!-- 邮箱 -->
                 <div class="flex h-[4rem] mt-[1.5rem] relative">
                     <div :class="`absolute left-[1.5rem] top-[-0.75rem] text-[${errormessage.hasOwnProperty('email')?'#FC4949':'#01AA44'}] text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="emailFocusStatus">{{t('login.email')}}</div>
@@ -91,7 +99,8 @@
                 <div class="mt-[1.5rem] items-center flex">
                     <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
                     <label class="bitip_font_family text-[#111111] font-normal text-[0.875rem] pl-[0.75rem]" for="flexCheckDefault">
-                        {{t('login.agree')}} <span class="text-[#01AA44] cursor-pointer normal">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] normal cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                        {{t('login.agree')}} 
+                        <Law />
                     </label>
                 </div>
                 
@@ -138,6 +147,7 @@
     import Layout from './Layout.vue';
     import { useForm } from 'vee-validate'
     import {  ref, onMounted, computed, onUnmounted } from 'vue';
+    import PasswordInput from '../../components/PasswordInput.vue';
     import { useI18n } from 'vue-i18n'
     import phoneNumberJson from './phoneNumbers.json'
     import * as bootstrap from 'bootstrap'
@@ -146,12 +156,11 @@
     import { Register, SendSms } from '../../api/login'
     import { ElMessage } from 'element-plus'
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
+    import Law from './Law.vue';
     import userStore from '../../store/user'
     const phoneCode = ref('')
     const focusStatus = ref(false)
     const verityFocusStatus = ref(false)
-    const passwordFocusStatus = ref(false)
-    const confirmPassFocusStatus = ref(false)
     const emailFocusStatus = ref(false)
     const modalRef = ref(null)
     const sendCodeStaus = ref(false)

@@ -65,19 +65,19 @@
                 </div>
                 <div class="flex justify-center items-center mt-[5.125rem]">
                     <div :class="`flex items-center  ${number>0?'show_class':'hidden_class'}`" >
-                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <img src="../../assets/gif/dome.gif" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item1')}}</span>
                     </div>
                     <div :class="`flex items-center pl-[5.3rem]  ${number>1?'show_class':'hidden_class'}`"  >
-                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <img src="../../assets/gif/dome.gif" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item2')}}</span>
                     </div>
                     <div :class="`flex items-center pl-[5.3rem]  ${number>2?'show_class':'hidden_class'}`" >
-                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <img src="../../assets/gif/dome.gif" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item3')}}</span>
                     </div>
                     <div :class="`flex items-center pl-[5.3rem] ${number>3?'show_class':'hidden_class'}`">
-                        <img src="../../assets/dome.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <img src="../../assets/gif/dome.gif" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="text-[#191919] text-[1.12rem] font-medium pl-[0.5rem]">{{t('first.item4')}}</span>
                     </div>
                 </div>

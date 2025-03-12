@@ -21,7 +21,11 @@
             <span class="text-[#FC4949] text-[1.1rem]">{{t('login.phoneValidate')}}</span>
         </div>
         <!-- 密码 -->
-        <div class="flex h-[4rem] mt-[1.5rem] relative">
+         <PasswordInput :errormessage="errormessage" :passwordAttrs="passwordAttrs" v-model="password" 
+         :error-tips="t('login.passwordValidate')"
+         :placeholder="t('login.passwordPlaceholder')" 
+         :tips="t('login.passwordTips')" />
+        <!-- <div class="flex h-[4rem] mt-[1.5rem] relative">
             <div :class="`absolute left-[1.5rem] top-[-0.75rem] 
             text-[${errormessage.hasOwnProperty('password')?'#FC4949':'#01AA44'}] 
             bitip_font_family
@@ -29,12 +33,14 @@
             text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="passwordFocusStatus">{{t('login.passwordTips')}}</div>
             <input type="password" :class="`form-control customPassInput ${errormessage.hasOwnProperty('password')?(passwordFocusStatus?'customPassError':''):(passwordFocusStatus?'customPassNormal':'')}`" :placeholder="t('login.passwordPlaceholder')" 
             @focus="passwordFocusStatus=true" @focusout="passwordFocusStatus=false"
-            v-model="password" v-bind="passwordAttrs">
-            
-        </div>
-        <div v-if="errormessage.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+            v-model="password" v-bind="passwordAttrs" />
+            <div class="h-full flex items-center cursor-pointer absolute right-[2rem]">
+                <img  src=""/>
+            </div>
+        </div> -->
+        <!-- <div v-if="errormessage.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
             <span class="text-[#FC4949] text-[1.1rem] font-normal">{{t('login.passwordValidate')}}</span>
-        </div>
+        </div> -->
         <!-- 验证码 -->
         <div class="mt-[1.5rem] w-[10rem] flex ">
             <AliyunCaptchaComponent @getCaptchaVerifyParam="getCaptchaVerifyParam" :element="'passLogin'" :button="'passLogin_button'" ref="capRef" key="passlogin" :immediate="true" :auto-refresh="false" />
@@ -48,7 +54,7 @@
             <label class="text-[#111111] text-[0.875rem] pl-[0.75rem] bitip_font_family font-normal" for="flexCheckDefault">
                 {{t('login.agree')}} 
             </label>
-            <span class="text-[#01AA44] cursor-pointer font-normal text-[0.875rem]">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] text-[0.875rem] cursor-pointer ">《{{t('login.privacyPolicy')}}》</span>
+            <Law />
         </div>
         
         <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="passLogin_button">
@@ -94,17 +100,18 @@
 </template>
 <script setup lang="ts">
     import { useForm } from 'vee-validate'
+    import PasswordInput from '../../components/PasswordInput.vue';
     import {  ref, onMounted, computed } from 'vue';
     import { useI18n } from 'vue-i18n'
     import phoneNumberJson from './phoneNumbers.json'
     import * as bootstrap from 'bootstrap'
+    import Law from './Law.vue';
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
     import UseUserStore from '../../store/user'
     import { Login } from '../../api/login'
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
     const phoneCode = ref('')
-    const passwordFocusStatus = ref(false)
     const focusStatus = ref(false)
     const modalRef = ref(null)
     const captchaVerifyParam = ref('')

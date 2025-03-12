@@ -10,8 +10,16 @@ import PlanComponent from '../views/plan/index.vue'
 import setmenuComponent from '../views/setmenu/index.vue'
 import usercenterComponent from '../views/usercenter/index.vue'
 import proxycityComponent from '../views/usercenter/proxycity/index.vue'
+import LawServiceComponent from '../views/law/service.vue'
+
+import LawPrivateComponent from '../views/law/private.vue'
+import BasicLayoutVue from '../views/BasicLayout.vue'
 const routes = [
     { path: '/', redirect: '/home' },
+    { path: '/', component:BasicLayoutVue, children:[
+      { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
+      { path: '/privatelaw', component: LawPrivateComponent, name:'privatelaw'},
+    ] },
     { path: '/home', component: HomeComponent},
     { path: '/login', component: LoginComponent },
     { path: '/forgetPassword', component: ForgetPasswordVue},
@@ -27,6 +35,8 @@ const routes = [
         component: proxycityComponent
       }
     ]},
+    // { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
+    
     { path: '/:catchAll(.*)', redirect: '/home'}
 ]
 

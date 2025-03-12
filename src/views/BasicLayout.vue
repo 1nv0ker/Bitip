@@ -24,6 +24,7 @@
         <NavComponent ref="navRef" @onCloseActivity="onCloseActivity"/>
         <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`">
             <slot></slot>
+            <RouterView></RouterView>
         </div>
         <FooterComponent />
     </div>

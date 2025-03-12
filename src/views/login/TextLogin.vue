@@ -51,7 +51,8 @@
         <div class="mt-[1.5rem] items-center flex">
             <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
             <label class=" text-[#111111] text-[0.875rem] pl-[0.75rem] bitip_font_family font-normal" for="flexCheckDefault">
-                {{t('login.agree')}} <span class="text-[#01AA44] cursor-pointer">《{{ t('login.userServiceAgreement') }}》 </span><span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                {{t('login.agree')}} 
+                <Law />
             </label>
         </div>
         
@@ -103,6 +104,7 @@
     import { useRouter } from 'vue-router'
     import UseUserStore from '../../store/user'
     import { ElMessage } from 'element-plus'
+    import Law from './Law.vue';
     const store = UseUserStore()
     const phoneCode = ref('')
     const focusStatus = ref(false)

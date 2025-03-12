@@ -12,7 +12,7 @@
                     @mouseleave="onMouseLeave"
                     style="transition: background-color 0.5s ease-in-out;"
                     v-for="button in buttons" @click="selected=button.key">
-                        <img :src="button.img" :class="selected==button.key?'changeColor-img w-[1.5rem] h-[1.5rem]':'w-[1.5rem] h-[1.5rem]'" v-if="button.key!==1" />
+                        <img :src="button.img" :class="selected==button.key?'changeColor-img w-[1.5rem] h-[1.5rem]':'w-[1.5rem] h-[1.5rem]'" v-if="button.key==2 || button.key==4" />
                         <img :src="button.img" :class="selected==button.key?'w-[1.5rem] h-[1.5rem]':'changeColor-img w-[1.5rem] h-[1.5rem]'" v-else />
                         <img  src="../../assets/button_arrow.png" :class=" `absolute top-0 right-0 left-0 bottom-0 ${selected==button.key?'change_arrow_img':''}`"/>
                         <span class=" text-[1.5rem] pl-[1.25rem] font-medium">{{button.title}}</span>
@@ -76,10 +76,10 @@
     import { useI18n } from 'vue-i18n'
     import ComponentLayout from '../ComponentLayout.vue'
     import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-    import dome1 from '../../assets/dome1.png'
+    import dome1 from '../../assets/gif/1.gif'
     // import dome2 from '../../assets/dome2.png'
     import dome3 from '../../assets/dome3.png'
-    import dome4 from '../../assets/dome4.png'
+    import dome4 from '../../assets/gif/3.gif'
     import dome5 from '../../assets/dome5.png'
     const { t } = useI18n()
     const thirdRef = ref<HTMLElement>()
@@ -167,7 +167,7 @@
     }
     const onMouseLeave = () => {
         interval = setInterval(() => {
-            if (selected.value ===5) {
+            if (selected.value ===4) {
                 selected.value = 0
             }
             selected.value = selected.value + 1

@@ -5,8 +5,10 @@
                 <span class="text-[#191919] text-[1.875rem] font-bold">{{t('seventh.title')}}</span>
             </div>
             <div class="gap-x-[1rem] gap-y-[1rem] grid-cols-4 grid grid-rows-3 pt-[3.75rem]">
-                <div v-for="content in contents" class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[2rem] h-[9.125rem]">
-                    {{content}}
+                <div v-for="content in contents" class="border-[1px] bitip_logo
+                flex justify-center items-center
+                 border-[#EBEFF8] bg-[#FAFAFA] rounded-[2rem] h-[9.125rem] ">
+                    <img :src="content.img" :class="`w-[${content.w}rem] h-[${content.h}rem]`" />
                 </div>
             </div>
         </div>
@@ -27,6 +29,18 @@
     import { useI18n } from 'vue-i18n'
     import { ref, computed } from 'vue'
     import ComponentLayout from '../ComponentLayout.vue'
+    import logo1 from '../../assets/company/1.png'
+    import logo2 from '../../assets/company/2.png'
+    import logo3 from '../../assets/company/3.png'
+    import logo4 from '../../assets/company/4.png'
+    import logo5 from '../../assets/company/5.png'
+    import logo6 from '../../assets/company/6.png'
+    import logo7 from '../../assets/company/7.png'
+    import logo8 from '../../assets/company/8.png'
+    import logo9 from '../../assets/company/9.png'
+    import logo10 from '../../assets/company/10.png'
+    import logo11 from '../../assets/company/11.png'
+    import logo12 from '../../assets/company/12.png'
     const { t } = useI18n()
     const seventhRef = ref(null)
     defineExpose({
@@ -34,24 +48,70 @@
     })
     const contents = computed(() => {
         
-        return new Array(12)
+        return [
+            {
+                img: logo1,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo2,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo3,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo4,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo5,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo6,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo7,
+                w: 3.3,
+                h: 4.125
+            },
+            {
+                img: logo8,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo9,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo10,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo11,
+                w: 17.75,
+                h:4.125
+            },
+            {
+                img: logo12,
+                w: 9.93,
+                h: 2.25
+            }
+        ]
     })
-    // import logo1 from '../../assets/logo/logo1.svg'
-    // import logo2 from '../../assets/logo/logo2.png'
-    // import logo3 from '../../assets/logo/logo3.webp'
-    // import logo4 from '../../assets/logo/logo4.png'
-    // import logo5 from '../../assets/logo/logo5.svg'
-    // import logo6 from '../../assets/logo/logo6.svg'
-    // import logo7 from '../../assets/logo/logo7.png'
-    // import logo8 from '../../assets/logo/logo8.png'
-
-    // import logo9 from '../../assets/logo/logo9.png'
-    // import logo10 from '../../assets/logo/logo10.png'
-    // import logo11 from '../../assets/logo/logo11.svg'
-    // import logo12 from '../../assets/logo/logo12.png'
-    // import logo13 from '../../assets/logo/logo13.png'
-    // import logo14 from '../../assets/logo/logo14.png'
-    // import logo15 from '../../assets/logo/logo15.png'
+    
 
     // const imageLists = ref([
     //     logo1,logo2,logo3,logo4,logo5,logo6,logo7,logo8
@@ -103,3 +163,15 @@
     //     list2Interval && clearInterval(list2Interval)
     // })
 </script>
+<style >
+    .bitip_logo > img {
+        background: transparent;
+        filter: grayscale(100%);
+        opacity: 0.6;
+    }
+    .bitip_logo:hover > img {
+        background: transparent;
+        filter: grayscale(0%);
+        /* opacity: 0.6; */
+    }
+</style>
