@@ -327,6 +327,33 @@ export const en = {
         account: 'Account',
         authentication:'Real-name authentication',
         setting:'Account Settings'
+    },
+    proxycity: {
+        card_title1: 'Total traffic',
+        card_title2:'Total traffic',
+        card_title3: 'Total traffic',
+        describe1: 'describe1',
+        describe2: 'describe2',
+        describe3: 'describe3',
+        card1: 'card1',
+        card2:'card2',
+
+        form1:'Select certified account',
+        form1_placeholder: 'Please select',
+        form2:'Choose country',
+        form2_placeholder: 'Please select',
+        form3: 'Choose region',
+        form3_placeholder:'Please select',
+        form4: 'Choose city',
+        form4_placeholder:'Please select',
+        form5: 'IP time',
+        form5_placeholder: 'Please select',
+        form6: 'Switch IP',
+        form6_placeholder:'Automatically switch IP',
+        button1: 'Generate proxy IP',
+        button2: 'Generate API links',
+        copy: 'copy',
+        switch: 'Switch IP'
     }
 }
 
@@ -659,5 +686,31 @@ export const zh = {
         account:'账户总览',
         authentication:'实名认证',
         setting:'账户设置'
+    },
+    proxycity: {
+        card_title1: '总流量',
+        card_title2:'总流量',
+        card_title3: '总流量',
+        describe1: '描述',
+        describe2: '描述',
+        describe3: '描述',
+        card1: '卡片1',
+        card2:'卡片2',
+        form1:'选择认证账户',
+        form1_placeholder: '请选择',
+        form2:'选择国家',
+        form2_placeholder: '请选择',
+        form3: '选择地区',
+        form3_placeholder:'请选择',
+        form4: '选择城市',
+        form4_placeholder:'请选择',
+        form5: 'IP时效',
+        form5_placeholder: '请选择',
+        form6: '切换IP',
+        form6_placeholder:'自动切换IP',
+        button1: '生成代理IP',
+        button2: '生成API链接',
+        copy: '复制',
+        switch: '切换IP'
     }
 }

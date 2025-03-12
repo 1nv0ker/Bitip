@@ -15,7 +15,7 @@
                 </a-col>
                 <a-col :span="16">
                     <a-form-item :label="t('service.form2_label')" required>
-                        <a-select :placeholder="t('service.form2_placeholder')" style="width:23.4375rem" class="customSelect">
+                        <a-select :placeholder="t('service.form2_placeholder')" style="width:23.4375rem"  class="customSelect h-[3rem]">
                             <a-select-option value="jack">Jack</a-select-option>
                             <a-select-option value="lucy">Lucy</a-select-option>
                             <a-select-option value="Yiminghe">yiminghe</a-select-option>
@@ -64,5 +64,21 @@
             line-height: 100%;
         }
          
+    }
+    
+</style>
+<style lang="less">
+.customSelect  {
+         .ant-select-selector {
+            height: 3rem!important;
+        }
+        .ant-select-selection-item {
+            line-height: 3rem!important;
+        }
+        .ant-select-selection-placeholder {
+            height: 3rem!important;
+            line-height: 3rem!important;
+            color: #999999;
+        }
     }
 </style>

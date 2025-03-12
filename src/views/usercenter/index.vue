@@ -9,7 +9,7 @@
                 <div class="w-full h-[5.25rem] rounded-[1.5rem] bg-[white]"> 
                     <TopBar />
                 </div>
-                <div class="w-full" style="height: calc( 100% - 7rem );">
+                <div class="w-full overflow-y-auto" style="height: calc( 100% - 7rem );">
                     <router-view></router-view>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="w-full h-[5.25rem] rounded-[1.5rem] bg-[white]">
                 <TopBar @onOpenMenu="onOpenMenu"/>
             </div>
-            <div class="w-full" style="height: calc( 100% - 7rem );">
+            <div class="w-full overflow-y-auto" style="height: calc( 100% - 7rem );">
                 <router-view></router-view>
             </div>
         </div>

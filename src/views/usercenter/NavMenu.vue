@@ -7,65 +7,70 @@
       mode="inline"
       class="bitip_menu"
        v-model:selectedKeys="selectedKeys"
+       :open-keys="openKeys"
+       
       :items="items"
+      @click="onMenuClick"
     >
 
         </a-menu>
     </div>
 </template>
 <script setup lang="ts">
-    import { useRouter} from 'vue-router'
-    import { reactive, ref } from 'vue'
+    import { useRouter, useRoute } from 'vue-router'
+    import { reactive, ref, onMounted } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const router = useRouter()
-    const selectedKeys = ref([])
+    const route = useRoute()
+    const selectedKeys = ref<string[]|number[]>([])
+    const openKeys = ref<string[]|number[]>(['2'])
     const items = reactive([
         {
-            key: 1,
-            icon: () => '',
+            key: '1',
+            // icon: () => '',
             label: t('backend_menu.menu1'),
             title: t('backend_menu.menu1'),
             children:[
                 {
-                    key: 2,
+                    key: 'proxycity',
                     label:t('backend_menu.menu1_sub1'),
-                    title: t('backend_menu.menu1_sub1')
+                    title: t('backend_menu.menu1_sub1'),
                 },
                 {
-                    key: 3,
+                    key: 'purchasedprocess',
                     label:t('backend_menu.menu1_sub2'),
                     title: t('backend_menu.menu1_sub2')
                 },
                 {
-                    key: 4,
+                    key: 'trafficmanager',
                     label:t('backend_menu.menu1_sub3'),
                     title: t('backend_menu.menu1_sub3')
                 }
             ]
         },
         {
-            key: 5,
-            icon: () => '',
+            key: '2',
+            // icon: () => '',
             label: t('backend_menu.menu2'),
             title: t('backend_menu.menu2'),
             children:[
                 {
-                    key: 6,
+                    key: 'purchased',
                     label:t('backend_menu.menu2_sub1'),
                     title: t('backend_menu.menu2_sub1'),
 
                 },
                 {
-                    key: 7,
+                    key: 'purchaseddetail',
                     label:t('backend_menu.menu2_sub2'),
                     title: t('backend_menu.menu2_sub2')
                 }
             ]
         },
         {
-            key: 8,
-            icon: () => '',
+            key: 'purchasedhistory',
+            // icon: () => '',
             label: t('backend_menu.menu3'),
             title: t('backend_menu.menu3'),
         }
@@ -73,6 +78,19 @@
     const onHome = () => {
         router.push('/home')
     }
+    const onMenuClick = (props:any) => {
+        router.push({name:props.key})
+    }
+    onMounted(() => {
+        const name = route.name as string
+        selectedKeys.value = [name]
+        openKeys.value = [name]
+        const meta = route.meta
+        const parent = meta.parent as string || ''
+        openKeys.value = [parent]
+        // console.log('route', route)
+
+    })
 </script>
 <style lang="less">
 .bitip_menu {

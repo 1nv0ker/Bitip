@@ -14,6 +14,11 @@ import LawServiceComponent from '../views/law/service.vue'
 
 import LawPrivateComponent from '../views/law/private.vue'
 import BasicLayoutVue from '../views/BasicLayout.vue'
+import PurchasedProcess from '../views/usercenter/purchaseprocess/index.vue'
+import TrafficManager from '../views/usercenter/trafficmanager/index.vue'
+import Purchased from '../views/usercenter/buy/index.vue'
+import PurchasedDetail from '../views/usercenter/purchaseddetail/index.vue'
+import PurchasedHistory from '../views/usercenter/purchasehistory/index.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:BasicLayoutVue, children:[
@@ -31,8 +36,48 @@ const routes = [
     { path: '/usercenter', component: usercenterComponent, name:'usercenter', children:[
       {
         path:'proxycity',
-        name:'proxyCity',
-        component: proxycityComponent
+        name:'proxycity',
+        component: proxycityComponent,
+        meta: {
+          parent:'1'
+        }
+      },
+      {
+        path:'purchasedprocess',
+        name:'purchasedprocess',
+        component: PurchasedProcess,
+        meta: {
+          parent:'1'
+        }
+      },
+      {
+        path:'trafficmanager',
+        name:'trafficmanager',
+        component: TrafficManager,
+        meta: {
+          parent:'1'
+        }
+      },
+      {
+        path:'purchased',
+        name:'purchased',
+        component: Purchased,
+        meta: {
+          parent:'2'
+        }
+      },
+      {
+        path:'purchaseddetail',
+        name:'purchaseddetail',
+        component: PurchasedDetail,
+        meta: {
+          parent:'2'
+        }
+      },
+      {
+        path:'purchasedhistory',
+        name:'purchasedhistory',
+        component: PurchasedHistory
       }
     ]},
     // { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},

@@ -28,7 +28,7 @@
                     <div v-for="content in contents" class="flex flex-col z-10 justify-center">
                         <img :src="content.img" class="w-[4rem] h-[4rem]" />
                         <span class="pt-[1.5rem] text-[#191919] text-[1.75rem] font-bold">{{content.title}}</span>
-                        <span class="pt-[1rem] text-[#666666] text-[1rem]">{{ content.content }}</span>
+                        <span class="pt-[1rem] text-[#666666] text-[1rem] text-wrap">{{ content.content }}</span>
                     </div>
                 </div>
             </div>
