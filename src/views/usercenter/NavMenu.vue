@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
     import { useRouter, useRoute } from 'vue-router'
-    import { reactive, ref, onMounted } from 'vue'
+    import { reactive, ref, onMounted, watch } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const router = useRouter()
@@ -81,6 +81,15 @@
             title: t('backend_menu.menu4'),
         }
     ])
+    watch(route, () => {
+        const name = route.name as string
+        selectedKeys.value = [name]
+        openKeys.value = [name]
+        const meta = route.meta
+        const parent = meta.parent as string || ''
+        openKeys.value = [parent]
+        // console.log('route', 123)
+    })
     const onHome = () => {
         router.push('/home')
     }
@@ -94,7 +103,7 @@
         const meta = route.meta
         const parent = meta.parent as string || ''
         openKeys.value = [parent]
-        // console.log('route', route)
+        // console.log('route', selectedKeys.value, openKeys.value)
 
     })
 </script>

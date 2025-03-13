@@ -217,15 +217,19 @@ input:-moz-placeholder { /* Firefox 18- */
 }
 span {
   font-family: "Alibaba Sans";
-  white-space: nowrap;      /* 禁止换行 */
-  overflow: hidden;        /* 隐藏溢出内容 */
-  text-overflow: ellipsis;  /* 显示省略号 */
-  display: inline-block; 
-  /* 可选增强属性 */
-  vertical-align: middle;   /* 垂直对齐调整 */
-  line-height: 1.5;         /* 行高控制 */
-  direction: ltr;           /* 文字方向控制 */
+           /* 文字方向控制 */
 }
+/*
+span {
+  white-space: nowrap; 
+  overflow: hidden;        
+  text-overflow: ellipsis; 
+  display: inline-block; 
+  vertical-align: middle;   
+  line-height: 1.5;         
+  direction: ltr;  
+}
+*/
 
 .ellipsis-single {
   overflow: hidden;      /* 隐藏溢出内容 */

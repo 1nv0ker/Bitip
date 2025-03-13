@@ -6,7 +6,7 @@
                     <span class="text-[#702B12] text-[1rem] font-bold">{{t('setmenu.location')}}</span>
                 </div>
             </div>
-            <div class="w-full h-[18rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
+            <div class="w-full h-[16.6875rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
                 <div v-for="city in citys" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] flex items-center pl-[1rem] cursor-pointer bg-[white]
                  ${selectedCitys.findIndex(item=>item.key==city.key)>-1?'selected_city':''}`" @click="onSelect(city)">
                     <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">

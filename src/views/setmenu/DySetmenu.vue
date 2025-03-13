@@ -35,7 +35,7 @@
             @mouseenter="selected=card.key">
                 <div class="w-full flex flex-col">
                     <span class="text-[#191919] text-[1.5rem] font-bold title">{{card.title}}</span>
-                    <div class="w-full flex justify-between items-baseline">
+                    <div class="flex justify-between items-baseline">
                         <span class="text-[3rem] text-[#191919] font-bold price1_value">{{card.value}}G</span>
                         <span class="text-[#191919] text-[1.5rem] font-bold price1">￥{{card.price}}</span>
                     </div>

@@ -8,7 +8,7 @@
                 <div v-for="content in contents" class="border-[1px] bitip_logo
                 flex justify-center items-center
                  border-[#EBEFF8] bg-[#FAFAFA] rounded-[2rem] h-[9.125rem] ">
-                    <img :src="content.img" :class="`w-[${content.w}rem] h-[${content.h}rem]`" />
+                    <img :src="content.img" :style="`width:${content.w}rem;height:${content.h}rem`"/>
                 </div>
             </div>
         </div>

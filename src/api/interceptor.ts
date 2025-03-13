@@ -18,7 +18,9 @@ axios.interceptors.request.use(function (config) {
     return config;
   }, function (error) {
     // 对请求错误做些什么
+    console.log([error])
     ElMessage.error('server error')
+    
     return Promise.reject(error);
 });
 
@@ -34,7 +36,15 @@ axios.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
     // 对响应错误做点什么
-    ElMessage.error('server error')
+    console.log([error])
+    if (error.status == 401) {
+      ElMessage.error(error.message)
+      //重置token和userinfo
+    } else {
+      ElMessage.error(error.message)
+    }
+    
+    
     return Promise.reject(error);
 });
 

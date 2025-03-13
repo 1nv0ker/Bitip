@@ -28,7 +28,7 @@
     import menu2 from '../../assets/menu1_2.png'
     import menu3 from '../../assets/menu1_3.png'
     import menu4 from '../../assets/menu1_4.png'
-    import menu5 from '../../assets/menu1_5.png'
+    // import menu5 from '../../assets/menu1_5.png'
     const { t } = useI18n()
     const packageItems = computed(() => {
         return [
@@ -79,12 +79,6 @@
                         img: menu4,
                         // path:'/setMeal',
 
-                    },
-                    {
-                        // title: t('navMenu.package_subtitle2'),
-                        img: menu5,
-                        // path:'/setMeal',
-                       
                     }
                 ]
             }

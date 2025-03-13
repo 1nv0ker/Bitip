@@ -92,93 +92,131 @@
     const createLine = (point1:any, point2:any, projection:any, svg:any, type:string='') => {
         const point1Pos = projection(point1.coordinates) as any;
         const point2Pos = projection(point2.coordinates) as any;
-       
-        const controlPoint = [
-            (point1Pos[0] + point2Pos[0]) / 2 + 50, // 水平偏移量
-            (point1Pos[1] + point2Pos[1]) / 2 - 30  // 垂直偏移量
-        ];
+        // console.log('point1Pos', point1Pos, point2Pos)
+        // const controlPoints = [
+        //     (point1Pos[0] + point2Pos[0]) / 2 + 50, // 水平偏移量
+        //     (point1Pos[1] + point2Pos[1]) / 2 - 30  // 垂直偏移量
+        // ];
+        console.log(point1)
+        const controlPoints = {
+            c1: { x: (point1Pos[0] + point2Pos[0])/2, y: 50 },  // 上方控制点
+            // c2: { x: (point1Pos[0] + point2Pos[1])/2, y: 50 }   // 三次贝塞尔需要两个控制点
+        };
+        // 生成三次贝塞尔曲线路径
         const lineGenerator = d3.line()
-            .curve(d3.curveBasis) // 或自定义贝塞尔插值
-            .x(d => d[0])
-            .y(d => d[1]);
+        .curve(d3.curveBasis)  // 使用Basis曲线
+        .x((d:any) => d.x)
+        .y((d:any) => d.y);
+        // const lineGenerator = d3.line()
+        //     .curve(d3.curveBasis) // 或自定义贝塞尔插值
+        //     .x(d => d[0])
+        //     .y(d => d[1]);
         // console.log(point1, point2)
-        const path:any = lineGenerator([point1Pos, controlPoint, point2Pos]);
- 
+        // const pathData:any = lineGenerator([point1Pos, controlPoints, point2Pos]);
+        const pathData = lineGenerator([
+            {x:point1Pos[0],y:point1Pos[1]} as any ,
+            controlPoints.c1,
+            // controlPoints.c2,
+            {x:point2Pos[0],y:point2Pos[1]}
+        ]);
 
         // const totalLength = path.getTotalLength();
         // const totalLength = path.getTotalLength();
         // const points = Array.from({length: totalLength}, (_, i) => 
         //     path.getPointAtLength(i)
         // );
-        
+        // console.log('pathData', pathData, controlPoints)
         const path2 = svg.append("path")
-                    .datum(path)
-                    .attr("d", (d:any) => d)
-                    .attr("stroke", "url(#bezierGradient)")
-                    .attr("stroke-width", '4px')
-                    .attr("fill", "none").node()
+        .attr("d", pathData)
+        .attr("fill", "none")
+        .attr("stroke", "url(#bezierGradient)")
+        .attr("stroke-width", 2);
+        // const path2 = svg.append("path")
+        //             .datum(path)
+        //             .attr("d", (d:any) => d)
+        //             .attr("stroke", "url(#bezierGradient)")
+        //             .attr("stroke-width", '4px')
+        //             .attr("fill", "none").node()
         // return pathData
         // dotLinearGradient()
-
+        // const totalLength = path2.node().getTotalLength();
         // const svg = d3.select("svg");
          // 定义线性渐变
-        const gradient = svg.append("defs")
-            .append("linearGradient")
-            .attr("id", "dot-linearGradient")
-            .attr("x1", "0%").attr("y1", "0%")
-            .attr("x2", "100%").attr("y2", "0%"); // 水平渐变
-        // 添加颜色停止点
-        gradient.append("stop")
-            .attr("offset", "0%")
-            .style("stop-color", "rgba(247,255,190)");
+        // const gradient = svg.append("defs")
+        //     .append("linearGradient")
+        //     .attr("id", "dot-linearGradient")
+        //     .attr("x1", "0%").attr("y1", "0%")
+        //     .attr("x2", "100%").attr("y2", "0%"); // 水平渐变
+        // // 添加颜色停止点
+        // gradient.append("stop")
+        //     .attr("offset", "0%")
+        //     .style("stop-color", "rgba(247,255,190)");
 
-        gradient.append("stop")
-            .attr("offset", "100%")
-            .style("stop-color", "rgba(247,255,190)");
-        const dot = svg.append("circle")
-        .attr("r", 3)
+        // gradient.append("stop")
+        //     .attr("offset", "100%")
+        //     .style("stop-color", "rgba(247,255,190)");
+        // const dot = svg.append("circle")
+        // .attr("r", 3)
         
-        .style("fill", "url(#dot-linearGradient)");
+        // .style("fill", "url(#dot-linearGradient)");
 
         // const movingLine = svg.append("line")
         // .attr("stroke", "red")
         // .attr("stroke-width", 4)
         // .attr("fill", "steelblue")
         // 4. 获取路径点序列
-        const totalLength = path2.getTotalLength();
-        const points = Array.from({length: totalLength}, (_, i) => 
-            path2.getPointAtLength(i)
-        );
-
-        let startTime:any;
-        let lastCycle = 0; // 记录上一次的周期索引
-        let boxStatus = false
-        function animate(timestamp:any) {
-            if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
-            const t = (progress % 5000) / 5000; // 5秒循环
-            
-            const posIndex = Math.floor(t * points.length);
-            const {x, y} = points[posIndex];
-            const currentCycle = Math.floor(progress / 5000); // 当前循环次数
-
-            // 检测是否进入新周期
-            if ((currentCycle > lastCycle) && !boxStatus && type) {
-                lastCycle = currentCycle;
-                boxStatus = true
-                dotEndBox(dot, svg)
+        const totalLength = path2.node().getTotalLength();
+        // console.log('totalLength', totalLength, path2)
+        path2
+        .attr("stroke-dasharray", totalLength)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+        .duration(5000)
+        .ease(d3.easeCubicInOut)
+        .attr("stroke-dashoffset", 0)
+        .on("end", function() {
+            // 动画完成回调
+            if (type) {
+                dotEndBox(point2Pos, svg)
             }
-            dot.attr("transform", `translate(${x},${y})`)
+
+        });
+        // 创建流动光点
             
-            requestAnimationFrame(animate);
-        }
-        requestAnimationFrame(animate);
+            
+        // const points = Array.from({length: totalLength}, (_, i) => 
+        //     path2.getPointAtLength(i)
+        // );
+
+        // let startTime:any;
+        // let lastCycle = 0; // 记录上一次的周期索引
+        // let boxStatus = false
+        // function animate(timestamp:any) {
+        //     if (!startTime) startTime = timestamp;
+        //     const progress = timestamp - startTime;
+        //     const t = (progress % 5000) / 5000; // 5秒循环
+            
+        //     const posIndex = Math.floor(t * points.length);
+        //     const {x, y} = points[posIndex];
+        //     const currentCycle = Math.floor(progress / 5000); // 当前循环次数
+
+        //     // 检测是否进入新周期
+        //     if ((currentCycle > lastCycle) && !boxStatus && type) {
+        //         lastCycle = currentCycle;
+        //         boxStatus = true
+        //         dotEndBox(dot, svg)
+        //     }
+        //     dot.attr("transform", `translate(${x},${y})`)
+            
+        //     requestAnimationFrame(animate);
+        // }
+        // requestAnimationFrame(animate);
     }
     //添加ipbox
-    const dotEndBox = (dot:any, svg:any) => {
+    const dotEndBox = (point2Pos:any, svg:any) => {
         // const svg = d3.select("svg");
-        const currentPos = d3.select(dot.node()).attr("transform");
-        const matrix = currentPos.replace(/[^0-9.,]/g, "").split(",");
+        // const currentPos = d3.select(dot.node()).attr("transform");
+        const matrix = point2Pos;
         const LINE_CONFIG = {
             height: 5,     // 虚线长度
             color: "#000000", 
@@ -235,10 +273,6 @@
         .style("font-family", "Alibaba Sans")
         .style("fill", "#FFFFFF")
         .text(BOX_CONFIG.text);
-        // .text(BOX_CONFIG.text + ` (第${cycleCount}次循环)`);
-
-  // 添加箭头
-//   line.attr("marker-end", "url(#arrow-head)");
     }
     onMounted(() => {
         const rootElement = document.documentElement;

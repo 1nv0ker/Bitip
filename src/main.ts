@@ -10,6 +10,7 @@ import './api/interceptor'
 import pinia from './store'
 import { configure } from 'vee-validate'
 import 'ant-design-vue/dist/reset.css';
+import './echarts'
 
 configure({
   validateOnBlur: false, // 关闭全局 blur 事件验证

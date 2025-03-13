@@ -74,7 +74,7 @@
             <div class="flex w-full gap-[0.5rem] flex-col mt-[1.25rem] border-[#EBEFF8] border-b-[1px] pb-[1.5rem]">
                 <div class="flex w-full text-[1rem] justify-between">
                     <span class=" font-semibold text-[#191919]">{{ t('backend_menu.account') }}</span>
-                    <span class=" font-medium text-[#01AA44] cursor-pointer">{{ t('backend_menu.recharge') }}</span>
+                    <span class=" font-medium text-[#01AA44] cursor-pointer" @click="router.push({name:'recharge'})">{{ t('backend_menu.recharge') }}</span>
                 </div>
                 <div class="flex w-full text-[1rem]">
                     <span class="  text-[#191919]">{{ t('backend_menu.Balance') }}</span>
@@ -86,7 +86,7 @@
                     <span class="  text-[#191919]">{{ t('backend_menu.authentication') }}</span>
                     <RightOutlined class="text-[#191919] cursor-pointer" />
                 </div>
-                <div class="flex w-full text-[1rem] justify-between items-center">
+                <div class="flex w-full text-[1rem] justify-between items-center cursor-pointer" @click="router.push({name:'trafficmanager'})">
                     <span class="  text-[#191919]">{{ t('backend_menu.setting') }}</span>
                     <RightOutlined class="text-[#191919] cursor-pointer" />
                 </div>
@@ -103,12 +103,14 @@
     import { ref, onMounted } from 'vue'
     import useI18nStore from '../../store/i18n'
     import { RightOutlined } from '@ant-design/icons-vue';
+    import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const i18n = useI18n()
     const store = useI18nStore()
     const emit = defineEmits(['onOpenMenu'])
     const lan = ref()
+    const router = useRouter()
     const showUser = ref(false)
     const onOpenMenu = () => {
         emit('onOpenMenu')
