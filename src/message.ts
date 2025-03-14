@@ -321,6 +321,7 @@ export const en = {
         menu2_sub2:'Purchased Details',
         menu3: 'Purchase history',
         menu4: 'Promotion rebate',
+        menu5:'User Auth',
         local:'Current IP',
         Balance:'Balance',
         recharge:'Recharge',
@@ -448,6 +449,17 @@ export const en = {
         pay1:'WeChat Pay',
         pay2:'Alipay',
         pay3:'Other Pay'
+    },
+    userauth: {
+        title: 'User Auth',
+        form1:'Name',
+        form2:'ID Num',
+        form3:'Upload ID Num',
+        button:'Confirm submission',
+        tip_title:'Kind tips',
+        tip1:'User authentication does not require waiting for review results',
+        tip2:'Real-name information is user privacy information,',
+        tip3:'No user information is published or disclosed.'
     }
 }
 
@@ -774,6 +786,7 @@ export const zh = {
         menu2_sub2:'已购明细',
         menu3: '购买记录',
         menu4: '推广返利',
+        menu5:'实名认证',
         local:'当前IP',
         Balance:'账户余额',
         recharge:'充值',
@@ -899,5 +912,16 @@ export const zh = {
         pay1:'微信支付',
         pay2:'支付宝支付',
         pay3:'其他支付'
+    },
+    userauth: {
+        title: '实名认证',
+        form1:'姓名',
+        form2:'身份证证件号',
+        form3:'上传证明身份证号',
+        button:'确认提交',
+        tip_title:'温馨提示',
+        tip1:'实名认证无需等待审核结果',
+        tip2:'2、实名信息属用户隐私信息, ',
+        tip3:'不公开或透露用户信息。'
     }
 }

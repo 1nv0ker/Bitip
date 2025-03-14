@@ -79,6 +79,12 @@
             // icon: () => '',
             label: t('backend_menu.menu4'),
             title: t('backend_menu.menu4'),
+        },
+        {
+            key: 'userauth',
+            // icon: () => '',
+            label: t('backend_menu.menu5'),
+            title: t('backend_menu.menu5'),
         }
     ])
     watch(route, () => {
