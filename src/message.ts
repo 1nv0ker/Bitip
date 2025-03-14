@@ -437,6 +437,17 @@ export const en = {
         tip1:'Once the funds are withdrawn to the account balance, they cannot be withdrawn for cash but can be used to purchase packages.',
         tip2:'Contact customer service to withdraw cash after the balance reaches 100 yuan.',
         tip2_title:'Contact Customer Service'
+    },
+    recharge: {
+        title: 'Recharge Center',
+        form1: 'Current available balance',
+        form2:'Recharge order number',
+        form3: 'Recharge amount',
+        form4:'Payment Methods',
+        button:'Confirm payment',
+        pay1:'WeChat Pay',
+        pay2:'Alipay',
+        pay3:'Other Pay'
     }
 }
 
@@ -877,5 +888,16 @@ export const zh = {
         tip1:'提取至账户余额后不可提现，可用于购买套餐使用。',
         tip2:'满100元后联系客服提现。',
         tip2_title:'联系客服'
+    },
+    recharge: {
+        title: '充值中心',
+        form1: '当前可用余额',
+        form2:'充值订单号',
+        form3: '充值金额',
+        form4:'支付方式',
+        button:'确认支付',
+        pay1:'微信支付',
+        pay2:'支付宝支付',
+        pay3:'其他支付'
     }
 }

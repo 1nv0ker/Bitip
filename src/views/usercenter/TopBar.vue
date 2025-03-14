@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="flex w-full gap-[0.5rem] flex-col mt-[1.25rem]">
-                <div class="flex w-full text-[1rem] justify-between items-center">
+                <div class="flex w-full text-[1rem] justify-between items-center" @click="router.push({name:'userauth'})">
                     <span class="  text-[#191919]">{{ t('backend_menu.authentication') }}</span>
                     <RightOutlined class="text-[#191919] cursor-pointer" />
                 </div>
