@@ -2,20 +2,29 @@
     <div class="w-full animate__fadeIn animate__animated flex gap-[1rem] justify-between">
         <div class=" flex-[4] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1.25rem] pr-[1.25rem]">
             <div class="w-full h-[3.375rem] border-b-[1px] border-[#EBEFF8] flex">
-                <div class="h-full pl-[1rem] pr-[1rem] border-b-[1px] border-[#702B12] flex justify-start items-center w-auto">
+                <div :class="`h-full pl-[1rem] pr-[1rem] border-b-[1px] flex justify-start items-center w-auto cursor-pointer ${selectType==0?'border-[#702B12] ':' '}`" @click="selectType=0">
                     <span class="text-[#702B12] text-[1rem] font-bold">{{t('setmenu.location')}}</span>
+                </div>
+                <div :class="`${selectType==1?'border-[#702B12] ':' '} cursor-pointer h-full pl-[1rem] pr-[1rem] border-b-[1px] flex justify-start items-center w-auto ml-[0.5rem]`" @click="selectType=1">
+                    <span class="text-[#702B12] text-[1rem] font-bold">{{t('setmenu.location2')}}</span>
                 </div>
             </div>
             <div class="w-full h-[16.6875rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
-                <div v-for="city in citys" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] flex items-center pl-[1rem] cursor-pointer bg-[white]
+                <div v-for="city in (selectType==0?citys:citys_type2)" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center pl-[1rem] cursor-pointer bg-[white]
                  ${selectedCitys.findIndex(item=>item.key==city.key)>-1?'selected_city':''}`" @click="onSelect(city)">
-                    <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">
-                        <div class="w-[0.5rem] h-[0.5rem] bg-[white] rounded-[50%]">
+                    <div class="flex items-center">
+                        <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">
+                            <div class="w-[0.5rem] h-[0.5rem] bg-[white] rounded-[50%]">
 
+                            </div>
+                            
                         </div>
-                    </div>
-                    <div class="pl-[0.75rem]">
-                        <span class="text-[0.9rem]">{{city.name}}</span>
+                        <div class="pl-[0.75rem] w-[14rem]">
+                                <span class="text-[0.9rem] w-[14rem] bitip_text" :title="city.name">{{city.name}}</span>
+                            </div>
+                        </div>
+                    <div class="flex justify-between pr-[0.5rem]">
+                        <img :src="city.img" class="w-[1.5rem] h-[1.5rem]" />
                     </div>
                 </div>
             </div>
@@ -51,9 +60,9 @@
         <div class="flex-[1] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1.25rem] pr-[1.25rem]">
             <div class="w-full pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem]">
                 <div class="w-full border-b-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center" v-for="staff in buyNumbers">
-                    <div class="text-[#191919] text-[0.9rem] flex items-center">
-                        <span>{{staff.name}}</span>
-                        <span class="pl-[2.5rem]">￥{{selected_time?.price}}/{{t('setmenu.number')}}</span>
+                    <div class="text-[#191919] text-[0.9rem] flex flex-col ">
+                        <span>{{staff.name}} ({{staff.type==0?t('setmenu.type1'):t('setmenu.type2')}})</span>
+                        <span class=" font-bold">￥{{selected_time?.price}}/{{t('setmenu.number')}}</span>
                     </div>
                     <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem] border-[1px] border-[#F5F7FB] flex justify-evenly items-center">
                         <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onRemove(staff.key, staff.number)">-</span>
@@ -91,11 +100,15 @@
     import { ref, onMounted, computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const images = import.meta.glob('../../assets/nations/*.png')
     interface region_type {
         name:string,
         price:number,
         id?:string,
-        key:number
+        key:number | string,
+        title?:string,
+        type?:string | number,
+        img?:any
     }
     interface time_type {
         name:string,
@@ -104,12 +117,16 @@
         discount:number
     }
     interface buying_type {
-        key:number,
+        key:number|string,
         number:number,
-        name:string
+        name:string,
+        title?:string,
+        type?:string |number
     }
     const citys = ref<region_type[]>([])
+    const citys_type2 = ref<region_type[]>([])
     const buyNumbers = ref<buying_type[]>([])
+    const selectType = ref(0)
     const timeSelect = computed(():time_type[]=> {
         return [
             {
@@ -146,16 +163,82 @@
     })
     const selectedCitys = ref<region_type[]>([])
     const selected_time = ref<region_type>()
-    onMounted(() => {
-        citys.value = Array.from({length: 20}).map((_, index)=>{
-            return {
-                name: '新加坡',
+    onMounted(async () => {
+        citys.value = [
+            {
+                name: '美国-德克萨斯',
                 price: 80,
-                key:index+1
+                key: '1_0',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: '美国-弗吉尼亚州',
+                price: 80,
+                key: '2_0',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: '美国-新泽西州',
+                price: 80,
+                key: '3_0',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: '美国-加利福尼亚州',
+                price: 80,
+                key: '4_0',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: '英国-伦敦',
+                price: 80,
+                key: '5_0',
+                type: 0,
+                img: await getImage('uk')
+            },
+            {
+                name: '德国-黑森州',
+                price: 80,
+                key: '6_0',
+                type: 0,
+                img: await getImage('ger')
             }
-        })
+        ]
+        citys_type2.value = [
+        {
+                name: '美国-德克萨斯',
+                price: 80,
+                key: '1_1',
+                type: 1,
+                img: await getImage('us')
+            },
+            {
+                name: '美国-纽约州',
+                price: 80,
+                key: '2_1',
+                type: 1,
+                img: await getImage('us')
+            },
+            {
+                name: '英国伦敦',
+                price: 80,
+                key: '3_1',
+                type: 1,
+                img: await getImage('uk')
+            }
+        ]
         selected_time.value = timeSelect.value[0]
     })
+    // 获取具体图片路径
+    const getImage = async (name:string) => {
+        // console.log(images)
+        const module:any = await images[`../../assets/nations/${name}.png`]();
+        return module.default;
+    };
     const onSelectTime = (time:region_type) => {
         selected_time.value = time
     }
@@ -169,12 +252,13 @@
             buyNumbers.value.push({
                 number: 1,
                 key: city.key,
-                name:city.name
+                name:city.name,
+                type:city.type
             })
             selectedCitys.value.push(city)
         }
     }
-    const onRemove = (key:number, number:number) => {
+    const onRemove = (key:number|string, number:number) => {
         const index = buyNumbers.value.findIndex(item=>item.key==key)
         if (number==1) {
             index>-1 && buyNumbers.value.splice(index, 1)
@@ -189,7 +273,7 @@
             }
         }
     }
-    const onAdd = (key:number) => {
+    const onAdd = (key:number|string) => {
         const index = buyNumbers.value.findIndex(item=>item.key==key)
         if (buyNumbers.value[index]) {
             const newItem = Object.assign({}, buyNumbers.value[index], {
@@ -205,8 +289,10 @@
 </script>
 <style lang="less" scoped>
     .all_citys {
+        align-content: flex-start;
         &>div {
             flex: 0 0 calc(25% - 0.75rem * 3/4);
+            // height: 3.125rem;
             /* 可选样式 */
             min-width: 0;     /* 防止内容溢出 */
         }

@@ -40,7 +40,8 @@ export const en = {
         captchaVerifyTitps: 'Please slide the verification code',
         sendSms:'Sent, please check',
         exit:'Log out',
-        Backstage: 'Enter Backend'
+        Backstage: 'Enter Backend',
+        registerTip:'Get 200M'
     },
     first: {
         title:' Global Residential Proxy',
@@ -274,7 +275,7 @@ export const en = {
         content3: 'Unlimited concurrency',
         content4: 'Variable time limit',
         content5: 'Accurate city positioning',
-
+        content6:' Sub-account traffic allocation',
         bottom_title: 'Frequently asked questions',
         question1:'What is the difference between product packages and using agents for credit recharge?',
         answer1: '',
@@ -289,7 +290,10 @@ export const en = {
         question6:'What is the difference between product packages and using agents for credit recharge?',
         answer6: '',
 
-        location:'Recommended Regions',
+        location:'Native Residential IP',
+        location2:'Residential Single ISP',
+        type1:'Single ISP',
+        type2:'Dual ISP',
         timeSelect:'Time selection',
         time1:'1 month',
         time2:'2 months',
@@ -328,16 +332,19 @@ export const en = {
         welcome:'Welcome',
         account: 'Account',
         authentication:'Real-name authentication',
-        setting:'Account Settings'
+        setting:'Account Settings',
+        tip:'(All products only support network environments outside mainland China)'
     },
     proxycity: {
-        card_title1: 'Total traffic',
-        card_title2:'Total traffic',
-        card_title3: 'Total traffic',
+        card_title1: 'Remain flow',
+        card_title2:'Total flow',
+        card_title3: 'Used flow',
+        card_button:'Purchase flow',
+        card_button_title:'Add sub-account',
         describe1: 'describe1',
         describe2: 'describe2',
         describe3: 'describe3',
-        card1: 'card1',
+        card1: 'Dynamic residential proxy generation',
         card2:'card2',
 
         form1:'Select certified account',
@@ -366,6 +373,7 @@ export const en = {
         day:'day',
         month:'month',
         year:'year',
+        title2:'Account Management',
         add_account:'Add sub-account',
         name:'Account name',
         limit: 'Traffic Limit',
@@ -460,6 +468,15 @@ export const en = {
         tip1:'User authentication does not require waiting for review results',
         tip2:'Real-name information is user privacy information,',
         tip3:'No user information is published or disclosed.'
+    },
+    sub: {
+        title: 'Add sub-account',
+        form1: 'Enable',
+        form2:'Account Name',
+        form3:'Password',
+        button:'Confirm',
+        placeholder1:'Please select',
+        placeholder2:'Please enter'
     }
 }
 
@@ -505,7 +522,8 @@ export const zh = {
         captchaVerifyTitps: '请滑动验证码',
         sendSms:'已发送,请查收',
         exit:'退出登录',
-        Backstage:'进入后台'
+        Backstage:'进入后台',
+        registerTip:'送200M'
     },
     first: {
         title:'全球住宅代理',
@@ -740,6 +758,7 @@ export const zh = {
         content3: '无限并发',
         content4: '可变时效',
         content5: '精准城市定位',
+        content6:'子账号流量分配',
         bottom_title: '常见问题',
         question1:'产品套餐和额度充值使用代理有什么区别？',
         answer1: '',
@@ -754,7 +773,10 @@ export const zh = {
         question6:'产品套餐和额度充值使用代理有什么区别？',
         answer6: '',
 
-        location:'推荐地区',
+        location:'原生住宅IP',
+        location2:'住宅单ISP',
+        type1:'单ISP',
+        type2:'双ISP',
         timeSelect:'时间选择',
         time1:'1个月',
         time2:'2个月',
@@ -793,16 +815,19 @@ export const zh = {
         welcome:'欢迎你',
         account:'账户总览',
         authentication:'实名认证',
-        setting:'账户设置'
+        setting:'账户设置',
+        tip:'（所有产品仅支持大陆以外网络环境使用）'
     },
     proxycity: {
-        card_title1: '总流量',
+        card_title1: '剩余流量',
         card_title2:'总流量',
-        card_title3: '总流量',
+        card_title3: '已使用流量',
+        card_button:'购买流量',
+        card_button_title:'添加子账号',
         describe1: '描述',
         describe2: '描述',
         describe3: '描述',
-        card1: '卡片1',
+        card1: '动态住宅代理生成',
         card2:'卡片2',
         form1:'选择认证账户',
         form1_placeholder: '请选择',
@@ -829,6 +854,7 @@ export const zh = {
         day:'日',
         month:'月',
         year:'年',
+        title2:'账户管理',
         add_account:'新增子账号',
         name:'账号名称',
         limit: '流量使用限制',
@@ -923,5 +949,14 @@ export const zh = {
         tip1:'实名认证无需等待审核结果',
         tip2:'2、实名信息属用户隐私信息, ',
         tip3:'不公开或透露用户信息。'
+    },
+    sub: {
+        title: '添加子账号',
+        form1: '启用',
+        form2:'账户名',
+        form3:'密码',
+        button:'确认',
+        placeholder1:'请选择',
+        placeholder2:'请输入'
     }
 }

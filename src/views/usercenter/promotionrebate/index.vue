@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full bg-[white] p-[1.75rem] rounded-[1.5rem] mt-[1.75rem]">
+        <div class="w-full bg-[white] p-[1.75rem] rounded-[1.5rem] mt-[1.75rem] pr-[2.5rem]">
             <!-- <div class="w-full flex items-center">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('promotionrebate.title2')}}</span>
             </div> -->
@@ -41,11 +41,11 @@
                     <span class="text-[#999999] text-[1rem]">{{item.title}}</span>
                     <span class="text-[#191919] text-[2.25rem] font-bold">{{cardData[item.key]}}</span>
                 </div>
-                <div class="h-[7.625rem] rounded-[1rem]  gap-[0.75rem] flex flex-col justify-center "  style="width: calc( (100% - 1.875rem*5)/6 )">
-                   <div class="h-[3.25rem] w-full rounded-[0.75rem] border-[1px] border-[#191919] flex justify-center items-center cursor-pointer" @click="onWithdrawalToAccount">
+                <div class="h-[7.625rem] rounded-[1rem]  gap-[0.75rem] flex flex-col justify-center items-end"  style="width: calc( (100% - 1.875rem*5)/6 )">
+                   <div class="h-[3.25rem] w-[9.625rem] rounded-[0.75rem] border-[1px] border-[#191919] flex justify-center items-center cursor-pointer" @click="onWithdrawalToAccount">
                         <span class="text-[1.125rem] text-[#191919]">{{t('promotionrebate.title2_button1')}}</span>
                    </div>
-                   <div class="h-[3.25rem] w-full rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onWithdrawal">
+                   <div class="h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onWithdrawal">
                         <span class="text-[1.125rem] text-[white] font-medium">{{t('promotionrebate.title2_button2')}}</span>
                    </div>
                 </div>

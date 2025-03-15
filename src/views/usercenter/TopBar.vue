@@ -1,9 +1,9 @@
 <template>
     <div class="w-full h-full pl-[1.75rem] pr-[1.75rem] flex justify-between">
         <div class="h-full flex items-center justify-center">
-            <div class="flex items-center">
-                <span class="text-[#191919] text-[1rem] ">{{t('backend_menu.local')}}:</span>
-                <span class="pl-[0.2rem] text-[1.125rem] font-medium">px732472025101133</span>
+            <div class="flex flex-col ">
+                <span class="text-[#191919] text-[1rem] ">{{t('backend_menu.local')}}:<span class="text-[#999999] text-[1rem]">{{t('backend_menu.tip')}}</span></span>
+                <span class="text-[1.125rem] font-medium">px732472025101133</span>
             </div>
             <!-- 移动端菜单按钮 -->
             <div class="md:hidden">
@@ -31,7 +31,7 @@
         <div class="h-full flex items-center">
             <div class="w-auto p-[0.375rem] border-[1px] border-[#999999] rounded-[3.125rem] gap-[2.8rem] flex items-center h-[3rem]">
                 <span class="pl-[1rem] text-[#191919] text-[1rem]">{{t('backend_menu.Balance')}}:<span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-bold">￥10</span></span>
-                <div class="w-[5.75rem] h-full rounded-[1.125rem] bg-[#01AA44] flex justify-center items-center">
+                <div class="w-[5.75rem] h-full rounded-[1.125rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onRecharge">
                     <span class="text-[#FFFFFF] text-[1rem] font-medium">{{t('backend_menu.recharge')}}</span>
                 </div>
             </div>
@@ -122,5 +122,8 @@
     const onLanauageChange = () => {
         i18n.locale.value = lan.value
         store.changeLanauage(lan.value)
+    }
+    const onRecharge = () => {
+        router.push({name:'recharge'})
     }
 </script>

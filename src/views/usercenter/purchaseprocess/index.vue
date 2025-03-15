@@ -1,7 +1,7 @@
 <template>
-    <div class="w-full p-[1.75rem] bg-[white] rounded-[1.5rem]" >
+    <div class="w-full p-[1.75rem] bg-[white] rounded-[1.5rem] usercenter_recharge">
         <div class="pb-[5.75rem]">
-            <span class="text-[#191919] text-[1.25rem] font-bold">{{t('backend_menu.menu1')}}-{{t('backend_menu.menu1_sub1')}}</span>
+            <span class="text-[#191919] text-[1.25rem] font-bold">{{t('backend_menu.menu1')}}-{{t('backend_menu.menu1_sub2')}}</span>
         </div>
         <!-- style="grid-template-columns: repeat(4, 19rem);grid-template-rows: repeat(2, 22.125rem);" -->
         <div class="flex gap-x-[1rem] justify-center">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div  class="p-[2rem] min-w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
-                <span class="text-[#501A06] text-[1.5rem] font-bold">{{t('setmenu.title2')}}</span>
+                <!-- <span class="text-[#501A06] text-[1.5rem] font-bold">{{t('setmenu.title2')}}</span> -->
                 <div class="w-full mt-[2rem] gap-[0.75rem] flex flex-col">
                     <div class="w-full flex justify-between">
                         <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.content1')}}</span>
@@ -82,10 +82,13 @@
                         <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.content5')}}</span>
                         <span class="text-[#702B12]">✔</span>
                     </div>
+                    <div class="w-full flex justify-between">
+                        <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.content6')}}</span>
+                        <span class="text-[#702B12]">✔</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
     </div>
 </template>
 <script setup lang="ts">
@@ -183,5 +186,9 @@
     .basic_card {
         transition: background-color 0.5s ease-in-out;
     }
-    
+    .usercenter_recharge {
+        background: url('../../../assets/recharge_bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 </style>

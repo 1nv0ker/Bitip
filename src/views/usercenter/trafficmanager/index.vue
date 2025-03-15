@@ -2,8 +2,8 @@
     <div class="w-full flex flex-col gap-[1.75rem]">
         <div class="w-full rounded-[1.5rem] bg-white p-[1.75rem]">
             <div class="w-full flex justify-between items-center">
-                <span class="text-[#191919] text-[1.25rem] font-bold">{{t('backend_menu.setting')}}</span>
-                <div class="h-[2.5rem] w-[8.75rem] border-[#666666] border-[1px] rounded-[0.75rem] flex justify-center items-center text-[1rem] text-[#191919] font-medium cursor-pointer">
+                <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title2')}}</span>
+                <div class="h-[2.5rem] w-[8.75rem] border-[#666666] border-[1px] rounded-[0.75rem] flex justify-center items-center text-[1rem] text-[#191919] font-medium cursor-pointer" @click="onAddSub">
                     <span>+</span> <span class="pl-[0.5rem] ">{{t('trafficmanager.add_account')}}</span>
                 </div>
             </div>
@@ -60,10 +60,12 @@
                 <div id="traffic_chart" class="w-full h-full"></div>
             </div>
         </div>
+        <AddSubModal v-model="open" />
     </div>
 </template>
 <script setup lang="ts">
     import { computed, ref, onMounted, toRaw  } from 'vue'
+    import AddSubModal from './AddSubModal.vue';
     import { useI18n } from 'vue-i18n'
     import 'dayjs/locale/zh-cn';
     import enUS from 'ant-design-vue/es/locale/en_US';
@@ -72,6 +74,7 @@
     import * as echarts from 'echarts';
     const { t } = useI18n()
     const selected = ref('date')
+    const open = ref(false)
     const mainRef = ref<HTMLElement>()
     const I18Store = useI18nStore()
     const datas = ref([
@@ -181,6 +184,9 @@
         loadD3Chart()
         
     })
+    const onAddSub = () => {
+        open.value = true
+    }
     const loadD3Chart = () => {
         const dataset = toRaw(datas.value).map((item)=>({date: item.date, value:item.value}))
 

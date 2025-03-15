@@ -26,18 +26,24 @@
                     <a-select-option value="1">{{t('purchaseddetail.no')}}</a-select-option>
                 </a-select>
             </div>
-            <div class="h-[3rem] flex justify-between" style="width:calc( 75% - 1.75rem * 1/4 )" >
+            <div class="h-[3rem] flex gap-[1.75rem] " style="width:calc( 75% - 1.75rem * 1/4 )" >
                 <div class="text-[] bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer">
                     <span class="text-[1rem] text-white font-medium">{{t('purchaseddetail.button1')}}</span>
                 </div>
-                <div class="flex gap-[1.75rem] h-full">
+                <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
+                    <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button2')}}</span>
+                </div>
+                <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
+                    <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button3')}}</span>
+                </div>
+                <!-- <div class="flex gap-[1.75rem] h-full">
                     <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
                         <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button2')}}</span>
                     </div>
                     <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
                         <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button3')}}</span>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="w-full mt-[1.75rem] h-[42rem]">

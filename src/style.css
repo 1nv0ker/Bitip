@@ -238,3 +238,9 @@ span {
   /* width:2rem; */
 }
 
+.bitip_text {
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display:block
+}

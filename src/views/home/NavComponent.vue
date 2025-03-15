@@ -25,8 +25,11 @@
                     <div class="text-[#191919] cursor-pointer text-[1rem] font-medium ml-[2rem] hover:text-[#01AA44] ellipsis-single" @click="onLogin">
                         <span>{{t('login.login')}}</span>
                     </div>
-                    <div class="text-[white] cursor-pointer text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
+                    <div class="text-[white] cursor-pointer relative text-[1rem] font-medium ml-[2rem] bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onRegister">
                         <span>{{t('login.register')}}</span>
+                        <div class="w-[4.375rem] rounded-[3.125rem] h-[1.5rem] bg-[#FFDA44] absolute top-[-0.75rem] right-[-2.5rem] flex justify-center items-center">
+                            <span class="text-[#191919] font-medium text-[0.9rem]">{{t('login.registerTip')}}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="flex items-center md:hidden gap-[1rem]" v-else>
@@ -51,8 +54,12 @@
                     <div class="text-[#191919] cursor-pointer text-[1rem] font-medium  hover:text-[#01AA44] " @click="onLogin">
                         <span class="ellipsis-single">{{t('login.login')}}</span>
                     </div>
-                    <div class="text-[white] cursor-pointer text-[1rem] font-medium  bg-[#01AA44] hover:bg-[#008836] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center register_hover" @click="onRegister">
+                    <div class="text-[white] cursor-pointer text-[1rem] font-medium relative 
+                    bg-[#01AA44] hover:bg-[#008836] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center register_hover" @click="onRegister">
                         <span class=" font-medium">{{t('login.register')}}</span>
+                        <div class="w-[4.375rem] rounded-[3.125rem] h-[1.5rem] bg-[#FFDA44] absolute top-[-0.75rem] right-[-2.5rem] flex justify-center items-center">
+                            <span class="text-[#191919] font-medium text-[0.9rem]">{{t('login.registerTip')}}</span>
+                        </div>
                     </div>
                 </div>
                 <div class="hidden items-center md:flex gap-[1rem] " v-else>

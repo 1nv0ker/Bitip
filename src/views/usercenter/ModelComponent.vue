@@ -1,10 +1,11 @@
 <template>
-    <a-modal v-model:open="open" :footer="null" class="w-[27rem] rounded-[1.5rem]">
+    <a-modal v-model:open="open" :footer="null" class="w-[27rem] rounded-[1.5rem]" :width="width">
       <template #title>
             <span class="text-[#191919] text-[1.5rem] font-bold">{{ title }}</span>
       </template>
-      <span class="text-[#191919] text-[1rem] text-wrap">{{content}}</span>
-      <div class="w-full flex mt-[1.125rem] justify-end">
+      <span class="text-[#191919] text-[1rem] text-wrap" v-if="!slotMode">{{content}}</span>
+      <slot v-else></slot>
+      <div class="w-full flex mt-[1.125rem] justify-end" v-if="!slotMode">
         <div class="w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="open=false">
            <span class="text-[1rem] text-[#FFFFFF] font-bold"> {{t('login.confirmMessage')}}</span>
         </div>
@@ -17,6 +18,11 @@
     const open = defineModel()
     defineProps({
         title:String,
-        content:String
+        content:String,
+        width:String||Number,
+        slotMode:{
+          type: Boolean,
+          default:false
+        }
     })
 </script>

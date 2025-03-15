@@ -1,128 +1,102 @@
 <template>
-    <div class="w-full rounded-[1.5rem] bg-white p-[1.75rem] h-full">
-        <div class="w-full pb-[1.5rem] border-b-[1px] border-[#EBEFF8]">
-            <span>{{t('recharge.title')}}</span>
+    <div class="w-full bg-[white] rounded-[1.5rem] p-[1.75rem] h-[57rem] usercenter_recharge">
+        <div class="w-full">
+            <span class="text-[#191919] text-[1.25rem] font-bold">{{t('setmenu.subtitle3')}}</span>
         </div>
-        <div class="w-full flex justify-center pt-[6.25rem]">
-            <div class="flex flex-col">
-                <div class="flex gap-[6.25rem] items-center">
-                    <div class="w-[8rem] max-w-[8rem]">
-                        <span class="text-[#666666] text-[1rem] font-medium">{{t('recharge.form1')}}</span>
-                    </div>
-                    <span class="text-[#191919] text-[1.5rem] font-bold">￥{{Balance}}</span>
+        <div class="w-full flex gap-x-[1.25rem] justify-center overflow-hidden mt-[2.5rem]">
+            <div v-for="card in cards.slice(0,3)" class="p-[2rem] flex flex-col justify-evenly relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
+                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">
+                    <span class="text-[#FFEEC1] text-[1.625rem] font-bold">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
                 </div>
-                <div class="flex gap-[6.25rem] items-center mt-[1.5rem] ">
-                    <div class="w-[8rem] max-w-[8rem]">
-                        <span class="text-[#666666] text-[1rem] font-medium">{{t('recharge.form2')}}</span>
-                    </div>
-                    <span class="text-[#191919] text-[1.125rem] font-medium">{{orderNum}}</span>
+                <div class="w-full flex flex-col text-[#191919] font-bold text-left">
+                    <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
+                    <span class="text-[4.125rem]"><span class="text-[2.225rem]">￥</span>{{card.arrival}}</span>
                 </div>
-                <div class="flex gap-[6.25rem] mt-[1.5rem]">
-                    <div class="w-[8rem] max-w-[8rem] h-[3.5rem] items-center flex">
-                        <span class="text-[#666666] text-[1rem] font-medium">{{t('recharge.form1')}}</span>
-                    </div>
-                    <div class="flex flex-col gap-[1.25rem]">
-                        <div class="h-[3.5rem] w-[21.75rem] bg-[#FAFAFA] rounded-[0.75rem] border-[1px] border-[#EBEFF8] recharge_amount">
-                            <a-input-number v-model:value="amount"  style="width: 100%" :controls="false" :formatter="onParser"/>
-                        </div>
-                        <div class="h-[3.5rem] gap-[1.25rem] flex">
-                            <div class="w-[10.25rem] h-full bg-[#FAFAFA] rounded-[0.75rem] border-[1px] border-[#EBEFF8] flex justify-center items-center cursor-pointer" @click="amount=50">
-                                <span class="text-[#01AA44] text-[1.25rem] font-bold">￥50</span>
-                            </div>
-                            <div class="w-[10.25rem] h-full bg-[#FAFAFA] rounded-[0.75rem] border-[1px] border-[#EBEFF8] flex justify-center items-center cursor-pointer" @click="amount=100">
-                                <span class="text-[#01AA44] text-[1.25rem] font-bold">￥100</span>
-                            </div>
-                            <div class="w-[10.25rem] h-full bg-[#FAFAFA] rounded-[0.75rem] border-[1px] border-[#EBEFF8] flex justify-center items-center cursor-pointer" @click="amount=500">
-                                <span class="text-[#01AA44] text-[1.25rem] font-bold">￥500</span>
-                            </div>
-                            <div class="w-[10.25rem] h-full bg-[#FAFAFA] rounded-[0.75rem] border-[1px] border-[#EBEFF8] flex justify-center items-center cursor-pointer" @click="amount=1000">
-                                <span class="text-[#01AA44] text-[1.25rem] font-bold">￥1000</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="w-full h-[3.25rem] rounded-[1.5rem]  cursor-pointer flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" >
+                    <span class="text-[#FFEEC1] text-[1.125rem] font-medium">{{t('setmenu.recharge')}}{{card.recharge}}</span>
                 </div>
-
-                <div class="flex gap-[6.25rem] items-center mt-[1.5rem]">
-                    <div class="w-[8rem] max-w-[8rem] h-[3.5rem]">
-                        <span class="text-[#666666] text-[1rem] font-medium">{{t('recharge.form4')}}</span>
+            </div>
+        </div>
+        <div class="w-full flex gap-x-[1.25rem] justify-center mt-[1.125rem] overflow-hidden">
+            <div v-for="card in cards.slice(3,4)" class="p-[2rem] flex flex-col justify-center relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
+                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">
+                    <span class="text-[#FFEEC1] text-[1.625rem] font-bold">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
+                </div>
+                <div class="w-full flex flex-col text-[#191919] font-bold text-left">
+                    <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
+                    <span class="text-[4.125rem] "><span class="text-[2.225rem]">￥</span>{{card.arrival}}</span>
+                </div>
+                <div class="w-full h-[3.25rem] rounded-[1.5rem] mt-[2.625rem] cursor-pointer flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" >
+                    <span class="text-[#FFEEC1] text-[1.125rem] font-medium">{{t('setmenu.recharge')}}{{card.recharge}}</span>
+                </div>
+            </div>
+            <div  class="p-[2rem] flex flex-col relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
+                <div class="w-full h-[6rem] flex items-center" >
+                    <span class="text-[#501A06] text-[1.5rem] font-bold">{{t('setmenu.illustrate')}}</span>
+                </div>
+                <div class="flex flex-col gap-[1.25rem]">
+                    <div class="w-full flex justify-between">
+                        <span class="text-[#702B12] text-[1.125rem]">1000</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{ t('setmenu.deliver') }}50</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.arrival')}}1050</span>
                     </div>
-                   <div>
-                    <div class="flex gap-[1.25rem] h-[3.5rem]">
-                        <div :class="`w-[16rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
-                        flex justify-center items-center cursor-pointer relative gap-[1rem]
-                        ${payMethod==0?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=0">
-                            <img src="../../../assets/wechat.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] " />
-                            <span>{{t('recharge.pay1')}}</span>
-                            <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==0" >
-                                <span class="text-[white]">✔</span>
-                            </div>
-                        </div>
-                        <div :class="`w-[16rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
-                        flex justify-center items-center cursor-pointer relative gap-[1rem]
-                        ${payMethod==1?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=1">
-                            <img src="../../../assets/alipay.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] "/>
-                            <span>{{t('recharge.pay2')}}</span>
-                            <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==1" >
-                                <span class="text-[white]">✔</span>
-                            </div>
-                        </div>
-                        <div :class="`w-[16rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
-                        flex justify-center items-center cursor-pointer relative gap-[1rem]
-                        ${payMethod==2?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=2">
-                            <img src="../../../assets/alipay.png" class="w-[2rem] h-[2rem] rounded-[0.5rem]"/>
-                            <span>{{t('recharge.pay3')}}</span>
-                            <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==2" >
-                                <span class="text-[white]">✔</span>
-                            </div>
-                        </div>
+                    <div class="w-full flex justify-between">
+                        <span class="text-[#702B12] text-[1.125rem]">2000</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{ t('setmenu.deliver') }}150</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.arrival')}}2150</span>
                     </div>
-                    <div class="mt-[1.25rem] items-center flex">
-                        <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
-                        <label class="text-[#111111] text-[0.875rem] pl-[0.75rem] bitip_font_family font-normal" for="flexCheckDefault">
-                            {{t('login.agree')}} 
-                        </label>
-                        <Law />
+                    <div class="w-full flex justify-between">
+                        <span class="text-[#702B12] text-[1.125rem]">5000</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{ t('setmenu.deliver') }}450</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.arrival')}}5450</span>
                     </div>
-                    <div class="mt-[2rem]">
-                        <div class=" cursor-pointer bg-[#01AA44] w-[13.25rem] h-[3.25rem] rounded-[0.75rem] flex justify-center items-center">
-                            <span class="text-[1.25rem] text-[white] font-medium">{{t('recharge.button')}}</span>
-                        </div>
+                    <div class="w-full flex justify-between">
+                        <span class="text-[#702B12] text-[1.125rem]">10000</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{ t('setmenu.deliver') }}1000</span>
+                        <span class="text-[#702B12] text-[1.125rem]">{{t('setmenu.arrival')}}11000</span>
                     </div>
-                   </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-    import { ref } from 'vue'
-    import Law from '../../login/Law.vue'
+    import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
-    const Balance = ref(344)
-    const orderNum = ref('45171431741171074242563')
-    const amount = ref(0)
-    const checked = ref(false)
-    const payMethod = ref(0)
-    const onParser = (value:number) => {
-        return `￥${value}`
-    }
-</script>
-<style lang="less">
-    .recharge_amount {
-        color:#01AA44;
-        font-size: 1.25rem;
-        .ant-input-number-input-wrap {
-            &>input {
-                height: 3.5rem!important;
-                color:#01AA44;
-                font-size: 1.25rem!important;
+    const cards = computed(() => {
+        return [
+            {
+                deliver:50,
+                key: 1,
+                arrival: 1050,
+                recharge: 1000
+            },
+            {
+                deliver:150,
+                key: 2,
+                arrival: 2150,
+                recharge: 2000
+            },
+            {
+                deliver:450,
+                key: 3,
+                arrival: 5450,
+                recharge: 5000
+            },
+            {
+                deliver:1000,
+                key: 4,
+                arrival: 11000,
+                recharge: 10000
             }
-        }
-        .ant-input-number-prefix {
-            color:#01AA44;
-            font-size: 1.25rem!important;
-        }
-        
+        ]
+    })
+</script>
+<style scoped>
+    .usercenter_recharge {
+        background: url('../../../assets/recharge_bg2.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 </style>
