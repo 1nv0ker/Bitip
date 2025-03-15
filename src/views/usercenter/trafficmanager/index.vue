@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="mt-[1.5rem]">
-                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'7.5rem'}">
+                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'7.5rem'}" :pagination="false" >
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -37,7 +37,7 @@
                 </a-table>
             </div>
         </div>
-        <div class="w-full h-[40.1875rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
+        <div class="w-full h-[35rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
             <div class="pb-[1.5rem] flex justify-between">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title')}}</span>
                 <div class="flex items-center gap-[1.75rem]">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-[30rem]" ref="mainRef">
+            <div class="w-full h-[25rem]" ref="mainRef">
                 <div id="traffic_chart" class="w-full h-full"></div>
             </div>
         </div>
@@ -191,7 +191,7 @@
         option = {
             grid: {
                 top: 10,
-                bottom: 32,
+                bottom: 30,
                 left: 50,
                 right:50
 
@@ -323,13 +323,12 @@
 </style>
 <style>
     /* 在全局 CSS 中定义 */
-    .usercenter_tooltip {
+    /* .usercenter_tooltip {
         background-color: transparent;
         width: 6.25rem;
         height: 3.25rem;
         padding:0!important;
-        /* transform: none!important; */
-    }
+    } */
 .tooltip-body {
     width: 100%;
     height: 100%;

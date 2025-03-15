@@ -118,7 +118,8 @@
             {
                 title: t('purchaseddetail.column7'),
                 key: 'action',
-                align:'center'
+                align:'center',
+                width: '20rem'
             },
         ]
     })
@@ -138,6 +139,52 @@
             ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
             remark:'中转代理（Socks5）'
         },{
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },
+        {
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },
+        {
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },
+        {
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },{
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },{
+            code:'1',
+            time: '2025-11-10 11:12:22',
+            region: '类型',
+            type: '类型',
+            ip: '原始（Socks5）原始（Socks5）原始（Socks5）原始（',
+            remark:'中转代理（Socks5）'
+        },
+        {
             code:'1',
             time: '2025-11-10 11:12:22',
             region: '类型',

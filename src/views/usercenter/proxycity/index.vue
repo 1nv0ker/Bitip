@@ -1,10 +1,10 @@
 <template>
     <div class="w-full">
         <!-- 基础展示 -->
-        <div class="w-full h-[18.75rem] rounded-[1.5rem] bg-white p-[1.75rem]">
-            <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card1')}}</span>
-            <div class="w-full flex justify-between mt-[1.25rem] gap-[1.75rem]">
-                <div v-for="item in items" class="w-[30rem] h-[11.75rem] rounded-[1.25rem] border-[1px] proxycity_card relative p-[1.75rem] pl-[2rem] pr-[2rem] flex justify-between" 
+        <div class="w-full h-[16rem] rounded-[1.5rem] bg-white p-[1.75rem]">
+            <!-- <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card1')}}</span> -->
+            <div class="w-full flex justify-between  gap-[1.75rem]">
+                <div v-for="item in items" class="w-[30rem]  rounded-[1.25rem] border-[1px] proxycity_card relative p-[1.75rem] pl-[2rem] pr-[2rem] flex justify-between" 
                     style="background: linear-gradient( 145deg, #E6FFF0 0%, #FBFFEC 100%);">
                     <div class="flex flex-col gap-[1.125rem]">
                         <span class="text-[#191919] text-[1.125rem] font-medium">{{item.title}} [GB]</span>
@@ -25,7 +25,7 @@
         </div>
         <!-- 定位城市 -->
         <div class="w-full p-[1.75rem] bg-white rounded-[1.5rem] mt-[1.75rem] ">
-            <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card2')}}</span>
+            <!-- <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card2')}}</span> -->
             <div class="pt-[1.5rem] pr-[1.5rem]">
                 <a-form layout="vertical">
                     <a-row :gutter="24">

@@ -172,6 +172,7 @@
     .bitip_logo:hover > img {
         background: transparent;
         filter: grayscale(0%);
+        opacity: 1
         /* opacity: 0.6; */
     }
 </style>

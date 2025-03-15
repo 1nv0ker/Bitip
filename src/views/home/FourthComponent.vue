@@ -33,7 +33,9 @@
                             <span class="text-[#999999] text-[1.375rem] font-medium">{{legend.value}}%</span>
                         </div>
                         <div class="w-full h-[0.375rem] bg-[#E4F0EB] rounded-[3.125rem]">
-                            <div class="bg-[#BAD162] rounded-[3.125rem] h-full" :style="`width:${legend.value}%`"></div>
+                            <div :style="`width:${legend.value}%`" class=" h-full rounded-[3.125rem]">
+                                <div class="bg-[#BAD162] rounded-[3.125rem] h-full w-full progress-bar" style="transition: width 2s ease-in-out;width:100%"></div>
+                            </div>
                         </div>
                     </div>
                  </div>
@@ -65,30 +67,42 @@
             {
                 name: t('fourth.ger'),
                 img:gerImg,
-                value: 53
+                value: 53,
+                key:'a'
             },
             {
                 name: t('fourth.us'),
                 img:usImg,
-                value: 13
+                value: 13,
+                key:'b'
             },
             {
                 name: t('fourth.uk'),
                 img:ukImg,
-                value: 8
+                value: 8,
+                key:'c'
             },
             {
                 name: t('fourth.can'),
                 img:canImg,
-                value: 10
+                value: 10,
+                key:'d'
             },
             {
                 name: t('fourth.ind'),
                 img:indImg,
-                value: 10
+                value: 10,
+                key:'e'
             }
         ]
     })
+    // const legendDValue = ref({
+    //     a:53,
+    //     b: 13,
+    //     c: 8,
+    //     d: 10,
+    //     e: 10
+    // })
     const createLine = (point1:any, point2:any, projection:any, svg:any, type:string='') => {
         const point1Pos = projection(point1.coordinates) as any;
         const point2Pos = projection(point2.coordinates) as any;
@@ -99,7 +113,7 @@
         // ];
         console.log(point1)
         const controlPoints = {
-            c1: { x: (point1Pos[0] + point2Pos[0])/2, y: 50 },  // 上方控制点
+            c1: { x: (point1Pos[0] + point2Pos[0])/2, y: 30 },  // 上方控制点
             // c2: { x: (point1Pos[0] + point2Pos[1])/2, y: 50 }   // 三次贝塞尔需要两个控制点
         };
         // 生成三次贝塞尔曲线路径
@@ -393,4 +407,13 @@
    height: 50vh;
    width: 80vw;
   }
+  @keyframes loading {
+  0% { width: 0; }
+  50% { background-color: #BAD162; } /* 颜色变化 */
+  100% { width: 100%; }
+}
+
+.progress-bar {
+  animation: loading 5s ease-in-out infinite;
+}
 </style>

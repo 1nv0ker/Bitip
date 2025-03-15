@@ -33,10 +33,10 @@
             </div>
         </div>
         <div class="w-full bg-[white] p-[1.75rem] rounded-[1.5rem] mt-[1.75rem]">
-            <div class="w-full flex items-center">
+            <!-- <div class="w-full flex items-center">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('promotionrebate.title2')}}</span>
-            </div>
-            <div class="mt-[1.5rem] flex gap-[1.875rem]">
+            </div> -->
+            <div class=" flex gap-[1.875rem]">
                 <div class="h-[7.625rem] rounded-[1rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] gap-[0.25rem] flex flex-col justify-center hover:border-[#01AA44]" v-for="item in items" style="width: calc( (100% - 1.875rem*5)/6 );background: linear-gradient( 145deg, #E6FFF0 0%, #FFFFFF 100%);">
                     <span class="text-[#999999] text-[1rem]">{{item.title}}</span>
                     <span class="text-[#191919] text-[2.25rem] font-bold">{{cardData[item.key]}}</span>

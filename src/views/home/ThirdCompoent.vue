@@ -24,7 +24,7 @@
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[50rem] h-[21rem]  mt-[2rem]">
+                    <div class="w-[50rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[50rem] h-[21rem]  mt-[2rem]">
+                    <div class="w-[50rem] h-[25.625rem] mt-[2rem]">
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
