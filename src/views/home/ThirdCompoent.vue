@@ -19,12 +19,12 @@
                     </div>
                 </div>
                 <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==1">
-                    <div class="flex flex-col gap-[0.75rem] pl-[6rem]">
+                    <div class="flex flex-col gap-[0.75rem] pl-[6rem] w-[50rem]">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[50rem] h-[25.625rem]  mt-[2rem]">
+                    <div class="w-[58rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>

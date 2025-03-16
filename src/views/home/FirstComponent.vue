@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="flex justify-center items-center w-full mt-[1.875rem]">
-                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}</span>
+                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}<span class="text-[#191919] text-[1.25rem] font-bold">200+</span>{{t('first.content2')}}</span>
                 </div>
 
                 <div class="flex justify-center items-center mt-[3.75rem] gap-[2rem]">
@@ -93,6 +93,9 @@
                         v-for="card in cardItems" :title="card.title" :content="card.content" :img="card.img"/>
                     </div>
                 </div> -->
+                <div class="pt-[3rem]">
+                    <span class="text-[#999999] text-[1rem]">{{t('first.tips')}}</span>
+                </div>
             </div>
         </div>
 

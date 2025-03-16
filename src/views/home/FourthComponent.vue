@@ -1,7 +1,10 @@
 <template>
-    <ComponentLayout ref="fourthRef" class=" pb-[4rem] pt-[3.625rem] overflow-hidden relative" :style="`background-image: url('${map_bg}');background-repeat: no-repeat;background-size: cover;`">
+    <ComponentLayout ref="fourthRef" class=" pb-[4rem] pt-[3.625rem] overflow-hidden relative" :style="`background-image: url('${mapGif}');background-repeat: no-repeat;background-size: cover;`">
         <!-- <div class=" absolute top-0 bottom-0 left-0 right-0">
             <img src="../../assets/map_group.png" class="w-full h-full" />
+        </div> -->
+        <!-- <div class=" absolute w-full h-full">
+            <img class="w-full h-full" src="../../assets/map.gif" />
         </div> -->
         <div class="flex justify-center w-full">
             <span class="text-[#191919] text-[2.625rem] font-bold text-center whitespace-nowrap">{{t('fourth.title')}}</span>
@@ -21,8 +24,8 @@
            </div>
         </div> -->
         <div class="mt-[4rem] w-full flex justify-center relative">
-            <div class="world-map" id="world-map">
-
+            <div class="world-map " id="world-map">
+                
             </div>
             <div class="absolute right-0 bottom-0 flex flex-col gap-[1.5rem] justify-end pb-[4rem] w-[15rem]">
                 <div v-for="legend in legendDatas" class="flex items-center justify-between h-[2.8125rem]  w-full">
@@ -50,12 +53,13 @@
     import * as d3 from 'd3';
     import * as topojson from "topojson-client";
     import ComponentLayout from '../ComponentLayout.vue'
-    import map_bg from '../../assets/map_group.png'
+    // import map_bg from '../../assets/map_group.png'
     import gerImg from '../../assets/ger.png'
     import usImg from '../../assets/us.png'
     import ukImg from '../../assets/uk.png'
     import canImg from '../../assets/can.png'
     import indImg from '../../assets/india.png'
+    import mapGif from '../../assets/map.gif'
     const { t } = useI18n()
     const fourthRef = ref<HTMLElement>()
     const remInPixels = ref(0)
@@ -289,6 +293,7 @@
         .text(BOX_CONFIG.text);
     }
     onMounted(() => {
+        return
         const rootElement = document.documentElement;
         const computedStyle = window.getComputedStyle(rootElement);
         const remValue = computedStyle.getPropertyValue('font-size');
