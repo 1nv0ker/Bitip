@@ -42,7 +42,7 @@
             <span class="text-[#FC4949] text-[1.1rem] font-normal">{{t('login.passwordValidate')}}</span>
         </div> -->
         <!-- 验证码 -->
-        <div class="mt-[1.5rem] w-[10rem] flex ">
+        <div class="mt-[1.5rem] w-full flex h-[4rem]" ref="cap_box">
             <AliyunCaptchaComponent @getCaptchaVerifyParam="getCaptchaVerifyParam" :element="'passLogin'" :button="'passLogin_button'" ref="capRef" key="passlogin" :immediate="true" :auto-refresh="false" />
         </div>
         <div v-if="captchaStatus" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
@@ -117,6 +117,7 @@
     const captchaVerifyParam = ref('')
     const captchaStatus = ref(false)
     const capRef = ref<any>(null)
+    const cap_box = ref<HTMLElement|null>()
     let modalInstance: any = null
     // const phoneNum = ref('')
     // const password = ref('')
@@ -129,7 +130,8 @@
     onMounted(() => {
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
-        capRef.value && capRef.value.loadCaptha()
+        const rect = cap_box.value?.getBoundingClientRect()
+        capRef.value && capRef.value.loadCaptha(rect?.width,rect?.height)
 1    })
     const schema = yup.object({
         phoneNum: yup.string().required(),

@@ -467,7 +467,15 @@ export const en = {
         tip_title:'Kind tips',
         tip1:'User authentication does not require waiting for review results',
         tip2:'Real-name information is user privacy information,',
-        tip3:'No user information is published or disclosed.'
+        tip3:'No user information is published or disclosed.',
+        title2:'After successfully completing the real-name authentication, you can get the BitIP real-name authentication reward',
+        subtitle:'Flow',
+        step1:'ID card authentication',
+        step2:'Face Authentication',
+        step2_title:'Please use Alipay to scan the QR code for face authentication',
+        step2_button:'Return to previous page',
+        step3:'Certification completed',
+        step3_title:'Real-name authentication completed, 500M traffic obtained,已获得500M流量'
     },
     sub: {
         title: 'Add sub-account',
@@ -477,6 +485,18 @@ export const en = {
         button:'Confirm',
         placeholder1:'Please select',
         placeholder2:'Please enter'
+    },
+    setting: {
+        title:'Account Settings',
+        form1: 'Real-name authentication',
+        placeholder:'Unauthenticated',
+        button1:'Go to Authentication',
+        button_complated:'Certified',
+        form2:'Email',
+        form3:'Mobile phone number',
+        form4:'Password',
+        button2:'Modify',
+        button3:'Confirm'
     }
 }
 
@@ -946,9 +966,17 @@ export const zh = {
         form3:'上传证明身份证号',
         button:'确认提交',
         tip_title:'温馨提示',
-        tip1:'实名认证无需等待审核结果',
+        tip1:'1、实名认证无需等待审核结果',
         tip2:'2、实名信息属用户隐私信息, ',
-        tip3:'不公开或透露用户信息。'
+        tip3:'不公开或透露用户信息。',
+        title2:'成功完成实名认证后,可获得BitIP实名认证奖励',
+        subtitle:'流量',
+        step1:'身份证认证',
+        step2:'人脸认证',
+        step2_title:'请用支付宝扫码采集人脸认证',
+        step2_button:'返回上一页',
+        step3:'认证完成',
+        step3_title: '实名认证完成,已获得500M流量'
     },
     sub: {
         title: '添加子账号',
@@ -958,5 +986,19 @@ export const zh = {
         button:'确认',
         placeholder1:'请选择',
         placeholder2:'请输入'
+    },
+    setting: {
+        title:'账户设置',
+        form1: '实名认证',
+        placeholder:'未认证',
+        button1:'去认证',
+        button_complated:'已认证',
+        form2:'邮箱',
+        form3:'绑定手机号',
+        form4:'密码',
+        button2:'修改',
+        button3:'确认',
+        title_modal1:'修改邮箱',
+        title_modal2:'修改密码'
     }
 }

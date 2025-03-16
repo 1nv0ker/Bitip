@@ -27,7 +27,9 @@
     onMounted(() => {
     
     })
-    const loadCaptha = () => {
+    const loadCaptha = (width=0, height=0) => {
+        console.log('loadCaptha')
+
         window.initAliyunCaptcha({
             // 场景ID。通过步骤一添加验证场景后，您可以在验证码场景列表，获取该场景的场景ID
             SceneId: '1hpup7kb',
@@ -45,14 +47,19 @@
             getInstance: getInstance,
             // 滑块验证码样式，支持自定义宽度和高度，单位为px。其中，width最小值为320 px
             slideStyle: {
-                width: window.innerWidth<=576?6*31.875:16*31.875,
-                height: window.innerWidth<=576?6*4:16*4,
+                // width: window.innerWidth<=576?6*31.875:16*31.875,
+                // height: window.innerWidth<=576?6*4:16*4,
+                width:width,
+                height:height
             },
             // 验证码语言类型，支持简体中文（cn）、繁体中文（tw）、英文（en）
             language: i18n.locale.value=='zh'?'cn':'en',
             // 完成验证后，是否立即发送验证请求（调用captchaVerifyCallback函数）
             immediate: props.immediate,
-            autoRefresh: props.autoRefresh
+            autoRefresh: props.autoRefresh,
+            onError: function() {
+                console.log('onError')
+            }
         });
     }
     onBeforeMount(() => {

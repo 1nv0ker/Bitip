@@ -15,7 +15,6 @@ declare module 'vue' {
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
-    AInputNumber: typeof import('ant-design-vue/es')['InputNumber']
     AMenu: typeof import('ant-design-vue/es')['Menu']
     AModal: typeof import('ant-design-vue/es')['Modal']
     ARangePicker: typeof import('ant-design-vue/es')['RangePicker']
@@ -27,9 +26,14 @@ declare module 'vue' {
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     AUpload: typeof import('ant-design-vue/es')['Upload']
+    CaptchaForm: typeof import('./src/components/CaptchaForm.vue')['default']
+    CustomForm: typeof import('./src/components/CustomForm.vue')['default']
+    EmailForm: typeof import('./src/components/EmailForm.vue')['default']
     PasswordInput: typeof import('./src/components/PasswordInput.vue')['default']
+    PhoneForm: typeof import('./src/components/PhoneForm.vue')['default']
     RippleButton: typeof import('./src/components/RippleButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SendCodeForm: typeof import('./src/components/SendCodeForm.vue')['default']
   }
 }

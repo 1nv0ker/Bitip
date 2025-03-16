@@ -22,6 +22,7 @@ import PurchasedHistory from '../views/usercenter/purchasehistory/index.vue'
 import Promotionrebate from '../views/usercenter/promotionrebate/index.vue'
 import RechargeComponent from '../views/usercenter/recharge/index.vue'
 import UserAuth from '../views/usercenter/userauth/index.vue'
+import UserAccountSetting from '../views/usercenter/accountsetting/index.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:BasicLayoutVue, children:[
@@ -96,6 +97,11 @@ const routes = [
         path:'userauth',
         name:'userauth',
         component: UserAuth
+      },
+      {
+        path:'setting',
+        name:'setting',
+        component: UserAccountSetting
       }
     ]},
     // { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},

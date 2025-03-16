@@ -25,7 +25,7 @@
                     <span class="text-[#FC4949] text-[1.1rem]">{{t('login.textValidate')}}</span>
                 </div>
                 <!-- 阿里验证码 -->
-                <div class="mt-[1.5rem] w-[10rem] flex ">
+                <div class="mt-[1.5rem] w-full h-[4rem] flex " ref="cap_box">
                     <AliyunCaptchaComponent 
                     @getCaptchaVerifyParam="getCaptchaVerifyParam" 
                     ref="capRef" :element="'textLogin'" :button="'register_button'" key="textLogin"  :auto-refresh="false" :immediate="true" />
@@ -169,6 +169,7 @@
     const captchaVerifyParam = ref('')
     const captchaStatus = ref(false)
     const store = userStore()
+    const cap_box = ref<HTMLElement|null>()
     let codeCountInterval:any = null
     let modalInstance: any = null
     // const phoneNum = ref('')
@@ -183,7 +184,8 @@
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
 
-        capRef.value && capRef.value.loadCaptha()
+        const rect = cap_box.value?.getBoundingClientRect()
+        capRef.value && capRef.value.loadCaptha(rect?.width,rect?.height)
     })
     
     const schema = yup.object({

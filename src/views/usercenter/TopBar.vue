@@ -86,7 +86,7 @@
                     <span class="  text-[#191919]">{{ t('backend_menu.authentication') }}</span>
                     <RightOutlined class="text-[#191919] cursor-pointer" />
                 </div>
-                <div class="flex w-full text-[1rem] justify-between items-center cursor-pointer" @click="router.push({name:'trafficmanager'})">
+                <div class="flex w-full text-[1rem] justify-between items-center cursor-pointer" @click="router.push({name:'setting'})">
                     <span class="  text-[#191919]">{{ t('backend_menu.setting') }}</span>
                     <RightOutlined class="text-[#191919] cursor-pointer" />
                 </div>
