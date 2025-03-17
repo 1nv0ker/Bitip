@@ -75,10 +75,12 @@
             {
                 title: t('navMenu.title2'),
                 id: 'navMenu_2',
+                path:'dyagent'
             },
             {
                 title: t('navMenu.title3'),
                 id: 'navMenu_3',
+                path:'staticagent'
             },
             {
                 title: t('navMenu.title4'),

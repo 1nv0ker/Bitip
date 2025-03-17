@@ -21,7 +21,7 @@
                 <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title4') }}</span>
             </div>
         </div>
-        <NavComponent ref="navRef" @onCloseActivity="onCloseActivity"/>
+        <NavComponent ref="navRef" @onCloseActivity="onCloseActivity" :customeStyle="customeStyle" />
         <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`">
             <slot></slot>
             <RouterView></RouterView>
@@ -43,6 +43,9 @@
     const acvitityStatus = ref(true)
     const store = userStore()
     const route = useRoute()
+    defineProps({
+        customeStyle: Object
+    })
     onBeforeMount(() => {
         const paths = ['/home']
         if (paths.indexOf(route.path) !== -1) {

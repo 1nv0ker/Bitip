@@ -9,7 +9,7 @@
                     <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
                     <span class="text-[4.125rem]"><span class="text-[2.225rem]">￥</span>{{card.arrival}}</span>
                 </div>
-                <div class="w-full h-[3.25rem] rounded-[1.5rem]  cursor-pointer flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" >
+                <div class="w-full h-[3.25rem] rounded-[1.5rem]  cursor-pointer flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" @click="onRecharge(card.recharge)">
                     <span class="text-[#FFEEC1] text-[1.125rem] font-medium">{{t('setmenu.recharge')}}{{card.recharge}}</span>
                 </div>
             </div>
@@ -23,7 +23,8 @@
                     <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
                     <span class="text-[4.125rem] "><span class="text-[2.225rem]">￥</span>{{card.arrival}}</span>
                 </div>
-                <div class="w-full h-[3.25rem] rounded-[1.5rem] mt-[2.625rem] cursor-pointer flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" >
+                <div class="w-full h-[3.25rem] rounded-[1.5rem] mt-[2.625rem] cursor-pointer flex justify-center items-center z-50" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);"
+                @click="onRecharge(card.recharge)" >
                     <span class="text-[#FFEEC1] text-[1.125rem] font-medium">{{t('setmenu.recharge')}}{{card.recharge}}</span>
                 </div>
             </div>
@@ -55,12 +56,17 @@
                 </div>
             </div>
         </div>
+        <RechargeModal v-model="open" ref="rechargeRef" :money="cost"/>
     </div>
 </template>
 <script setup lang="ts">
-    import { computed } from 'vue'
+    import { computed, ref } from 'vue'
+    import RechargeModal from '../../components/RechargeModal.vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const rechargeRef = ref<any>()
+    const open = ref(false)
+    const cost = ref(0)
     const cards = computed(() => {
         return [
             {
@@ -89,4 +95,8 @@
             }
         ]
     })
+    const onRecharge = (value:number) => {
+        cost.value = value
+        open.value = true
+    }
 </script>

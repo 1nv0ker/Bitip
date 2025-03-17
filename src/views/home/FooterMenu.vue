@@ -39,11 +39,11 @@
                 items: [
                     {
                         title:t('footer.title1_subtitle1'),
-                        path: ''
+                        path: 'dyagent'
                     },
                     {
                         title:t('footer.title1_subtitle2'),
-                        path: ''
+                        path: 'staticagent'
                     }
                 ]
             },
@@ -83,11 +83,11 @@
                     },
                     {
                         title:t('footer.title3_subtitle5'),
-                        path:''
+                        path:'plan'
                     },
                     {
                         title:t('footer.title3_subtitle6'),
-                        path:'plan'
+                        path:''
                     }
                 ]
             },

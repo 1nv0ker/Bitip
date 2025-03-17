@@ -7,9 +7,9 @@
         name="setmenu"
          />
 
-        <NavMenuItem :text="t('navMenu.title2')" :key="'dyProxy'" :show-arrow="false"
+        <NavMenuItem :text="t('navMenu.title2')" :key="'dyProxy'" :path="'dyagent'" :show-arrow="false"
         />
-        <NavMenuItem :text="t('navMenu.title8')" :key="'staticProxy'"  :show-arrow="false"
+        <NavMenuItem :text="t('navMenu.title8')" :key="'staticProxy'" :path="'staticagent'"  :show-arrow="false"
         />
 
         <NavMenuItem :text="t('navMenu.title3')" :key="'product'"/>

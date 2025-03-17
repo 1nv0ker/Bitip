@@ -1,7 +1,12 @@
 <template>
-    <BasicLayout>
-        <ComponentLayout :bg="'#F8CFA2'">
+    <BasicLayout :customeStyle="{
+        background:'transparent'
+    }">
+        <ComponentLayout>
             <div class="w-full pt-[3.375rem] pb-[6.75rem] z-10 overflow-hidden">
+                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 custome_bg">
+
+                </div>
                 <div class="w-full flex justify-center" v-show="selected!==2">
                     <span class="text-[#702B12] text-[2.625rem] z-10 font-semibold">{{t('setmenu.title')}}</span>
                 </div>
@@ -48,3 +53,12 @@
     })
     
 </script>
+<style>
+.custome_bg {
+    background: 
+    url("../../assets/recharge_bg3.png") top / 100% 30rem no-repeat,
+
+    #FFFCF4 bottom/ 100% calc(100% - 30rem) ;
+    
+}
+</style>

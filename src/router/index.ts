@@ -23,6 +23,8 @@ import Promotionrebate from '../views/usercenter/promotionrebate/index.vue'
 import RechargeComponent from '../views/usercenter/recharge/index.vue'
 import UserAuth from '../views/usercenter/userauth/index.vue'
 import UserAccountSetting from '../views/usercenter/accountsetting/index.vue'
+import DyAgent from '../views/dyagent/index.vue'
+import StaticAgent from '../views/staticagent/index.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:BasicLayoutVue, children:[
@@ -37,6 +39,8 @@ const routes = [
     { path: '/safety', component: SafetyComponent, name:'safety'},
     { path: '/service', component: SeviceComponent, name:'service'},
     { path: '/plan', component: PlanComponent, name:'plan'},
+    { path: '/dyagent', name:'dyagent', component: DyAgent},
+    { path: '/staticagent', name:'staticagent', component: StaticAgent},
     { path: '/usercenter', component: usercenterComponent, name:'usercenter', children:[
       {
         path:'proxycity',

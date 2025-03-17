@@ -5,7 +5,7 @@
         </div>
         <!-- 移动端下拉菜单 -->
         <NavMobieMenu v-show="showMobie" @onCloseNav="showMobie=false" :status="showMobie"/>
-        <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`">
+        <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`" :style="customeStyle">
             <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="w-full flex justify-center cursor-pointer ml-[2.625rem]" @click="onToHome">
                     <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
@@ -95,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div :class="`w-full top-[6.8125rem] h-[1px] items-center fixed z-30 bg-[#EBEFF8] ${acvitityStatus?'top-[6.8125rem]':'top-[4rem]'}`"></div>
+        <div :class="`w-full top-[6.8125rem] h-[1px] items-center fixed z-30 bg-[#EBEFF8] ${acvitityStatus?'top-[6.8125rem]':'top-[4rem]'}`" ></div>
     </div>
 </template>
 <script setup lang="ts">
@@ -116,6 +116,9 @@
     const showMobie = ref(false)
     const userStore = useUserStore()
     const emit = defineEmits(['onCloseActivity'])
+    defineProps({
+        customeStyle:Object
+    })
     onMounted(()=> {
         lan.value = i18n.locale.value || 'zh'
         store.changeLanauage(lan.value)

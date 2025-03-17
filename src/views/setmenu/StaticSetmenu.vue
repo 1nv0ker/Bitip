@@ -89,18 +89,23 @@
                         <span class="text-[#191919] font-semibold text-[1rem]">￥{{buyNumbers.reduce((a,b)=>a+b.number, 0)*(selected_time?.price || 0) }}</span>
                     </div>
                 </div>
-                <div class="w-full h-[3.25rem] rounded-[1.75rem] mt-[2rem] flex justify-center items-center" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);">
+                <div class="w-full h-[3.25rem] rounded-[1.75rem] mt-[2rem] flex justify-center items-center cursor-pointer" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" @click="onRecharge">
                     <span class="text-[#FFEEC1] text-[1rem] font-medium">{{ t('setmenu.buyButton') }}</span>
                 </div>
             </div>
         </div>
+        <PackageModal v-model="open" :money="cost" :package-name="packageName"/>
     </div>
 </template>
 <script setup lang="ts">
     import { ref, onMounted, computed } from 'vue'
     import { useI18n } from 'vue-i18n'
+    import PackageModal from '../../components/PackageModal.vue'
     const { t } = useI18n()
     const images = import.meta.glob('../../assets/nations/*.png')
+    const open = ref(false)
+    const cost = ref(0)
+    const packageName = ref('')
     interface region_type {
         name:string,
         price:number,
@@ -285,6 +290,15 @@
     const onClear = () => {
         buyNumbers.value = []
         selectedCitys.value = []
+    }
+
+    const onRecharge = () => {
+        packageName.value = t('setmenu.subtitle2')
+        cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price || 0)
+        if (cost.value == 0) {
+            return
+        }
+        open.value = true
     }
 </script>
 <style lang="less" scoped>
