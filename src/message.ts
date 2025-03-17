@@ -558,6 +558,30 @@ export const en = {
         content:'Refund Agreement',
         tips:'Pay fees'
     },
+    plan: {
+        title: 'BitIP promotion rebate plan, one-time promotion, permanent benefits. Invite users, 10% commission rebate with no upper limit',
+        button:'Join Now',
+        item1_content1:'Commission rebates and permanent income',
+        item1_content2:'¥No limit',
+        item1_content3:'One-time cash rebate',
+        item1_content4:'Register now to get 200M dynamic traffic',
+        item1_content5:'Real-name authentication gives 500M dynamic traffic',
+        item2_content1:'Send 200M',
+        item2_content2:'Dynamic flow',
+        item2_content3:'Register successfully and get free',
+        item3_content:'Commission withdrawal',
+        item4_content:'Permanent income',
+        item5_content1:'High commissions',
+        item5_content2:'Permanently receive a commission proportional to the amount of all packages purchased by invited customers',
+
+        title2:'How to join the BitIP promotion rebate program',
+        title2_subtitle:'* The promotion plan is only applicable to how to join the BitIP promotion rebate plan. More package promotions will be launched soon, so stay tuned!',
+        step:'step',
+        step1:'Register Create your BitIP account',
+        step2:'Check your exclusive invitation link in the account background',
+        step3:'Share Link - Start Earning Money',
+        step4:'Contact customer service to withdraw commission'
+    }
 }
 
 export const zh = {
@@ -1121,4 +1145,28 @@ export const zh = {
         content:'退款协议',
         tips:'支付费用'
     },
+    plan: {
+        title: 'BitIP推广返佣计划，一次推广，永久收益 邀请用户，10%佣金返现无上限',
+        button:'马上加入',
+        item1_content1:'佣金返现和永久收益',
+        item1_content2:'¥无上限',
+        item1_content3:'一次性现金返佣',
+        item1_content4:'注册者送200M动态流量',
+        item1_content5:'实名认证送500M动态流量',
+        item2_content1:'送200M',
+        item2_content2:'动态流量',
+        item2_content3:'注册成功就送',
+        item3_content:'佣金提现',
+        item4_content:'永久收益',
+        item5_content1:'高额佣金',
+        item5_content2:'永久获得被邀客户购买所有 套餐金额的比例佣金',
+
+        title2:'如何加入BitIP推广返佣计划',
+        title2_subtitle:'* 推广计划仅适用于如何加入BitIP推广返佣计划，更多套餐推广即将上线，敬请期待！',
+        step:'步骤',
+        step1:'注册创建您的BitIP账户',
+        step2:'账户后台查看您的专属邀请链接',
+        step3:'分享链接-开始赚钱',
+        step4:'联系客服提取佣金'
+    }
 }

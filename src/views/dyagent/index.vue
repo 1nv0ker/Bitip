@@ -11,11 +11,11 @@
                         </div>
                         <div class="flex items-center gap-[0.5rem]">
                             <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]"></div>
-                            <span>{{t('dyagent.subtitle1')}}</span>
+                            <span>{{t('dyagent.subtitle2')}}</span>
                         </div>
                         <div class="flex items-center gap-[0.5rem]">
                             <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]"></div>
-                            <span>{{t('dyagent.subtitle1')}}</span>
+                            <span>{{t('dyagent.subtitle3')}}</span>
                         </div>
                     </div>
                     <div class="flex gap-[2rem] pt-[1rem]">
