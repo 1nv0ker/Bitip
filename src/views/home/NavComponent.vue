@@ -8,7 +8,7 @@
         <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`" :style="customeStyle">
             <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="w-full flex justify-center cursor-pointer ml-[2.625rem]" @click="onToHome">
-                    <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]" />
+                    <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem]"  />
                 </div>
             </div>
             <div class="col-8 col-sm-6 col-md-8 col-lg-8 col-xl-8 col-xxl-8 justify-center h-full">
@@ -16,7 +16,7 @@
                 <NavMenu />
                 <div class="flex items-center md:hidden justify-center" v-if="!userStore.userInfo?.tel">
                     <div class="w-[4.5rem] flex">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
+                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]" style="transform: scaleX(-1) "/>
                         <select class="w-[5rem] cursor-pointer ml-[0.5rem] bitip_font_family font-medium" v-model="lan" @change="onLanauageChange">
                             <option value="zh">中</option>
                             <option value="en">EN</option>
@@ -44,12 +44,9 @@
             </div>
             <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem] justify-center" v-if="!userStore.userInfo?.tel">
-                    <div class="w-[4.5rem] flex">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
-                        <select class="w-[3rem] cursor-pointer font-medium ml-[0.5rem] bitip_font_family" v-model="lan" @change="onLanauageChange">
-                            <option value="zh">中</option>
-                            <option value="en">EN</option>
-                        </select>
+                    <div class="w-[4.5rem] flex cursor-pointer" @click="onLanauageChange()">
+                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
                     </div>
                     <div class="text-[#191919] cursor-pointer text-[1rem] font-medium  hover:text-[#01AA44] " @click="onLogin">
                         <span class="ellipsis-single">{{t('login.login')}}</span>
@@ -109,7 +106,7 @@
     import useUserStore from '../../store/user'
     const { t } = useI18n()
     const i18n = useI18n()
-    const lan = ref()
+    const lan = ref('zh')
     const store = useI18nStore()
     const router = useRouter()
     const acvitityStatus = ref(true)
@@ -125,6 +122,7 @@
     })
     const onLanauageChange = () => {
         // console.log('onLanauageChange', value, lan.value)
+        lan.value == 'zh'?lan.value='en':lan.value='zh'
         i18n.locale.value = lan.value
         store.changeLanauage(lan.value)
     }

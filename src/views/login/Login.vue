@@ -1,6 +1,6 @@
 <template>
     <Layout>
-        <div class="container rounded-[1rem] bg-[white] pt-[5.12rem] pl-[3.25rem] pr-[3.25rem] pb-[5.12rem]">
+        <div class="container rounded-[1rem] bg-[white] pt-[5.12rem] pl-[3.25rem] pr-[3.25rem] pb-[5.12rem]  w-[33.375rem] ">
             <nav>
                 <div class="nav nav-tabs custom-tabs" id="nav-tab">
                     <div class="nav-link active cursor-pointer font-bold" id="nav-login-tab" data-bs-toggle="tab" data-bs-target="#nav-login" aria-controls="nav-login" aria-selected="true" @click="selected=0">

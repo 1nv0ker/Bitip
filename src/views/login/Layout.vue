@@ -1,12 +1,12 @@
 <template>
     <div class="w-full h-full login-bg" :style="`background-image:url(${loginBg})`">
 
-        <div class="w-full row m-0">
-            <div class="col-12 offset-md-3 col-lg-4 flex flex-col  pt-[20rem] pr-[6rem] pl-[6rem] md:pt-[10rem]">
-                <img src="../../assets/logo.png" class="w-[15rem] h-[5rem]" />
-                <span class="text-[3.8rem] text-[#191919] font-bold pt-[1.75rem] bitip_font_family">{{t('login.loginTitle')}}</span>
+        <div class="w-full flex h-full gap-[5.625rem] items-center justify-center">
+            <div class=" h-full flex  flex-col gap-[1.875rem] justify-center">
+                <img src="../../assets/logo.png" class="w-[15rem] h-[5rem] cursor-pointer" @click="router.push({name:'home'})"/>
+                <span class="text-[4rem] w-[39.1825rem] text-[#191919] font-bold pt-[1.75rem] ">{{t('login.loginTitle')}}</span>
             </div>
-            <div class="col-12 col-lg-4 mt-[8rem] bitip_form">
+            <div class="bitip_form">
                 <slot></slot>
             </div>
         </div>
@@ -14,8 +14,10 @@
 </template>
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
+  import { useRouter } from 'vue-router'
   import loginBg from '../../assets/login.png'
   const { t } = useI18n()
+  const router = useRouter()
 </script>
 <style lang="less">
     .bitip_form {

@@ -35,12 +35,9 @@
                     <span class="text-[#FFFFFF] text-[1rem] font-medium">{{t('backend_menu.recharge')}}</span>
                 </div>
             </div>
-            <div class="p-[0.375rem] pl-[1.5rem] pr-[1.5rem] w-[auto] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem]">
+            <div class="p-[0.375rem] pl-[1.5rem] pr-[1.5rem] w-[auto] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] cursor-pointer flex items-center ml-[1.75rem]" @click="onLanauageChange">
                 <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
-                <select class="w-[3rem] cursor-pointer font-medium ml-[0.5rem] bitip_font_family" v-model="lan" @change="onLanauageChange">
-                    <option value="zh">中</option>
-                    <option value="en">EN</option>
-                </select>
+                <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
             </div>
             <div class="w-[3rem] h-[3rem] ] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
                 <div class="w-[1.5rem] h-[1.5rem] bg-[#01AA44]">
@@ -120,6 +117,8 @@
         store.changeLanauage(lan.value)
     })
     const onLanauageChange = () => {
+        // console.log('onLanauageChange', value, lan.value)
+        lan.value == 'zh'?lan.value='en':lan.value='zh'
         i18n.locale.value = lan.value
         store.changeLanauage(lan.value)
     }

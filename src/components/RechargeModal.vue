@@ -51,7 +51,7 @@
                                 <span class="text-[white]">✔</span>
                             </div>
                         </div>
-                        <div :class="`w-[10.875rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
+                        <!-- <div :class="`w-[10.875rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
                             flex justify-center items-center cursor-pointer relative gap-[1rem]
                         ${payMethod==2?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=2">
                             <img src="../assets/alipay.png" class="w-[2rem] h-[2rem] rounded-[0.5rem]"/>
@@ -59,11 +59,11 @@
                             <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==2" >
                                 <span class="text-[white]">✔</span>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="pl-[10rem]">
-                    <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
+                    <!-- <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked"> -->
                     <span class="pl-[0.75rem] text-[#191919] text-[0.9rem]">{{t('buying.subtitle')}}</span>
                     <span class="text-[#01AA44] cursor-pointer text-[0.9rem]">《{{t('buying.content')}}》</span>
                 </div>
@@ -84,7 +84,6 @@
     const { t } = useI18n()
     const open = defineModel()
     const payMethod = ref(0)
-    const checked = ref(false)
     defineProps({
         money:{
             type:Number,

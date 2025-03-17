@@ -2,7 +2,7 @@
     <ComponentLayout ref="seventhRef" class="pb-[6.875rem]">
         <div class="w-full">
             <div class="flex justify-center">
-                <span class="text-[#191919] text-[1.875rem] font-bold">{{t('seventh.title')}}</span>
+                <span class="text-[#191919] text-[3.25rem] font-bold">{{t('seventh.title')}}</span>
             </div>
             <div class="gap-x-[1rem] gap-y-[1rem] grid-cols-4 grid grid-rows-3 pt-[3.75rem]">
                 <div v-for="content in contents" class="border-[1px] bitip_logo

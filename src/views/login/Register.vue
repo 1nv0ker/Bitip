@@ -1,16 +1,16 @@
 <template>
     <Layout>
-        <div class="container rounded-[1rem] bg-[white] pt-[3.25rem] pl-[3.25rem] pr-[3.25rem] pb-[3.25rem]">
+        <div class="container w-[33.375rem] rounded-[1rem] bg-[white] pt-[3.25rem] pl-[3.25rem] pr-[3.25rem] pb-[3.25rem]">
             <div class="text-[2rem] text-[#191919] font-bold">
                 <span class=" font-bold">{{t('login.register')}}</span>
             </div>
             <form class="mt-[2rem]" @submit.prevent="onSubmit">
                 <!-- 手机号 -->
                 <div class="flex h-[4rem] relative">
-                    <select :class="`form-select customSelect bitip_font_family w-[7.2rem] font-normal text-[1.375rem] text-[#999999] 
+                    <select disabled :class="`form-select customSelect bitip_font_family w-[7.2rem] font-normal text-[1.375rem] text-[#999999] 
                     ${errormessage.hasOwnProperty('phoneNum')?focusStatus?'customSelectError':'':(focusStatus?'customFocus':'')}`" v-model="phoneCode">
                         <option v-for="number in phoneNumbers" :value="number.phone_code" :selected="number.chinese_name==='中国'?true:false">
-                            {{number.phone_code}}+
+                            +{{number.phone_code}}
                         </option>
                     </select>
                     

@@ -83,20 +83,20 @@ export const en = {
     third: {
         title: 'Service and scale',
         item1title: 'Global Resources',
-        item1Subtitle:'Billions of proxy resource pools',
-        item1Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
-        item2title: 'Professional Team',
-        item2Subtitle:'Billions of proxy resource pools',
-        item2Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item1Subtitle:'Global Resources',
+        item1Content:'Cooperate with many ISPs around the world to ensure the richness and stability of IP resources.',
+        item2title: 'Professional team',
+        item2Subtitle:'Billion-level agent resource pool',
+        item2Content:'IPIDEA built its own enterprise-level pure IP pool, strictly screening more than 100 million high-quality IP resources to meet the large-scale data collection business of enterprises, effectively reducing enterprise costs',
         item3title: 'High cost performance',
-        tem3Subtitle:'High cost performance',
-        item3Content:'Provide flexible pricing plans to meet the needs of enterprises of different sizes. Large-scale data collection services effectively reduce enterprise costs',        
+        item3Subtitle:'High cost performance',
+        item3Content:'Cooperate with many ISPs around the world to ensure the richness and stability of IP resources.',
         item4title: 'Safe and reliable',
-        item4Subtitle:'Billions of proxy resource pools',
-        item4Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.',
+        item4Subtitle:'Billion-level agent resource pool',
+        item4Content:'IPIDEA built its own enterprise-level pure IP pool, strictly screening more than 100 million high-quality IP resources to meet the large-scale data collection business of enterprises, effectively reducing enterprise costs',
         item5title: 'High anonymity',
-        item5Subtitle:'Billions of proxy resource pools',
-        item5Content:'IPIDEA builds its own enterprise-level pure IP pool and strictly screens more than 100 million high-quality IP resources to meet the needs of large-scale data collection and effectively reduce enterprise costs.'
+        item5Subtitle:'High anonymity',
+        item5Content:'All IPs are from real home broadband users, ensuring high anonymity and low ban rates.'
     },
     fourth: {
         title: 'Unlock global network resources to empower your digital business',
@@ -135,7 +135,7 @@ export const en = {
         button2: 'Contact Us'
     },
     seventh: {
-        title: 'Many corporate brand cooperation'
+        title: 'Integrate into your tools'
     },
     acvitity: {
         title: 'Register and get 200M dynamic traffic',
@@ -320,7 +320,7 @@ export const en = {
         menu1_sub3: 'Traffic Management',
         menu2: 'Static Residence',
         menu2_sub1: 'Purchase Agent',
-        menu2_sub2:'Purchased Details',
+        menu2_sub2:'Purchased IP',
         menu3: 'Purchase history',
         menu4: 'Promotion rebate',
         menu5:'User Auth',
@@ -382,7 +382,7 @@ export const en = {
         action: 'Operate'
     },
     purchaseddetail: {
-        title: 'Purchased Details',
+        title: 'Purchased IP',
         search1: 'Please enter IP',
         search2:'Type',
         search3:'Region',
@@ -554,7 +554,7 @@ export const en = {
         form3:'Recharge amount',
         form4:'Payment method',
         form5:'Current available balance',
-        subtitle:'I have read and agree',
+        subtitle:'Payment default consent',
         content:'Refund Agreement',
         tips:'Pay fees'
     },
@@ -588,7 +588,7 @@ export const zh = {
     login: {
         passwordLogin: '密码登录',
         smsLogin: '短信登录',
-        loginTitle: '全球住宅代理IP企业级 大数据采集解决方案',
+        loginTitle: '全球住宅代理IP企业级大数据采集解决方案',
         phonePlaceholder: '请输入手机号/账号',
         passwordPlaceholder: '请输入密码',
         agree: '我已阅读并同意',
@@ -668,20 +668,20 @@ export const zh = {
     third: {
         title: '服务与规模',
         item1title: '全球资源',
-        item1Subtitle:'亿级代理资源池',
-        item1Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item1Subtitle:'全球资源',
+        item1Content:'与全球多家ISP合作，确保IP资源的丰富性和稳定性。',
         item2title: '专业团队',
         item2Subtitle:'亿级代理资源池',
         item2Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
         item3title: '高性价比',
         item3Subtitle:'高性价比',
-        item3Content:'提供灵活的价格方案，满足不同规模企业的需求。 大规模数据采集业务，有效降低企业成本',
+        item3Content:'提供灵活的价格方案，满足不同规模企业的需求。',
         item4title: '安全可靠',
         item4Subtitle:'亿级代理资源池',
         item4Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
         item5title: '高匿名性',
-        item5Subtitle:'亿级代理资源池',
-        item5Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本'
+        item5Subtitle:'高匿名性',
+        item5Content:'所有IP均来自真实的家庭宽带用户，确保高匿名性和低封禁率。'
     },
     fourth: {
         title: '解锁全球网络资源，赋能您的数字业务',
@@ -720,7 +720,7 @@ export const zh = {
         button2: '联系我们'
     },
     seventh: {
-        title: '众多企业品牌合作'
+        title: '集成至您的工具'
     },
     acvitity: {
         title: '注册就送200M动态流量',
@@ -907,7 +907,7 @@ export const zh = {
         menu1_sub3: '流量管理',
         menu2: '静态住宅',
         menu2_sub1: '购买代理',
-        menu2_sub2:'已购明细',
+        menu2_sub2:'已购IP',
         menu3: '购买记录',
         menu4: '推广返利',
         menu5:'实名认证',
@@ -967,7 +967,7 @@ export const zh = {
         action: '操作'
     },
     purchaseddetail: {
-        title: '已购明细',
+        title: '已购IP',
         search1: '请输入IP',
         search2:'类型',
         search3:'地区',
@@ -1039,7 +1039,7 @@ export const zh = {
         button:'确认支付',
         pay1:'微信支付',
         pay2:'支付宝支付',
-        pay3:'其他支付'
+        pay3:'余额支付'
     },
     userauth: {
         title: '实名认证',
@@ -1141,7 +1141,7 @@ export const zh = {
         form3:'充值金额',
         form4:'支付方式',
         form5:'当前可用余额',
-        subtitle:'我已阅读并同意',
+        subtitle:'支付默认同意',
         content:'退款协议',
         tips:'支付费用'
     },

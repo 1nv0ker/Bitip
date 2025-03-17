@@ -12,20 +12,19 @@
             <div class="w-full h-[16.6875rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
                 <div v-for="city in (selectType==0?citys:citys_type2)" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center pl-[1rem] cursor-pointer bg-[white]
                  ${selectedCitys.findIndex(item=>item.key==city.key)>-1?'selected_city':''}`" @click="onSelect(city)">
-                    <div class="flex items-center">
+                    <div class="flex items-center ">
                         <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">
                             <div class="w-[0.5rem] h-[0.5rem] bg-[white] rounded-[50%]">
 
                             </div>
-                            
                         </div>
-                        <div class="pl-[0.75rem] w-[14rem]">
-                                <span class="text-[0.9rem] w-[14rem] bitip_text" :title="city.name">{{city.name}}</span>
+                        <div class="pl-[0.75rem] ">
+                                <span class="text-[0.9rem] w-[9rem]  bitip_text" :title="city.name">{{city.name}}</span>
                             </div>
                         </div>
-                    <div class="flex justify-between pr-[0.5rem]">
-                        <img :src="city.img" class="w-[1.5rem] h-[1.5rem]" />
-                    </div>
+                        <div class="flex justify-between pr-[0.5rem]">
+                            <img :src="city.img" class="w-[1.5rem] h-[1.5rem]" />
+                        </div>
                 </div>
             </div>
             <div class="w-full h-[3.375rem] border-b-[1px] border-[#EBEFF8] flex">
@@ -61,12 +60,12 @@
             <div class="w-full pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem]">
                 <div class="w-full border-b-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center" v-for="staff in buyNumbers">
                     <div class="text-[#191919] text-[0.9rem] flex flex-col ">
-                        <span>{{staff.name}} ({{staff.type==0?t('setmenu.type1'):t('setmenu.type2')}})</span>
+                        <span>{{staff.name}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
                         <span class=" font-bold">￥{{selected_time?.price}}/{{t('setmenu.number')}}</span>
                     </div>
                     <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem] border-[1px] border-[#F5F7FB] flex justify-evenly items-center">
                         <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onRemove(staff.key, staff.number)">-</span>
-                        <span class="text-[#191919] text-[0.9rem] font-bold">{{staff.number}}</span>
+                        <span class="text-[#191919] text-[0.9rem] font-bold" contenteditable>{{staff.number}}</span>
                         <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onAdd(staff.key)">+</span>
                     </div>
                 </div>

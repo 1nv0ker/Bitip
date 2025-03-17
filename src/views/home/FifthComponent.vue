@@ -1,10 +1,10 @@
 <template>
     <ComponentLayout ref="fifthRef" class="pb-[8rem] w-full">
         <div class="flex justify-center mt-[5rem] w-full">
-            <span class="text-[#191919] text-[2.625rem] font-bold">{{t('fifth.title')}}</span>
+            <span class="text-[#191919] text-[3.25rem] font-bold">{{t('fifth.title')}}</span>
         </div>
-        <div class="gap-x-[1rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between md:hidden grid w-full" style="grid-template-columns: repeat(2, 20rem);">
-            <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff] p-[2rem] text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+        <!-- <div class="gap-x-[1rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between  grid w-full" style="grid-template-columns: repeat(2, 11.25rem);">
+            <div class="w-[20rem]  hover:border-[#01AA44] border-[1px] border-[#fff]  text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -16,14 +16,10 @@
                 <div class="mt-[1rem]">
                     <span class="text-[1rem]">{{item.content}}</span>
                 </div>
-                <!-- <div class="pt-[1.3rem] cursor-pointer flex items-center" v-show="key==item.key" @click="onGetMore">
-                    <span class="text-[#01AA44] pr-[1.25rem] font-medium">{{t('fifth.more')}}</span>
-                    <img src="../../assets/arrow.png" class="w-[2rem] h-[2rem]" />
-                </div> -->
             </div>
-        </div>
-        <div class=" gap-x-[1rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between md:grid hidden w-full" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="w-full hover:border-[#01AA44] border-[1px] border-[#fff]  text[text-[#191919] rounded-[1rem] flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
+        </div> -->
+        <div class=" gap-x-[1rem] gap-y-[4rem] mt-[2rem] cursor-default justify-between md:grid hidden w-full" style="grid-template-columns: repeat(3, 25.625rem);">
+            <div class="w-full  border-[1px] border-[#fff]  text[text-[#191919] rounded-[1rem]  flex-shrink-0 flex-grow-0 hover_style" v-for="item in items"
             @mouseleave="key=0"
              @mouseenter="key=item.key">
                 <div>
@@ -104,10 +100,10 @@
     // }
 </script>
 <style  scoped>
-    .hover_style:hover {
+    /* .hover_style:hover {
         background: #fff;
         box-shadow: 0 2px 3px 0 transparent, 0 8px 7px 0 rgba(0, 0, 0, .01), 0 20px 13px 0 rgba(0, 0, 0, .01), 0 39px 25px 0 rgba(0, 0, 0, .01), 0 65px 47px 0 rgba(0, 0, 0, .02), 0 100px 80px 0 rgba(0, 0, 0, .02);
         border: 1px solid #f5f5f5;
         transition: box-shadow 1s ease;
-    }
+    } */
 </style>

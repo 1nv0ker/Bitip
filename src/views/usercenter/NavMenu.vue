@@ -18,14 +18,14 @@
 </template>
 <script setup lang="ts">
     import { useRouter, useRoute } from 'vue-router'
-    import { reactive, ref, onMounted, watch } from 'vue'
+    import { computed, ref, onMounted, watch } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const router = useRouter()
     const route = useRoute()
     const selectedKeys = ref<string[]|number[]>([])
     const openKeys = ref<string[]|number[]>(['2'])
-    const items = reactive([
+    const items = computed(()=>[
         {
             key: '1',
             // icon: () => '',

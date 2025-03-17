@@ -1,11 +1,11 @@
 <template>
     <form class="mt-[2rem]" @submit.prevent="onSubmit">
         <!-- 手机号 -->
-        <div class="flex h-[4rem] relative">
-            <select :class="`form-select customSelect w-[7.2rem] font-normal text-[1.375rem] text-[#999999] bitip_font_family
+        <div class="flex h-[4rem] relative w-[26.875rem]">
+            <select disabled :class="`form-select customSelect w-[7.2rem] font-normal text-[1.375rem] text-[#999999] bitip_font_family
             ${errormessage.hasOwnProperty('phoneNum')?focusStatus?'customSelectError':'':(focusStatus?'customFocus':'')}`" v-model="phoneCode">
                 <option v-for="number in phoneNumbers" :value="number.phone_code" :selected="number.chinese_name==='中国'?true:false">
-                    {{number.phone_code}}+
+                    +{{number.phone_code}}
                 </option>
             </select>
             

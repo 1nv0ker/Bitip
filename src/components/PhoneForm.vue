@@ -4,7 +4,7 @@
             <select :class="`customSelect form-control form-select w-[7.2rem]  text-[1.375rem] bitip_font_family text-[#999999] 
             ${errormessage.hasOwnProperty('phoneNum')?focusStatus?'custom_selecterror':'':(focusStatus?'custom_focus':'')}`" v-model="phoneCode">
                 <option v-for="number in phoneNumbers" :value="number.phone_code" :selected="number.chinese_name==='中国'?true:false">
-                    {{number.phone_code}}+
+                    +{{number.phone_code}}
                 </option>
             </select>
             

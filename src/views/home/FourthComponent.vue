@@ -7,7 +7,7 @@
             <img class="w-full h-full" src="../../assets/map.gif" />
         </div> -->
         <div class="flex justify-center w-full">
-            <span class="text-[#191919] text-[2.625rem] font-bold text-center whitespace-nowrap">{{t('fourth.title')}}</span>
+            <span class="text-[#191919] text-[3.25rem] font-bold text-center whitespace-nowrap">{{t('fourth.title')}}</span>
         </div>
         <!-- <div class="flex justify-center gap-[11.25rem] mt-[2rem] w-full">
            <div class="flex flex-col justify-center">

@@ -2,9 +2,9 @@
     <ComponentLayout class="pt-[3.125rem] pb-[8rem]" ref="thirdRef" style="background: linear-gradient( 180deg, #F4FAF6 0%, #FFFFFF 100%) ;">
         <div class="w-full">
             <div class="flex items-center justify-center">
-                <span class="text-[#191919] text-[2.625rem] font-bold">{{ t('third.title') }}</span>
+                <span class="text-[#191919] text-[3.25rem] font-bold">{{ t('third.title') }}</span>
             </div>
-            <div class="mt-[4.5rem] flex justify-between gap-[6.25rem]">
+            <div class="mt-[4.5rem] flex  w-full">
                 <div class="flex flex-col  gap-[1.25rem] ">
                     <div :class="`w-[26.31rem] h-[5.75rem]  rounded-[3.5rem] border-[1px] pl-[1.875rem] border-[#e2e7e4] ${selected==button.key?'selected text-[white]':'unSelected text-[#191919]'} 
                     cursor-pointer flex items-center relative`" 
@@ -18,13 +18,13 @@
                         <span class=" text-[1.5rem] pl-[1.25rem] font-medium">{{button.title}}</span>
                     </div>
                 </div>
-                <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==1">
-                    <div class="flex flex-col gap-[0.75rem] pl-[6rem] w-[50rem]">
+                <div class="flex flex-col animate__animated animate__fadeIn ml-[3.125rem]" v-show="selected==1">
+                    <div class="flex flex-col gap-[0.75rem] pl-[10.625rem] w-[50rem]">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[58rem] h-[25.625rem]  mt-[2rem]">
+                    <div class="w-[58.3125rem] h-[23rem]  mt-[2rem]">
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
@@ -38,33 +38,33 @@
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div> -->
-                <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==2">
+                <div class="flex flex-col animate__animated animate__fadeIn justify-between ml-[14.375rem]" v-show="selected==2">
                     <div class="flex flex-col gap-[0.75rem] ">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
-                        <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
+                        <span class="text-[#191919] text-[1.25rem] font-medium ">{{currentContent?.content}}</span>
                     </div>
 
                     <div class="w-[39.5rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/third_2.png" class="w-full h-full"/>
                     </div>
                 </div>
-                <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==3">
+                <div class="flex flex-col animate__animated animate__fadeIn w-auto ml-[14.0625rem]" v-show="selected==3">
                     <div class="flex flex-col gap-[0.75rem] ">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
-                        <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
+                        <span class="text-[#191919] text-[1.25rem] font-medium">{{currentContent?.content}}</span>
                     </div>
 
                     <div class="w-[39.5rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/third_3.png" class="w-full h-full"/>
                     </div>
                 </div>
-                <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==4">
+                <div class="flex flex-col animate__animated animate__fadeIn ml-[15rem]" v-show="selected==4">
                     <div class="flex flex-col gap-[0.75rem] ">
                         <span class="text-[#191919] text-[1.875rem] font-bold">{{currentContent?.subtitle}}</span>
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[50rem] h-[25.625rem] mt-[2rem]">
+                    <div class="w-[32.25rem] h-[23.4375rem] mt-[2rem]">
                         <img src="../../assets/globalSource.png" class="w-full h-full"/>
                     </div>
                 </div>
@@ -158,12 +158,12 @@
         thirdRef: thirdRef
     })
     onMounted(() => {
-        interval = setInterval(() => {
-            if (selected.value ===4) {
-                selected.value = 0
-            }
-            selected.value = selected.value + 1
-        }, 3000);
+        // interval = setInterval(() => {
+        //     if (selected.value ===4) {
+        //         selected.value = 0
+        //     }
+        //     selected.value = selected.value + 1
+        // }, 3000);
         selected.value = 1
     })
     onBeforeUnmount(() => {
@@ -174,12 +174,12 @@
         interval && clearInterval(interval)
     }
     const onMouseLeave = () => {
-        interval = setInterval(() => {
-            if (selected.value ===4) {
-                selected.value = 0
-            }
-            selected.value = selected.value + 1
-        }, 3000);
+        // interval = setInterval(() => {
+        //     if (selected.value ===4) {
+        //         selected.value = 0
+        //     }
+        //     selected.value = selected.value + 1
+        // }, 3000);
     }
 </script>
 <style scoped>

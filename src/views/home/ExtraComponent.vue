@@ -4,20 +4,20 @@
             <div class="flex justify-center">
                 <span class="text-[#191919] text-[3.25rem] font-bold">{{t('extra.title')}}</span>
             </div>
-            <div class="mt-[3.25rem] w-full flex gap-[1rem] justify-between flex-wrap ]">
+            <div class="mt-[3.25rem] w-full flex justify-between flex-wrap gap-y-[1rem]">
                 <div v-for="content in contents" :class="`flex-${content.col} border-[1px] hover_bg border-[#EBEFF8] rounded-[1rem]`" :style="content.basic">
-                    <div v-if="content.titleImg" class="flex justify-between  p-[2rem]">
-                        <div class="flex flex-col gap-[0.625rem] justify-center pb-[1.25rem]">
-                            <img :src="content.titleImg" class=" w-[2.5rem] h-[3.125rem]"/>
-                            <span class="text-[#191919] text-[2rem] font-bold">{{content.title}}</span>
-                            <span class="text-[#191919] text-[1.25rem]">{{content.content}}</span>
+                    <div v-if="content.titleImg" class="flex justify-between ">
+                        <div class="flex flex-col gap-[0.625rem] justify-center pb-[2.5rem]">
+                            <img :src="content.titleImg" class=" w-[3.25rem] h-[4rem] ml-[2rem]"/>
+                            <span class="text-[#191919] text-[2rem] font-bold pl-[1.5rem]">{{content.title}}</span>
+                            <span class="text-[#191919] text-[1.25rem] pl-[1.5rem]">{{content.content}}</span>
                         </div>
-                        <img :src="content.img" class=" w-[20.8125rem] h-[15.375rem]"/>
+                        <img :src="content.img" :style="content.imgStyle"/>
                     </div>
-                    <div v-else class="flex flex-col gap-[1rem] justify-between p-[2rem] h-auto">
-                        <span class="text-[#191919] text-[2rem] font-bold">{{content.title}}</span>
-                        <span class="text-[#191919] text-[1.25rem]">{{content.content}}</span>
-                        <img :src="content.img" class="w-[26rem] h-[10.5rem]"/>
+                    <div v-else class="flex flex-col justify-between pt-[2rem] h-auto">
+                        <span class="text-[#191919] text-[1.5rem] pl-[1.5rem] font-bold">{{content.title}}</span>
+                        <span class="text-[#191919] text-[1.25rem] pl-[1.5rem]">{{content.content}}</span>
+                        <img :src="content.img" :style="content.imgStyle" />
                     </div>
                 </div>
             </div>
@@ -47,35 +47,40 @@
                 img:planImg1,
                 titleImg:locationImg,
                 content: t('first.cardContent1'),
-                basic:`flex-basis: calc( (100% - 1rem) *2 /3 )`
+                basic:`width:53rem`,
+                imgStyle:'width:21.4375rem;height:16.375rem;'
             },
             {
                 title: t('first.cardTitle2'),
                 col:1,
                 img:planImg2,
                 content: t('first.cardContent2'),
-                basic:`flex-basis: calc( (100% - 1rem) *1 /3 )`
+                basic:`width:26rem`,
+                imgStyle:'width:22.845rem;height:10.5rem;'
             },
             {
                 title: t('first.cardTitle3'),
                 col:1,
                 img:planImg3,
                 content: t('first.cardContent3'),
-                basic:`flex-basis: calc( (100% - 2rem) *1 /3 )`
+                basic:`width:26rem`,
+                imgStyle:'width:26rem;height:10.5rem;'
             },
             {
                 title: t('first.cardTitle4'),
                 col:1,
                 img:planImg4,
                 content: t('first.cardContent4'),
-                basic:`flex-basis: calc( (100% - 2rem) *1 /3 )`
+                basic:`width:26rem`,
+                imgStyle:'width:26rem;height:10.5rem;'
             },
             {
                 title: t('first.cardTitle5'),
                 col:1,
                 img:planImg5,
                 content: t('first.cardContent5'),
-                basic:`flex-basis: calc( (100% - 2rem) *1 /3 )`
+                basic:`width:26rem`,
+                imgStyle:'width:26rem;height:10.5rem;'
             }
         ]
     })

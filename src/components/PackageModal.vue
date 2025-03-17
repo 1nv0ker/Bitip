@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="pl-[10rem]">
-                    <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked">
+                    <!-- <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked"> -->
                     <span class="pl-[0.75rem] text-[#191919] text-[0.9rem]">{{t('buying.subtitle')}}</span>
                     <span class="text-[#01AA44] cursor-pointer text-[0.9rem]">《{{t('buying.content')}}》</span>
                 </div>
@@ -92,7 +92,7 @@
     const { t } = useI18n()
     const open = defineModel()
     const payMethod = ref(0)
-    const checked = ref(false)
+    // const checked = ref(false)
     defineProps({
         money:{
             type:Number,

@@ -12,9 +12,9 @@
         <NavMenuItem :text="t('navMenu.title8')" :key="'staticProxy'" :path="'staticagent'"  :show-arrow="false"
         />
 
-        <NavMenuItem :text="t('navMenu.title3')" :key="'product'"/>
+        <!-- <NavMenuItem :text="t('navMenu.title3')" :key="'product'"/> -->
 
-        <NavMenuItem :text="t('navMenu.title4')" :key="'help'"   :path="'/help'" name="help"  />
+        <!-- <NavMenuItem :text="t('navMenu.title4')" :key="'help'"   :path="'/help'" name="help"  /> -->
         <NavMenuItem :text="t('navMenu.title5')" :key="'safety'" :show-arrow="false" :path="'/safety'" name="safety"/>
         <NavMenuItem :text="t('navMenu.title6')" :key="'service'" :show-arrow="false" :path="'/service'" name="service"/>
         <NavMenuItem :text="t('navMenu.title7')" :key="'plan'" :show-arrow="false" :path="'/plan'" name="plan"/>

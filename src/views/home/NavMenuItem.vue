@@ -79,7 +79,7 @@
     const onPage = (path:string|undefined, name:string|undefined, type:number|undefined=undefined) => {
         name && store.setNav(name)
         console.log('path')
-        path && router.push({path: path, query: {
+        path && router.replace({path: path, query: {
             type:type
         }})
     }

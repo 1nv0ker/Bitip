@@ -1,7 +1,7 @@
 <template>
     <ComponentLayout ref="secondRef" class="bg-[white] pt-[6.5625rem] pb-[8.25rem] overflow-hidden">
         <div class="flex justify-center items-center">
-            <span class="text-[#191919] text-[2.625rem] font-bold">{{t('second.title')}}</span>
+            <span class="text-[#191919] text-[3.25rem] font-bold">{{t('second.title')}}</span>
         </div>
         <div class="flex mt-[2rem] justify-center items-center">
             <div class="w-[26.5rem] h-[3.25rem]  rounded-[6.25rem] flex p-[0.2rem] gap-[1rem]">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-between mt-[5.375rem] animate__animated animate__slideInLeft" v-show="selected==0">
+        <div class="flex  justify-between mt-[5.375rem] animate__animated animate__slideInLeft" v-show="selected==0">
             <div class="w-[38.8215rem] h-[26.5rem] relative">
                 
                 <img src="../../assets/group.png" class="w-full h-full" />
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="flex justify-between mt-[5.375rem] animate__animated animate__slideInRight" v-show="selected==1">
+        <div class="flex justify-between mt-[5.375rem] animate__animated animate__slideInRight gap-[3rem]" v-show="selected==1">
             <div class="w-[38.8215rem] h-[26.5rem] relative">
                 
                 <img src="../../assets/group.png" class="w-full h-full" />

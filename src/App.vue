@@ -5,11 +5,13 @@
 <script setup lang="ts">
    import useI18nStore from './store/i18n'
     import { useI18n } from 'vue-i18n'
-  
+    // import { onMounted } from 'vue'
     const i18n = useI18n()
 
     const store = useI18nStore()
     i18n.locale.value = store.language
+    
+
 </script>
 <style>
   body, html, #app {

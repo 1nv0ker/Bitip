@@ -2,7 +2,7 @@
     <div class="w-full animate__slideInLeft animate__animated" >
         <!-- style="grid-template-columns: repeat(4, 19rem);grid-template-rows: repeat(2, 22.125rem);" -->
         <div class="flex gap-x-[1rem] justify-center">
-            <div v-for="card in cards.slice(0,4)" :class="`p-[2rem] w-[19rem] h-[22.125rem] baisc_card rounded-[1.5rem] ${selected==card.key?'hover_card':'normal_card'}`"
+            <div v-for="card in cards.slice(0,4)" :class="`p-[2rem] w-[19rem] h-[22.125rem] basic_card rounded-[1.5rem] ${selected==card.key?'normal_card':'normal_card'}`"
             @mouseleave="selected=0"
             @mouseenter="selected=card.key">
                 <div class="w-full flex flex-col">
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="flex gap-x-[1rem] justify-center mt-[1.5rem]">
-            <div v-for="card in cards.slice(4,6)" :class="`p-[2rem] baisc_card w-[19rem] h-[22.125rem] rounded-[1.5rem] ${selected==card.key?'hover_card':'normal_card'}`"
+            <div v-for="card in cards.slice(4,6)" :class="`p-[2rem] basic_card w-[19rem] h-[22.125rem] rounded-[1.5rem] ${selected==card.key?'normal_card':'normal_card'}`"
             @mouseleave="selected=0"
             @mouseenter="selected=card.key">
                 <div class="w-full flex flex-col">
@@ -182,29 +182,53 @@
         .discount_button {
             background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);
         }
+        transition: all 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 自定义缓动曲线 */
     }
-    .hover_card {
-        background-image: url('../../assets/bei.png');
-        background-size:cover;
-        background-repeat:no-repeat;
-        .title,.price1_value, .price1 {
-            color: white;
-        }
-        .price2_label,.originPrice_value,.originPrice_label {
-            color:rgba(255,255,255,0.6);
-        }
-        .price2_value {
-            color:white;
-        }
-        .discount_button {
-            background: #FFEBD1;
-            &>span {
-                color:#3E2F65;
+    .normal_card {
+        &:hover {
+            // animation-play-state: paused;
+            background: url('../../assets/bei.png');
+            background-size:cover;
+            background-repeat:no-repeat;
+            .title,.price1_value, .price1 {
+                color: white;
+            }
+            .price2_label,.originPrice_value,.originPrice_label {
+                color:rgba(255,255,255,0.6);
+            }
+            .price2_value {
+                color:white;
+            }
+            .discount_button {
+                background: #FFEBD1;
+                &>span {
+                    color:#3E2F65;
+                }
             }
         }
     }
+    // .hover_card {
+    //     background: url('../../assets/bei.png');
+    //     background-size:cover;
+    //     background-repeat:no-repeat;
+    //     .title,.price1_value, .price1 {
+    //         color: white;
+    //     }
+    //     .price2_label,.originPrice_value,.originPrice_label {
+    //         color:rgba(255,255,255,0.6);
+    //     }
+    //     .price2_value {
+    //         color:white;
+    //     }
+    //     .discount_button {
+    //         background: #FFEBD1;
+    //         &>span {
+    //             color:#3E2F65;
+    //         }
+    //     }
+    // }
     .basic_card {
-        transition: background-color 0.5s ease-in-out;
+        transition: background 1s ease-in-out; /* 设置过渡 */
     }
     
 </style>

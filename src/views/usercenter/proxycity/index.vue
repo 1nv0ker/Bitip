@@ -51,11 +51,11 @@
                     </div>
                 </div>
                 <div class="w-full h-[16.6875rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] p-[1.5rem]">
-                    <div class=" border-b-[1px] border-[#EBEFF8] flex flex-col gap-[1rem] pb-[1rem] text-[#666666] text-[1rem]">
+                    <div class=" border-b-[1px] border-[#EBEFF8] flex flex-col gap-[1rem]  text-[#666666] text-[1rem] h-[12rem]">
                         <span>https://www.figma.com/d91?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-01?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-0套餐1?node-id=</span>
                         <span>https://www.figma.com/d91?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-01?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-0套餐1?node-id=</span>
                     </div>
-                    <div class="w-full flex mt-[1.75rem] gap-[2.75rem]">
+                    <div class="w-full flex gap-[2.75rem] h-[3rem]">
                         <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
                             <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem]"/>
                             <span class="pl-[0.75rem]">{{ t('proxycity.copy') }}</span>

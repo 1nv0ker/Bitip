@@ -14,7 +14,7 @@
             <div class="flex gap-[1rem] text-[#191919] text-[1rem]">
                 <img src="../../assets/alipay1.png" class="w-[2rem] h-[2rem]" />
                 <img src="../../assets/wechat1.png" class="w-[2rem] h-[2rem]" />
-                <img src="../../assets/unionpay.png" class="w-[2rem] h-[2rem]" />
+                <img src="../../assets/unionpay.png" class="w-[2.86rem] h-[1.7725rem]" />
             </div>
         </div>
         <div v-for="item in items" class="flex flex-col">

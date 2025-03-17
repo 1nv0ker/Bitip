@@ -233,13 +233,14 @@
     }
     const onWithdrawalToAccount = () => {
         openModel.value = true
-        modelWord.title = t('promotionrebate.tip2_title')
-        modelWord.content = t('promotionrebate.tip2')
-    }
-    const onWithdrawal = () => {
-        openModel.value = true
         modelWord.title = t('promotionrebate.title2_button2')
         modelWord.content = t('promotionrebate.tip1')
+    }
+    const onWithdrawal = () => {
+        
+        openModel.value = true
+        modelWord.title = t('promotionrebate.tip2_title')
+        modelWord.content = t('promotionrebate.tip2')
     }
     // const onTab = (type:number) => {
     //     selected.value = type

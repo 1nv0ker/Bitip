@@ -8,8 +8,9 @@
             <div class=" absolute bg-[#6DFFEB] w-[10rem] h-[10rem] z-1" ref="imgRef" style="transition: all 2s ease-in-out;;will-change: transform;filter: blur(100px);">
 
             </div>
-            <div class="flex justify-center pt-[7.625rem] z-10">
-                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center z-10">{{t('sixth.title')}}</span>
+            <div class="flex justify-center flex-col items-center w-full z-10 pt-[5.375rem]">
+                <img src="../../assets/img_logo.png" class="w-[10.4375rem] h-[3.5rem] z-10"/>
+                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center z-10 mt-[1.25rem]">{{t('sixth.title')}}</span>
             </div>
             <!-- <div class="flex justify-center pt-[0.75rem] z-10">
                 <span class="text-[rgba(255,255,255,0.7)] text-[1.625rem] z-10">{{t('sixth.content')}}</span>

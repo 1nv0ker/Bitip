@@ -82,10 +82,10 @@
                 id: 'navMenu_3',
                 path:'staticagent'
             },
-            {
-                title: t('navMenu.title4'),
-                id: 'navMenu_4',
-            },
+            // {
+            //     title: t('navMenu.title4'),
+            //     id: 'navMenu_4',
+            // },
             {
                 title: t('navMenu.title5'),
                 path: '/safety'
@@ -101,6 +101,6 @@
         ]
     })
     const onPage = (path:string) => {
-        path && router.push({path:path})
+        path && router.replace({path:path})
     }
 </script>

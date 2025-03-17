@@ -31,7 +31,7 @@ const routes = [
       { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
       { path: '/privatelaw', component: LawPrivateComponent, name:'privatelaw'},
     ] },
-    { path: '/home', component: HomeComponent},
+    { path: '/home', name:'home', component: HomeComponent},
     { path: '/login', component: LoginComponent },
     { path: '/forgetPassword', component: ForgetPasswordVue},
     { path: '/register', component: RegisterVue},
@@ -116,6 +116,32 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior: (
+    to: any,
+    _from: any,
+    savedPosition: any | null
+  ): any | Promise<any> => {
+    // 场景 1：通过浏览器前进/后退按钮导航时恢复滚动位置
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    // 场景 2：根据 meta 标记强制滚动到顶部
+    if (to.meta.scrollToTop) {
+      return { top: 0, left: 0 }
+    }
+
+    // 场景 3：滚动到指定元素
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth' // 平滑滚动
+      }
+    }
+
+    // 默认行为：不改变滚动位置
+    return { left: 0, top: 0 }
+  }
 })
 
 // //路由前置
