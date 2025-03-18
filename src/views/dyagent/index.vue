@@ -66,7 +66,7 @@
             </div>
         </ComponentLayout>
         <ComponentLayout :bg="'linear-gradient( 180deg, #FFFFFF 0%, #F2FFF7 100%);'">
-            <div class="w-full ">
+            <div class="w-full pb-[1.25rem]">
                 <div class="flex w-full justify-center items-end p-[1.75rem]">
                     <span class="text-[#191919] text-[2rem] font-medium">{{ t('dyagent.title4') }}</span>
                 </div>
@@ -74,7 +74,7 @@
             </div>
         </ComponentLayout>
         <ComponentLayout class="bg-[white]">
-            <QuestionComponent />
+            <QuestionComponent :question-datas="questionDatas"/>
         </ComponentLayout>
     </BasicLayout>
 </template>
@@ -117,6 +117,40 @@
                 title:t('dyagent.titl2_item4'),
                 img:'',
                 subtitle:t('dyagent.title2_subtitle4')
+            }
+        ]
+    })
+    const questionDatas = computed(() => {
+        return [
+            {
+                title: t('dyagent.question1'),
+                answer: [t('dyagent.answer1_1')],
+                key: 1
+            },
+            {
+                title: t('dyagent.question2'),
+                answer: [t('dyagent.answer2_1')],
+                key: 2
+            },
+            {
+                title: t('dyagent.question3'),
+                answer: [t('dyagent.answer3_1'),t('dyagent.answer3_2'),t('dyagent.answer3_3')],
+                key: 3
+            },
+            {
+                title: t('dyagent.question4'),
+                answer: [t('dyagent.answer4_1')],
+                key: 4
+            },
+            {
+                title: t('dyagent.question5'),
+                answer: [t('dyagent.answer5_1')],
+                key: 5
+            },
+            {
+                title: t('dyagent.question6'),
+                answer: [t('dyagent.answer6_1')],
+                key: 6
             }
         ]
     })

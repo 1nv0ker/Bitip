@@ -9,7 +9,9 @@
                 </div>
                 <div class="flex items-center flex-col gap-[2rem]">
                     <span class="text-[#191919] text-center z-20 text-[4.125rem] font-bold max-w-[74.124rem]">{{t('plan.title')}}</span>
-                    <RippleButton class="w-[13.25rem] h-[3.25rem] text-[#FFFFFF] rounded-[1.75rem] bg-[#01AA44] z-20 flex justify-center items-center hover:text-[#191919]" :text="t('plan.button')">
+                    <RippleButton 
+                    @click="onToPlan"
+                    class="w-[13.25rem] h-[3.25rem] text-[#FFFFFF] rounded-[1.75rem] bg-[#01AA44] z-20 flex justify-center items-center hover:text-[#191919]" :text="t('plan.button')">
                         <!-- <span>{{t('plan.button')}}</span> -->
                     </RippleButton>
                 </div>
@@ -89,11 +91,16 @@
 </template>
 <script setup lang="ts">
     import RippleButton from '../../components/RippleButton.vue';
+    import { useRouter } from 'vue-router'
     import BasicLayout from '../BasicLayout.vue';
     import ComponentLayout from '../ComponentLayout.vue';
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const router = useRouter()
+    const onToPlan = () => {
+        router.push({name:'promotionrebate'})
+    }
     const items = computed(() => {
         return [
             {

@@ -37,10 +37,10 @@
                     <div class="w-[37.5rem] flex flex-col" v-show="current==0">
                         <a-form layout="vertical" >
                             <a-form-item :label="t('userauth.form1')" required>
-                                <a-input class="customInput"></a-input>
+                                <a-input class="customAInput"></a-input>
                             </a-form-item>
                             <a-form-item :label="t('userauth.form2')" required>
-                                <a-input class="customInput"></a-input>
+                                <a-input class="customAInput"></a-input>
                             </a-form-item>
                         </a-form>
                         <div class=" cursor-pointer bg-[#01AA44] w-[13.25rem] h-[3.25rem] rounded-[0.75rem] flex justify-center items-center" @click="onStep(1)">
@@ -109,20 +109,3 @@
         current.value = value
     }
 </script>
-<style lang="less" scoped>
-.customInput {
-    font-family: "Alibaba Sans";
-    height: 3rem!important;
-    border-color: #666;
-    border-radius: 0.75rem;
-    &::placeholder {
-        color: #999999; /* 改变文字颜色 */
-        font-size: 0.9rem;
-        text-align: left;
-        font-family: "Alibaba Sans";
-        line-height: 100%;
-    }
-        
-}
-    
-</style>

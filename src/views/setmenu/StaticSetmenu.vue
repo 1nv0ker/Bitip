@@ -1,6 +1,6 @@
 <template>
     <div class="w-full animate__fadeIn animate__animated flex gap-[1rem] justify-between">
-        <div class=" flex-[4] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1.25rem] pr-[1.25rem]">
+        <div :class="`flex-[4] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem]  pr-[1.25rem] ${showPadding?'pl-[1.25rem]':''}`">
             <div class="w-full h-[3.375rem] border-b-[1px] border-[#EBEFF8] flex">
                 <div :class="`h-full pl-[1rem] pr-[1rem] border-b-[1px] flex justify-start items-center w-auto cursor-pointer ${selectType==0?'border-[#702B12] ':' '}`" @click="selectType=0">
                     <span class="text-[#702B12] text-[1rem] font-bold">{{t('setmenu.location')}}</span>
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="w-full h-[16.6875rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
-                <div v-for="city in (selectType==0?citys:citys_type2)" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center pl-[1rem] cursor-pointer bg-[white]
+                <div v-for="city in (selectType==0?citys:citys_type2)" :style="customStyle" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center pl-[1rem] cursor-pointer bg-[white]
                  ${selectedCitys.findIndex(item=>item.key==city.key)>-1?'selected_city':''}`" @click="onSelect(city)">
                     <div class="flex items-center ">
                         <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="pl-[0.75rem] ">
-                                <span class="text-[0.9rem] w-[9rem]  bitip_text" :title="city.name">{{city.name}}</span>
+                                <span class="text-[0.9rem] w-[8rem]  bitip_text" :title="city.name">{{city.name}}</span>
                             </div>
                         </div>
                         <div class="flex justify-between pr-[0.5rem]">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="w-full overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys coustom_overflow">
-                <div v-for="time in timeSelect" :class=" `rounded-[0.75rem] border-[1px] relative border-[#E2E7E4] h-[4rem] flex items-center justify-between pl-[1rem] pr-[2rem] cursor-pointer bg-[white]
+                <div v-for="time in timeSelect" :style="customStyle" :class=" `rounded-[0.75rem] border-[1px] relative border-[#E2E7E4] h-[4rem] flex items-center justify-between pl-[1rem] pr-[2rem] cursor-pointer bg-[white]
                  ${selected_time?.key==time.key?'selected_city':''}`" @click="onSelectTime(time)">
                     <div class=" absolute top-0 right-0 w-[2.5rem] h-[1.125rem] rounded-tr-[0.75rem] rounded-bl-[0.75rem] bg-[#4B3585] flex justify-center items-center">
                         <span class="text-[#FFEEC1] text-[0.75rem] font-medium">{{ time.discount }}{{ t('setmenu.off') }}</span>
@@ -127,6 +127,13 @@
         title?:string,
         type?:string |number
     }
+    defineProps({
+        customStyle:Object,
+        showPadding:{
+            type:Boolean,
+            default:false
+        }
+    })
     const citys = ref<region_type[]>([])
     const citys_type2 = ref<region_type[]>([])
     const buyNumbers = ref<buying_type[]>([])

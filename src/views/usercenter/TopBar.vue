@@ -40,13 +40,13 @@
                 <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
             </div>
             <div class="w-[3rem] h-[3rem] ] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] bg-[#01AA44]">
-
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer">
+                    <img  src="../../assets/contact.png" class="w-full h-full"/>
                 </div>
             </div>
             <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] bg-[#01AA44]">
-
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer">
+                    <img  src="../../assets/notice.png" class="w-full h-full"/>
                 </div>
             </div>
 

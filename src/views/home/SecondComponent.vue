@@ -17,10 +17,10 @@
                 </div>
             </div>
         </div>
-        <div class="flex  justify-between mt-[5.375rem] animate__animated animate__slideInLeft" v-show="selected==0">
-            <div class="w-[38.8215rem] h-[26.5rem] relative">
+        <div class="flex  gap-[1rem] mt-[5.375rem] justify-center animate__animated animate__slideInLeft" v-show="selected==0">
+            <div class="w-[43rem] h-[25rem] relative">
                 
-                <img src="../../assets/group.png" class="w-full h-full" />
+                <img src="../../assets/group1.png" class="w-full h-full" />
             </div>
             <div class="w-[38.625rem] flex flex-col  justify-center">
                 <div class="flex">
@@ -66,8 +66,8 @@
             </div>
         </div>
 
-        <div class="flex justify-between mt-[5.375rem] animate__animated animate__slideInRight gap-[3rem]" v-show="selected==1">
-            <div class="w-[38.8215rem] h-[26.5rem] relative">
+        <div class="flex  mt-[5.375rem] animate__animated animate__slideInRight gap-[4.125rem]" v-show="selected==1">
+            <div class="w-[38.0625rem] h-[25rem] relative">
                 
                 <img src="../../assets/group.png" class="w-full h-full" />
             </div>
@@ -137,16 +137,16 @@
         interval && clearInterval(interval)
     }
     onMounted(() => {
-        interval = setInterval(() => {
-            selected.value===0?selected.value=1:selected.value=0
-        }, 5000);
+        // interval = setInterval(() => {
+        //     selected.value===0?selected.value=1:selected.value=0
+        // }, 5000);
     })
     onBeforeUnmount(() => {
         interval && clearInterval(interval)
     })
     const onMouseLeave = () => {
-        interval = setInterval(() => {
-            selected.value===0?selected.value=1:selected.value=0
-        }, 5000);
+        // interval = setInterval(() => {
+        //     selected.value===0?selected.value=1:selected.value=0
+        // }, 5000);
     }
 </script>

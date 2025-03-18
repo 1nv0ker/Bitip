@@ -7,11 +7,7 @@
             <div class="w-[37.5rem] flex flex-col">
                 <a-form layout="vertical" >
                     <a-form-item :label="t('setting.form1')" required>
-                        <!-- <a-input class="customInput" disabled :placeholder="t('setting.placeholder')">
-                            <template #suffix>
-                                <span class="text-[#01AA44] text-[1rem] cursor-pointer" @click="router.push({name:'userauth'})">{{t('setting.button1')}}</span>
-                            </template>
-                        </a-input> -->
+
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
                         text-[#191919] text-[1rem]
                         border-[1px] border-[#666666] flex justify-between items-center pl-[1.25rem] pr-[1.25rem]">
@@ -26,11 +22,7 @@
                             <span>gugeqiyao@gmail.com</span>
                             <span class=" cursor-pointer" @click="onModifyEmail">{{t('setting.button2')}}</span>
                         </div>
-                        <!-- <a-input class="customInput" disabled :value="'gugeqiyao@gmail.com'">
-                            <template #suffix>
-                                <span class="text-[#191919] text-[1rem] cursor-pointer" @click="router.push({name:'userauth'})">{{t('setting.button2')}}</span>
-                            </template>
-                        </a-input> -->
+
                     </a-form-item>
                     <a-form-item :label="t('setting.form3')" required >
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
@@ -41,11 +33,7 @@
                         </div>
                     </a-form-item>
                     <a-form-item :label="t('setting.form4')" required>
-                        <!-- <a-input class="customInput" disabled :value="'*********'">
-                            <template #suffix>
-                                <span class="text-[#191919] text-[1rem] cursor-pointer" @click="router.push({name:'userauth'})">{{t('setting.button2')}}</span>
-                            </template>
-                        </a-input> -->
+
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
                         text-[#191919] text-[1rem]
                         border-[1px] border-[#666666] flex justify-between items-center pl-[1.25rem] pr-[1.25rem]">

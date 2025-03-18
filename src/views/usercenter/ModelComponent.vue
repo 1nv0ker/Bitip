@@ -6,7 +6,7 @@
       <span class="text-[#191919] text-[1rem] text-wrap" v-if="!slotMode">{{content}}</span>
       <slot v-else></slot>
       <div class="w-full flex mt-[1.125rem] justify-end" v-if="!slotMode">
-        <div class="w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="open=false">
+        <div class="w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="onClick">
            <span class="text-[1rem] text-[#FFFFFF] font-bold"> {{t('login.confirmMessage')}}</span>
         </div>
       </div>
@@ -19,10 +19,15 @@
     defineProps({
         title:String,
         content:String,
-        width:String||Number,
+        width:[String , Number],
         slotMode:{
           type: Boolean,
           default:false
         }
     })
+    const emit = defineEmits(['onClick'])
+    const onClick=() => {
+      emit('onClick')
+      open.value = false
+    }
 </script>

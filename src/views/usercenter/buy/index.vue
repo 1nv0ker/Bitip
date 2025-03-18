@@ -4,7 +4,9 @@
         <div class="w-full">
             <span class="text-[#191919] text-[1.25rem] font-bold">{{t('backend_menu.menu2')}}-{{t('backend_menu.menu2_sub1')}}</span>
         </div>
-        <StaticSetmenu class="mt-[1.5rem]"/>
+        <StaticSetmenu class="mt-[1.5rem]" :customStyle="{
+            flex: '0 0 calc(20% - 0.75rem * 4/5)'
+        }"/>
     </div>
     
 </template>

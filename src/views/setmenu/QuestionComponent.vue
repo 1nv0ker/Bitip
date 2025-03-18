@@ -4,12 +4,13 @@
             <span class="text-[#191919] text-[2rem] font-medium" >{{t('setmenu.bottom_title')}}</span>
         </div>
         <a-collapse ghost expandIconPosition="end" v-model:activeKey="activeKey">
-            <a-collapse-panel  :header="question.title" class=" font-medium text-[1.125rem] text-[#191919] border-b-[1px] border-t-[1px] border-[#F4F4F4] h-[5rem] w-full flex items-center" :key="question.key" v-for="question in questions">
+            <a-collapse-panel  :header="question.title" 
+            class=" font-medium text-[1.125rem] text-[#191919] border-b-[1px] border-t-[1px] border-[#F4F4F4] w-full" :key="question.key" v-for="question in questions">
                     <!-- <p>{{ text }}</p> -->
-                </a-collapse-panel>
-            <!-- <div class="" >
-                
-            </div> -->
+                     <span v-for="answer in question.answer" class="h-[4rem]">
+                        {{answer}}
+                     </span>
+            </a-collapse-panel>
         </a-collapse>
         
     </div>
@@ -18,37 +19,47 @@
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     import { computed, ref } from 'vue'
-    const activeKey = ref([1])
+    import type { PropType } from 'vue'
+    const activeKey = ref([0])
+    const props = defineProps({
+        questionDatas:{
+            type: Array as PropType<any[]>,
+            default:[]
+        }
+    })
     const questions = computed(() => {
+        if (props.questionDatas.length!==0) {
+            return props.questionDatas
+        }
         return [
             {
                 title: t('setmenu.question1'),
-                answer: t('setmenu.answer1'),
+                answer: [t('setmenu.answer1')],
                 key: 1
             },
             {
                 title: t('setmenu.question2'),
-                answer: t('setmenu.answer2'),
+                answer: [t('setmenu.answer1')],
                 key: 2
             },
             {
                 title: t('setmenu.question3'),
-                answer: t('setmenu.answer3'),
+                answer: [t('setmenu.answer1')],
                 key: 3
             },
             {
                 title: t('setmenu.question4'),
-                answer: t('setmenu.answer4'),
+                answer: [t('setmenu.answer1')],
                 key: 4
             },
             {
                 title: t('setmenu.question5'),
-                answer: t('setmenu.answer5'),
+                answer: [t('setmenu.answer1')],
                 key: 5
             },
             {
                 title: t('setmenu.question6'),
-                answer: t('setmenu.answer6'),
+                answer: [t('setmenu.answer1')],
                 key: 6
             }
         ]
@@ -58,6 +69,9 @@
 .questions {
     .ant-collapse-header {
         width: 98%;
+        height: 5rem!important;
+        display: flex;
+        align-items: center!important;
     }
     // .ant-collapse-content-active {
     //     display: none!important;

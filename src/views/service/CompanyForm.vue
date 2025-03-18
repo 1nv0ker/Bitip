@@ -8,14 +8,14 @@
                 <a-col :span="8">
                     <a-form-item :label="t('service.form1_label')" required>
                         <div class="w-full flex-col flex gap-[0.75rem]">
-                            <a-input  :placeholder="t('service.form1_placeholder1')" size="large" class="customInput" />
-                            <a-input  :placeholder="t('service.form1_placeholder2')" size="large" class="customInput"  />
+                            <a-input  :placeholder="t('service.form1_placeholder1')" size="large" class="customAInput" />
+                            <a-input  :placeholder="t('service.form1_placeholder2')" size="large" class="customAInput"  />
                         </div>
                     </a-form-item>
                 </a-col>
                 <a-col :span="16">
                     <a-form-item :label="t('service.form2_label')" required>
-                        <a-select :placeholder="t('service.form2_placeholder')" style="width:23.4375rem"  class="customSelect h-[3rem]">
+                        <a-select :placeholder="t('service.form2_placeholder')" style="width:23.4375rem"  class="customASelect h-[3rem]">
                             <a-select-option value="jack">Jack</a-select-option>
                             <a-select-option value="lucy">Lucy</a-select-option>
                             <a-select-option value="Yiminghe">yiminghe</a-select-option>
@@ -27,9 +27,9 @@
                 <a-col :span="8">
                     <a-form-item :label="t('service.form3_label')" required>
                         <div class="w-full flex-col flex gap-[0.75rem]">
-                            <a-input  :placeholder="t('service.form3_placeholder1')" size="large" class="customInput" />
-                            <a-input  :placeholder="t('service.form3_placeholder2')" size="large" class="customInput"  />
-                            <a-input  :placeholder="t('service.form3_placeholder3')" size="large" class="customInput"  />
+                            <a-input  :placeholder="t('service.form3_placeholder1')" size="large" class="customAInput" />
+                            <a-input  :placeholder="t('service.form3_placeholder2')" size="large" class="customAInput"  />
+                            <a-input  :placeholder="t('service.form3_placeholder3')" size="large" class="customAInput"  />
                         </div>
                     </a-form-item>
                 </a-col>
@@ -52,33 +52,3 @@
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
 </script>
-<style lang="less" scoped>
-    .customInput {
-        font-family: "Alibaba Sans";
-        height: 3rem!important;
-        &::placeholder {
-            color: #999999; /* 改变文字颜色 */
-            font-size: 0.9rem;
-            text-align: left;
-            font-family: "Alibaba Sans";
-            line-height: 100%;
-        }
-         
-    }
-    
-</style>
-<style lang="less">
-.customSelect  {
-         .ant-select-selector {
-            height: 3rem!important;
-        }
-        .ant-select-selection-item {
-            line-height: 3rem!important;
-        }
-        .ant-select-selection-placeholder {
-            height: 3rem!important;
-            line-height: 3rem!important;
-            color: #999999;
-        }
-    }
-</style>

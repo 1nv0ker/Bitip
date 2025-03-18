@@ -25,11 +25,13 @@ import UserAuth from '../views/usercenter/userauth/index.vue'
 import UserAccountSetting from '../views/usercenter/accountsetting/index.vue'
 import DyAgent from '../views/dyagent/index.vue'
 import StaticAgent from '../views/staticagent/index.vue'
+import refundVue from '../views/law/refund.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:BasicLayoutVue, children:[
       { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
       { path: '/privatelaw', component: LawPrivateComponent, name:'privatelaw'},
+      { path: '/refundlaw', component: refundVue, name:'refundlaw'},
     ] },
     { path: '/home', name:'home', component: HomeComponent},
     { path: '/login', component: LoginComponent },

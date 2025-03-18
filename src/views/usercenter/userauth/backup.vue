@@ -7,10 +7,10 @@
             <div class="w-[37.5rem] flex flex-col">
                 <a-form layout="vertical" >
                     <a-form-item :label="t('userauth.form1')" required>
-                        <a-input class="customInput"></a-input>
+                        <a-input class="customAInput"></a-input>
                     </a-form-item>
                     <a-form-item :label="t('userauth.form2')" required>
-                        <a-input class="customInput"></a-input>
+                        <a-input class="customAInput"></a-input>
                     </a-form-item>
                     <a-form-item :label="t('userauth.form3')" required>
                         <div class="flex gap-[1.25rem]">
@@ -64,20 +64,3 @@
         }
     }
 </script>
-<style lang="less" scoped>
-.customInput {
-    font-family: "Alibaba Sans";
-    height: 3rem!important;
-    border-color: #666;
-    border-radius: 0.75rem;
-    &::placeholder {
-        color: #999999; /* 改变文字颜色 */
-        font-size: 0.9rem;
-        text-align: left;
-        font-family: "Alibaba Sans";
-        line-height: 100%;
-    }
-        
-}
-    
-</style>

@@ -10,9 +10,9 @@
                         <span class="text-[#191919] text-[1rem] font-medium">{{item.title}} [GB]</span>
                         <span class="text-[#191919] text-[1.5rem] font-bold" style="line-height: 100%;">{{ cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0 }}</span>
                     </div>
-                    <div class="pl-[0.25rem]" v-if="item.showButton">
+                    <!-- <div class="pl-[0.25rem]" v-if="item.showButton">
                         <img src="../../../assets/run.png" class="w-[2.5rem] h-[0.75rem]" />
-                    </div>
+                    </div> -->
                     <div v-if="item.showButton" class=" absolute right-[1rem] w-[5.5rem] h-[2rem] top-[0.875rem] border-[#01AA44] 
                     border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer" @click="onBuyFlow">
                         <span class="text-[#01AA44] text-[1rem]">{{t('proxycity.card_button')}}</span>

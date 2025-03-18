@@ -5,10 +5,10 @@
         </div>
         <div class="w-full gap-[1.75rem] h-[3rem] flex mt-[1.5rem]">
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
-                <a-input  :placeholder="t('purchaseddetail.search1')" size="large" class="customInput" />
+                <a-input  :placeholder="t('purchaseddetail.search1')" size="large" class="customAInput" />
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
-                <a-select :placeholder="t('purchaseddetail.search2')"  class="customSelect h-[3rem] w-full">
+                <a-select :placeholder="t('purchaseddetail.search2')"  class="customASelect h-[3rem] w-full">
                     <a-select-option value="jack">Jack</a-select-option>
                     <a-select-option value="lucy">Lucy</a-select-option>
                     <a-select-option value="Yiminghe">yiminghe</a-select-option>
@@ -194,43 +194,6 @@
     ])
 </script>
 
-<style lang="less" scoped>
-    .customInput {
-        font-family: "Alibaba Sans";
-        height: 3rem!important;
-        border-color: #666;
-        border-radius: 0.75rem;
-        // &>:focus {
-        //     border-color: #666!important;
-        // }
-        &::placeholder {
-            color: #999999; /* 改变文字颜色 */
-            font-size: 0.9rem;
-            text-align: left;
-            font-family: "Alibaba Sans";
-            line-height: 100%;
-        }
-         
-    }
-.customSelect  {
-    
-    .ant-select-selector {
-        height: 3rem!important;
-        border-color: #666!important;
-        border-radius: 0.75rem;
-    }
-    .ant-select-selection-item {
-        line-height: 3rem!important;
-    }
-    .ant-select-selection-placeholder {
-        height: 3rem!important;
-        line-height: 3rem!important;
-        color: #999999;
-        font-size: 1rem!important;
-        font-family: "Alibaba Sans";
-    }
-}
-</style>
 <style lang="less">
     .traffic_select {
         height: 3rem;

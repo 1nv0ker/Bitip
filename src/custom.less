@@ -1,0 +1,89 @@
+// 自定义a-input
+.customAInput {
+    font-family: "Alibaba Sans";
+    height: 3rem!important;
+    border-color: #666;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    &::placeholder {
+        color: #999999; /* 改变文字颜色 */
+        font-size: 0.9rem;
+        text-align: left;
+        font-family: "Alibaba Sans";
+        line-height: 100%;
+    }
+        
+}
+//自定义a-select
+.customASelect  {
+    font-size: 0.9rem;
+    .ant-select-selector {
+        height: 3rem!important;
+        border-color: #666!important;
+        border-radius: 0.75rem;
+    }
+    .ant-select-selection-item {
+        line-height: 3rem!important;
+    }
+    .ant-select-selection-placeholder {
+        height: 3rem!important;
+        line-height: 3rem!important;
+        color: #999999;
+        font-size: 1rem!important;
+        font-family: "Alibaba Sans";
+    }
+}
+//a-input-password 
+.customAPass {
+    height: 3rem!important;
+    border-color: #666;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    &:hover {
+        border-color: #666;
+    }
+    &:focus {
+        border-color: #666;
+    }
+    &>input {
+        // font-family: "Alibaba Sans";
+        // height: 3rem!important;
+        // border-color: #666;
+        // border-radius: 0.75rem;
+        &::placeholder {
+            color: #999999; /* 改变文字颜色 */
+            font-size: 0.9rem;
+            text-align: left;
+            font-family: "Alibaba Sans";
+            line-height: 100%;
+        }
+    }
+}
+//a-input-number 
+.customANum {
+    border-color: #666;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    .ant-input-number-wrapper {
+        font-family: "Alibaba Sans";
+    }
+    .ant-input-number-input-wrap {
+        height: 3rem!important;
+        border-color: #666;
+        border-radius: 0.75rem;
+        &>input {
+            font-family: "Alibaba Sans";
+            height: 3rem!important;
+            border-color: #666;
+            border-radius: 0.75rem;
+            
+            &::placeholder {
+                color: #999999; /* 改变文字颜色 */
+                font-size: 0.9rem;
+                text-align: left;
+                font-family: "Alibaba Sans";
+                line-height: 100%;
+            }
+        }
+    }
+}

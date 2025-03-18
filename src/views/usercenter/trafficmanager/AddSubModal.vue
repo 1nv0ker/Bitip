@@ -1,23 +1,42 @@
 <template>
-    <ModelComponent v-model="open" slot-mode :title="t('sub.title')" :width="'25.25rem'">
+    <ModelComponent v-model="open" slot-mode :title="type=='edit'?t('sub.edit'):t('sub.title')" :width="'25.25rem'">
         <div>
             <a-form layout="vertical">
                 <a-row class="w-[21.75rem]">
                     <a-col :span="24" class="w-[21.75rem]">
                         <a-form-item :label="t('sub.form1')" required :labelCol="{span: 24}" class="w-[21.75rem]">
-                            <a-select :placeholder="t('sub.placeholder1')" class="proxycity_select ">
+                            <a-select :placeholder="t('sub.placeholder1')" class="customASelect h-[3rem] w-full">
                                    
                             </a-select>
                         </a-form-item>
                     </a-col>
                     <a-col :span="24">
                         <a-form-item :label="t('sub.form2')" required :labelCol="{span: 24}" >
-                            <a-input class="customInput w-[21.75rem]" :placeholder="t('sub.placeholder2')"></a-input>
+                            <a-input class="customAInput w-[21.75rem]" :placeholder="t('sub.placeholder2')"></a-input>
+                        </a-form-item>
+                    </a-col>
+                    <a-col :span="24">
+                        <a-form-item :label="t('sub.form5')" required :labelCol="{span: 24}" >
+                            <a-select :placeholder="t('purchaseddetail.search5')"  class="customASelect h-[3rem] w-full" v-model:value="isLimit">
+                                <a-select-option :value="1">{{t('purchaseddetail.yes')}}</a-select-option>
+                                <a-select-option :value="0">{{t('purchaseddetail.no')}}</a-select-option>
+                            </a-select>
+                        </a-form-item>
+                        
+                    </a-col>
+                    <a-col :span="24" v-show="isLimit==1">
+                        <a-form-item :label="t('sub.form6')" required :labelCol="{span: 24}" >
+                            <a-input-number class="w-[21.75rem] customANum "  addon-after="M"></a-input-number>
                         </a-form-item>
                     </a-col>
                     <a-col :span="24">
                         <a-form-item :label="t('sub.form3')" required :labelCol="{span: 24}" >
-                            <a-input class="customInput w-[21.75rem]" :placeholder="t('sub.placeholder2')"></a-input>
+                            <a-input-password class="customAPass w-[21.75rem]" :placeholder="t('sub.placeholder2')"></a-input-password>
+                        </a-form-item>
+                    </a-col>
+                    <a-col :span="24">
+                        <a-form-item :label="t('sub.form4')" required :labelCol="{span: 24}" >
+                            <a-input class="customAInput w-[21.75rem]" :placeholder="t('sub.placeholder2')" />
                         </a-form-item>
                     </a-col>
                 </a-row>
@@ -32,40 +51,15 @@
 </template>
 <script setup lang="ts">
     import ModelComponent from '../ModelComponent.vue';
+    import { ref } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const open = defineModel()
+    const isLimit = ref(1)
+    defineProps({
+        type:{
+            type:String,
+            default:'add'
+        }
+    })
 </script>
-
-<style lang="less" scoped>
-.customInput {
-    font-family: "Alibaba Sans";
-    height: 3rem!important;
-    border-color: #666;
-    border-radius: 0.75rem;
-    &::placeholder {
-        color: #999999; /* 改变文字颜色 */
-        font-size: 0.9rem;
-        text-align: left;
-        font-family: "Alibaba Sans";
-        line-height: 100%;
-    }
-        
-}
-.proxycity_select {
-        .ant-select-selector {
-            height: 3rem!important;
-            border-color: #666666!important;
-            border-radius: 0.75rem!important;
-        }
-        .ant-select-selection-item {
-            line-height: 3rem!important;
-        }
-        .ant-select-selection-placeholder {
-            height: 3rem!important;
-            line-height: 3rem!important;
-            color: #999999;
-            font-size: 1rem;
-        }
-    } 
-</style>

@@ -379,7 +379,10 @@ export const en = {
         date: 'Add time',
         status: 'State',
         mark:'Remark',
-        action: 'Operate'
+        action: 'Operate',
+        edit:'Edit',
+        disabled:'Disabled',
+        enable:'Enable'
     },
     purchaseddetail: {
         title: 'Purchased IP',
@@ -401,7 +404,9 @@ export const en = {
         action1:'Automatic renewal',
         action2:'Renewal',
         yes:'Yes',
-        no:'No'
+        no:'No',
+        tips:'Automatic renewal tips',
+        message:'After opening, it will be automatically deducted from the account balance according to monthly renewal. If the balance is insufficient, the renewal will not be successful.'
     },
     purchasedhistory: {
         title:'Purchase history',
@@ -482,7 +487,13 @@ export const en = {
         form3:'Password',
         button:'Confirm',
         placeholder1:'Please select',
-        placeholder2:'Please enter'
+        placeholder2:'Please enter',
+        form4:'remark',
+        form5:'limit traffic',
+        yes:'Yes',
+        no:'No',
+        form6:'Set traffic',
+        edit:'Edit sub-account'
     },
     setting: {
         title:'Account Settings',
@@ -521,7 +532,21 @@ export const en = {
         title3_item6:'Brazil',
         title3_item7:'India',
         title3_item8:'Indonesia',
-        title4: 'Buy a package'
+        title4: 'Buy a package',
+        question1:'How are dynamic IP billed?',
+        answer1_1:'Dynamic IP charges according to traffic, and the traffic calculation method is: uplink + downlink, and calculates the uploaded traffic plus the downloaded traffic sum.',
+        question2:'How to test for free?',
+        answer2_1:'After registering a new user, you can get 200M of traffic and test BitIP is dynamic proxy for free.',
+        question3:'Why can not the proxy connect to the network?',
+        answer3_1:'1. BitIP proxy IP can only be used on overseas networks. Please confirm whether it is in an overseas network environment.',
+        answer3_2:'2. Confirm whether the traffic has been used up.',
+        answer3_3:'If all of the above questions have been confirmed, you can try rebuilding the post-test, or contact the account manager for help.',
+        question4:'I don’t know how to build an overseas network environment. Can I help me build an overseas environment?',
+        answer4_1:`'BitIP does not assist any customer in building an overseas environment. And based on national laws and regulations, all domestic IP direct connections have been blocked.`,
+        question5:'What is the case when my traffic is negative?',
+        answer5_1:'Due to certain delays in data cache and traffic statistics, the balance may appear as negative after the system checks your traffic usage.',
+        question6:'What are the supported proxy protocols?',
+        answer6_1:'We support HTTP, HTTPS, and SOCKS5 proxy protocols to meet different application needs.'
     },
     staticagent: {
         title1:'Static residential agency',
@@ -544,7 +569,20 @@ export const en = {
         tltle3_subtitle2:'Unlimited flow, unimpeded use',
         tltle3_subtitle3:'Support Http/Https/Socks5 protocol',
         tltle3_subtitle4:'Real-time delivery without waiting',
-        title4:'Buy a package'
+        title4:'Buy a package',
+
+        question1:'How to bill static residential agents?',
+        answer1_1:'Static residential agents are charged according to the number of IPs. You can choose to purchase a single IP. If you have a large demand, you can recharge your balance and purchase it more preferentially.',
+        question2:'Do you support free static IP testing?',
+        answer2_1:'To prevent IP abuse, static residential IP does not provide any free testing services. If you really need testing, you can contact us directly.',
+        question3:'Are there any traffic restrictions for static residential IP?',
+        answer3_1:'No. Static residential IP can be used without limiting the usage traffic during its useful life.',
+        question4:'If the IP expires, can I continue to use the same IP after renewal?',
+        answer4_1:'The IP can be renewed within 7 days after it expires. The renewal time is accumulated according to the first purchase time, and is not calculated from the renewal time.',
+        question5:'Is the IP address inconsistent with the country selected at the time of purchase?',
+        answer5_1:'Different browsers or websites use different IP identification databases. Some databases have update delays, and BitIP will be updated as soon as possible to ensure its accuracy.',
+        question6:'Are static residential agents shared or exclusive?',
+        answer6_1:'Static proxy is exclusive to you, and you don’t need to worry about the IP being shared or abused by other users, ensuring the purity of the proxy.'
     },
     buying: {
         title1: 'Package purchase',
@@ -964,7 +1002,10 @@ export const zh = {
         date: '添加时间',
         status: '状态',
         mark:'备注',
-        action: '操作'
+        action: '操作',
+        edit:'编辑',
+        disabled:'禁用',
+        enable:'启用'
     },
     purchaseddetail: {
         title: '已购IP',
@@ -986,7 +1027,9 @@ export const zh = {
         action1:'自动续费',
         action2:'续费',
         yes:'是',
-        no:'否'
+        no:'否',
+        tips:'自动续费提示',
+        message:'开启后从账户余额内按每月续费自动扣除，余额不足则续费不成功'
     },
     purchasedhistory: {
         title:'购买记录',
@@ -1065,9 +1108,15 @@ export const zh = {
         form1: '启用',
         form2:'账户名',
         form3:'密码',
+        form4:'备注',
+        form5:'是否限制流量',
+        form6:'设置流量',
+        yes:'是',
+        no:'否',
         button:'确认',
         placeholder1:'请选择',
-        placeholder2:'请输入'
+        placeholder2:'请输入',
+        edit:'编辑子账号'
     },
     setting: {
         title:'账户设置',
@@ -1108,7 +1157,21 @@ export const zh = {
         title3_item6:'巴西',
         title3_item7:'印度',
         title3_item8:'印度尼西亚',
-        title4: '购买套餐'
+        title4: '购买套餐',
+        question1:'动态IP是怎么计费的？',
+        answer1_1:'动态IP按照流量进行收费，流量计算方式为：上行+下行，计算上传的流量加下载的流量总和。',
+        question2:'如何免费测试？',
+        answer2_1:'新用户注册后，即可获取200M的流量，免费测试BitIP的动态代理。',
+        question3:'为什么代理无法连接到网络？',
+        answer3_1:'1. BitIP代理IP仅能在境外网络下使用，请确认是否处于境外网络环境。',
+        answer3_2:'2. 确认流量是否已用完。',
+        answer3_3:'如果以上问题都已经确认无误，您可以尝试重新生成后测试，或者联系客户经理获取帮助。',
+        question4:'我不会搭建境外网络环境，能不能帮我搭建境外环境？',
+        answer4_1:'BitIP不协助任何客户进行境外环境的搭建。 并且已基于国家法律法规，屏蔽了所有国内IP直连。',
+        question5:'我的流量出现了负数是什么情况？',
+        answer5_1:'由于数据缓存和流量统计存在一定延迟，系统在校验您的流量使用情况后，可能导致余额显示为负数。',
+        question6:'支持的代理协议有哪些？',
+        answer6_1:'我们支持HTTP、HTTPS、SOCKS5代理协议，以满足不同的应用需求。'
     },
     staticagent: {
         title1:'静态住宅代理',
@@ -1131,7 +1194,20 @@ export const zh = {
         tltle3_subtitle2:'不限流量，畅用无阻',
         tltle3_subtitle3:'支持Http/Https/Socks5协议',
         tltle3_subtitle4:'实时交付，无需等待',
-        title4:'购买套餐'
+        title4:'购买套餐',
+        question1:'静态住宅代理如何计费？',
+        answer1_1:'静态住宅代理按照IP个数计费，您可选择单条IP购买，需求量大可以充值余额后购买更优惠。',
+        question2:'你们支持静态IP免费测试吗?',
+        answer2_1:'为防止IP滥用，静态住宅IP暂不提供任何免费测试服务，如确有测试需要，可直接联系我们。',
+        question3:'静态住宅IP有流量限制吗？',
+        answer3_1:'没有。静态住宅IP在使用期内可以不限使用流量。',
+        question4:'如果IP过期了，续费后可以继续使用同一个IP吗？',
+        answer4_1:'IP过期后7天内可以续费，续费时长根据首次购买时间相应累加，并非是从续费时刻开始计算。',
+        question5:'IP地址与购买时选择的国家不一致?',
+        answer5_1:'不同的浏览器或网站使用的IP识别数据库不尽相同，某些数据库存在更新延迟，BitIP会尽快更新以保证其准确性。',
+        question6:'静态住宅代理是共享的还是独享的？',
+        answer6_1:'静态代理是个人独享的，您无需担心IP被其他用户共享或滥用，确保代理的纯净度。'
+
     },
     buying: {
         title1: '套餐购买',

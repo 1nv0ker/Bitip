@@ -11,6 +11,7 @@ import pinia from './store'
 import { configure } from 'vee-validate'
 import 'ant-design-vue/dist/reset.css';
 import './echarts'
+import './custom.less'
 
 configure({
   validateOnBlur: false, // 关闭全局 blur 事件验证

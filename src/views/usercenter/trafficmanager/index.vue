@@ -7,8 +7,8 @@
                     <span>+</span> <span class="pl-[0.5rem] ">{{t('trafficmanager.add_account')}}</span>
                 </div>
             </div>
-            <div class="mt-[1.5rem]">
-                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'7.5rem'}" :pagination="false" >
+            <div class="mt-[1.5rem] h-[20rem]">
+                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'16rem'}" :pagination="false" >
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -17,16 +17,21 @@
                     <template #bodyCell="{ column, record }">
                         <template v-if="column.key === 'action'">
                             <div class="flex gap-[1.875rem] justify-center">
-                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44] cursor-pointer">
-
+                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44] cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit">
+                                    
                                 </div>
-                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44] cursor-pointer">
-
+                                <div class="w-[1.25rem] text-[#01AA44] flex justify-center items-center h-[1.25rem] border-[#01AA44] cursor-pointer rounded-[50%] border-[1px]" :title="t('trafficmanager.disabled')">
+                                   <span class="text-[1rem]">\</span>
                                 </div>
-                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44] cursor-pointer">
-
+                                <div class="w-[1.25rem] text-[#01AA44] flex justify-center items-center h-[1.25rem] border-[#01AA44] cursor-pointer rounded-[50%] border-[1px]" :title="t('trafficmanager.enable')">
+                                    <span class="text-[#01AA44] text-[1rem]">✔</span>
                                 </div>
                             </div>
+                        </template>
+                        <template v-else-if="column.key === 'status'">
+                            <span class="text-[#191919] text-[1rem]">
+                                {{ record[column.key]?t('trafficmanager.enable'):t('trafficmanager.disabled') }}
+                            </span>
                         </template>
                         <template v-else>
                             <span class="text-[#191919] text-[1rem]">
@@ -60,7 +65,7 @@
                 <div id="traffic_chart" class="w-full h-full"></div>
             </div>
         </div>
-        <AddSubModal v-model="open" />
+        <AddSubModal v-model="open" :type="type" />
     </div>
 </template>
 <script setup lang="ts">
@@ -77,6 +82,7 @@
     const open = ref(false)
     const mainRef = ref<HTMLElement>()
     const I18Store = useI18nStore()
+    const type = ref('add')
     const datas = ref([
         { date: '2023-01', value: '30' },
         { date: '2023-02', value: '45' },
@@ -131,7 +137,8 @@
             {
                 title: t('trafficmanager.action'),
                 key: 'action',
-                align:'center'
+                align:'center',
+                width: '15rem'
             },
         ];
     })
@@ -141,24 +148,24 @@
             limit:'￥50000',
             flow: '100',
             date: '2025-10-02 16:10:02',
-            status:'11',
-            mark: '1234'
+            status:true,
+            mark: '1234',
         },
         {
             name: 'DH434345646',
             limit:'￥50000',
             flow: '100',
             date: '2025-10-02 16:10:02',
-            status:'11',
-            mark: '1234'
+            status:false,
+            mark: '1234',
         },
         {
             name: 'DH434345646',
             limit:'￥50000',
             flow: '100',
             date: '2025-10-02 16:10:02',
-            status:'11',
-            mark: '1234'
+            status:false,
+            mark: '1234',
         }
     ])
     const items = computed(() => {
@@ -185,6 +192,11 @@
         
     })
     const onAddSub = () => {
+        type.value = 'add'
+        open.value = true
+    }
+    const onEdit = () => {
+        type.value = 'edit'
         open.value = true
     }
     const loadD3Chart = () => {
