@@ -4,8 +4,8 @@
     }" >
         <ComponentLayout >
             <div class="w-full h-[51.625rem] overflow-hidden pt-[6rem]">
-                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0" style="background: linear-gradient( 180deg, #FAFFED 0%, #FDFFEC 100%);">
-
+                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 plan_bg">
+                    
                 </div>
                 <div class="flex items-center flex-col gap-[2rem]">
                     <span class="text-[#191919] text-center z-20 text-[4.125rem] font-bold max-w-[74.124rem]">{{t('plan.title')}}</span>
@@ -31,9 +31,9 @@
                     </div>
                     <div class="w-[12.5rem] h-full flex flex-col justify-end  z-20 gap-[2rem]">
                         <div class="pl-[3rem]">
-                            <div class="w-[1rem] h-[1rem] bg-[#01AA44]">
+                            <!-- <div class="w-[1rem] h-[1rem] bg-[#01AA44]">
 
-                            </div>
+                            </div> -->
                         </div>
                         <div class="w-full h-[15.1875rem] bg-[#EEEEEE] rounded-[2.25rem] flex flex-col justify-center items-center gap-[0.5rem]">
                             <div class="flex flex-col text-[#191919] text-[1.75rem] font-bold">
@@ -44,8 +44,8 @@
                         </div>
                     </div>
                     <div class="w-[12.625rem] h-full flex flex-col justify-end gap-[0.5rem] z-20">
-                        <div class="w-full h-[7rem] bg-[#01AA44]">
-
+                        <div class="w-full h-[7rem] ">
+                            <img src="../../assets/plan/card.png" class="w-full h-full"/>
                         </div>
                         <div class="w-full h-[7rem] bg-[#C7D8B6] rounded-[2.25rem] flex justify-center items-center">
                             <span class="text-[#687D53] text-[1.25rem] font-medium">{{t('plan.item3_content')}}</span>
@@ -73,13 +73,28 @@
                     <span class="text-[#191919] text-[2rem] font-medium">{{t('plan.title2')}}</span>
                     <span class="text-[#666666] text-[1rem] font-medium">{{t('plan.title2_subtitle')}}</span>
                 </div>
-                <div class="w-full pt-[8.25rem] flex gap-[1rem] justify-center">
+                <div class="w-full mt-[8.25rem] relative flex gap-[1rem] justify-center">
+                    <!-- <div class="w-1 h-1 absolute bg-[red] left-[200px]"></div> -->
+                    <!-- <svg width="400" height="200" class=" absolute left-[200px] bg-[red] top-[-200px]">
+
+                        <path 
+                            d="M0 200 Q400 10 0 400" 
+                            stroke="#2c3e50" 
+                            fill="none"
+                            stroke-width="2"
+                        />
+
+                        <circle cx="200" cy="50" r="4" fill="#e74c3c"/>
+                    </svg> -->
+                    <img src="../../assets/plan/test.jpg " class="w-[16rem] h-[5rem] absolute top-[-5rem] left-[11.5rem]"/>
+                    <img src="../../assets/plan/test2.jpg " class="w-[18rem] h-[5rem] absolute top-[-5rem] right-[6.5rem]"/>
+                    <img src="../../assets/plan/test3.jpg " class="w-[12.125rem] h-[3.625rem] absolute bottom-[-3.625rem] left-[33.5rem]"/>
                     <div class="w-[19.25rem] h-[19.5rem] 
                     flex flex-col gap-[1.5rem]
                     p-[1.25rem]
                     rounded-[1rem] border-[1px] border-[#EBEFF8]" style="box-shadow: 0px 8px 16px 0px rgba(120,161,143,0.12);" v-for="item in items">
-                        <div class="w-full h-[10.125rem] bg-[#DAFF8D]">
-
+                        <div class="w-full h-[10.125rem]">
+                            <img :src="item.img" class="w-[16.75rem] h-[10.1875rem]"/>
                         </div>
                         <span class="text-[#191919] text-[1.125rem] font-bold">{{item.title}}</span>
                         <span class="text-[#666666] text-[1rem]">{{item.subtitle}}</span>
@@ -94,6 +109,10 @@
     import { useRouter } from 'vue-router'
     import BasicLayout from '../BasicLayout.vue';
     import ComponentLayout from '../ComponentLayout.vue';
+    import img1 from '../../assets/plan/1.png'
+    import img2 from '../../assets/plan/2.png'
+    import img3 from '../../assets/plan/3.png'
+    import img4 from '../../assets/plan/4.png'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
@@ -106,23 +125,31 @@
             {
                 title:t('plan.step')+'1',
                 subtitle:t('plan.step1'),
-                img:''
+                img:img1
             },
             {
                 title:t('plan.step')+'2',
                 subtitle:t('plan.step2'),
-                img:''
+                img:img2
             },
             {
                 title:t('plan.step')+'3',
                 subtitle:t('plan.step3'),
-                img:''
+                img:img3
             },
             {
                 title:t('plan.step')+'4',
                 subtitle:t('plan.step4'),
-                img:''
+                img:img4
             }
         ]
     })
 </script>
+<style  scoped>
+    .plan_bg {
+        background-image: url('../../assets/plan/bg.png');
+        background-size: cover; /* 关键属性 */
+
+        background-repeat: no-repeat;
+    }
+</style>

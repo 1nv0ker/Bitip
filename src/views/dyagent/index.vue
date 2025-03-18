@@ -47,8 +47,8 @@
                 <div class="flex justify-center w-full pb-[3.25rem]">
                     <span class="text-[#191919] text-[2rem] font-medium">{{t('dyagent.title2')}}</span>
                 </div>
-                <div class="w-full flex flex-wrap gap-[1rem]">
-                    <div class="border-[#EBEFF8] p-[2rem] border-[1px] rounded-[1rem] h-[15.75rem] flex flex-col gap-[1.25rem]" style=" width: calc( 50% - 0.5rem );" v-for="item in items">
+                <div class="w-full flex flex-wrap  gap-[1rem]">
+                    <div class="border-[#EBEFF8] p-[2rem] border-[1px] rounded-[1rem] h-[15.75rem] w-[39.5rem] flex flex-col gap-y-[1.25rem]" v-for="item in items">
                         <img :src="item.img" class=" w-[4rem] h-[4rem]" />
                         <div class="w-full flex flex-col gap-[1rem]">
                             <span class="text-[#191919] text-[1.75rem] font-bold">{{item.title}}</span>

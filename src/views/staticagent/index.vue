@@ -59,7 +59,7 @@
             </div>
         </ComponentLayout>
         <ComponentLayout class="">
-            <div class="w-full pb-[8.125rem] flex h-[47rem] pt-[3.75rem] gap-[1.25rem] items-center">
+            <div class="w-full pb-[8.125rem] flex h-[52rem] pt-[3.75rem] gap-[1.25rem] items-center">
                 <div class="w-[37.5rem] h-full flex flex-col gap-[2.25rem] justify-center">
                     <span class="max-w-full text-[#191919] font-medium text-[1.875rem]">
                         {{t('staticagent.title3')}}
@@ -92,9 +92,9 @@
             <div class=" absolute top-0 bottom-0 left-0 right-0">
                 <img src="../../assets/dy/card.png" class="w-full h-full" />
             </div>
-            <div class="w-full ">
-                <div class="flex w-full justify-center items-end p-[1.75rem]">
-                    <span class="text-[#191919] text-[2rem] font-medium">{{ t('dyagent.title4') }}</span>
+            <div class="w-full  pb-[4rem]">
+                <div class="flex w-full justify-center items-end pb-[1.75rem] z-50">
+                    <span class="text-[#191919] text-[2rem] font-medium z-50">{{ t('dyagent.title4') }}</span>
                 </div>
                 <StaticSetmenu class="p-[1.25rem]" showPadding/>
             </div>

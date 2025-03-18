@@ -2,8 +2,9 @@
     <div class="w-full animate__slideInRight animate__animated overflow-hidden">
         <div class="w-full flex gap-x-[1.25rem] justify-center overflow-hidden">
             <div v-for="card in cards.slice(0,3)" class="p-[2rem] flex flex-col justify-evenly relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
-                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">
-                    <span class="text-[#FFEEC1] text-[1.625rem] font-bold">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
+                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[6.875rem] h-[4rem]  flex justify-center items-center">
+                    <img src="../../assets/recharge/box.png" class="w-full h-full absolute"/>
+                    <span class="text-[#FFEEC1] text-[1.625rem] pl-[0.75rem] w-full font-bold z-50 text-center flex-wrap">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
                 </div>
                 <div class="w-full flex flex-col text-[#191919] font-bold text-left">
                     <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
@@ -16,8 +17,12 @@
         </div>
         <div class="w-full flex gap-x-[1.25rem] justify-center mt-[1.125rem] overflow-hidden">
             <div v-for="card in cards.slice(3,4)" class="p-[2rem] flex flex-col justify-center relative w-[19rem] h-[22.125rem] rounded-[1.5rem]" style="background: linear-gradient( 161deg, #F2EDFF 0%, #FFFFFF 100%);">
-                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">
+                <!-- <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[8rem] h-[2.25rem] bg-[#4B3585] flex justify-center items-center">
                     <span class="text-[#FFEEC1] text-[1.625rem] font-bold">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
+                </div> -->
+                <div class=" absolute top-0 right-0 rounded-tr-[1.5rem] rounded-bl-[1.5rem] w-[6.875rem] h-[4rem]  flex justify-center items-center">
+                    <img src="../../assets/recharge/box.png" class="w-full h-full absolute"/>
+                    <span class="text-[#FFEEC1] text-[1.625rem] pl-[0.75rem] w-full font-bold z-50 text-center flex-wrap">{{ t('setmenu.deliver') }}{{card.deliver}}</span>
                 </div>
                 <div class="w-full flex flex-col text-[#191919] font-bold text-left">
                     <span class="text-[2.125rem]">{{t('setmenu.arrival')}}</span>
