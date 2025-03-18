@@ -1,8 +1,8 @@
 <template>
-    <ComponentLayout ref="sixthRef" class="pb-[7.125rem]">
+    <ComponentLayout ref="sixthRef" class="pb-[7.125rem]" :bg="'white'">
         <div class="w-full h-[27rem] overflow-hidden relative rounded-[2rem]" ref="boxRef">
             <div class=" absolute top-0 bottom-0 left-0 right-0" >
-                <img src="../../assets/card_bg.gif" class="w-full h-full smoke-element" />
+                <img src="../../assets/card_bg.png" class="w-full h-full smoke-element" />
             </div>
             
             <div class=" absolute bg-[#6DFFEB] w-[10rem] h-[10rem] z-1" ref="imgRef" style="transition: all 2s ease-in-out;;will-change: transform;filter: blur(100px);">

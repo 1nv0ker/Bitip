@@ -1,5 +1,5 @@
 <template>
-    <div class="border-t-[1px] border-[#EBEFF8] w-full overflow-hidden">
+    <div class="border-t-[1px] border-[#EBEFF8] w-full overflow-hidden bg-white">
         <ComponentLayout>
             <!-- 桌面底部菜单 -->
             <FooterMenu />

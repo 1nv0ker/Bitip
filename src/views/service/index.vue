@@ -1,12 +1,12 @@
 <template>
     <BasicLayout>
         <ComponentLayout >
-            <div class=" absolute top-0 bottom-0 left-0 right-0 h-[31.5625rem]">
-                <img src="../../assets/map_group.png" class="w-full h-full" />
+            <div class=" absolute top-[-4rem] bottom-0 left-0 right-0 h-[31.5625rem]">
+                <img src="../../assets/service/bg.png" class="w-full h-full" />
             </div>
             <div class="w-full z-10">
                 <div class="w-full h-[31.5625rem] flex justify-between items-center">
-                    <div class="flex flex-col justify-center gap-[2.625rem] max-w-[36.4375rem]">
+                    <div class="flex flex-col justify-center gap-[2.625rem] max-w-[36.4375rem] z-50">
                         <span class="text-[#191919] text-[3.4375rem] font-bold ">{{ t('service.title1') }}</span>
                         <span class="text-[#666666] text-[1rem] font-medium">{{ t('service.content1') }}</span>
                     </div>

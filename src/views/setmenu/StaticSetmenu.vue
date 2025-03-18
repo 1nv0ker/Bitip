@@ -50,18 +50,18 @@
                         </div>
                     </div>
                     <div>
-                        <span class="text-[0.9rem]">￥{{time.price}}/IP</span>
+                        <span class="text-[0.9rem]">￥{{selectType==0?time.price:time.price_single}}/IP</span>
                     </div>
                 </div>
             </div>
 
         </div>
-        <div class="flex-[1] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1.25rem] pr-[1.25rem]">
+        <div class="flex-[1] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1rem] pr-[1.25rem]">
             <div class="w-full pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem]">
                 <div class="w-full border-b-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center" v-for="staff in buyNumbers">
-                    <div class="text-[#191919] text-[0.9rem] flex flex-col ">
+                    <div class="text-[#191919] text-[0.9rem] flex flex-col w-[12rem]">
                         <span>{{staff.name}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
-                        <span class=" font-bold">￥{{selected_time?.price}}/{{t('setmenu.number')}}</span>
+                        <span class="font-bold">￥{{staff.type==0?selected_time?.price:selected_time?.price_single}}/{{t('setmenu.number')}}</span>
                     </div>
                     <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem] border-[1px] border-[#F5F7FB] flex justify-evenly items-center">
                         <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onRemove(staff.key, staff.number)">-</span>
@@ -85,7 +85,7 @@
                     </div>
                     <div class="w-full flex justify-between">
                         <span class="text-[#191919] font-medium text-[1rem]">{{ t('setmenu.allPrice') }}</span>
-                        <span class="text-[#191919] font-semibold text-[1rem]">￥{{buyNumbers.reduce((a,b)=>a+b.number, 0)*(selected_time?.price || 0) }}</span>
+                        <span class="text-[#191919] font-semibold text-[1rem]">￥{{buyNumbers.reduce((a,b)=>a+(b.number*((b.type==0?selected_time?.price:selected_time?.price_single) || 0)), 0) }}</span>
                     </div>
                 </div>
                 <div class="w-full h-[3.25rem] rounded-[1.75rem] mt-[2rem] flex justify-center items-center cursor-pointer" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" @click="onRecharge">
@@ -112,11 +112,13 @@
         key:number | string,
         title?:string,
         type?:string | number,
+        price_single?:number,
         img?:any
     }
     interface time_type {
         name:string,
         price:number,
+        price_single?:number,
         key:number,
         discount:number
     }
@@ -143,6 +145,7 @@
             {
                 name:t('setmenu.time1'),
                 price: 45,
+                price_single:23,
                 key: 1,
                 discount: 9
             },
@@ -150,25 +153,29 @@
                 name:t('setmenu.time2'),
                 price: 84,
                 key: 2,
+                price_single:42,
                 discount: 8.4
             },
             {
                 name:t('setmenu.time3'),
                 price: 114,
                 key: 3,
+                price_single:57,
                 discount: 7.6
             },
             {
                 name:t('setmenu.time4'),
                 price: 198,
                 key: 4,
-                discount: 6.6
+                discount: 6.6,
+                price_single:99,
             },
             {
                 name:t('setmenu.time5'),
-                price: 160,
+                price: 336,
                 key: 5,
-                discount: 5.6
+                discount: 5.6,
+                price_single:168,
             }
         ]
     })
@@ -268,6 +275,9 @@
             })
             selectedCitys.value.push(city)
         }
+        console.log(
+            'buyNumbers',buyNumbers.value
+        )
     }
     const onRemove = (key:number|string, number:number) => {
         const index = buyNumbers.value.findIndex(item=>item.key==key)
@@ -283,6 +293,9 @@
                 buyNumbers.value.splice(index, 1, newItem)
             }
         }
+        console.log(
+            'buyNumbers',buyNumbers.value
+        )
     }
     const onAdd = (key:number|string) => {
         const index = buyNumbers.value.findIndex(item=>item.key==key)
@@ -292,6 +305,9 @@
             })
             buyNumbers.value.splice(index, 1, newItem)
         }
+        console.log(
+            'buyNumbers',buyNumbers.value
+        )
     }
     const onClear = () => {
         buyNumbers.value = []
@@ -300,7 +316,12 @@
 
     const onRecharge = () => {
         packageName.value = t('setmenu.subtitle2')
-        cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price || 0)
+        if (selectType.value==0) {
+            cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price || 0)
+        } else {
+            cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price_single || 0)
+        }
+        
         if (cost.value == 0) {
             return
         }

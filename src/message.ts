@@ -192,21 +192,21 @@ export const en = {
         title4_subtitle5: 'Bandwidth of native families in Thailand',
     },
     safety: {
-        title: 'Build a safe, compliant and healthy big data service ecosystem',
-        subtitle: 'IPIDEA always adheres to the principles of security and compliance, and is committed to providing safe, stable, and high-quality big data proxy services, protecting the legitimate rights and interests of users, and promoting the healthy and orderly development of global big data business.',
-        title2: 'Safety and Compliance Management',
-        subtitle2: 'Comply with national laws and regulations and implement industry safety control measures',
-        title2_item1_title: 'Real-name authentication',
-        title2_item1_content: 'Users need to complete real-name authentication and pass verification before they can use IPIDEA proxy products',
-        title2_item2_title: 'Account Security',
-        title2_item2_content: 'Users need to complete real-name authentication and pass verification before they can use IP IDEA proxy products.',
-        title2_item3_title: 'Risk Management',
-        title2_item3_content: 'Conduct risk management on product usage scenarios and objectives, and implement supervision and handling measures for improper behavior',
+        title: 'Provide a safe and reliable network environment for your business',
+        subtitle: 'In the digital age, data security and compliance are the keys to business success. BITIP always puts security first and is committed to providing users with safe, compliant and reliable proxy services to ensure that your business is worry-free around the world.',
+        title2: `BITIP's Security Commitment`,
+        subtitle2: 'BITIP uses advanced encryption technology (such as SSL/TLS) to ensure that your data is always encrypted during transmission to prevent theft or tampering. We strictly abide by the privacy protection policy and never disclose user data.',
+        title2_item1_title: 'Real-time monitoring and threat prevention',
+        title2_item1_content: `BITIP's security team monitors network traffic in real time 24/7, quickly identifying and defending against potential network attacks (such as DDoS, malicious crawlers, etc.), ensuring that your business always runs stably.`,
+        title2_item2_title: 'Compliance and transparency',
+        title2_item2_content: 'We strictly abide by the laws and regulations of major countries and regions around the world to ensure that your business operates in compliance with regulations worldwide. At the same time, we provide transparent service agreements and usage policies so that you can clearly understand how your data is used.',
+        title2_item3_title: 'Zero-logging policy',
+        title2_item3_content: `BITIP adopts a strict zero-log policy and does not record users' browsing history, access data or any sensitive information, ensuring that your privacy is protected to the greatest extent.`,
         title3: 'Safety Standards',
         subtitle3: 'Comply with ISO9001 quality management system, ISO27001 information security management system and other high industry standards',
         title3_item1_title1: 'ISO 27001',
         title3_item1_content: 'Information Security Management System',
-        title3_item2_title2:'ISO 9001',
+        title3_item2_title2:'SOC 2',
         title3_item2_content: 'Quality Management System'
     },
     service: {
@@ -288,7 +288,7 @@ export const en = {
         question6:'What is the difference between product packages and using agents for credit recharge?',
         answer6: '',
 
-        location:'Native Residential IP',
+        location:'Native Residential double ISP',
         location2:'Residential Single ISP',
         type1:'Single ISP',
         type2:'Dual ISP',
@@ -320,7 +320,7 @@ export const en = {
         menu1_sub3: 'Traffic Management',
         menu2: 'Static Residence',
         menu2_sub1: 'Purchase Agent',
-        menu2_sub2:'Purchased IP',
+        menu2_sub2:'Purchased Agent',
         menu3: 'Purchase history',
         menu4: 'Promotion rebate',
         menu5:'User Auth',
@@ -448,7 +448,9 @@ export const en = {
         copy:'Copied',
         tip1:'Once the funds are withdrawn to the account balance, they cannot be withdrawn for cash but can be used to purchase packages.',
         tip2:'Contact customer service to withdraw cash after the balance reaches 100 yuan.',
-        tip2_title:'Contact Customer Service'
+        tip2_title:'Contact Customer Service',
+        buttonName:'Confirm Withdrawal',
+        buttonName1:'Confirm Withdrawal'
     },
     recharge: {
         title: 'Recharge Center',
@@ -459,7 +461,8 @@ export const en = {
         button:'Confirm payment',
         pay1:'WeChat Pay',
         pay2:'Alipay',
-        pay3:'Other Pay'
+        pay3:'Other Pay',
+        confirmButton:'Confirm purchase'
     },
     userauth: {
         title: 'User Auth',
@@ -592,9 +595,10 @@ export const en = {
         form3:'Recharge amount',
         form4:'Payment method',
         form5:'Current available balance',
-        subtitle:'Payment default consent',
+        subtitle:'Payment consent',
         content:'Refund Agreement',
-        tips:'Pay fees'
+        tips:'Pay fees',
+        content2:'Other Payment please contact customer service'
     },
     plan: {
         title: 'BitIP promotion rebate plan, one-time promotion, permanent benefits. Invite users, 10% commission rebate with no upper limit',
@@ -814,36 +818,36 @@ export const zh = {
         title4_subtitle5: '泰国原生家庭带宽',
     },
     safety: {
-        title: '构建安全、合规、健康的 大数据服务生态',
-        subtitle: 'IPIDEA始终坚守安全合规原则，致力于提供安全、稳定、优质的大数据代理服务，保障用户合法权益，推动 全球大数据业务的健康有序发展',
-        title2: '安全合规管理',
-        subtitle2: '遵守国家法律法规，实施行业安全管控措施',
-        title2_item1_title: '实名认证',
-        title2_item1_content: '用户需要完成实名认证并核验通过， 才能使用IPIDEA代理产品',
-        title2_item2_title: '账户安全',
-        title2_item2_content: '用户需要完成实名认证并核验通过，用户需要完成实名认证并核验通过，才能使用IP IDEA代理产品才能使用IPIDEA代理产品',
-        title2_item3_title: '风险管控',
-        title2_item3_content: '对产品使用场景、目标进行风险管控， 且针对不当行为执行监管、处理措施',
+        title: '为您的业务提供安全可靠的网络环境',
+        subtitle: '在数字化时代，数据安全与合规性是企业成功的关键。BITIP 始终将安全放在首位，致力于为用户提供安全、合规、可靠的代理服务，确保您的业务在全球范围内无后顾之忧。',
+        title2: 'BITIP 的安全承诺',
+        subtitle2: 'BITIP 采用先进的加密技术（如 SSL/TLS），确保您的数据在传输过程中始终处于加密状态，防止被窃取或篡改。我们严格遵守隐私保护政策，绝不泄露用户数据。',
+        title2_item1_title: '实时监控与威胁防御',
+        title2_item1_content: 'BITIP 的安全团队 24/7 实时监控网络流量，快速识别并防御潜在的网络攻击（如 DDoS、恶意爬虫等），确保您的业务始终稳定运行。',
+        title2_item2_title: '合规性与透明度',
+        title2_item2_content: '我们严格遵守全球主要国家和地区的法律法规，确保您的业务在全球范围内合规运营。同时，我们提供透明的服务协议和使用政策，让您清晰了解数据的使用方式。',
+        title2_item3_title: '零日志政策',
+        title2_item3_content: 'BITIP 采用严格的零日志政策，不记录用户的浏览历史、访问数据或任何敏 感信息，确保您的隐私得到最大程度的保护。',
         title3: '安全标准',
         subtitle3: '符合ISO9001质量管理体系，ISO27001信息安全管理体系等行业高标准',
         title3_item1_title1: 'ISO 27001',
         title3_item1_content: '信息安全管理体系',
-        title3_item2_title2:'ISO 9001',
+        title3_item2_title2:'SOC 2',
         title3_item2_content: '质量管理体系'
     },
     extra: {
         title: '最适合您的代理方案'
     },
     service: {
-        title1: '企业服务中心',
-        content1: '专为大中小企业量身打造服务计划，提供多元业务场景的定制方案和专属优惠，帮助 企业降低业务成本，实现数据驱动的业务增长和全球化发展',
-        title2: '行业痛点',
-        title2_subtitle1: '抓取代理',
-        title2_content1: '使用优质代理,可以提高有效数据的抽取 的信息进行分析，为您的业务决策提供支持',
-        title2_subtitle2: '经销商社群',
-        title2_content2: '增加你的产品在网络中的活跃度和销售更多',
-        title2_subtitle3: '市场调查',
-        title2_content3: '为市场拓展做好充分准备',
+        title1: '企业定制服务',
+        content1: '在当今数字化时代，企业需要高效、可靠的网络工具来应对复杂的业务需求。BITIP 深知每个企业的独特性，因此我们提供企业定制服务，为您量身打造专属的代理解决方案，助力您的业务在全球范围内无界拓展。',
+        title2: '定制服务',
+        title2_subtitle1: '高度定制化',
+        title2_content1: '使用优质代理,我们根据您的业务需求，提供从IP类型、地理位置到并发连接数等全方位的定制服务，确保您的网络工具完全匹配业务场景。的信息进行分析，为您的业务决策提供支持',
+        title2_subtitle2: '专业团队支持',
+        title2_content2: 'BITIP 拥有经验丰富的技术团队，为您提供7x24小时的专业支持，确保您的业务始终顺畅运行。',
+        title2_subtitle3: '安全与隐私保障',
+        title2_content3: '我们采用先进的加密技术和严格的数据保护措施，确保您的业务数据安全无虞。',
         title3:'企业权益与服务',
         subtitle3: '为全球30000+企业提供资源、技术、服务等多维度支持，并开放IPIDEA全球生态资源，合作共赢',
         title3_card1_title: '商业道德',
@@ -913,7 +917,7 @@ export const zh = {
         question6:'产品套餐和额度充值使用代理有什么区别？',
         answer6: '',
 
-        location:'原生住宅IP',
+        location:'原生住宅双ISP',
         location2:'住宅单ISP',
         type1:'单ISP',
         type2:'双ISP',
@@ -945,7 +949,7 @@ export const zh = {
         menu1_sub3: '流量管理',
         menu2: '静态住宅',
         menu2_sub1: '购买代理',
-        menu2_sub2:'已购IP',
+        menu2_sub2:'已购代理',
         menu3: '购买记录',
         menu4: '推广返利',
         menu5:'实名认证',
@@ -1056,7 +1060,7 @@ export const zh = {
         title2_card4:'可提取金额',
         title2_card5:'已提取金额',
         title2_button1:'提取至账户余额',
-        title2_button2: '提现',
+        title2_button2: '提取',
         tab1:'我的邀请历史',
         tab2:'提款记录',
         tab1_column1:'邀请时间',
@@ -1071,7 +1075,9 @@ export const zh = {
         copy:'已复制',
         tip1:'提取至账户余额后不可提现，可用于购买套餐使用。',
         tip2:'满100元后联系客服提现。',
-        tip2_title:'联系客服'
+        tip2_title:'联系客服',
+        buttonName:'确认提取',
+        buttonName1:'确认提现'
     },
     recharge: {
         title: '充值中心',
@@ -1082,7 +1088,8 @@ export const zh = {
         button:'确认支付',
         pay1:'微信支付',
         pay2:'支付宝支付',
-        pay3:'余额支付'
+        pay3:'余额支付',
+        confirmButton:'确认购买'
     },
     userauth: {
         title: '实名认证',
@@ -1217,9 +1224,10 @@ export const zh = {
         form3:'充值金额',
         form4:'支付方式',
         form5:'当前可用余额',
-        subtitle:'支付默认同意',
+        subtitle:'支付即表示同意',
         content:'退款协议',
-        tips:'支付费用'
+        tips:'支付费用',
+        content2:'其他支付方式联系客服'
     },
     plan: {
         title: 'BitIP推广返佣计划，一次推广，永久收益 邀请用户，10%佣金返现无上限',

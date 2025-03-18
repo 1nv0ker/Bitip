@@ -16,7 +16,7 @@
                     <div class="flex cursor-pointer items-center">
                         <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
                         <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">Trustpilot</span>
-                        <div class="flex gap-[0.25rem] items-center">
+                        <div class="flex gap-[0.125rem] items-center">
                             <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
                             <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
                             <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
@@ -27,7 +27,7 @@
                     <div class="flex cursor-pointer items-center">
                         <img src="../../assets/star_1.png" class="w-[1.375rem] h-[1.375rem]"/>
                         <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">G2</span>
-                        <div class="flex gap-[0.25rem] items-center">
+                        <div class="flex gap-[0.125rem] items-center">
                             <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
                             <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
                             <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />

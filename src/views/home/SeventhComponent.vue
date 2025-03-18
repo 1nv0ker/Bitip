@@ -1,5 +1,5 @@
 <template>
-    <ComponentLayout ref="seventhRef" class="pb-[6.875rem]">
+    <ComponentLayout ref="seventhRef" class="pb-[6.875rem]" :bg="'white'">
         <div class="w-full">
             <div class="flex justify-center">
                 <span class="text-[#191919] text-[3.25rem] font-bold">{{t('seventh.title')}}</span>

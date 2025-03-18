@@ -21,8 +21,9 @@
                 <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title4') }}</span>
             </div>
         </div>
-        <NavComponent ref="navRef" @onCloseActivity="onCloseActivity" :customeStyle="customeStyle" />
-        <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`">
+        <NavComponent ref="navRef" @onCloseActivity="onCloseActivity" :customeStyle="customeStyle" class="z-50" />
+        <!-- <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`"> -->
+        <div class="w-full ">
             <slot></slot>
             <RouterView></RouterView>
         </div>

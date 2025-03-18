@@ -58,7 +58,7 @@
                         <div class="flex gap-[1.75rem] justify-center action_button text-[#5E6F94] text-[1rem] font-medium items-center">
                             <AutoComponent />
                             <span class="font-medium cursor-pointer">{{t('purchaseddetail.action2')}}</span>
-                            <DeleteOutlined class=" cursor-pointer" />
+                            <img src="../../../assets/usercenter/delete.png" class="w-[1.125rem] h-[1.125rem] mb-[0.125rem]"/>
                         </div>
                     </template>
                     <template v-else-if="column.key == 'code'">
@@ -90,7 +90,7 @@
 </template>
 <script setup lang="ts">
     import { ref, computed } from 'vue'
-    import { DeleteOutlined, QrcodeOutlined } from '@ant-design/icons-vue';
+    import { QrcodeOutlined } from '@ant-design/icons-vue';
     import QrCodeModal from './QrCodeModal.vue';
     import Copy from './Copy.vue';
     import AutoComponent from './AutoComponent.vue';

@@ -1,11 +1,17 @@
 <template>
-    <BasicLayout>
+    <BasicLayout :customeStyle="{
+        background:'transparent'
+    }">
         <ComponentLayout class="bg-[#F6FDFF]">
-            <div class="w-full h-[31.5625rem] flex items-center">
-                <div class="flex flex-col gap-[1.25rem]">
+            <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 z--1">
+                <img src="../../assets/bg_2.png" class="w-full h-full z-0" />
+                
+            </div>
+            <div class="w-full h-[31.5625rem] flex items-center z-20 ">
+                <div class="flex flex-col gap-[1.25rem] z-10">
                     <span class="text-[#191919] text-[3.375rem] font-medium">{{t('dyagent.title1')}}</span>
                     <div class="w-full flex flex-col gap-[0.9rem] text-[#191919] text-[1.125rem]">
-                        <div class="flex items-center gap-[0.5rem]">
+                        <div class="flex items-center gap-[0.5rem] z-10">
                             <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]"></div>
                             <span>{{t('dyagent.subtitle1')}}</span>
                         </div>
@@ -31,6 +37,9 @@
                         </RippleButton>
                     </div>
                 </div>
+                <div class="z-20 ">
+                    <img  src="../../assets/dy_img.png" class="w-[55rem] ml-[15.75rem] h-[36rem] z-20" />
+                </div>
             </div>
         </ComponentLayout>
         <ComponentLayout class="bg-[white]">
@@ -40,7 +49,7 @@
                 </div>
                 <div class="w-full flex flex-wrap gap-[1rem]">
                     <div class="border-[#EBEFF8] p-[2rem] border-[1px] rounded-[1rem] h-[15.75rem] flex flex-col gap-[1.25rem]" style=" width: calc( 50% - 0.5rem );" v-for="item in items">
-                        <img :src="item.img" class="bg-[#01AA44] w-[4rem] h-[4rem]" />
+                        <img :src="item.img" class=" w-[4rem] h-[4rem]" />
                         <div class="w-full flex flex-col gap-[1rem]">
                             <span class="text-[#191919] text-[1.75rem] font-bold">{{item.title}}</span>
                             <span class="text-[#666666] text-[1rem]">{{ item.subtitle }}</span>
@@ -50,11 +59,12 @@
             </div>
         </ComponentLayout>
         <ComponentLayout class="bg-[white]">
+            
             <div class="w-full pb-[8.125rem]">
                 <div class="w-full flex justify-center">
                     <span class="text-[#191919] text-[2rem] font-medium">{{t('dyagent.title3')}}</span>
                 </div>
-                <div class="w-full rounded-[2rem] h-[18.375rem] mt-[3.625rem] flex flex-wrap gap-[0.75rem] items-center content-center" style="background: linear-gradient( 145deg, #E6FFF0 0%, #FFFFFF 100%);">
+                <div class="w-full rounded-[2rem] h-[18.375rem] pl-[1.25rem] pr-[1.25rem] mt-[3.625rem] flex flex-wrap gap-[0.75rem] items-center content-center" style="background: linear-gradient( 145deg, #E6FFF0 0%, #FFFFFF 100%);">
                     <div class="h-[6.875rem] rounded-[5rem] bg-[white] flex items-center gap-[1.25rem] p-[0.5rem] pl-[1.25rem]" style="width: calc( 25% - 0.5625rem );" v-for="item in item2">
                         <img :src="item.img" class="w-[5rem] h-[5rem]" />
                         <div class="flex flex-col gap-[0.25rem] h-full justify-center text-[#191919] font-medium">
@@ -65,7 +75,10 @@
                 </div>
             </div>
         </ComponentLayout>
-        <ComponentLayout :bg="'linear-gradient( 180deg, #FFFFFF 0%, #F2FFF7 100%);'">
+        <ComponentLayout>
+            <div class=" absolute top-0 bottom-0 left-0 right-0">
+                <img src="../../assets/dy/card.png" class="w-full h-full" />
+            </div>
             <div class="w-full pb-[1.25rem]">
                 <div class="flex w-full justify-center items-end p-[1.75rem]">
                     <span class="text-[#191919] text-[2rem] font-medium">{{ t('dyagent.title4') }}</span>
@@ -94,28 +107,32 @@
     import br from '../../assets/nations/br.png'
     import india from '../../assets/nations/india.png'
     import id from '../../assets/nations/id.png'
+    import item1_img from '../../assets/dy/item1.png'
+    import item2_img from '../../assets/dy/item2.png'
+    import item3_img from '../../assets/dy/item3.png'
+    import item4_img from '../../assets/dy/item4.png'
     const { t } = useI18n()
     const hoverStatus = ref(false)
     const items = computed(() => {
         return [
             {
                 title:t('dyagent.titl2_item1'),
-                img:'',
+                img:item1_img,
                 subtitle:t('dyagent.title2_subtitle1')
             },
             {
                 title:t('dyagent.titl2_item2'),
-                img:'',
+                img:item2_img,
                 subtitle:t('dyagent.title2_subtitle2')
             },
             {
                 title:t('dyagent.titl2_item3'),
-                img:'',
+                img:item3_img,
                 subtitle:t('dyagent.title2_subtitle3')
             },
             {
                 title:t('dyagent.titl2_item4'),
-                img:'',
+                img:item4_img,
                 subtitle:t('dyagent.title2_subtitle4')
             }
         ]

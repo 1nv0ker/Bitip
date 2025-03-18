@@ -58,6 +58,14 @@
                     {
                         title:t('footer.title2_subtitle2'),
                         path:''
+                    },
+                    {
+                        title:t('footer.title3_subtitle5'),
+                        path:'plan'
+                    },
+                    {
+                        title:t('footer.title3_subtitle6'),
+                        path:''
                     }
                 ]
             },
@@ -81,14 +89,7 @@
                         title:t('footer.title3_subtitle4'),
                         path:'service'
                     },
-                    {
-                        title:t('footer.title3_subtitle5'),
-                        path:'plan'
-                    },
-                    {
-                        title:t('footer.title3_subtitle6'),
-                        path:''
-                    }
+                    
                 ]
             },
             {

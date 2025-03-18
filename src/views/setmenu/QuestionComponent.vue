@@ -7,7 +7,7 @@
             <a-collapse-panel  :header="question.title" 
             class=" font-medium text-[1.125rem] text-[#191919] border-b-[1px] border-t-[1px] border-[#F4F4F4] w-full" :key="question.key" v-for="question in questions">
                     <!-- <p>{{ text }}</p> -->
-                     <span v-for="answer in question.answer" class="h-[4rem]">
+                     <span v-for="answer in question.answer" class="h-[4rem] text-[1rem] text-[#666] font-normal">
                         {{answer}}
                      </span>
             </a-collapse-panel>

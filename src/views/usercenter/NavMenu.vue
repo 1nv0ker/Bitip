@@ -19,18 +19,39 @@
 <script setup lang="ts">
     import { useRouter, useRoute } from 'vue-router'
     import { computed, ref, onMounted, watch } from 'vue'
+    import proxycityImg from '../../assets/usercenter/dy.png'
+    import staticImg from '../../assets/usercenter/static.png'
+
+    import shopImg from '../../assets/usercenter/shop.png'
+    import authImg from '../../assets/usercenter/auth.png'
+    import planImg from '../../assets/usercenter/plan.png'
     import { useI18n } from 'vue-i18n'
+    import { h } from 'vue'
     const { t } = useI18n()
     const router = useRouter()
     const route = useRoute()
     const selectedKeys = ref<string[]|number[]>([])
     const openKeys = ref<string[]|number[]>(['2'])
+    const getimg = (img:string) => {
+        return h(
+                'img',
+                {
+                    src:img,
+                    style:{
+                        width:'1.25rem',
+                        height:'1.25rem'
+                    }
+
+                }
+            )
+    }
     const items = computed(()=>[
         {
             key: '1',
             // icon: () => '',
             label: t('backend_menu.menu1'),
             title: t('backend_menu.menu1'),
+            icon: () => getimg(proxycityImg),
             children:[
                 {
                     key: 'proxycity',
@@ -51,7 +72,7 @@
         },
         {
             key: '2',
-            // icon: () => '',
+            icon: () => getimg(staticImg),
             label: t('backend_menu.menu2'),
             title: t('backend_menu.menu2'),
             children:[
@@ -70,19 +91,19 @@
         },
         {
             key: 'purchasedhistory',
-            // icon: () => '',
+            icon: () => getimg(shopImg),
             label: t('backend_menu.menu3'),
             title: t('backend_menu.menu3'),
         },
         {
             key: 'promotionrebate',
-            // icon: () => '',
+            icon: () => getimg(planImg),
             label: t('backend_menu.menu4'),
             title: t('backend_menu.menu4'),
         },
         {
             key: 'userauth',
-            // icon: () => '',
+            icon: () => getimg(authImg),
             label: t('backend_menu.menu5'),
             title: t('backend_menu.menu5'),
         }

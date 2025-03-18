@@ -17,14 +17,16 @@
                     <template #bodyCell="{ column, record }">
                         <template v-if="column.key === 'action'">
                             <div class="flex gap-[1.875rem] justify-center">
-                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44] cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit">
-                                    
+                                <div class="w-[1.25rem] h-[1.25rem]  cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit">
+                                    <img src="../../../assets/usercenter/flowmanager/edit.png" class="w-full h-full"/>
                                 </div>
-                                <div class="w-[1.25rem] text-[#01AA44] flex justify-center items-center h-[1.25rem] border-[#01AA44] cursor-pointer rounded-[50%] border-[1px]" :title="t('trafficmanager.disabled')">
-                                   <span class="text-[1rem]">\</span>
+                                <div class="w-[1.25rem]  flex justify-center items-center h-[1.25rem] cursor-pointer " :title="t('trafficmanager.disabled')">
+                                    <img src="../../../assets/usercenter/flowmanager/disabled.png" class="w-full h-full"/>
                                 </div>
-                                <div class="w-[1.25rem] text-[#01AA44] flex justify-center items-center h-[1.25rem] border-[#01AA44] cursor-pointer rounded-[50%] border-[1px]" :title="t('trafficmanager.enable')">
-                                    <span class="text-[#01AA44] text-[1rem]">✔</span>
+                                <div class="w-[1.25rem] 
+                                 flex justify-center items-center h-[1.25rem] cursor-pointer ]" :title="t('trafficmanager.enable')">
+                                 <img src="../../../assets/usercenter/flowmanager/enable.png" class="w-full h-full"/>
+                                 
                                 </div>
                             </div>
                         </template>
@@ -49,9 +51,11 @@
                     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
                         <a-range-picker  :picker="selected" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select" >
                             <template #suffixIcon>
-                                <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44]">
+                                <div class="w-[1.25rem] h-[1.25rem] ">
+                                    <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
                                 </div>
                             </template>
+                          
                         </a-range-picker>
                     </a-config-provider>
                     <div class="w-[12.125rem] h-[2.5rem] rounded-[0.75rem] border-[1px] border-[#999999] p-[0.25rem] flex">

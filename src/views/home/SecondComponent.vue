@@ -1,5 +1,5 @@
 <template>
-    <ComponentLayout ref="secondRef" class="bg-[white] pt-[6.5625rem] pb-[8.25rem] overflow-hidden">
+    <ComponentLayout ref="secondRef" class="bg-[white] pt-[6.5625rem] pb-[8.25rem] overflow-hidden" :bg="'white'">
         <div class="flex justify-center items-center">
             <span class="text-[#191919] text-[3.25rem] font-bold">{{t('second.title')}}</span>
         </div>
@@ -137,16 +137,16 @@
         interval && clearInterval(interval)
     }
     onMounted(() => {
-        // interval = setInterval(() => {
-        //     selected.value===0?selected.value=1:selected.value=0
-        // }, 5000);
+        interval = setInterval(() => {
+            selected.value===0?selected.value=1:selected.value=0
+        }, 5000);
     })
     onBeforeUnmount(() => {
         interval && clearInterval(interval)
     })
     const onMouseLeave = () => {
-        // interval = setInterval(() => {
-        //     selected.value===0?selected.value=1:selected.value=0
-        // }, 5000);
+        interval = setInterval(() => {
+            selected.value===0?selected.value=1:selected.value=0
+        }, 5000);
     }
 </script>

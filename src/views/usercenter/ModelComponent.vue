@@ -7,7 +7,7 @@
       <slot v-else></slot>
       <div class="w-full flex mt-[1.125rem] justify-end" v-if="!slotMode">
         <div class="w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="onClick">
-           <span class="text-[1rem] text-[#FFFFFF] font-bold"> {{t('login.confirmMessage')}}</span>
+           <span class="text-[1rem] text-[#FFFFFF] font-bold"> {{buttonName?buttonName:t('login.confirmMessage')}}</span>
         </div>
       </div>
     </a-modal>
@@ -23,6 +23,10 @@
         slotMode:{
           type: Boolean,
           default:false
+        },
+        buttonName: {
+          type:String,
+          defautlt:''
         }
     })
     const emit = defineEmits(['onClick'])

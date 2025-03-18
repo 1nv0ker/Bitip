@@ -1,6 +1,6 @@
 <template>
-    <ComponentLayout class="pt-[3.125rem] pb-[8rem]" ref="thirdRef" style="background: linear-gradient( 180deg, #F4FAF6 0%, #FFFFFF 100%) ;">
-        <div class="w-full">
+    <ComponentLayout class="pt-[3.125rem] " ref="thirdRef" style="background: linear-gradient( 180deg, #F4FAF6 0%, #FFFFFF 100%) ;">
+        <div class="w-full h-[53.875rem]">
             <div class="flex items-center justify-center">
                 <span class="text-[#191919] text-[3.25rem] font-bold">{{ t('third.title') }}</span>
             </div>
@@ -44,7 +44,7 @@
                         <span class="text-[#191919] text-[1.25rem] font-medium ">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[39.5rem] h-[25.625rem]  mt-[2rem]">
+                    <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/third_2.png" class="w-full h-full"/>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                         <span class="text-[#191919] text-[1.25rem] font-medium">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[39.5rem] h-[25.625rem]  mt-[2rem]">
+                    <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
                         <img src="../../assets/third_3.png" class="w-full h-full"/>
                     </div>
                 </div>
@@ -64,8 +64,8 @@
                         <span class="text-[#191919] text-[1.25rem] font-medium pt-[0.75rem]">{{currentContent?.content}}</span>
                     </div>
 
-                    <div class="w-[32.25rem] h-[23.4375rem] mt-[2rem]">
-                        <img src="../../assets/globalSource.png" class="w-full h-full"/>
+                    <div class="w-[39.625rem] h-[25.625rem] mt-[2rem]">
+                        <img src="../../assets/third_4.png" class="w-full h-full"/>
                     </div>
                 </div>
             </div>
@@ -158,12 +158,12 @@
         thirdRef: thirdRef
     })
     onMounted(() => {
-        // interval = setInterval(() => {
-        //     if (selected.value ===4) {
-        //         selected.value = 0
-        //     }
-        //     selected.value = selected.value + 1
-        // }, 3000);
+        interval = setInterval(() => {
+            if (selected.value ===4) {
+                selected.value = 0
+            }
+            selected.value = selected.value + 1
+        }, 3000);
         selected.value = 1
     })
     onBeforeUnmount(() => {
@@ -174,12 +174,12 @@
         interval && clearInterval(interval)
     }
     const onMouseLeave = () => {
-        // interval = setInterval(() => {
-        //     if (selected.value ===4) {
-        //         selected.value = 0
-        //     }
-        //     selected.value = selected.value + 1
-        // }, 3000);
+        interval = setInterval(() => {
+            if (selected.value ===4) {
+                selected.value = 0
+            }
+            selected.value = selected.value + 1
+        }, 3000);
     }
 </script>
 <style scoped>

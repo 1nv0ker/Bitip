@@ -25,7 +25,7 @@
                             <span class="text-[#687D53] bitip_text text-[1.25rem] font-medium">{{t('plan.item1_content3')}}</span>
                         </div>
                         <div class="flex flex-col w-full h-[5.75rem] rounded-[1.625rem] bg-[rgba(255,255,255,0.6)] justify-center items-center text-[#687D53] text-[1.25rem] font-medium">
-                            <span class="bitip_text">{{t('plan.item2_content4')}}</span>
+                            <span class="bitip_text">{{t('plan.item1_content4')}}</span>
                             <span class="bitip_text">{{t('plan.item1_content5')}}</span>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                             <span class="text-[#48640E] text-[1.25rem] font-medium">{{t('plan.item4_content')}}</span>
                         </div>
                     </div>
-                    <div class="w-[19.25rem] h-full rounded-[2.25rem] bg-[#4AD3B5] p-[2rem]  z-20 flex flex-col gap-[0.25rem] items-center justify-center">
+                    <div class="w-[19.25rem] h-full rounded-[2.25rem] bg-[#4AD3B5] p-[2rem]  z-20 flex flex-col gap-[0.25rem]  justify-center">
                         <div class="flex text-[#191919] items-center gap-[0.75rem]">
                             <span class="font-bold text-[3.9375rem]">10%</span>
                             <span class="text-[1.4375rem] font-bold">{{t('plan.item5_content1')}}</span>

@@ -56,7 +56,7 @@
                 img:planImg2,
                 content: t('first.cardContent2'),
                 basic:`width:26rem`,
-                imgStyle:'width:22.845rem;height:10.5rem;'
+                imgStyle:'width:26rem;height:10.5rem;'
             },
             {
                 title: t('first.cardTitle3'),

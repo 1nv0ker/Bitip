@@ -18,8 +18,9 @@
                 <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
                     <a-range-picker  picker="day" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select w-full" >
                         <template #suffixIcon>
-                            <div class="w-[1.25rem] h-[1.25rem] bg-[#01AA44]">
-                            </div>
+                            <div class="w-[1.25rem] h-[1.25rem] ">
+                                    <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
+                                </div>
                         </template>
                     </a-range-picker>
                 </a-config-provider>

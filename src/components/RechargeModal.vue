@@ -65,7 +65,11 @@
                 <div class="pl-[10rem]">
                     <!-- <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked"> -->
                     <span class="pl-[0.75rem] text-[#191919] text-[0.9rem]">{{t('buying.subtitle')}}</span>
-                    <span class="text-[#01AA44] cursor-pointer text-[0.9rem]">《{{t('buying.content')}}》</span>
+                    <span class="text-[#01AA44] cursor-pointer text-[0.9rem]" @click="onToRefund">《{{t('buying.content')}}》</span>
+                    <span class="text-[#191919] cursor-pointer text-[0.9rem]">,{{t('buying.content2')}}</span>
+                    <div class="h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer mt-[1.25rem]">
+                        <span class="text-[1.125rem] text-[white] font-medium">{{t('recharge.confirmButton')}}</span>
+                   </div>
                 </div>
             </div>
             <div class="w-[17rem] flex justify-center items-center">
@@ -81,13 +85,21 @@
     import ModelComponent from '../views/usercenter/ModelComponent.vue';
     import { ref } from 'vue'
     import { useI18n } from 'vue-i18n'
+    import { useRouter } from 'vue-router';
     const { t } = useI18n()
     const open = defineModel()
     const payMethod = ref(0)
+    const router = useRouter()
     defineProps({
         money:{
             type:Number,
             default:3000
         }
     })
+    const onToRefund = () => {
+        const route = router.resolve({
+            name: 'refundlaw',
+        })
+        window.open(route.href, '_blank')
+    }
 </script>

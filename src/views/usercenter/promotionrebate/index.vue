@@ -1,9 +1,11 @@
 <template>
     <div class="w-full">
         <div class="w-full h-[16.375rem] bg-white rounded-[1.5rem]">
-            <div class="w-full h-[8.125rem] rounded-tl-[1.5rem] rounded-tr-[1.5rem] flex flex-col gap-[0.25rem] text-[#191919] justify-center items-center" style="background: linear-gradient( 180deg, #FAFFED 0%, #FDFFEC 100%);"> 
-                <span class="text-[2rem] font-bold">{{t('promotionrebate.title')}}</span>
-                <span class="text-[1.25rem]">{{t('promotionrebate.subtitle')}}</span>
+            <div class="w-full h-[8.125rem] relative rounded-tl-[1.5rem] rounded-tr-[1.5rem] flex flex-col gap-[0.25rem] text-[#191919] justify-center items-center" 
+            > 
+                <img src="../../../assets/usercenter/bg.png" class="w-full h-full absolute" />
+                <span class="text-[2rem] z-50 font-bold pr-[4rem]">{{t('promotionrebate.title')}}</span>
+                <span class="text-[1.25rem] z-50">{{t('promotionrebate.subtitle')}}</span>
             </div>
             <div class="p-[1.5rem] w-full flex gap-[1.75rem]">
                 <div class="flex flex-col gap-[0.5rem] w-[24%]">
@@ -71,7 +73,7 @@
                 </a-table>
             </div>
         </div>
-        <ModelComponent v-model="openModel" :title="modelWord.title" :content="modelWord.content" />
+        <ModelComponent v-model="openModel" :title="modelWord.title" :content="modelWord.content" :buttonName="modelWord.button"/>
     </div>
 </template>
 <script setup lang="ts">
@@ -111,7 +113,8 @@
     })
     const modelWord = reactive({
         title:'',
-        content:''
+        content:'',
+        button:''
     })
     const cardData:any = ref({
         card1:83,
@@ -235,12 +238,14 @@
         openModel.value = true
         modelWord.title = t('promotionrebate.title2_button2')
         modelWord.content = t('promotionrebate.tip1')
+        modelWord.button = t('promotionrebate.buttonName')
     }
     const onWithdrawal = () => {
         
         openModel.value = true
         modelWord.title = t('promotionrebate.tip2_title')
         modelWord.content = t('promotionrebate.tip2')
+        modelWord.button = t('promotionrebate.buttonName1')
     }
     // const onTab = (type:number) => {
     //     selected.value = type
