@@ -157,13 +157,13 @@
                 align:'center',
                 ellipsis: true
             },
-            {
-                title: t('promotionrebate.tab1_column5'),
-                dataIndex: 'nextRate',
-                key: 'nextRate',
-                align:'center',
-                ellipsis: true
-            },
+            // {
+            //     title: t('promotionrebate.tab1_column5'),
+            //     dataIndex: 'nextRate',
+            //     key: 'nextRate',
+            //     align:'center',
+            //     ellipsis: true
+            // },
             {
                 title: t('promotionrebate.tab1_column6'),
                 dataIndex: 'money',

@@ -73,6 +73,14 @@
                 title:t('footer.title3'),
                 id: 'footer_title3',
                 items: [
+                {
+                        title:t('footer.title3_subtitle3'),
+                        path:'safety'
+                    },
+                    {
+                        title:t('footer.title3_subtitle4'),
+                        path:'service'
+                    },
                     {
                         title:t('footer.title3_subtitle1'),
                         path:'privatelaw'
@@ -82,13 +90,10 @@
                         path:'servicelaw'
                     },
                     {
-                        title:t('footer.title3_subtitle3'),
-                        path:'safety'
+                        title:t('footer.title4_subtitle7'),
+                        path:'refundlaw'
                     },
-                    {
-                        title:t('footer.title3_subtitle4'),
-                        path:'service'
-                    },
+                    
                     
                 ]
             },

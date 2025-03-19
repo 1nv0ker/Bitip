@@ -57,7 +57,8 @@
                         path:'/setmenu',
                         name:'setmenu',
                         type: 1,
-                        img2: menu6,
+                        
+                        img2:menu7,
                         subtitle: t('navMenu.package_subtitle2_tips'),
                         style:{
                             width: '8rem',
@@ -74,7 +75,8 @@
                         img: menu3,
                         path:'/setmenu',
                         type: 0,
-                        img2:menu7,
+                        img2: menu6,
+                        show:true,
                         // style:'width:5.5rem;height:1.5rem',
                         subtitle: t('navMenu.package_subtitle3_tips'),
                         style:{

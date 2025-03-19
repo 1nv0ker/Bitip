@@ -57,9 +57,9 @@ export const en = {
         freeUse: 'Free Trial',
         contact: 'Contact Us',
         cardTitle1:'City-level positioning',
-        cardContent1:'Dynamic global coverage and precise geolocation, supporting IP rotation',
-        cardTitle2:'High cost performance',
-        cardContent2: 'Relying on industry-leading agent resources to achieve automatic collection of global web page data',
+        cardTitle2:'SOCKS5/HTTP/HTTPS Protocol',
+        cardContent2: 'Communication protocols are encrypted using a proprietary algorithm',
+        // cardContent2: 'Relying on industry-leading agent resources to achieve automatic collection of global web page data',
         cardTitle3: 'Residential ISP',
         cardContent3: 'Select high-purity native static IPs to safely manage various e-commerce accounts.',
         cardTitle4: 'Sub-account management',
@@ -78,7 +78,13 @@ export const en = {
         dynamicItem3: '1-120min variable IP validity',
         dynamicItem4: 'Support Http/Https/Socks5 protocols',
         dynamicItem5: 'Support API access, more stable network',
-        dynamicButton:'Free Trial'
+        dynamicButton:'Free Trial',
+        dynamicContent1:'Fixed long-term native IP, suitable for business scenarios that require a more stable and pure network environment, such as e-commerce account management, social media marketing, and enterprise acceleration',
+        dynamicItem6:'Carefully selected authentic, pure, native residential IP',
+        dynamicItem7:'Unlimited traffic, unimpeded use',
+        dynamicItem8:'Support Http/Https/Socks5 protocols',
+        dynamicItem9:'Real-time delivery, no waiting',
+        dynamicButton1:'Learn More'
     },
     third: {
         title: 'Service and scale',
@@ -92,8 +98,8 @@ export const en = {
         item3Subtitle:'High cost performance',
         item3Content:'Cooperate with many ISPs around the world to ensure the richness and stability of IP resources.',
         item4title: 'Safe and reliable',
-        item4Subtitle:'Billion-level agent resource pool',
-        item4Content:'IPIDEA built its own enterprise-level pure IP pool, strictly screening more than 100 million high-quality IP resources to meet the large-scale data collection business of enterprises, effectively reducing enterprise costs',
+        item4Subtitle:'Safe and reliable',
+        item4Content:'Strict data protection measures ensure the security of your data.',
         item5title: 'High anonymity',
         item5Subtitle:'High anonymity',
         item5Content:'All IPs are from real home broadband users, ensuring high anonymity and low ban rates.'
@@ -151,10 +157,10 @@ export const en = {
     navMenu: {
         title1: 'Package Purchase',
         package_title1:'Credit Recharge',
-        package_title2:'Product Packages',
+        package_title2:'Balance Recharge',
         package_subtitle1: 'Dynamic Residential IP',
         package_subtitle2:'Static Residential IP',
-        package_subtitle3: 'Dynamic Residential Package',
+        package_subtitle3: 'Recharge and get free',
         package_subtitle4: 'Static Residential Package',
         package_subtitle1_tips:'As low as ¥4.5/GB',
         package_subtitle2_tips:'Exclusive original ultra-pure',
@@ -164,13 +170,13 @@ export const en = {
         title3:'Agent Products',
         title4: 'Help Center',
         title5: 'Safety and Compliance',
-        title6: 'Corporate Services',
+        title6: 'Enterprise customization',
         title7: 'Promotion Plan',
         title8: 'Static agency'
     },
     footer: {
         describe: 'Phone/WeChat',
-        title1: 'BitIp',
+        title1: 'BitIP',
         title1_subtitle1: 'Dynamic Residential Proxy',
         title1_subtitle2: 'Static Residential Proxies',
 
@@ -181,15 +187,17 @@ export const en = {
         title3_subtitle1: 'Privacy Policy',
         title3_subtitle2: 'Service Agreement',
         title3_subtitle3:'Safety and Compliance',
-        title3_subtitle4:'Corporate Services',
+        title3_subtitle4:'Enterprise customization',
         title3_subtitle5: 'Promotion Plan',
         title3_subtitle6: 'Partners',
+        title4_subtitle7:'Refund Agreement',
         title4: 'Global Agents',
         title4_subtitle1: 'U.S. Native Family Bandwidth',
         title4_subtitle2: 'UK home bandwidth',
         title4_subtitle3:'German native family bandwidth',
         title4_subtitle4:'Singaporean family bandwidth',
         title4_subtitle5: 'Bandwidth of native families in Thailand',
+       
     },
     safety: {
         title: 'Provide a safe and reliable network environment for your business',
@@ -203,11 +211,11 @@ export const en = {
         title2_item3_title: 'Zero-logging policy',
         title2_item3_content: `BITIP adopts a strict zero-log policy and does not record users' browsing history, access data or any sensitive information, ensuring that your privacy is protected to the greatest extent.`,
         title3: 'Safety Standards',
-        subtitle3: 'Comply with ISO9001 quality management system, ISO27001 information security management system and other high industry standards',
+        subtitle3: 'Comply with ISO27001 information security management system, SOC 2 compliance standards and other high industry standards',
         title3_item1_title1: 'ISO 27001',
         title3_item1_content: 'Information Security Management System',
         title3_item2_title2:'SOC 2',
-        title3_item2_content: 'Quality Management System'
+        title3_item2_content: 'Compliance Standards'
     },
     service: {
         title1: 'Enterprise Customization Service',
@@ -321,6 +329,7 @@ export const en = {
         card_title2:'Total flow',
         card_title3: 'Used flow',
         card_button:'Purchase flow',
+        card_button1:'Traffic Management',
         card_button_title:'Add sub-account',
         describe1: 'describe1',
         describe2: 'describe2',
@@ -340,10 +349,14 @@ export const en = {
         form5_placeholder: 'Please select',
         form6: 'Switch IP',
         form6_placeholder:'Automatically switch IP',
+        form7_placeholder: 'Please select',
+        form7: 'Select quantity',
         button1: 'Generate proxy IP',
         button2: 'Generate API links',
         copy: 'copy',
-        switch: 'Switch IP'
+        switch: 'Switch IP',
+        agentPlaceholder:'Paste the generated proxy',
+        button3:'Check Proxy'
     },
 
     trafficmanager: {
@@ -668,8 +681,8 @@ export const zh = {
         contact:'联系我们',
         cardTitle1:'城市级定位',
         cardContent1:'动态全球覆盖和精准的地理定位，支持IP轮换',
-        cardTitle2:'高性价比',
-        cardContent2: '依托行业领先的代理资源,实现全球网页数据自动化采集',
+        cardTitle2:'SOCKS5/HTTP/HTTPS协议',
+        cardContent2: '使用专有算法对通信协议进行加密',
         cardTitle3: '住宅ISP',
         cardContent3: '精选高纯净度原生静态IP，安全管理各类电商账号。',
         cardTitle4: '子账号管理',
@@ -688,7 +701,13 @@ export const zh = {
         dynamicItem3: '1-120min 可变IP时效',
         dynamicItem4: '支持Http/Https/Socks5协议',
         dynamicItem5: '支持API接入，网络更稳定',
-        dynamicButton:'免费试用'
+        dynamicButton:'免费试用',
+        dynamicContent1:'固定长时效原生IP，适用于电商账号管理、社媒营销、企业加速等需要更稳定纯净网络环境的业务场景',
+        dynamicItem6:'严选真实纯净原生住宅IP',
+        dynamicItem7:'不限流量，畅用无阻',
+        dynamicItem8:'支持Http/Https/Socks5协议',
+        dynamicItem9:'实时交付，无需等待',
+        dynamicButton1:'了解更多'
     },
     third: {
         title: '服务与规模',
@@ -702,8 +721,8 @@ export const zh = {
         item3Subtitle:'高性价比',
         item3Content:'提供灵活的价格方案，满足不同规模企业的需求。',
         item4title: '安全可靠',
-        item4Subtitle:'亿级代理资源池',
-        item4Content:'IPIDEA自建企业级纯净IP池，严格筛选1亿多个优质IP资源，满足企业 大规模数据采集业务，有效降低企业成本',
+        item4Subtitle:'安全可靠',
+        item4Content:'严格的数据保护措施，确保您的数据安全。',
         item5title: '高匿名性',
         item5Subtitle:'高匿名性',
         item5Content:'所有IP均来自真实的家庭宽带用户，确保高匿名性和低封禁率。'
@@ -760,12 +779,12 @@ export const zh = {
     navMenu: {
         title1: '套餐购买',
         package_title1:'套餐购买',
-        package_title2:'产品套餐',
+        package_title2:'余额充值',
         package_subtitle1: '动态住宅IP',
         package_subtitle1_tips:'低至¥4.5/GB',
         package_subtitle2:'静态住宅IP',
         package_subtitle2_tips:'独享原生超纯净',
-        package_subtitle3: '动态住宅套餐',
+        package_subtitle3: '充值就送',
         package_subtitle3_tips:'动态住宅套餐',
         package_subtitle4: '静态住宅套餐',
         package_title3: '最新活动',
@@ -773,13 +792,13 @@ export const zh = {
         title3:'代理产品',
         title4: '帮助中心',
         title5: '安全合规',
-        title6: '企业服务',
+        title6: '企业定制',
         title7: '推广计划',
         title8: '静态住宅代理'
     },
     footer: {
         describe: '电话/微信',
-        title1: 'BitIp',
+        title1: 'BitIP',
         title1_subtitle1: '动态住宅代理',
         title1_subtitle2: '静态住宅代理',
 
@@ -790,9 +809,10 @@ export const zh = {
         title3_subtitle1: '隐私协议',
         title3_subtitle2: '服务协议',
         title3_subtitle3:'安全合规',
-        title3_subtitle4:'企业服务',
+        title3_subtitle4:'企业定制',
         title3_subtitle5: '推广计划',
         title3_subtitle6: '合作伙伴',
+        title4_subtitle7:'退款协议',
         title4: '全球代理',
         title4_subtitle1: '美国原生家庭带宽',
         title4_subtitle2: '英国原生家庭带宽',
@@ -812,11 +832,11 @@ export const zh = {
         title2_item3_title: '零日志政策',
         title2_item3_content: 'BITIP 采用严格的零日志政策，不记录用户的浏览历史、访问数据或任何敏 感信息，确保您的隐私得到最大程度的保护。',
         title3: '安全标准',
-        subtitle3: '符合ISO9001质量管理体系，ISO27001信息安全管理体系等行业高标准',
+        subtitle3: '符合ISO27001信息安全管理体系，SOC 2合规标准等行业高标准',
         title3_item1_title1: 'ISO 27001',
         title3_item1_content: '信息安全管理体系',
         title3_item2_title2:'SOC 2',
-        title3_item2_content: '质量管理体系'
+        title3_item2_content: '合规标准'
     },
     extra: {
         title: '最适合您的代理方案'
@@ -959,6 +979,7 @@ export const zh = {
         card_title2:'总流量',
         card_title3: '已使用流量',
         card_button:'购买流量',
+        card_button1:'流量管理',
         card_button_title:'添加子账号',
         describe1: '描述',
         describe2: '描述',
@@ -977,10 +998,14 @@ export const zh = {
         form5_placeholder: '请选择',
         form6: '切换IP',
         form6_placeholder:'自动切换IP',
+        form7_placeholder: '请选择',
+        form7: '选择数量',
         button1: '生成代理IP',
         button2: '生成API链接',
         copy: '复制',
-        switch: '切换IP'
+        switch: '切换IP',
+        agentPlaceholder:'粘贴生成的代理',
+        button3:'检查代理'
     },
     trafficmanager: {
         title: '账户额度',

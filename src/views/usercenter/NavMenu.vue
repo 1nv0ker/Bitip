@@ -4,15 +4,17 @@
     </div>
     <div class="w-full p-[1.5rem]">
         <a-menu
-      mode="inline"
-      class="bitip_menu"
-       v-model:selectedKeys="selectedKeys"
-       :open-keys="openKeys"
-       
-      :items="items"
-      @click="onMenuClick"
-    >
-
+            mode="inline"
+            class="bitip_menu"
+            v-model:selectedKeys="selectedKeys"
+            :open-keys="openKeys"
+            
+            :items="items"
+            @click="onMenuClick"
+            >
+            <template #title>
+                123
+            </template>
         </a-menu>
     </div>
 </template>
@@ -25,6 +27,7 @@
     import shopImg from '../../assets/usercenter/shop.png'
     import authImg from '../../assets/usercenter/auth.png'
     import planImg from '../../assets/usercenter/plan.png'
+    import auth2Img from '../../assets/usercenter/auth_bg.png'
     import { useI18n } from 'vue-i18n'
     import { h } from 'vue'
     const { t } = useI18n()
@@ -104,8 +107,23 @@
         {
             key: 'userauth',
             icon: () => getimg(authImg),
-            label: t('backend_menu.menu5'),
-            title: t('backend_menu.menu5'),
+            // label: t('backend_menu.menu5'),
+            // title: t('backend_menu.menu5'),
+            label:h('div', {
+                style: {
+                    display: 'flex',
+                    'align-items':'center'
+                }
+            },[h('span', t('backend_menu.menu5')), h('img', {
+                src:auth2Img,
+                style: {
+                    width: '5.75rem',
+                    height: '3.3rem'
+                }
+            })]),
+            // title:h('span', {
+
+            // }, 'abc')
         }
     ])
     watch(route, () => {

@@ -5,4 +5,13 @@ interface Window {
     AliyunCaptchaConfig: any
 }
 
+// 声明扩展类型（解决TS报错）
+declare module 'nprogress' {
+    interface NProgressOptions {
+      speed?: number
+      trickleSpeed?: number,
+      start?:void
+    }
+
+  }
 

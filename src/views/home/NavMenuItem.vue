@@ -6,7 +6,7 @@
             <span @click="onPage(props.path, props.name)" :class="`ellipsis-single ${selected==props.name?'text-[#01AA44]':''}`">{{props.text}}</span>
             <img class="w-[0.625rem] h-[0.625rem]" :src="(selected==props.key || !status )?downImg:upImg" v-if="props.showArrow"/>
         </div>
-        <div class="absolute top-[4rem] z-50 right-0 left-0 m-0 pb-[2rem]  bg-[white] flex justify-center animate__fadeIn animate__animated" 
+        <div class="absolute top-[6.8125rem] z-50 right-0 left-0 m-0 pb-[2rem]  bg-[white] flex justify-center animate__fadeIn animate__animated border-t-[1px] border-[#EBEFF8]" 
         v-show="status && showArrow" 
         style="animation-duration: 1s"
         @mouseenter="status=true">
@@ -16,16 +16,17 @@
                         <span class="text-[#9BA2BB] text-[1rem] font-medium z-50">{{ item.title }}</span>
                     </div>
                     <div class="mt-[1.5rem] flex gap-[1rem] flex-col ">
-                        <div class="flex hover:bg-[#EDFBF7] p-[1rem] justify-between items-center w-auto rounded-[1rem] cursor-pointer" @click="onPage(item1?.path, item1?.name, item1?.type)" v-for="item1 in item.items" v-if="!item.special">
+                        <div class="flex hover:bg-[#EDFBF7]  justify-between items-center w-auto rounded-[1rem] cursor-pointer" @click="onPage(item1?.path, item1?.name, item1?.type)" v-for="item1 in item.items" v-if="!item.special">
                             <div class="flex items-center ">
                                 <img  :src="item1.img" class="z-50 w-[1.5rem] h-[1.5rem] "/>
                                 <span class="pl-[0.5rem] z-50 cursor-pointer pr-[0.5rem]">{{item1.title}}</span>
                                 <img  :src="item1.img2"  :style="item1.style" class="z-50" />
+                                <span class="text-[#5D7404] text-[1rem] pl-[0.5rem]  z-50 " v-show="!item1.show">{{ item1.subtitle }}</span>
                             </div>
-                            <span class="text-[#5D7404] text-[1rem] pl-[3.375rem] z-50 ">{{ item1.subtitle }}</span>
+                            
                         </div>
-                        <div class="flex  items-center w-auto rounded-[1rem] cursor-pointer" @click="onPage(item1?.path, item1?.name, item1?.type)" v-for="item1 in item.items" v-else>
-                            <img  :src="item1.img" class="w-full h-full " />
+                        <div class="flex  items-center w-auto  cursor-pointer" @click="onPage(item1?.path, item1?.name, item1?.type)" v-for="item1 in item.items" v-else>
+                            <img  :src="item1.img" class="w-[26rem] h-[4.625rem] " />
                             <!-- <span class="pl-[0.5rem] cursor-pointer" >{{item1.title}}</span> -->
                         </div>
                     </div>
@@ -51,7 +52,8 @@
         subtitle?:string,
         name?:string,
         type?:number,
-        style?:any
+        style?:any,
+        show?:Boolean
     }
     const store = useStore()
     const selected = ref<any>('')

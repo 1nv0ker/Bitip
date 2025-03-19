@@ -29,7 +29,7 @@
     import { useI18n } from 'vue-i18n'
     import { ref, computed } from 'vue'
     import planImg1 from '../../assets/plan1.png'
-    import planImg2 from '../../assets/plan2.png'
+    import planImg2 from '../../assets/home/1.png'
     import planImg3 from '../../assets/plan3.png'
     import planImg4 from '../../assets/plan4.png'
     import planImg5 from '../../assets/plan5.png'

@@ -146,33 +146,33 @@
     const questionDatas = computed(() => {
         return [
             {
-                title: t('dyagent.question1'),
-                answer: [t('dyagent.answer1_1')],
+                title: t('staticagent.question1'),
+                answer: [t('staticagent.answer1_1')],
                 key: 1
             },
             {
-                title: t('dyagent.question2'),
-                answer: [t('dyagent.answer2_1')],
+                title: t('staticagent.question2'),
+                answer: [t('staticagent.answer2_1')],
                 key: 2
             },
             {
-                title: t('dyagent.question3'),
-                answer: [t('dyagent.answer3_1')],
+                title: t('staticagent.question3'),
+                answer: [t('staticagent.answer3_1')],
                 key: 3
             },
             {
-                title: t('dyagent.question4'),
-                answer: [t('dyagent.answer4_1')],
+                title: t('staticagent.question4'),
+                answer: [t('staticagent.answer4_1')],
                 key: 4
             },
             {
-                title: t('dyagent.question5'),
-                answer: [t('dyagent.answer5_1')],
+                title: t('staticagent.question5'),
+                answer: [t('staticagent.answer5_1')],
                 key: 5
             },
             {
-                title: t('dyagent.question6'),
-                answer: [t('dyagent.answer6_1')],
+                title: t('staticagent.question6'),
+                answer: [t('staticagent.answer6_1')],
                 key: 6
             }
         ]

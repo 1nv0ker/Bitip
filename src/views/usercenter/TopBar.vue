@@ -36,7 +36,8 @@
                 </div>
             </div>
             <div class="p-[0.375rem] pl-[1.5rem] pr-[1.5rem] w-[auto] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] cursor-pointer flex items-center ml-[1.75rem]" @click="onLanauageChange">
-                <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/>
+                <!-- <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]"/> -->
+                <img :src="lan=='zh'?lanImg1:lanImg2" class="w-[1.5rem] h-[1.5rem]" />
                 <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
             </div>
             <div class="w-[3rem] h-[3rem] ] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
@@ -100,6 +101,8 @@
     import { ref, onMounted } from 'vue'
     import useI18nStore from '../../store/i18n'
     import { RightOutlined } from '@ant-design/icons-vue';
+    import lanImg1 from '../../assets/translate.png'
+    import lanImg2 from '../../assets/translate_en.png'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

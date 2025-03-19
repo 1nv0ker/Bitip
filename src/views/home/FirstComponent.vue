@@ -48,7 +48,10 @@
                 </div>
 
                 <div class="flex justify-center items-center w-full mt-[1.875rem]">
-                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}<span class="text-[#191919] text-[1.25rem] font-bold">200+</span>{{t('first.content2')}}</span>
+                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}
+                        <!-- <span ">200+ -->
+                            <NumberComponent class="text-[#191919] text-[1.25rem] font-bold" :number="200" :extra="'+'" :step="1"></NumberComponent>
+                        {{t('first.content2')}}</span>
                 </div>
 
                 <div class="flex justify-center items-center mt-[3.75rem] gap-[2rem]">
@@ -105,6 +108,7 @@
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
+    import NumberComponent from '../../components/NumberComponent.vue'
     // import FirstRectComponent from './FirstRectComponent.vue'
     // import img1 from '../../assets/first_1.png'
     // import img2 from '../../assets/first_2.png'

@@ -55,7 +55,6 @@
                                     <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
                                 </div>
                             </template>
-                          
                         </a-range-picker>
                     </a-config-provider>
                     <div class="w-[12.125rem] h-[2.5rem] rounded-[0.75rem] border-[1px] border-[#999999] p-[0.25rem] flex">

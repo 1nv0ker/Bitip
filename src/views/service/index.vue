@@ -39,10 +39,10 @@
                     <span class="text-[#191919] text-[2rem] font-medium">{{t('service.title3')}}</span>
                 </div>
                 <div class="w-full mt-[5.375rem] flex gap-[2.25rem]">
-                    <div v-for="item in itmes">
+                    <div v-for="(item, index) in itmes" class="w-[19.25rem]">
                         <div class="w-full flex items-center gap-[3rem]">
                             <img :src="item.img" class="w-[4rem] h-[4rem]" />
-                            <div class="arrow-line w-[10.75rem] h-[2px] relative bg-[#000000]">
+                            <div class="arrow-line w-[10.75rem] h-[2px] relative bg-[#000000]" v-if="index!=(itmes.length-1)">
 
                             </div>
                         </div>
@@ -156,8 +156,8 @@
                 img: image2
             },
             {
-                title: t('service.title3_title2'),
-                content:t('service.title3_title2_content'),
+                title: t('service.title3_title3'),
+                content:t('service.title3_title3_content'),
                 img: image3
             },
             {

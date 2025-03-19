@@ -1,5 +1,19 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+
+
+// 全局配置（可选）
+(NProgress as any).configure({
+  showSpinner: false,        // 隐藏旋转动画
+  speed: 500,               // 动画速度
+  trickleSpeed: 200,        // 自动递增间隔
+  minimum: 0.3              // 最小进度百分比
+})
+
+
 import LoginComponent from '../views/login/Login.vue'
 import HomeComponent from '../views/home/index.vue'
 import ForgetPasswordVue from '../views/login/ForgetPassword.vue'
@@ -147,12 +161,16 @@ const router = createRouter({
 })
 
 // //路由前置
-// router.beforeEach((to, from)=> {
-
-// })
+router.beforeEach((_to, _from)=> {
+  (NProgress as any).start()  
+})
 
 // //路由后置
-// router.afterEach((to, from) => {
-    
-// })
+router.afterEach(() => {
+  (NProgress as any).done()          // 完成加载
+})
+
+router.onError(() => {
+  (NProgress as any).done()          // 错误时强制完成
+})
 export default router

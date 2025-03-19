@@ -73,43 +73,43 @@
             </div>
             <div class="w-[38.625rem] flex flex-col justify-center">
                 <div class="flex">
-                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
+                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent1')}}</span>
                 </div>
                 <div class="flex flex-col mt-[1.5rem] gap-[1rem]">
                     <div class="flex items-center">
                         <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
 
                         </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem1') }}</span>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem6') }}</span>
                     </div>
                     <div class="flex items-center">
                         <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
 
                         </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem2') }}</span>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem7') }}</span>
                     </div>
                     <div class="flex items-center">
                         <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
 
                         </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem3') }}</span>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem8') }}</span>
                     </div>
                     <div class="flex items-center">
                         <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
 
                         </div>
-                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem4') }}</span>
+                        <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem9') }}</span>
                     </div>
-                    <div class="flex items-center">
+                    <!-- <div class="flex items-center">
                         <div class="w-[0.5rem] h-[0.5rem] rounded-[50%] bg-[#01AA44]">
 
                         </div>
                         <span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-normal" >{{ t('second.dynamicItem5') }}</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="mt-[1.5rem]">
                     <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton')" @btnClick="onFreeUse">
+                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton1')" @btnClick="router.push({name:'staticagent'})">
                     </RippleButton>
                 </div>
             </div>
@@ -121,6 +121,7 @@
     import RippleButton from '../../components/RippleButton.vue'
     import ComponentLayout from '../ComponentLayout.vue'
     import { ref, onMounted, onBeforeUnmount } from 'vue'
+import router from '../../router'
     const emit = defineEmits(['onFreeUse'])
     const selected = ref(0)
     const { t } = useI18n()
@@ -130,7 +131,7 @@
         secondRef: secondRef
     })
     const onFreeUse = () => {
-        emit('onFreeUse')
+        router.push({name:'dyagent'})
     }
     const onMouseEnter = (key:number) => {
         selected.value = key

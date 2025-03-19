@@ -46,7 +46,7 @@
             <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
                 <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem] justify-center z-50" v-if="!userStore.userInfo?.tel">
                     <div class="w-[4.5rem] flex cursor-pointer z-50" @click="onLanauageChange()">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem]" />
+                        <img :src="lan=='zh'?lanImg1:lanImg2" class="w-[1.5rem] h-[1.5rem]" />
                         <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
                     </div>
                     <div class="text-[#191919] cursor-pointer text-[1rem] font-medium  hover:text-[#01AA44] z-50 " @click="onLogin">
@@ -93,7 +93,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div :class="`w-full top-[6.8125rem] h-[1px] items-center fixed z-30 bg-[#EBEFF8] ${acvitityStatus?'top-[6.8125rem]':'top-[4rem]'}`" ></div> -->
+        <div :class="`w-full top-[6.8125rem] h-[1px] items-center z-30 bg-[#EBEFF8] ${acvitityStatus?'top-[6.8125rem]':'top-[4rem]'}`" ></div>
     </div>
 </template>
 <script setup lang="ts">
@@ -105,6 +105,8 @@
     import NavMenu from './NavMenu.vue';
     import NavMobieMenu from './NavMobieMenu.vue';
     import useUserStore from '../../store/user'
+    import lanImg1 from '../../assets/translate.png'
+    import lanImg2 from '../../assets/translate_en.png'
     const { t } = useI18n()
     const i18n = useI18n()
     const lan = ref('zh')
