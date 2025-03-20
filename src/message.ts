@@ -41,7 +41,11 @@ export const en = {
         sendSms:'Sent, please check',
         exit:'Log out',
         Backstage: 'Dashboard',
-        registerTip:'Get 200M'
+        registerTip:'Get 200M',
+        modityTips:'Modification successful',
+        registerSuccess:'Successful registration',
+        newPassTip:'New Password',
+        modifyMessage:'Modify Success'
     },
     first: {
         title:' Global Residential Proxy',
@@ -477,7 +481,9 @@ export const en = {
         step2_title:'Please use Alipay to scan the QR code for face authentication',
         step2_button:'Return to previous page',
         step3:'Certification completed',
-        step3_title:'Real-name authentication completed, 500M traffic obtained,已获得500M流量'
+        step3_title:'Real-name authentication completed, 500M traffic obtained',
+        form1_message:'Please enter a valid name',
+        form2_message:'Please enter a valid ID card'
     },
     sub: {
         title: 'Add sub-account',
@@ -665,7 +671,11 @@ export const zh = {
         sendSms:'已发送,请查收',
         exit:'退出登录',
         Backstage:'仪表盘',
-        registerTip:'送200M'
+        registerTip:'送200M',
+        modityTips:'修改成功',
+        registerSuccess:'注册成功',
+        newPassTip:'新密码',
+        modifyMessage:'修改成功'
     },
     first: {
         title:'全球住宅代理',
@@ -1125,7 +1135,10 @@ export const zh = {
         step2_title:'请用支付宝扫码采集人脸认证',
         step2_button:'返回上一页',
         step3:'认证完成',
-        step3_title: '实名认证完成,已获得500M流量'
+        step3_title: '实名认证完成,已获得500M流量',
+        form1_message:'请输入合法的姓名',
+        form2_message:'请输入合法的身份证'
+
     },
     sub: {
         title: '添加子账号',

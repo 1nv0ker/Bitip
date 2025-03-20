@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="w-full mt-[1.25rem]">
-                <div class="w-[18.25rem] h-[3rem] border-[#EBEFF8] border-[1px] rounded-[0.75rem] bg-[#FAFAFA] flex justify-center items-center cursor-pointer">
+                <div class="w-[18.25rem] h-[3rem] border-[#EBEFF8] border-[1px] rounded-[0.75rem] bg-[#FAFAFA] flex justify-center items-center cursor-pointer" @click="onLogout">
                     <span class="text-[#191919] text-[1rem] font-semibold">{{t('login.exit')}}</span>
                 </div>
             </div>
@@ -105,8 +105,10 @@
     import lanImg2 from '../../assets/translate_en.png'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
+    import useUserStore from '../../store/user'
     const { t } = useI18n()
     const i18n = useI18n()
+    const userStore = useUserStore()
     const store = useI18nStore()
     const emit = defineEmits(['onOpenMenu'])
     const lan = ref()
@@ -127,5 +129,8 @@
     }
     const onRecharge = () => {
         router.push({name:'recharge'})
+    }
+    const onLogout = () => {
+        userStore.logout()
     }
 </script>

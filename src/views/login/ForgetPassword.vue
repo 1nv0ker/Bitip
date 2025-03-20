@@ -84,6 +84,7 @@
                 <PasswordInput :password-attrs="comfirmPassAttrs" 
                 :errormessage="errormessage"
                 v-model="comfirmPass" 
+                :sign="'comfirmPass'"
                 :tips="t('login.confirmPassTips')" :error-tips="t('login.confirmPassword')" 
                 :placeholder="t('login.confirmPassTips')" />
                 <!-- 用户协议 -->
@@ -96,7 +97,7 @@
                 </div>
                 
 
-                <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit">
+                <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="forget_button">
                     <span class="text-[white] text-[1.5rem] font-medium">{{t('login.confirmMessage')}}</span>
                 </button>
                 <div class="w-full flex items-center mt-[1.5rem] justify-center">
@@ -114,8 +115,7 @@
                             </div>
                             <div class="flex flex-wrap pt-[0.5rem]">  
                                 <span>{{t('login.modalTips')}}
-                                    <span class="text-[#01AA44] cursor-pointer">《{{t('login.userServiceAgreement')}}》</span>
-                                    <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                                    <Law />
                                 </span>
                             </div>
                             <div class="flex justify-evenly mt-[1.2rem]   ">
@@ -144,7 +144,7 @@
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
     import { PasswordRecovery, SendSms } from '../../api/login'
-    import { ElMessage } from 'element-plus'
+    import { message } from 'ant-design-vue';
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue'
     import Law from './Law.vue';
     const phoneCode = ref('')
@@ -179,7 +179,8 @@
         verifyCode: yup.string().required(),
         comfirmPass: yup.string().required().min(6).max(12)
         .oneOf([yup.ref('password')], t('login.confirmPassword')),
-        password: yup.string().required().min(6).max(12),
+        password: yup.string().required().min(6).max(12)
+        // .oneOf([yup.ref('comfirmPass')], t('login.confirmPassword')),
     })
     const { defineField, errors, handleSubmit, validateField } = useForm({
         validationSchema: schema,
@@ -207,11 +208,17 @@
         PasswordRecovery({
             verifyCode:verifyCode.value,
             newPassword:password.value,
-            tel:phoneCode.value+phoneNum.value,
+            tel:phoneNum.value,
         })
         .then((res:any) => {
             console.log('res', res)
-            router.push('/login')
+            message.success({
+                content:t('login.modityTips'),
+                duration: 2,
+                onClose:() => {
+                    router.push('/login')
+                }
+            })
         })
     }
     const onContinueLogin = () => {
@@ -257,13 +264,14 @@
         })
         .then((res:any) => {
             console.log('res', res)
-            ElMessage.success(t('login.sendSms'))
+            message.success(t('login.sendSms'))
             codeCountInterval = setInterval(() => {
                 codeCount.value--
                 if (codeCount.value<=0) {
                     sendCodeStaus.value = false
                     captchaVerifyParam.value = ''
                     capRef.value && capRef.value.onRefresh()
+                    codeCount.value = 60
                     clearInterval(codeCountInterval)
                 }
             }, 1000);

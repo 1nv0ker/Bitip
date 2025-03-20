@@ -36,11 +36,11 @@
                 <div class="h-full">
                     <div class="w-[37.5rem] flex flex-col" v-show="current==0">
                         <a-form layout="vertical" >
-                            <a-form-item :label="t('userauth.form1')" required>
-                                <a-input class="customAInput"></a-input>
+                            <a-form-item :label="t('userauth.form1')" :rules="rulesRef.name" v-bind="validateInfos.name">
+                                <a-input class="customAInput" v-model:value="modelRef.name" ></a-input>
                             </a-form-item>
-                            <a-form-item :label="t('userauth.form2')" required>
-                                <a-input class="customAInput"></a-input>
+                            <a-form-item :label="t('userauth.form2')" :rules="rulesRef.IdCard" v-bind="validateInfos.IdCard">
+                                <a-input class="customAInput" v-model:value="modelRef.IdCard" ></a-input>
                             </a-form-item>
                         </a-form>
                         <div class=" cursor-pointer bg-[#01AA44] w-[13.25rem] h-[3.25rem] rounded-[0.75rem] flex justify-center items-center" @click="onStep(1)">
@@ -83,10 +83,13 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref } from 'vue'
+    import { computed, ref, reactive, onBeforeMount } from 'vue'
+    import { Form } from 'ant-design-vue';
     import { useRouter } from 'vue-router'
+    import { Certification } from '../../../api/login'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const useForm = Form.useForm;
     const current = ref(0)
     const router = useRouter()
     const items = computed(() => {
@@ -105,7 +108,56 @@
             }
         ]
     })
+    const modelRef = reactive({
+        name: '',
+        IdCard: '',
+    });
+    const rulesRef = reactive({
+        name: [
+            {
+                required:true,
+                message:t('userauth.form1_message')
+            },
+            {
+                pattern:`^(?:[\u4E00-\u9FA5\u3400-\u4DBF·]{2,10}|[a-zA-Z\s'-]{2,50})$`,
+                required:true,
+                message:t('userauth.form1_message')
+            }
+        ],
+        IdCard: [
+            {
+                required:true,
+                message:t('userauth.form2_message')
+            },
+            {
+                pattern:'^[1-9]\\d{5}(18|19|20)\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])\\d{3}[\\dXx]$',
+                required:true,
+                message: t('userauth.form2_message')
+            }
+        ]
+    })
+    onBeforeMount(() => {
+
+    })
+    const { validate, validateInfos  } = useForm(modelRef, rulesRef);
     const onStep = (value:number) => {
-        current.value = value
+        if (value == 1) {
+            validate()
+            .then(() => {
+                let MetaInfo = window.getMetaInfo();
+                Certification({
+                    RealName:modelRef.name,
+                    IdCard: modelRef.IdCard,
+                    MetaInfo: MetaInfo
+                })
+                .then((res) => {
+                    console.log(res)
+                    current.value = value
+                })
+            })
+        } else {
+            current.value = value
+        }
+        
     }
 </script>

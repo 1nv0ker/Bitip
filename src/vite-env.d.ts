@@ -2,7 +2,8 @@
 interface Window {
     bootstrap:any,
     initAliyunCaptcha:any,
-    AliyunCaptchaConfig: any
+    AliyunCaptchaConfig: any,
+    getMetaInfo:any
 }
 
 // 声明扩展类型（解决TS报错）

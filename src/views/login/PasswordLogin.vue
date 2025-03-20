@@ -78,8 +78,7 @@
                     </div>
                     <div class="flex flex-wrap pt-[0.5rem]">  
                         <span>{{t('login.modalTips')}}
-                            <span class="text-[#01AA44] cursor-pointer">《{{t('login.userServiceAgreement')}}》</span>
-                        <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                            <Law />
                         </span>
                     </div>
                     <div class="flex justify-evenly mt-[1.2rem]   ">
@@ -173,7 +172,9 @@
         .then((res:any) => {
             console.log('res', res)
             store.setToken(res.body.token)
-            router.push({path:'/home'})
+            store.setUserInfo()
+            const redirectPath:any = router.currentRoute.value.query.redirect || '/'
+            router.push(redirectPath)
         })
         .catch(() => {
             capRef.value && capRef.value.onRefresh()

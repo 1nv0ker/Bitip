@@ -41,7 +41,6 @@
     import { useRoute  } from 'vue-router'
     import { ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
     import userStore from '../store/user'
-    import { GetUserInfo } from '../api/login'
     const { t } = useI18n()
     const showContact = ref(false)
     const showButton = ref(false)
@@ -57,13 +56,7 @@
         if (paths.indexOf(route.path) !== -1) {
             showContact.value = true
         }
-        if (store.token) {
-            GetUserInfo()
-            .then((res1:any) => {
-                console.log('res1', res1)
-                store.setUserInfo(res1.body.userInfo)
-            })
-        }
+        store.setUserInfo()
     })
     onMounted(() => {
          window.addEventListener('scroll', checkScroll)

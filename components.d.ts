@@ -32,6 +32,7 @@ declare module 'vue' {
     CaptchaForm: typeof import('./src/components/CaptchaForm.vue')['default']
     CustomForm: typeof import('./src/components/CustomForm.vue')['default']
     EmailForm: typeof import('./src/components/EmailForm.vue')['default']
+    LawModal: typeof import('./src/components/LawModal.vue')['default']
     NumberComponent: typeof import('./src/components/NumberComponent.vue')['default']
     PackageModal: typeof import('./src/components/PackageModal.vue')['default']
     PasswordInput: typeof import('./src/components/PasswordInput.vue')['default']

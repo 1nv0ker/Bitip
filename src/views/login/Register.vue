@@ -81,6 +81,7 @@
                 <PasswordInput :password-attrs="comfirmPassAttrs" 
                 :errormessage="errormessage"
                 v-model="comfirmPass" 
+                :sign="'comfirmPass'"
                 :tips="t('login.confirmPassTips')" :error-tips="t('login.confirmPassword')" 
                 :placeholder="t('login.confirmPassTips')" />
                 <!-- 邮箱 -->
@@ -123,8 +124,7 @@
                             </div>
                             <div class="flex flex-wrap pt-[0.5rem]">  
                                 <span>{{t('login.modalTips')}}
-                                    <span class="text-[#01AA44] cursor-pointer">《{{t('login.userServiceAgreement')}}》</span>
-                                <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                                    <Law />
                                 </span>
                             </div>
                             <div class="flex justify-evenly mt-[1.2rem]   ">
@@ -154,7 +154,7 @@
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
     import { Register, SendSms } from '../../api/login'
-    import { ElMessage } from 'element-plus'
+    import { message } from 'ant-design-vue';
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
     import Law from './Law.vue';
     import userStore from '../../store/user'
@@ -192,6 +192,7 @@
         phoneNum: yup.string().required().length(11),
         verifyCode: yup.string().required(),
         password: yup.string().required().min(6).max(12),
+        // .oneOf([yup.ref('comfirmPass')], t('login.confirmPassword')),
         comfirmPass: yup.string().required().min(6).max(12)
         .oneOf([yup.ref('password')], t('login.confirmPassword')),
         email: yup.string().email().required()
@@ -231,7 +232,13 @@
         .then((res:any) => {
             console.log('res', res)
             store.setToken(res.body.token)
-            router.push('/login')
+            message.success({
+                content:t('login.registerSuccess'),
+                duration: 2,
+                onClose: ()=> {
+                    router.push('/login')
+                }
+            })
         })
     }
     const onContinueLogin = () => {
@@ -278,7 +285,7 @@
         })
         .then((res:any) => {
             console.log('res', res)
-            ElMessage.success(t('login.sendSms'))
+            message.success(t('login.sendSms'))
             codeCountInterval = setInterval(() => {
                 codeCount.value--
                 if (codeCount.value<=0) {

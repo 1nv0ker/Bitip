@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
+import UseUserStore from '../store/user'
 
 
 // 全局配置（可选）
@@ -57,7 +58,9 @@ const routes = [
     { path: '/plan', component: PlanComponent, name:'plan'},
     { path: '/dyagent', name:'dyagent', component: DyAgent},
     { path: '/staticagent', name:'staticagent', component: StaticAgent},
-    { path: '/usercenter', component: usercenterComponent, name:'usercenter', children:[
+    { path: '/usercenter', component: usercenterComponent, name:'usercenter', 
+      meta: { requiresAuth: true } ,
+      children:[
       {
         path:'proxycity',
         name:'proxycity',
@@ -161,8 +164,24 @@ const router = createRouter({
 })
 
 // //路由前置
-router.beforeEach((_to, _from)=> {
-  (NProgress as any).start()  
+router.beforeEach((to, _from, next)=> {
+  (NProgress as any).start()
+  const userStore = UseUserStore();
+  const isLogin = userStore.token
+  if (to.meta.requiresAuth && !isLogin) {
+    
+    next({
+      path: '/login',
+      query: { redirect: to.fullPath }
+    })
+  }
+  // if (to.path.includes('usercenter')) {
+  //   // if (!userStore.token) {
+  //   //   router.push({path:'login',re})
+  //   // } 
+  //   next()
+  // }
+  next()
 })
 
 // //路由后置

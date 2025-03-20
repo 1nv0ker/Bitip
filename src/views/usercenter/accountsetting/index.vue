@@ -19,7 +19,7 @@
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
                         text-[#191919] text-[1rem]
                         border-[1px] border-[#666666] flex justify-between items-center pl-[1.25rem] pr-[1.25rem]">
-                            <span>gugeqiyao@gmail.com</span>
+                            <span>{{userStore.userInfo?.email}}</span>
                             <span class=" cursor-pointer" @click="onModifyEmail">{{t('setting.button2')}}</span>
                         </div>
 
@@ -28,7 +28,7 @@
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
                         text-[#191919] text-[1rem]
                         border-[1px] border-[#666666] flex justify-between items-center pl-[1.25rem] pr-[1.25rem]">
-                            <span>157****2343</span>
+                            <span>{{maskPhone(userStore.userInfo?.tel)}}</span>
                             <!-- <span class=" cursor-pointer">{{t('setting.button2')}}</span> -->
                         </div>
                     </a-form-item>
@@ -65,12 +65,14 @@
 </template>
 <script setup lang="ts">
     import { useRouter,  } from 'vue-router'
-    import { ref, nextTick } from 'vue'
+    import { ref, nextTick, onMounted } from 'vue'
     import ModifyEmail from './ModifyEmail.vue'
     import ModifyPassword from './ModifyPassword.vue'
+    import UseUserStore from '../../../store/user'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const router = useRouter()
+    const userStore = UseUserStore()
     const openEamil = ref(false)
     const openPass = ref(false)
     const modifyeamilRef = ref<any>()
@@ -86,5 +88,14 @@
         nextTick(() => {
             modifyeamilRef.value.init()
         })
+    }
+    onMounted(() => {
+        userStore.setUserInfo()
+    })
+    const maskPhone = (phone:string|undefined) => {
+        if (!phone) {
+            return ;
+        }
+        return phone.substr(0, 3) + '****' + phone.substr(7);
     }
 </script>

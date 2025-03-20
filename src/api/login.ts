@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const BASIC_MODULE = '/api/SysLogin'
-
+const BASIC_USER = '/api/SysUser'
 export interface LoginData {
     "captchaVerifyParam"?: string,//阿里验证码的参数
     "account"?: string,//账号登录，account、tel、email必填一个
@@ -71,4 +71,35 @@ export interface SmsCodeData {
 }
 export function SendSms(smsCode:SmsCodeData) {
     return axios.post(`${BASIC_MODULE}/SendSms`, smsCode)
+}
+
+
+export interface modifyData {
+    "name"?: string,//用户昵称(非账号)
+    "tel": string,//绑定的手机号
+    "email"?: string,//绑定的邮箱
+    "remark"?: string//备注信息
+}
+
+export function ModifyEamil(modify:modifyData) {
+    return axios.post(`${BASIC_MODULE}/UpdateUserInfo`, modify)
+}
+
+export interface modifyPassData {
+    "newPassWord": string,//新密码
+    "oldPassWord": string//老密码
+}
+export function ModifyPass(modify:modifyPassData) {
+    return axios.post(`${BASIC_MODULE}/ResetPassWord`, modify)
+}
+
+
+export interface CertificationData {
+    "RealName": string,//真实姓名
+    "IdCard": string,//身份证号，前端记得去除空格和特殊字符
+    "MetaInfo": string//浏览器信息，
+}
+
+export function Certification(certification:CertificationData) {
+    return axios.post(`${BASIC_USER}/GetCertification`, certification)
 }

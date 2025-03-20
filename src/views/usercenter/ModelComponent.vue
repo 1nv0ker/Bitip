@@ -1,5 +1,5 @@
 <template>
-    <a-modal v-model:open="open" :footer="null" class=" rounded-[1.5rem]" :width="width" centered destroyOnClose>
+    <a-modal v-model:open="open" :footer="null" class=" rounded-[1.5rem]" :width="width" centered destroyOnClose :maskClosable="false">
       <template #title>
             <span class="text-[#191919] text-[1.5rem] font-bold">{{ title }}</span>
       </template>

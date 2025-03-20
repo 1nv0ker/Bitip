@@ -6,7 +6,7 @@
             <span @click="onPage(props.path, props.name)" :class="`ellipsis-single ${selected==props.name?'text-[#01AA44]':''}`">{{props.text}}</span>
             <img class="w-[0.625rem] h-[0.625rem]" :src="(selected==props.key || !status )?downImg:upImg" v-if="props.showArrow"/>
         </div>
-        <div class="absolute top-[6.8125rem] z-50 right-0 left-0 m-0 pb-[2rem]  bg-[white] flex justify-center animate__fadeIn animate__animated border-t-[1px] border-[#EBEFF8]" 
+        <div class="absolute top-[4rem] z-50 right-0 left-0 m-0 pb-[2rem]  bg-[white] flex justify-center animate__fadeIn animate__animated border-t-[1px] border-[#EBEFF8]" 
         v-show="status && showArrow" 
         style="animation-duration: 1s"
         @mouseenter="status=true">

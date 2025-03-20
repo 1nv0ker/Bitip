@@ -74,8 +74,7 @@
                     </div>
                     <div class="flex flex-wrap pt-[0.5rem]">  
                         <span>{{t('login.modalTips')}}
-                            <span class="text-[#01AA44] cursor-pointer">《{{t('login.userServiceAgreement')}}》</span>
-                            <span class="text-[#01AA44] cursor-pointer">《{{t('login.privacyPolicy')}}》</span>
+                            <Law />
                         </span>
                     </div>
                     <div class="flex justify-evenly mt-[1.2rem]   ">
@@ -103,7 +102,8 @@
     import * as yup from 'yup'
     import { useRouter } from 'vue-router'
     import UseUserStore from '../../store/user'
-    import { ElMessage } from 'element-plus'
+    // import { ElMessage } from 'element-plus'
+    import { message } from 'ant-design-vue'
     import Law from './Law.vue';
     const store = UseUserStore()
     const phoneCode = ref('')
@@ -164,13 +164,9 @@
         .then((res:any) => {
             console.log('res', res)
             store.setToken(res.body.token)
-            router.push('/home')
-            // GetUserInfo()
-            // .then((res1:any) => {
-            //     console.log('res1', res1)
-            //     store.setUserInfo({})
-                
-            // })
+            store.setUserInfo()
+            const redirectPath:any = router.currentRoute.value.query.redirect || '/'
+            router.push(redirectPath)
         })
         
     }
@@ -217,7 +213,7 @@
         })
         .then((res:any) => {
             console.log('res', res)
-            ElMessage.success(t('login.sendSms'))
+            message.success(t('login.sendSms'))
             codeCountInterval = setInterval(() => {
                 codeCount.value--
                 if (codeCount.value<=0) {

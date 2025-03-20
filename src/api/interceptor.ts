@@ -1,6 +1,6 @@
 import axios from 'axios'
 import UseUserStore from '../store/user'
-import { ElMessage } from 'element-plus'
+import { message } from 'ant-design-vue'
 // axios.defaults.baseURL = 'https://www.bitip.com'
 axios.defaults.baseURL = 'http://47.102.127.12'
 axios.defaults.timeout = 1000
@@ -19,7 +19,7 @@ axios.interceptors.request.use(function (config) {
   }, function (error) {
     // 对请求错误做些什么
     console.log([error])
-    ElMessage.error('server error')
+    message.error('server error')
     
     return Promise.reject(error);
 });
@@ -30,18 +30,22 @@ axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // console.log('error')
     if (response.data.code && response.data.code !== 200) {
-      response.data.message && ElMessage.error(response.data.message)
+      response.data.message && message.error(response.data.message)
       throw Error(response.data.message)
     }
     return response.data;
   }, function (error) {
     // 对响应错误做点什么
-    console.log([error])
+    // console.log([error])
+    //token失效
     if (error.status == 401) {
-      ElMessage.error(error.message)
+      const userStore = UseUserStore()
+      message.error(error.message)
+      userStore.clearToken()
+      userStore.clearUserInfo()
       //重置token和userinfo
     } else {
-      ElMessage.error(error.message)
+      message.error(error.message)
     }
     
     

@@ -145,6 +145,7 @@ input:-moz-placeholder { /* Firefox 18- */
 #aliyunCaptcha-sliding-slider {
   font-size: 1rem!important;
   line-height: 4rem!important;
+  background:#01AA44!important;
   /* left:1rem!important; */
 }
 #aliyunCaptcha-window-embed {
@@ -253,4 +254,8 @@ span {
 /* 表头同步调整 */
 .ant-table-thead > tr > th {
   height: 70px;
+}
+
+:where(.css-1p3hq3p).ant-menu-light.ant-menu-root.ant-menu-inline, :where(.css-1p3hq3p).ant-menu-light.ant-menu-root.ant-menu-vertical {
+  border-inline-end: none!important;
 }

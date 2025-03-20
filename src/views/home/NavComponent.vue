@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="flex z-50 items-center md:hidden gap-[1rem]" v-else>
-                    <span class=" z-50 font-medium">{{userStore.userInfo?.email}}</span>
+                    <span class=" z-50 font-medium">{{userStore.userInfo?.tel}}</span>
                     <div class="z-50 bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
                         <span class="font-medium">{{t('login.Backstage')}}</span>
                     </div>
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="hidden items-center md:flex gap-[1rem] " v-else>
-                    <span>{{userStore.userInfo?.email}}</span>
+                    <span>{{userStore.userInfo?.tel}}</span>
                     <div class=" bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
                         <span class="font-medium">{{t('login.Backstage')}}</span>
                     </div>
@@ -139,12 +139,10 @@
         router.push('/home')
     }
     const onLogout = () => {
-        userStore.setToken('')
-        userStore.setUserInfo(null)
-        router.push('/login')
+        userStore.logout()
     }
     const OnEnterBackend = () => {
-        router.push('/usercenter')
+        router.push('/usercenter/proxycity')
     }
 </script>
 <style scoped>

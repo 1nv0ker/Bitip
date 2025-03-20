@@ -2,11 +2,11 @@
     <!-- 密码 -->
     <div class="flex h-[4rem] mt-[1.5rem] relative">
         <div :class="`absolute left-[1.5rem] top-[-0.75rem] 
-        text-[${errormessage?.hasOwnProperty('password')?'#FC4949':'#01AA44'}] 
+        text-[${errormessage?.hasOwnProperty(sign)?'#FC4949':'#01AA44'}] 
         bitip_font_family
         font-normal
         text-[1.1rem] h-[1.5rem] bg-[white] pl-[0.4rem] pr-[0.4rem]`" v-show="passwordFocusStatus">{{tips}}</div>
-        <input :type="inputType" :class="`form-control customPassInput ${errormessage?.hasOwnProperty('password')?(passwordFocusStatus?'customPassError':''):(passwordFocusStatus?'customPassNormal':'')}`"
+        <input :type="inputType" :class="`form-control customPassInput ${errormessage?.hasOwnProperty(sign)?(passwordFocusStatus?'customPassError':''):(passwordFocusStatus?'customPassNormal':'')}`"
          :placeholder="placeholder" 
         @focus="passwordFocusStatus=true" v-bind="passwordAttrs" @focusout="passwordFocusStatus=false"
         v-model="model" />
@@ -14,7 +14,7 @@
             <img  :src="inputType == 'password'?showImg:hideImg" class="w-[2rem] h-[2rem] z-10" @click="onChangeType" />
         </div>
     </div>
-    <div v-if="errormessage?.hasOwnProperty('password')" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
+    <div v-if="errormessage?.hasOwnProperty(sign)" class="h-[1.5rem] flex items-center mt-[0.5rem] animate__animated  animate__fadeIn ">
         <span class="text-[#FC4949] text-[1.1rem] font-normal">{{errorTips}}</span>
     </div>
 </template>
@@ -31,7 +31,11 @@
         tips: String,
         placeholder:String,
         passwordAttrs:Object,
-        errorTips:String
+        errorTips:String,
+        sign: {
+            type:String,
+            default:'password'
+        }
     })
     const onChangeType = () => {
         inputType.value == 'password'?inputType.value = 'text': inputType.value = 'password'
