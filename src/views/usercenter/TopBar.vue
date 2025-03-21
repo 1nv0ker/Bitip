@@ -30,7 +30,7 @@
         </div>
         <div class="h-full flex items-center">
             <div class="w-auto p-[0.375rem] border-[1px] border-[#999999] rounded-[3.125rem] gap-[2.8rem] flex items-center h-[3rem]">
-                <span class="pl-[1rem] text-[#191919] text-[1rem]">{{t('backend_menu.Balance')}}:<span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-bold">￥10</span></span>
+                <span class="pl-[1rem] text-[#191919] text-[1rem]">{{t('backend_menu.Balance')}}:<span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-bold">￥{{userStore.userInfo?.accountBalance}}</span></span>
                 <div class="w-[5.75rem] h-full rounded-[1.125rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onRecharge">
                     <span class="text-[#FFFFFF] text-[1rem] font-medium">{{t('backend_menu.recharge')}}</span>
                 </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="flex w-full text-[1rem]">
                     <span class="  text-[#191919]">{{ t('backend_menu.Balance') }}</span>
-                    <span class=" text-[#191919] cursor-pointer pl-[1.25rem]">￥10</span>
+                    <span class=" text-[#191919] cursor-pointer pl-[1.25rem]">￥{{userStore.userInfo?.accountBalance}}</span>
                 </div>
             </div>
             <div class="flex w-full gap-[0.5rem] flex-col mt-[1.25rem]">

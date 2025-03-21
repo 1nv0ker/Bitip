@@ -43,11 +43,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+            <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2 z-50">
                 <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem] justify-center z-50" v-if="!userStore.userInfo?.tel">
                     <div class="w-[4.5rem] flex cursor-pointer z-50" @click="onLanauageChange()">
-                        <img :src="lan=='zh'?lanImg1:lanImg2" class="w-[1.5rem] h-[1.5rem]" />
-                        <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
+                        <img :src="lan=='zh'?lanImg1:lanImg2" class="z-50 w-[1.5rem] h-[1.5rem]" />
+                        <span class="pl-[0.375rem] text-[1rem] font-medium z-50">{{lan =='zh' ? '中文':'EN'}}</span>
                     </div>
                     <div class="text-[#191919] cursor-pointer text-[1rem] font-medium  hover:text-[#01AA44] z-50 " @click="onLogin">
                         <span class="ellipsis-single">{{t('login.login')}}</span>

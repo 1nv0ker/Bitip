@@ -60,6 +60,7 @@ const routes = [
     { path: '/staticagent', name:'staticagent', component: StaticAgent},
     { path: '/usercenter', component: usercenterComponent, name:'usercenter', 
       meta: { requiresAuth: true } ,
+      redirect: '/usercenter/proxycity',
       children:[
       {
         path:'proxycity',

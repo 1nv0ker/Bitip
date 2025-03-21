@@ -5,18 +5,18 @@
         </div>
         <div class="w-full gap-[1.75rem] h-[3rem] flex mt-[1.5rem]">
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
-                <a-input  :placeholder="t('purchaseddetail.search1')" size="large" class="customAInput" />
+                <a-input  :placeholder="t('purchaseddetail.search1')" size="large" class="customAInput" v-model:value="params.KeyWord" allowClear/>
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
-                <a-select :placeholder="t('purchaseddetail.search2')"  class="customASelect h-[3rem] w-full">
-                    <a-select-option value="jack">Jack</a-select-option>
-                    <a-select-option value="lucy">Lucy</a-select-option>
-                    <a-select-option value="Yiminghe">yiminghe</a-select-option>
+                <a-select :placeholder="t('purchaseddetail.search2')"  class="customASelect h-[3rem] w-full" v-model:value="params.Status" allowClear>
+                    <!-- <a-select-option :value="-1">{{t('purchaseddetail.status3')}}</a-select-option> -->
+                    <a-select-option :value="1">{{t('purchaseddetail.status1')}}</a-select-option>
+                    <a-select-option :value="0">{{t('purchaseddetail.status2')}}</a-select-option>
                 </a-select>
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
                 <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
-                    <a-range-picker  picker="day" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select w-full" >
+                    <a-range-picker showTime picker="day" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class="customADate w-full" v-model:value="dates">
                         <template #suffixIcon>
                             <div class="w-[1.25rem] h-[1.25rem] ">
                                     <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
@@ -26,42 +26,83 @@
                 </a-config-provider>
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]">
-                <div class="text-[] bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer">
+                <!-- <div class="text-[] bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer" @click="onLoad">
                     <span class="text-[1rem] text-white font-medium">{{t('purchasedhistory.button1')}}</span>
-                </div>
+                </div> -->
+                <a-button type="primary" @click="onLoad" :loading="params.loading"  class="bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer customAbutton">
+                    <span class="text-[1rem] text-white font-medium">{{t('purchasedhistory.button1')}}</span>
+                </a-button>
             </div>
         </div>
-        <div class="w-full mt-[1.5rem] h-[45rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" >
+        <div class="w-full mt-[1.5rem] h-[44rem]">
+            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
                     </span>
                 </template>
                 <template #bodyCell="{ column, record }">
-                    <span class="text-[#191919] text-[1rem]" :title="record[column.key]">
+                    <span class="text-[#191919] text-[1rem]" :title="record[column.key]" v-if="column.key=='status'">
+                        {{ record[column.key]==0?t('purchaseddetail.status2'):t('purchaseddetail.status1') }}
+                    </span>
+                    <span class="text-[#191919] text-[1rem]" :title="record[column.key]" v-else>
                         {{ record[column.key] }}
                     </span>
                 </template>
             </a-table>
+            <PaginationComponent v-model:total="params.total" v-model:page-size="params.pageSize" v-model="params.current" @onCurrentChange="onCurrentChange" @onSizeChange="onSizeChange"/>
         </div>
     </div>
 </template>
 <script setup lang="ts">
-    import { ref, computed } from 'vue'
+    import { ref, computed, onMounted, reactive } from 'vue'
+    import PaginationComponent from '../../../components/PaginationComponent.vue';
     import 'dayjs/locale/zh-cn';
+    import { getOrderList } from '../../../api/order'
     import enUS from 'ant-design-vue/es/locale/en_US';
     import zhCN from 'ant-design-vue/es/locale/zh_CN';
     import useI18nStore from '../../../store/i18n'
+    import  { Dayjs } from 'dayjs';
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const I18Store = useI18nStore()
+    const params = reactive({
+        total:0,
+        pageSize: 10,
+        current: 1,
+        KeyWord: '',
+        Status: undefined,
+        loading: false
+    })
+    const dates = ref<[Dayjs, Dayjs]|null>(null);
+    onMounted(() => {
+        loadTable()
+    })
+    const loadTable = async () => {
+        params.loading = true
+        const res:any = await getOrderList({
+            PageNo:params.current,
+            PageSize:params.pageSize,
+            KeyWord: params.KeyWord,
+            Status: params.Status,
+            // ...params,
+            SearchBeginTime: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined
+        })
+        params.total = res.body.totalRows
+        tableDatas.value = res.body.records
+        params.loading = false
+    }
+    
+    const onLoad = () => {
+        loadTable()
+    }
     const columns = computed(() => {
         return [
             {
                 title: t('purchasedhistory.column1'),
-                dataIndex: 'orderNumber',
-                key: 'orderNumber',
+                dataIndex: 'orderNo',
+                key: 'orderNo',
                 align:'center',
                 ellipsis: true
             },
@@ -74,146 +115,44 @@
             },
             {
                 title: t('purchasedhistory.column3'),
-                dataIndex: 'lumpSum',
-                key: 'lumpSum',
+                dataIndex: 'amount',
+                key: 'amount',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('purchasedhistory.column4'),
-                dataIndex: 'orderStatus',
-                key: 'orderStatus',
+                dataIndex: 'status',
+                key: 'status',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('purchasedhistory.column5'),
-                dataIndex: 'paymentMethod',
-                key: 'paymentMethod',
+                dataIndex: 'payType',
+                key: 'payType',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('purchasedhistory.column6'),
-                dataIndex: 'time',
-                key: 'time',
+                dataIndex: 'sysUpdateTime',
+                key: 'sysUpdateTime',
                 align:'center',
                 ellipsis: true
             },
         ]
     })
     const tableDatas = ref([
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        {
-            orderNumber:'DH434345646',
-            orderName: '123123',
-            lumpSum:'￥5000000',
-            orderStatus: '已支付',
-            paymentMethod: '支付宝',
-            time: '2025-10-02 16:10:02'
-        },
-        
+    
     ])
-</script>
-
-<style lang="less">
-    .traffic_select {
-        height: 3rem;
-        border-radius: 0.75rem;
-        border: 1px solid #666666;
-        .ant-picker-input {
-            &>input {
-                font-size: 1rem!important;
-                line-height: 100%;
-                font-family: "Alibaba Sans";
-                &::placeholder {
-                    color: #999999;
-                    font-size: 1rem!important;
-                    font-family: "Alibaba Sans";
-                }
-            }
-        }
-        .ant-picker-separator {
-            height: auto!important;
-        }
+    const onCurrentChange = (num:number) => {
+        params.current = num
+        loadTable()
     }
-</style>
+    const onSizeChange = (num:number,size:number) => {
+        params.current = num
+        params.pageSize = size
+        loadTable()
+    }
+</script>

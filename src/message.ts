@@ -386,8 +386,8 @@ export const en = {
     },
     purchaseddetail: {
         title: 'Purchased IP',
-        search1: 'Please enter IP',
-        search2:'Type',
+        search1: 'Please enter the order name or number',
+        search2:'Order Status',
         search3:'Region',
         search4: 'Expiration time',
         search5:'Automatic renewal',
@@ -406,7 +406,10 @@ export const en = {
         yes:'Yes',
         no:'No',
         tips:'Automatic renewal tips',
-        message:'After opening, it will be automatically deducted from the account balance according to monthly renewal. If the balance is insufficient, the renewal will not be successful.'
+        message:'After opening, it will be automatically deducted from the account balance according to monthly renewal. If the balance is insufficient, the renewal will not be successful.',
+        status1:'Paid',
+        status2:'Not paid',
+        status3:"All"
     },
     purchasedhistory: {
         title:'Purchase history',
@@ -420,6 +423,8 @@ export const en = {
         column4:'Order Status',
         column5:'Payment Methods',
         column6:'Payment Time',
+        total:'Total',
+        item:'Ttems'
     },
     promotionrebate: {
         title: 'BitIP Promotion Rebate',
@@ -1040,8 +1045,8 @@ export const zh = {
     },
     purchaseddetail: {
         title: '已购IP',
-        search1: '请输入IP',
-        search2:'类型',
+        search1: '请输入订单名称或者编号',
+        search2:'订单状态',
         search3:'地区',
         search4: '过期时间',
         search5:'是否自动续费',
@@ -1060,7 +1065,10 @@ export const zh = {
         yes:'是',
         no:'否',
         tips:'自动续费提示',
-        message:'开启后从账户余额内按每月续费自动扣除，余额不足则续费不成功'
+        message:'开启后从账户余额内按每月续费自动扣除，余额不足则续费不成功',
+        status1:'已支付',
+        status2:'未支付',
+        status3:'全部'
     },
     purchasedhistory: {
         title:'购买记录',
@@ -1074,6 +1082,8 @@ export const zh = {
         column4:'订单状态',
         column5:'支付方式',
         column6:'支付时间',
+        total:'共',
+        item:'条'
     },
     promotionrebate: {
         title: 'BitIP推广返利',

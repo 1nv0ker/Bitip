@@ -46,8 +46,8 @@
                 </div> -->
             </div>
         </div>
-        <div class="w-full mt-[1.75rem] h-[44rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'38.5rem'}" :row-selection="rowSelection">
+        <div class="w-full mt-[1.75rem] h-[45rem]">
+            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -84,6 +84,7 @@
                     </template>
                 </template>
             </a-table>
+            <PaginationComponent />
         </div>
         <QrCodeModal v-model="open" v-model:qrcode="qrcode"/>
     </div>
@@ -91,6 +92,7 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue'
     import { QrcodeOutlined } from '@ant-design/icons-vue';
+    import PaginationComponent from '../../../components/PaginationComponent.vue';
     import QrCodeModal from './QrCodeModal.vue';
     import Copy from './Copy.vue';
     import AutoComponent from './AutoComponent.vue';

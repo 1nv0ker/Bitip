@@ -7,7 +7,7 @@
                     <span>+</span> <span class="pl-[0.5rem] ">{{t('trafficmanager.add_account')}}</span>
                 </div>
             </div>
-            <div class="mt-[1.5rem] h-[20rem]">
+            <div class="mt-[1.5rem] h-[18rem]">
                 <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'16rem'}" :pagination="false" >
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
@@ -42,6 +42,7 @@
                         </template>
                     </template>
                 </a-table>
+                <PaginationComponent />
             </div>
         </div>
         <div class="w-full h-[35rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
@@ -74,6 +75,7 @@
 <script setup lang="ts">
     import { computed, ref, onMounted, toRaw  } from 'vue'
     import AddSubModal from './AddSubModal.vue';
+    import PaginationComponent from '../../../components/PaginationComponent.vue';
     import { useI18n } from 'vue-i18n'
     import 'dayjs/locale/zh-cn';
     import enUS from 'ant-design-vue/es/locale/en_US';

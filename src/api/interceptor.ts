@@ -1,9 +1,10 @@
 import axios from 'axios'
 import UseUserStore from '../store/user'
 import { message } from 'ant-design-vue'
-// axios.defaults.baseURL = 'https://www.bitip.com'
-axios.defaults.baseURL = 'http://47.102.127.12'
-axios.defaults.timeout = 1000
+import router from '../router'
+axios.defaults.baseURL = 'https://www.bitip.com'
+// axios.defaults.baseURL = 'http://47.102.127.12'
+axios.defaults.timeout = 0
 
 
 
@@ -38,11 +39,13 @@ axios.interceptors.response.use(function (response) {
     // 对响应错误做点什么
     // console.log([error])
     //token失效
+    console.log('error', error.status)
     if (error.status == 401) {
       const userStore = UseUserStore()
       message.error(error.message)
       userStore.clearToken()
       userStore.clearUserInfo()
+      router.push({path:'/home'})
       //重置token和userinfo
     } else {
       message.error(error.message)

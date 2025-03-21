@@ -5,7 +5,12 @@ interface UserInfo_data {
     email:string,
     name:string,
     remark:string,
-    tel:string
+    tel:string,
+    accountBalance:number,
+    isVerify:boolean,
+    status:number,
+    realName:string,
+    idCard:string
 }
 const store = defineStore('users', {
     state:():{
@@ -27,8 +32,11 @@ const store = defineStore('users', {
         setToken(token:string) {
             this.token = token
         },
-        setUserInfo() {
-            GetUserInfo()
+        async setUserInfo() {
+            if (!this.token) {
+                return
+            }
+            await GetUserInfo()
             .then((res:any) => {
                 console.log('res1', res)
                 this.userInfo = res.body.userInfo

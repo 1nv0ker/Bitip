@@ -216,7 +216,7 @@ input:-moz-placeholder { /* Firefox 18- */
   font-weight: 800;
   src: url('/font/Alibaba_PuHuiTi_2.0_95_ExtraBold_95_ExtraBold.ttf') format("woff2"),
 }
-span {
+span,a,li {
   font-family: "Alibaba Sans";
            /* 文字方向控制 */
 }

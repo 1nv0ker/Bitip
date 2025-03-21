@@ -59,7 +59,7 @@
                 <span :class="`text-[1.25rem] `" >{{t('promotionrebate.tab2')}}</span>
             </div>
             <div class="w-full mt-[1.5rem]">
-                <a-table :columns="tableObject.columns" :data-source="tableObject.tableDatas" :scroll="{y:'11.25rem'}">
+                <a-table :columns="tableObject.columns" :data-source="tableObject.tableDatas" :scroll="{y:'11.25rem'}" :pagination="false">
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                             {{title}}
@@ -71,6 +71,7 @@
                         </span>
                     </template>
                 </a-table>
+                <PaginationComponent />
             </div>
         </div>
         <ModelComponent v-model="openModel" :title="modelWord.title" :content="modelWord.content" :buttonName="modelWord.button"/>
@@ -79,6 +80,7 @@
 <script setup lang="ts">
     import { ref, computed, reactive, onMounted } from 'vue'
     import ModelComponent from '../ModelComponent.vue'
+    import PaginationComponent from '../../../components/PaginationComponent.vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const openModel = ref(false)

@@ -4,13 +4,22 @@
     height: 3rem!important;
     border-color: #666;
     border-radius: 0.75rem;
-    font-size: 0.9rem;
+    font-size: 0.9rem!important;
     &::placeholder {
         color: #999999; /* 改变文字颜色 */
-        font-size: 0.9rem;
+        font-size: 0.9rem!important;
         text-align: left;
         font-family: "Alibaba Sans";
         line-height: 100%;
+    }
+    .ant-input {
+        &::placeholder {
+            color: #999999; /* 改变文字颜色 */
+            font-size: 0.9rem!important;
+            text-align: left;
+            font-family: "Alibaba Sans";
+            line-height: 100%;
+        }
     }
         
 }
@@ -21,6 +30,19 @@
         height: 3rem!important;
         border-color: #666!important;
         border-radius: 0.75rem;
+        .ant-select-selection-search-input {
+            font-family: "Alibaba Sans";
+            height: 3rem!important;
+            font-size: 0.9rem;
+            
+            &::placeholder {
+                color: #999999; /* 改变文字颜色 */
+                font-size: 0.9rem;
+                text-align: left;
+                font-family: "Alibaba Sans";
+                line-height: 100%;
+            }
+        }
     }
     .ant-select-selection-item {
         line-height: 3rem!important;
@@ -29,9 +51,21 @@
         height: 3rem!important;
         line-height: 3rem!important;
         color: #999999;
-        font-size: 1rem!important;
+        font-size: 0.9rem!important;
         font-family: "Alibaba Sans";
     }
+    // .ant-select-selection-search-input {
+    //     font-family: "Alibaba Sans";
+    //     height: 3rem!important;
+    //     font-size: 0.9rem;
+    //     &::placeholder {
+    //         color: #999999; /* 改变文字颜色 */
+    //         font-size: 0.9rem;
+    //         text-align: left;
+    //         font-family: "Alibaba Sans";
+    //         line-height: 100%;
+    //     }
+    // }
 }
 //a-input-password 
 .customAPass {
@@ -85,5 +119,33 @@
                 line-height: 100%;
             }
         }
+    }
+}
+//a-date-pick
+.customADate {
+    height: 3rem;
+    border-radius: 0.75rem;
+    border: 1px solid #666666;
+    .ant-picker-input {
+        &>input {
+            font-size: 1rem!important;
+            line-height: 100%;
+            font-family: "Alibaba Sans";
+            &::placeholder {
+                color: #999999;
+                font-size: 0.9rem!important;
+                font-family: "Alibaba Sans";
+            }
+        }
+    }
+    .ant-picker-separator {
+        height: auto!important;
+    }
+}
+
+//a-button
+.customAbutton {
+    &:hover {
+        background-color: #01AA44!important;
     }
 }
