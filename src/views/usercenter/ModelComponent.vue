@@ -32,6 +32,6 @@
     const emit = defineEmits(['onClick'])
     const onClick=() => {
       emit('onClick')
-      open.value = false
+      // open.value = false
     }
 </script>

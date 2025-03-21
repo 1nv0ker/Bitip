@@ -11,8 +11,8 @@
                         <div class="h-[3rem] w-[37.125rem] rounded-[0.75rem] 
                         text-[#191919] text-[1rem]
                         border-[1px] border-[#666666] flex justify-between items-center pl-[1.25rem] pr-[1.25rem]">
-                            <span>{{t('setting.placeholder')}}</span>
-                            <span class="text-[#01AA44] cursor-pointer" @click="router.push({name:'userauth'})">{{t('setting.button1')}}</span>
+                            <span>{{userStore.userInfo?.isVerify?t('setting.button_complated'):t('setting.placeholder')}}</span>
+                            <span class="text-[#01AA44] cursor-pointer" v-show="!userStore.userInfo?.isVerify" @click="router.push({name:'userauth'})">{{t('setting.button1')}}</span>
                         </div>
                     </a-form-item>
                     <a-form-item :label="t('setting.form2')" required>

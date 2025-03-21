@@ -447,15 +447,18 @@ export const en = {
         tab1_column4:'Commission Rate',
         tab1_column5:'Subsequent commission rate',
         tab1_column6:'Commission Amount',
+        tab1_column7:'State',
         tab2_column1:'Withdrawal Time',
-        tab2_column2:'Withdrawal amount',
-        tab2_column3:'status',
+        tab2_column2:'Withdrawable amount',
+        tab2_column3:'Withdrawal amount',
         copy:'Copied',
         tip1:'Once the funds are withdrawn to the account balance, they cannot be withdrawn for cash but can be used to purchase packages.',
         tip2:'Contact customer service to withdraw cash after the balance reaches 100 yuan.',
         tip2_title:'Contact Customer Service',
         buttonName:'Confirm Withdrawal',
-        buttonName1:'Confirm Withdrawal'
+        buttonName1:'Confirm Withdrawal',
+        status1:'No withdrawal',
+        status2:'Withdrawn'
     },
     recharge: {
         title: 'Recharge Center',
@@ -1106,15 +1109,19 @@ export const zh = {
         tab1_column4:'佣金比率',
         tab1_column5:'后续佣金比率',
         tab1_column6:'佣金金额',
+        tab1_column7:'状态',
         tab2_column1:'提款时间',
-        tab2_column2:'提款金额',
-        tab2_column3:'状态',
+        tab2_column2:'可提取金额',
+        tab2_column3:'提款金额',
         copy:'已复制',
         tip1:'提取至账户余额后不可提现，可用于购买套餐使用。',
         tip2:'满100元后联系客服提现。',
         tip2_title:'联系客服',
         buttonName:'确认提取',
-        buttonName1:'确认提现'
+        buttonName1:'确认提现',
+        status1:'未提现',
+        status2:'已提现'
+
     },
     recharge: {
         title: '充值中心',
@@ -1177,7 +1184,7 @@ export const zh = {
         button2:'修改',
         button3:'确认',
         title_modal1:'修改邮箱',
-        title_modal2:'修改密码'
+        title_modal2:'修改密码',
     },
     dyagent: {
         title1:'动态住宅代理',
