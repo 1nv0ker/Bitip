@@ -152,7 +152,7 @@
     import phoneNumberJson from './phoneNumbers.json'
     import * as bootstrap from 'bootstrap'
     import * as yup from 'yup'
-    import { useRouter } from 'vue-router'
+    import { useRouter, useRoute } from 'vue-router'
     import { Register, SendSms } from '../../api/login'
     import { message } from 'ant-design-vue';
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
@@ -178,9 +178,11 @@
     const phoneNumbers = ref<any[]>([])
     const { t } = useI18n()
     const router = useRouter()
+    const route = useRoute()
     // const phoneCode = ref('')
     phoneNumbers.value = phoneNumberJson
     onMounted(() => {
+        
         phoneCode.value = phoneNumberJson.find(item=>item.chinese_name == '中国')?.phone_code || ''
         modalInstance = new (bootstrap as any).Modal(modalRef.value)
 
@@ -221,13 +223,15 @@
         }
     }) 
     const accountRegister = () => {
+        const beInviteCode= route.query.beInviteCode
         Register({
             // captchaVerifyParam:'',
             // account:'',
             email: email.value,
             tel: '' + phoneNum.value,
             verifyCode:verifyCode.value,
-            passWord: password.value
+            passWord: password.value,
+            beInviteCode:  (beInviteCode as string) || undefined
         })
         .then((res:any) => {
             console.log('res', res)

@@ -21,7 +21,8 @@ export interface RegisterData {
     "email"?: string,//注册的邮箱，邮箱注册时需要填写
     "tel"?: string,//注册的手机号，手机注册时需要填写
     verifyCode?: string,
-    "passWord": string//登录密码，密码的二次验证前端直接实现就好，判断两次密码一致直接填
+    "passWord": string,//登录密码，密码的二次验证前端直接实现就好，判断两次密码一致直接填
+    beInviteCode?:string | undefined
 }
 
 export function Register(registerData:RegisterData) {

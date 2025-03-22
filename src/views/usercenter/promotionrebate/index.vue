@@ -11,7 +11,7 @@
                 <div class="flex flex-col gap-[0.5rem] w-[24%]">
                     <span>{{t('promotionrebate.button1')}}</span>
                     <div class="border-[1px] border-[#666666] w-full flex items-center justify-between rounded-[0.75rem] h-[3rem] pl-[1.25rem] pr-[1.25rem] ">
-                        <span class="text-[#191919] text-[1rem]">1234123</span>
+                        <span class="text-[#191919] text-[1rem]">{{ userStore.userInfo?.inviteCode }}</span>
                         <a-tooltip  trigger="click" :open="copy1"  @click="onClick" :arrow="false" >
                             <template #title>
                                 <span class="text-[1rem]">{{t('promotionrebate.copy')}}</span>
@@ -23,8 +23,8 @@
                 <div class="flex flex-col gap-[0.5rem] w-[75%]">
                     <span>{{t('promotionrebate.button2')}}</span>
                     <div class="border-[1px] border-[#666666] w-full max-w-[68.75rem] flex items-center justify-between rounded-[0.75rem] h-[3rem] pl-[1.25rem] pr-[1.25rem] ">
-                        <span class="text-[#191919] text-[1rem]">https://www.figma.com/d91?node-id=1195-1345&t=AMb4套餐1?node-id=入邀请码</span>
-                        <a-tooltip  trigger="click" :open="copy2"  @click="onClick2" :arrow="false" >
+                        <span class="text-[#191919] text-[1rem]">https://www.bitip.com/register?beInviteCode={{ userStore.userInfo?.inviteCode }}</span>
+                        <a-tooltip  trigger="click" :open="copy2"  @click="onClick2(`https://www.bitip.com/register?beInviteCode=${userStore.userInfo?.inviteCode}`)" :arrow="false" >
                             <template #title>
                                 <span class="text-[1rem]">{{t('promotionrebate.copy')}}</span>
                             </template>
@@ -85,8 +85,10 @@
     import ModelComponent from '../ModelComponent.vue'
     import PaginationComponent from '../../../components/PaginationComponent.vue'
     import { InvitationRecord, GetList, GetWithdrawList, GetInviteWithdraw } from '../../../api/invite'
+    import useUserStore from '../../../store/user'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const userStore = useUserStore()
     const openModel = ref(false)
     const selected = ref(0)
     const withdrawType = ref(0)
@@ -290,13 +292,26 @@
             clearInterval(interval)
         }, 2000);
     }
-    const onClick2 = () => {
+    const onClick2 = (inviteLink:string) => {
+        onCopy(inviteLink)
         copy2.value = true
         interval2 && clearInterval(interval2)
         interval2 = setInterval(() => {
             copy2.value = false
             clearInterval(interval2)
         }, 2000);
+    }
+    const onCopy = (str:string) => {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(str)
+        } else {
+            const input = document.createElement('input');
+            input.value = str;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+        }
     }
     const onWithdrawalToAccount = () => {
         openModel.value = true

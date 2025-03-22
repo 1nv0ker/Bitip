@@ -10,7 +10,8 @@ interface UserInfo_data {
     isVerify:boolean,
     status:number,
     realName:string,
-    idCard:string
+    idCard:string,
+    inviteCode:string
 }
 const store = defineStore('users', {
     state:():{
