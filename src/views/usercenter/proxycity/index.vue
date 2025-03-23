@@ -45,8 +45,8 @@
                             <a-col :span="8" class="h-[4.75rem]">
                                 <a-form-item :label="t('proxycity.form1')" required class="">
                                     <div class="relative h-[3rem]">
-                                        <a-select :placeholder="t('proxycity.form2_placeholder')" class="proxycity_select ">
-                                    
+                                        <a-select :placeholder="t('proxycity.form2_placeholder')" class="proxycity_select" v-model:value="modelRef.account">
+                                            <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option>
                                         </a-select>
                                         <div class=" absolute z-20 h-[1.25rem] w-[1.25rem]  cursor-pointer top-[0.875rem] right-[3rem]" @click="onAddSub">
                                             <img src="../../../assets/proxycity/1.png" class="w-full h-full"/>
@@ -114,19 +114,23 @@
                 </div>
             </div>
         </div>
-        <AddSubModal v-model="open"/>
+        <AddSubModal v-model="open" @onAddComplate="onAddComplate" />
     </div>
 </template>
 <script setup lang="ts">
     //选择数量1-1000 1 10 100 1000
-    
-    import { computed , onMounted, ref } from 'vue'
+    import { computed , onMounted, ref, reactive } from 'vue'
     import AddSubModal from '../trafficmanager/AddSubModal.vue'
     import NumberComponent from '../../../components/NumberComponent.vue'
+    import { GetSubAccountList } from '../../../api/account'
     import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+    import { useRouter } from 'vue-router'
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
+    const modelRef = reactive({
+        account:''
+    })
+    const accountList = ref<any[]>([])
     const open = ref(false)
     const items = computed(() => {
         return [
@@ -236,7 +240,26 @@ import { useRouter } from 'vue-router'
                 rate: 2.4
             }
         ]
+        loadAccount()
     })
+    const loadAccount = () => {
+        GetSubAccountList({
+            PageNo: 1,
+            PageSize: 10000
+        })
+        .then((res:any) => {
+            accountList.value = res.body.records
+                                .filter((item:any)=>item.enabled==1)
+                                .map((item:any)=> ({
+                                    value:item.id,
+                                    label:item.keyName
+                                }))
+        })
+    }
+    const onAddComplate = () => {
+        loadAccount()
+        open.value = false
+    }
     const router = useRouter()
     const onBuyFlow = () => {
         router.push({name:'purchasedflow'})

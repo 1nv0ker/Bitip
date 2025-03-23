@@ -374,7 +374,7 @@ export const en = {
         title2:'Account Management',
         add_account:'Add sub-account',
         name:'Account name',
-        limit: 'Traffic Limit',
+        limit: 'Traffic Limit(M)',
         flow: 'Traffic',
         date: 'Add time',
         status: 'State',
@@ -506,7 +506,9 @@ export const en = {
         yes:'Yes',
         no:'No',
         form6:'Set traffic',
-        edit:'Edit sub-account'
+        edit:'Edit sub-account',
+        message2:'Confirm enable?',
+        message3:'Confirm disable?'
     },
     setting: {
         title:'Account Settings',
@@ -633,6 +635,9 @@ export const en = {
         step2:'Check your exclusive invitation link in the account background',
         step3:'Share Link - Start Earning Money',
         step4:'Contact customer service to withdraw commission'
+    },
+    form: {
+        success:'Success'
     }
 }
 
@@ -1036,7 +1041,7 @@ export const zh = {
         title2:'账户管理',
         add_account:'新增子账号',
         name:'账号名称',
-        limit: '流量使用限制',
+        limit: '流量使用限制(M)',
         flow: '流量消耗',
         date: '添加时间',
         status: '状态',
@@ -1170,7 +1175,10 @@ export const zh = {
         button:'确认',
         placeholder1:'请选择',
         placeholder2:'请输入',
-        edit:'编辑子账号'
+        edit:'编辑子账号',
+        message1:'请输入账户名',
+        message2:'确认启用',
+        message3:'确认禁用'
     },
     setting: {
         title:'账户设置',
@@ -1299,5 +1307,8 @@ export const zh = {
         step2:'账户后台查看您的专属邀请链接',
         step3:'分享链接-开始赚钱',
         step4:'联系客服提取佣金'
+    },
+    form: {
+        success:'成功'
     }
 }

@@ -17,20 +17,30 @@
                     <template #bodyCell="{ column, record }">
                         <template v-if="column.key === 'action'">
                             <div class="flex gap-[1.875rem] justify-center">
-                                <div class="w-[1.25rem] h-[1.25rem]  cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit">
+                                <div class="w-[1.25rem] h-[1.25rem]  cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit(record)">
                                     <img src="../../../assets/usercenter/flowmanager/edit.png" class="w-full h-full"/>
                                 </div>
-                                <div class="w-[1.25rem]  flex justify-center items-center h-[1.25rem] cursor-pointer " :title="t('trafficmanager.disabled')">
-                                    <img src="../../../assets/usercenter/flowmanager/disabled.png" class="w-full h-full"/>
-                                </div>
-                                <div class="w-[1.25rem] 
-                                 flex justify-center items-center h-[1.25rem] cursor-pointer ]" :title="t('trafficmanager.enable')">
-                                 <img src="../../../assets/usercenter/flowmanager/enable.png" class="w-full h-full"/>
-                                 
-                                </div>
+                                
+                                <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==0" @confirm="onEditStatus(record, 0)">
+                                    <template #title>
+                                        <span>{{t('sub.message2')}}</span>
+                                    </template>
+                                    <div class="w-[1.25rem]  flex justify-center items-center h-[1.25rem]  " :title="t('trafficmanager.disabled')">
+                                        <img src="../../../assets/usercenter/flowmanager/disabled.png" :class="`w-full h-full ${record['enabled']==1?'cursor-pointer':'disabled_button'}`"/>
+                                    </div>
+                                </a-popconfirm>
+                                <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==1" @confirm="onEditStatus(record, 1)">
+                                    <template #title>
+                                        <span>{{t('sub.message3')}}</span>
+                                    </template>
+                                    <div class="w-[1.25rem] 
+                                    flex justify-center items-center h-[1.25rem] cursor-pointer ]" :title="t('trafficmanager.enable')">
+                                    <img src="../../../assets/usercenter/flowmanager/enable.png" :class="`w-full h-full ${record['enabled']==0?'cursor-pointer':'disabled_button'}`" />
+                                    </div>
+                                </a-popconfirm>
                             </div>
                         </template>
-                        <template v-else-if="column.key === 'status'">
+                        <template v-else-if="column.key === 'enabled'">
                             <span class="text-[#191919] text-[1rem]">
                                 {{ record[column.key]?t('trafficmanager.enable'):t('trafficmanager.disabled') }}
                             </span>
@@ -42,7 +52,7 @@
                         </template>
                     </template>
                 </a-table>
-                <PaginationComponent />
+                <PaginationComponent v-model:total="params.total" v-model:page-size="params.pageSize" v-model="params.current" @onCurrentChange="onCurrentChange" @onSizeChange="onSizeChange"/>
             </div>
         </div>
         <div class="w-full h-[35rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
@@ -69,25 +79,33 @@
                 <div id="traffic_chart" class="w-full h-full"></div>
             </div>
         </div>
-        <AddSubModal v-model="open" :type="type" />
+        <AddSubModal v-model="open" :type="type" @on-add-complate="onAddComplate" ref="addsubRef" />
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref, onMounted, toRaw  } from 'vue'
+    import { computed, ref, onMounted, toRaw, reactive, nextTick} from 'vue'
     import AddSubModal from './AddSubModal.vue';
     import PaginationComponent from '../../../components/PaginationComponent.vue';
     import { useI18n } from 'vue-i18n'
     import 'dayjs/locale/zh-cn';
+    import { GetSubAccountList, UpdateAccount, type updateData } from '../../../api/account'
     import enUS from 'ant-design-vue/es/locale/en_US';
     import zhCN from 'ant-design-vue/es/locale/zh_CN';
     import useI18nStore from '../../../store/i18n'
     import * as echarts from 'echarts';
+    import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const selected = ref('date')
     const open = ref(false)
     const mainRef = ref<HTMLElement>()
     const I18Store = useI18nStore()
     const type = ref('add')
+    const addsubRef = ref<any>()
+    const params = reactive({
+        total: 0,
+        pageSize: 3,
+        current: 1
+    })
     const datas = ref([
         { date: '2023-01', value: '30' },
         { date: '2023-02', value: '45' },
@@ -99,43 +117,43 @@
         return  [
             {
                 title: t('trafficmanager.name'),
-                dataIndex: 'name',
-                key: 'name',
+                dataIndex: 'keyName',
+                key: 'keyName',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('trafficmanager.limit'),
-                dataIndex: 'limit',
-                key: 'limit',
+                dataIndex: 'limited',
+                key: 'limited',
                 align:'center',
                 ellipsis: true
             },
-            {
-                title: t('trafficmanager.flow'),
-                dataIndex: 'flow',
-                key: 'flow',
-                align:'center',
-                ellipsis: true
-            },
+            // {
+            //     title: t('trafficmanager.flow'),
+            //     dataIndex: 'flow',
+            //     key: 'flow',
+            //     align:'center',
+            //     ellipsis: true
+            // },
             {
                 title:t('trafficmanager.date'),
-                key: 'date',
-                dataIndex: 'date',
+                key: 'sysCreateTime',
+                dataIndex: 'sysCreateTime',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('trafficmanager.status'),
-                key: 'status',
-                dataIndex: 'status',
+                key: 'enabled',
+                dataIndex: 'enabled',
                 align:'center',
                 ellipsis: true
             },
             {
                 title: t('trafficmanager.mark'),
-                key: 'mark',
-                dataIndex: 'mark',
+                key: 'remark',
+                dataIndex: 'remark',
                 align:'center',
                 ellipsis: true
             },
@@ -148,30 +166,7 @@
         ];
     })
     const tableDatas = ref([
-        {
-            name: 'DH434345646',
-            limit:'￥50000',
-            flow: '100',
-            date: '2025-10-02 16:10:02',
-            status:true,
-            mark: '1234',
-        },
-        {
-            name: 'DH434345646',
-            limit:'￥50000',
-            flow: '100',
-            date: '2025-10-02 16:10:02',
-            status:false,
-            mark: '1234',
-        },
-        {
-            name: 'DH434345646',
-            limit:'￥50000',
-            flow: '100',
-            date: '2025-10-02 16:10:02',
-            status:false,
-            mark: '1234',
-        }
+        
     ])
     const items = computed(() => {
         return [
@@ -191,18 +186,57 @@
     })
     const onSelected = (type:string) => {
         selected.value = type
+        loadAccount()
     }
     onMounted(() => {
         loadD3Chart()
-        
+        loadAccount()
     })
+    const loadAccount = async () => {
+        const res:any = await GetSubAccountList({
+            PageNo: params.current,
+            PageSize: params.pageSize
+        })
+        
+        tableDatas.value = res.body.records
+        params.total = res.body.totalRows
+        params.current = res.body.pageNo
+        params.pageSize = res.body.pageSize
+    }
+    const onAddComplate = () => {
+        loadAccount()
+        open.value = false
+    }
+    const onCurrentChange = (num:number) => {
+        params.current = num
+        loadAccount()
+    }
+    const onSizeChange = (num:number,size:number) => {
+        params.current = num
+        params.pageSize = size
+        loadAccount()
+    }
     const onAddSub = () => {
         type.value = 'add'
         open.value = true
+        nextTick(() => {
+            addsubRef.value.init()
+        })
     }
-    const onEdit = () => {
+    const onEdit = (record:updateData) => {
         type.value = 'edit'
         open.value = true
+        nextTick(() => {
+            addsubRef.value.init(record)
+        })
+    }
+    const onEditStatus = async (record:updateData, type:number) => {
+        await UpdateAccount({
+            ...record,
+            enabled:type
+        })
+        message.success(t('form.success'))
+        loadAccount()
     }
     const loadD3Chart = () => {
         const dataset = toRaw(datas.value).map((item)=>({date: item.date, value:item.value}))
@@ -379,5 +413,9 @@
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   border-top: 12px solid #191919; /* 颜色与容器背景一致 */
+}
+.disabled_button {
+    filter:  grayscale(100%) brightness(0.7) contrast(0.8);
+    cursor: not-allowed;
 }
 </style>
