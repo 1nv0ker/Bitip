@@ -14,8 +14,8 @@
                 </a-row>
                 <a-row :gutter="[80, 0]">
                     <a-col :span="12">
-                        <a-form-item :label="t('sub.form2')" :labelCol="{span: 24}" v-bind="validateInfos.keyName" :rules="rulesRef.keyName">
-                            <a-input class="customAInput w-full" :placeholder="t('sub.placeholder2')" v-model:value="modelRef.keyName" ></a-input>
+                        <a-form-item :label="t('sub.form2')" :labelCol="{span: 24}" v-bind="validateInfos.keyName" :rules="rulesRef.keyName" >
+                            <a-input class="customAInput w-full" :placeholder="t('sub.placeholder2')" v-model:value="modelRef.keyName" :disabled="type=='edit'"></a-input>
                         </a-form-item>
                     </a-col>
                     <!-- <a-col :span="12">

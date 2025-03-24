@@ -165,7 +165,7 @@
         Login({
             loginType:'pwd',
             tel: phoneNum.value,
-            account: phoneNum.value,
+            // account: phoneNum.value,
             passWord: password.value,
             captchaVerifyParam: captchaVerifyParam.value
         })

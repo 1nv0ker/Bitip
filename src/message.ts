@@ -313,6 +313,7 @@ export const en = {
         menu1_sub1:'Proxy Generation',
         menu1_sub2:'Purchase Flow',
         menu1_sub3: 'Traffic Management',
+        menu1_sub4:'API-IP Whitelist',
         menu2: 'Static Residence',
         menu2_sub1: 'Purchase Agent',
         menu2_sub2:'Purchased Agent',
@@ -364,7 +365,7 @@ export const en = {
     },
 
     trafficmanager: {
-        title: 'Account amount',
+        title: 'Account traffic statistics',
         time_placeholder: 'Please select a date',
         placeholder1: 'Start date',
         placeholder2:'End date',
@@ -638,6 +639,30 @@ export const en = {
     },
     form: {
         success:'Success'
+    },
+    whitelist: {
+        title: 'Add Whitelist',
+        form1:'Please enter the IP address',
+        form2:'Please select date',
+        button1:'search',
+        button2:'Add Whitelist',
+        button3:'Batch Deletion',
+        column1:'IP address',
+        column2:'Setting the time',
+        column3:'Remark',
+        tips:'Get the whitelist add interface',
+        modaltitle:'Add Whitelist',
+        modaltitle1:'Edit Whitelist',
+        modal_form1:'Enter the IP address',
+        message:'Please enter the correct IP format',
+        message1:'Confirm to delete?',
+        modal_form2:'Remark',
+        modal_form2_placeholder:'Please enter a comment',
+        tip2:'To protect your account security, please do not add public server nodes to the whitelist.',
+        button4:'Cancel',
+        button5:'Confirm',
+        action2:'Delete',
+        action1:'Edit',
     }
 }
 
@@ -982,6 +1007,7 @@ export const zh = {
         menu1_sub1:'代理生成',
         menu1_sub2:'购买流量',
         menu1_sub3: '流量管理',
+        menu1_sub4:'API-IP白名单',
         menu2: '静态住宅',
         menu2_sub1: '购买代理',
         menu2_sub2:'已购代理',
@@ -1031,7 +1057,7 @@ export const zh = {
         button3:'检查代理'
     },
     trafficmanager: {
-        title: '账户额度',
+        title: '账户流量统计',
         time_placeholder: '请选择日期',
         placeholder1: '开始日期',
         placeholder2:'结束日期',
@@ -1310,5 +1336,29 @@ export const zh = {
     },
     form: {
         success:'成功'
+    },
+    whitelist: {
+        title: '添加白名单',
+        form1:'请输入IP地址',
+        form2:'请选择日期',
+        button1:'搜索',
+        button2:'添加白名单',
+        button3:'批量删除',
+        column1:'IP地址',
+        column2:'设置时间',
+        column3:'备注',
+        action2:'删除',
+        action1:'编辑',
+        tips:'获取添加白名单接口',
+        modaltitle:'添加白名单',
+        modaltitle1:'编辑白名单',
+        modal_form1:'填写IP地址',
+        message:'请输入正确的IP格式',
+        message1:'确认删除?',
+        modal_form2:'备注',
+        modal_form2_placeholder:'请输入备注',
+        tip2:'为保障您的账户安全,请勿添加公共服务器节点 至白名单列表.',
+        button4:'取消',
+        button5:'确认'
     }
 }

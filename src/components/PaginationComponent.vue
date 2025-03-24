@@ -1,6 +1,7 @@
 <template>
     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
-        <div class="h-[2rem] w-full flex justify-end items-center mt-[1rem]">
+        <div class="h-[2rem] w-full flex justify-end relative items-center mt-[1rem]">
+            <span class="text-[#5E6F94] text-[1rem] absolute left-0 top-[0.5rem] cursor-pointer" v-show="showTip">{{t('whitelist.tips')}}</span>
             <a-pagination v-model:current="current" show-quick-jumper 
             show-size-changer 
             :total="total" 
@@ -17,6 +18,12 @@
     const { t } = useI18n()
     const I18Store = useI18nStore()
     const emit = defineEmits(['onCurrentChange', 'onSizeChange'])
+    defineProps({
+        showTip: {
+            default:false,
+            type:Boolean
+        }
+    })
     const current = defineModel()
     const total = defineModel('total')
     const pageSize = defineModel('pageSize')

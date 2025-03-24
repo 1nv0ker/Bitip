@@ -95,6 +95,7 @@
     }
     
     const onLoad = () => {
+        params.current = 1
         loadTable()
     }
     const columns = computed(() => {

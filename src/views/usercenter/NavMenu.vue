@@ -70,6 +70,11 @@
                     key: 'trafficmanager',
                     label:t('backend_menu.menu1_sub3'),
                     title: t('backend_menu.menu1_sub3')
+                },
+                {
+                    key:'whitelist',
+                    label:t('backend_menu.menu1_sub4'),
+                    title:t('backend_menu.menu1_sub4')
                 }
             ]
         },

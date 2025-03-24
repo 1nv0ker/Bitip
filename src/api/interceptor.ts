@@ -31,7 +31,7 @@ axios.interceptors.response.use(function (response) {
     // 对响应数据做点什么
     // console.log('error')
     if (response.data.code && response.data.code !== 200) {
-      response.data.message && message.error(response.data.message)
+      message.error(response.data.message || response.data.body)
       throw Error(response.data.message)
     }
     return response.data;

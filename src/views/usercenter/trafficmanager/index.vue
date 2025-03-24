@@ -60,7 +60,7 @@
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title')}}</span>
                 <div class="flex items-center gap-[1.75rem]">
                     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
-                        <a-range-picker  :picker="selected" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select" >
+                        <a-range-picker  :picker="selected" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select" v-model:value="dates" @change="loadFlow">
                             <template #suffixIcon>
                                 <div class="w-[1.25rem] h-[1.25rem] ">
                                     <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
@@ -69,7 +69,8 @@
                         </a-range-picker>
                     </a-config-provider>
                     <div class="w-[12.125rem] h-[2.5rem] rounded-[0.75rem] border-[1px] border-[#999999] p-[0.25rem] flex">
-                        <div v-for="item in items" :class="`h-[2rem] w-[3.875rem] rounded-[0.75rem] flex cursor-pointer items-center justify-center ${selected==item.key?'bg-[#191919] text-[#FFFFFF]':'text-[#191919]'}`" @click="onSelected(item.key)">
+                        <div v-for="item in items" :class="`h-[2rem] w-[3.875rem] rounded-[0.75rem] flex cursor-pointer items-center justify-center
+                         ${selected==item.key?'bg-[#191919] text-[#FFFFFF]':'text-[#191919]'}`" @click="onSelected(item.key)">
                             <span class="text-[1rem]">{{item.label}}</span>
                         </div>
                     </div>
@@ -87,8 +88,10 @@
     import AddSubModal from './AddSubModal.vue';
     import PaginationComponent from '../../../components/PaginationComponent.vue';
     import { useI18n } from 'vue-i18n'
+    import  dayjs, { Dayjs } from 'dayjs';
     import 'dayjs/locale/zh-cn';
     import { GetSubAccountList, UpdateAccount, type updateData } from '../../../api/account'
+    import { GetFlow } from '../../../api/flow'
     import enUS from 'ant-design-vue/es/locale/en_US';
     import zhCN from 'ant-design-vue/es/locale/zh_CN';
     import useI18nStore from '../../../store/i18n'
@@ -96,22 +99,20 @@
     import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const selected = ref('date')
+    const dates = ref<[Dayjs, Dayjs]|null>(null);
     const open = ref(false)
     const mainRef = ref<HTMLElement>()
     const I18Store = useI18nStore()
     const type = ref('add')
     const addsubRef = ref<any>()
+    let myChart:any = null
     const params = reactive({
         total: 0,
         pageSize: 3,
         current: 1
     })
-    const datas = ref([
-        { date: '2023-01', value: '30' },
-        { date: '2023-02', value: '45' },
-        { date: '2023-03', value: '60' },
-        { date: '2023-04', value: '25' },
-        { date: '2023-05', value: '75' }
+    const datas = ref<any[]>([
+
     ])
     const columns = computed(() => {
         return  [
@@ -186,12 +187,57 @@
     })
     const onSelected = (type:string) => {
         selected.value = type
-        loadAccount()
+        // loadAccount()
+        loadFlow()
     }
     onMounted(() => {
-        loadD3Chart()
+        // loadD3Chart()
         loadAccount()
+        loadFlow()
     })
+    const loadFlow = async () => {
+        const res:any = await GetFlow({
+            DateBegin: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            DateEnd: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            // DateBegin:dayjs().subtract(2, 'day').format('YYYY-MM-DD HH:mm:ss'),
+            // DateEnd:dayjs().format('YYYY-MM-DD HH:mm:ss'),
+            KeyName:'test'
+        })
+        const tempDatas:any[] = res.body.map((item:any)=> {
+            if (selected.value == 'date') {
+                return {
+                    date:dayjs(item.recordDate).format('YYYY-MM-DD'),
+                    value: item.flow
+                }
+            } else if (selected.value == 'month') {
+                return {
+                    date:dayjs(item.recordDate).format('YYYY-MM'),
+                    value: item.flow
+                }
+            } else {
+                return {
+                    date:dayjs(item.recordDate).format('YYYY'),
+                    value: item.flow
+                }
+            }
+        }).reverse()
+        if (selected.value !== 'date') {
+            const mergeDatas:any = tempDatas.reduce((acc:any, {date,value}) => {
+                acc[date] = (acc[date] || 0 ) + value
+                return acc
+            }, {})
+            datas.value = Object.entries(mergeDatas).map((item:any)=>({
+                date: item[0],
+                value: item[1].toFixed(2)
+            }))
+        } else {
+            datas.value = tempDatas
+        }
+        // console.log(datas.value)
+        loadD3Chart()
+        myChart.resize(); 
+        
+    }
     const loadAccount = async () => {
         const res:any = await GetSubAccountList({
             PageNo: params.current,
@@ -239,10 +285,11 @@
         loadAccount()
     }
     const loadD3Chart = () => {
-        const dataset = toRaw(datas.value).map((item)=>({date: item.date, value:item.value}))
+        const dataset = toRaw(datas.value).map((item:any)=>({date: item.date, value:item.value}))
 
         var chartDom = document.getElementById('traffic_chart');
-        var myChart = echarts.init(chartDom);
+        myChart?.dispose();
+        myChart = echarts.init(chartDom);
         var option;
 
         option = {

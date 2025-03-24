@@ -41,6 +41,7 @@ import UserAccountSetting from '../views/usercenter/accountsetting/index.vue'
 import DyAgent from '../views/dyagent/index.vue'
 import StaticAgent from '../views/staticagent/index.vue'
 import refundVue from '../views/law/refund.vue'
+import whitelistVue from '../views/usercenter/whitelist/index.vue'
 const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:BasicLayoutVue, children:[
@@ -126,6 +127,14 @@ const routes = [
         path:'setting',
         name:'setting',
         component: UserAccountSetting
+      },
+      {
+        path:'whitelist',
+        name:'whitelist',
+        component: whitelistVue,
+        meta: {
+          parent:'1'
+        }
       }
     ]},
     // { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
