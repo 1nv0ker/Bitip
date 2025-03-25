@@ -4,7 +4,7 @@
     }">
         <ComponentLayout class="bg-[#F6FDFF]">
             <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 z-0">
-                <img src="../../assets/bg_2.png" class="w-full h-full" />
+                <img :src="bg" class="w-full h-full" />
                 
             </div>
             <div class="w-full h-[31.5625rem] flex items-center ">
@@ -117,6 +117,7 @@
     import item2_img from '../../assets/static/item2.png'
     import item3_img from '../../assets/static/item3.png'
     import item4_img from '../../assets/static/item4.png'
+    import bg from '../../assets/bg_2.png?inline'
     const { t } = useI18n()
     const hoverStatus = ref(false)
     const items = computed(() => {

@@ -2,7 +2,7 @@
     <BasicLayout>
         <ComponentLayout >
             <div class=" absolute top-[-4rem] bottom-0 left-0 right-0 h-[31.5625rem]">
-                <img src="../../assets/service/bg.png" class="w-full h-full" />
+                <img :src="bg" class="w-full h-full" />
             </div>
             <div class="w-full z-10">
                 <div class="w-full h-[31.5625rem] flex justify-between items-center">
@@ -121,6 +121,7 @@
     import company6 from '../../assets/service/bd.png'
     import company7 from '../../assets/service/ali.png'
     import company8 from '../../assets/service/meituan.png'
+    import bg from '../../assets/service/bg.png?inline'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

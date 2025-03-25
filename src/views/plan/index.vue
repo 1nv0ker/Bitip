@@ -4,7 +4,7 @@
     }" >
         <ComponentLayout >
             <div class="w-full h-[51.625rem] overflow-hidden pt-[6rem]">
-                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 plan_bg">
+                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 plan_bg" :style="`background-image: url(${bg})`">
                     
                 </div>
                 <div class="flex items-center flex-col gap-[2rem]">
@@ -113,6 +113,7 @@
     import img2 from '../../assets/plan/2.png'
     import img3 from '../../assets/plan/3.png'
     import img4 from '../../assets/plan/4.png'
+    import bg from '../../assets/plan/bg.png?inline'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
@@ -147,7 +148,7 @@
 </script>
 <style  scoped>
     .plan_bg {
-        background-image: url('../../assets/plan/bg.png');
+        
         background-size: cover; /* 关键属性 */
 
         background-repeat: no-repeat;

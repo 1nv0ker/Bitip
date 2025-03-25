@@ -1,11 +1,11 @@
 <template>
     <div class="w-full row gx-0 pt-[5.125rem] pb-[7.8125rem] relative" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
         <!-- 移动渐变区块 -->
-        <img src="../../assets/bg_hover.png" class=" absolute w-[17rem] h-[17rem] pointer-events-none hidden" 
+        <img :src="mask_bg" class=" absolute w-[17rem] h-[17rem] pointer-events-none hidden" 
         ref="hoverbgRef" style="transform: translate(-50%, -50%);"/>
         <!-- 背景图片 -->
         <div class="absolute top-0 right-0 left-0 bottom-0">
-            <img src="../../assets/mask_bg.png" class="  w-full h-full" />
+            <img :src="mask" class="  w-full h-full" />
         </div>
 
         <div class="col"></div>
@@ -109,6 +109,8 @@
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
     import NumberComponent from '../../components/NumberComponent.vue'
+    import mask from '../../assets/mask_bg.png?inline'
+    import mask_bg from '../../assets/bg_hover.png?inline'
     // import FirstRectComponent from './FirstRectComponent.vue'
     // import img1 from '../../assets/first_1.png'
     // import img2 from '../../assets/first_2.png'
