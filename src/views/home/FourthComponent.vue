@@ -1,5 +1,6 @@
 <template>
-    <ComponentLayout ref="fourthRef" class=" pb-[4rem] pt-[3.625rem] overflow-hidden relative" :style="`background-image: url('${mapGif}');background-repeat: no-repeat;background-size: cover;`">
+    <ComponentLayout ref="fourthRef" class=" pb-[4rem] pt-[3.625rem] overflow-hidden relative bg-[#F4FAF6]" >
+        <!-- :style="`background-image: url('${mapGif}');background-repeat: no-repeat;background-size: cover;`" -->
         <!-- <div class=" absolute top-0 bottom-0 left-0 right-0">
             <img src="../../assets/map_group.png" class="w-full h-full" />
         </div> -->
@@ -59,7 +60,7 @@
     import ukImg from '../../assets/uk.png'
     import canImg from '../../assets/can.png'
     import indImg from '../../assets/india.png'
-    import mapGif from '../../assets/map.gif'
+    // import mapGif from '../../assets/map.gif'
     const { t } = useI18n()
     const fourthRef = ref<HTMLElement>()
     const remInPixels = ref(0)
