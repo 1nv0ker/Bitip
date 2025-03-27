@@ -9,7 +9,11 @@
                 <a-input  :placeholder="'IP'" size="large" class="customAInput"  v-model:value="params.KeyWord" allowClear />
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem] " >
-                <a-input  :placeholder="t('purchaseddetail.column4')" size="large" class="customAInput" />
+                <a-select :placeholder="t('purchaseddetail.column4')"  class="customASelect h-[3rem] w-full" v-model:value="params.IspType" allowClear>
+                    <a-select-option :value="1">{{t('setmenu.location2')}}</a-select-option>
+                    <a-select-option :value="0">{{t('setmenu.location')}}</a-select-option>
+                </a-select>
+                <!-- <a-input  :placeholder="t('purchaseddetail.column4')" size="large" class="customAInput" v-model:value="params.IspType"/> -->
             </div>
             <div style="width:calc( 25% - 1.75rem*3/4)" class="h-[3rem]" >
                 <!-- <a-select :placeholder="t('purchaseddetail.search3')" class="customASelect h-[3rem] w-full" >
@@ -149,7 +153,8 @@
         Status: undefined,
         loading: false,
         IspLocation:'',
-        AutoRenew:null
+        AutoRenew:null,
+        IspType:null
     })
     const columns = computed(() => {
         return [
@@ -221,7 +226,8 @@
             AutoRenew:params.AutoRenew,
             KeyWord:params.KeyWord,
             SearchBeginTime: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
-            SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined
+            SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            IspType:params.IspType
         })
         if (res.code == 200) {
             tableDatas.value = res.body.records

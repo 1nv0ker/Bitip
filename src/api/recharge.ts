@@ -45,7 +45,8 @@ export interface proxyData {
     SearchBeginTime?:string,
     SearchEndTime?:string,
     IspLocation?:string,
-    AutoRenew?:number|null
+    AutoRenew?:number|null,
+    IspType?:number|null
 }
 export function GetList(params:proxyData) {
     return axios.get(`${BASIC_MODULE2}/PageList`, {

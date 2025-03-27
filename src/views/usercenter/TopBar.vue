@@ -3,7 +3,7 @@
         <div class="h-full flex items-center justify-center">
             <div class="flex flex-col ">
                 <span class="text-[#191919] text-[1rem] ">{{t('backend_menu.local')}}:<span class="text-[#999999] text-[1rem]">{{t('backend_menu.tip')}}</span></span>
-                <span class="text-[1.125rem] font-medium">px732472025101133</span>
+                <span class="text-[1.125rem] font-medium">{{userStore.IP}}</span>
             </div>
             <!-- 移动端菜单按钮 -->
             <div class="md:hidden">

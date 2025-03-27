@@ -104,3 +104,8 @@ export interface CertificationData {
 export function Certification(certification:CertificationData) {
     return axios.post(`${BASIC_USER}/GetCertification`, certification)
 }
+
+//获取用户IP
+export function GetMyIp() {
+    return axios.get(`${BASIC_MODULE}/GetMyIp`)
+}

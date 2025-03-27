@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { GetUserInfo } from '../api/login'
+import { GetUserInfo, GetMyIp } from '../api/login'
 import router from '../router'
 interface UserInfo_data {
     email:string,
@@ -16,11 +16,13 @@ interface UserInfo_data {
 const store = defineStore('users', {
     state:():{
         token:string,
-        userInfo:UserInfo_data|null
+        userInfo:UserInfo_data|null,
+        IP:string
     } => {
         return {
             token: '',
-            userInfo: null
+            userInfo: null,
+            IP:''
         }
     },
     persist: true,
@@ -41,6 +43,11 @@ const store = defineStore('users', {
             .then((res:any) => {
                 console.log('res1', res)
                 this.userInfo = res.body.userInfo
+            })
+            await GetMyIp()
+            .then((res:any) => {
+                // console.log('res1', res)
+                this.IP = res.body
             })
             
         },
