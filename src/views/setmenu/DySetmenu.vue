@@ -22,7 +22,7 @@
                         <span class="text-[#702B12] text-[1.125rem] font-semibold originPrice_value line-through">{{ card.originPrice }}</span>
                     </div>
                 </div>
-                <div class="w-full flex justify-center mt-[1.5rem]" @click="onRecharge(card.title, card.price, card.custom)">
+                <div class="w-full flex justify-center mt-[1.5rem]" @click="onRecharge(card.title, card.price, card.value, card.custom)">
                     <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer">
                         <span class="text-[#FFEEC1] text-[1rem] font-medium">{{t('setmenu.discount')}}</span>
                     </div>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center mt-[1.5rem]" >
-                    <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer" @click="onRecharge(card.title, card.price, card.custom)">
+                    <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer" @click="onRecharge(card.title, card.price,card.value, card.custom)">
                         <span class="text-[#FFEEC1] text-[1rem] font-medium">{{card.custom?t('setmenu.menu6_button'):t('setmenu.discount')}}</span>
                     </div>
                 </div>
@@ -94,18 +94,21 @@
                 </div>
             </div>
         </div>
-        <PackageModal v-model="open" :packageName="packageName"  :money="cost"/>
+        <PackageModal v-model="open" :packageName="packageName"  :money="cost" :type="selectType" ref="modalRef" />
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref } from 'vue'
+    import { computed, ref, nextTick } from 'vue'
     import PackageModal from '../../components/PackageModal.vue'
+    
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const selected = ref(0)
     const cost = ref(0)
     const open = ref(false)
     const packageName = ref('')
+    const selectType = ref(0)
+    const modalRef = ref<any>()
     const cards = computed(() => {
         return [
             {
@@ -166,12 +169,16 @@
             }
         ]
     })
-    const onRecharge = (title:string,price:number, custom:any) => {
+    const onRecharge = (title:string,price:number,value:number, custom:any) => {
         if (custom) {
             return
         }
         open.value = true
+        nextTick(() => {
+            modalRef.value.init()
+        })
         cost.value = price
+        selectType.value = value
         packageName.value = t('setmenu.subtitle1')+'-'+title
 
     }

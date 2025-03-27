@@ -44,5 +44,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SendCodeForm: typeof import('./src/components/SendCodeForm.vue')['default']
+    StaticPackageModal: typeof import('./src/components/StaticPackageModal.vue')['default']
+    StaticRenew: typeof import('./src/components/StaticRenew.vue')['default']
   }
 }

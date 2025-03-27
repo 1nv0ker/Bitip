@@ -94,9 +94,9 @@
 </template>
 <script setup lang="ts">
     import ModelComponent from '../views/usercenter/ModelComponent.vue';
-    import { ref } from 'vue'
+    import { ref, type PropType } from 'vue'
     import { useI18n } from 'vue-i18n'
-    import { DyPackageRecharge } from '../api/recharge'
+    import { StaticPackageRecharge } from '../api/recharge'
     import useUserStore from '../store/user'
     import { useRouter } from 'vue-router';
     import { message } from 'ant-design-vue';
@@ -114,11 +114,17 @@
             type:Number,
             default:3000
         },
-        type: {
-            type: Number,
-            default: 0
+        purchaseIspInfos: {
+            type: Array as PropType<any[]>,
+            default:[]
         },
         packageName: String
+    })
+    const init = () => {
+        payMethod.value = 1
+    }
+    defineExpose({
+        init
     })
     const onToRefund = () => {
         const route = router.resolve({
@@ -126,24 +132,16 @@
         })
         window.open(route.href, '_blank')
     }
-    const init = () => {
-        payMethod.value = 1
-        paying.value = false
-    }
-    defineExpose({
-        init
-    })
     const onConfirm = async () => {
         loading.value = true
-        const res:any = await DyPackageRecharge({
+        const res:any = await StaticPackageRecharge({
             paymentType: payMethod.value,
-            mealType:props.type
+            purchaseIspInfos: props.purchaseIspInfos
         })
         .catch(() => {
             loading.value = false
         })
         loading.value = false
-        // console.log('res', res)
         if (res && res.code == 200) {
             paying.value = true
             message.success(t('form.success'))
@@ -153,20 +151,19 @@
         }
         //支付宝
         if (payMethod.value == 0) {
-            // paying.value = true
             if (res && res.code == 200) {
                 rechargeLink.value = res.body.url.url
             }
+            
             // setTimeout(() => {
             //     window.open(res.body.url.url, '_blank')
             // }, 1000);
         }
     }
     const onComplate = () => {
-        userStore.setUserInfo()
-        open.value = false
+
     }
     const onCancel = () => {
-        paying.value = false
+        userStore.setUserInfo()
     }
 </script>

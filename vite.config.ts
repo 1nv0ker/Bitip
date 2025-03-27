@@ -16,7 +16,14 @@ export default defineConfig({
         }),
       ],
     }),
-    viteCompression({ algorithm: 'brotliCompress' }),
+    // viteCompression({ algorithm: 'brotliCompress' }),
+    viteCompression({
+      algorithm: 'brotliCompress',  // 替换为 Brotli 算法[5,6](@ref)
+      ext: '.br',                   // 文件后缀
+      compressionOptions: {
+        level: 11                   // 压缩级别（1-11，默认11）[5](@ref)
+      }
+    }),
     viteImagemin({ gifsicle: { optimizationLevel: 7 } })
   ],
   server: {
@@ -29,6 +36,7 @@ export default defineConfig({
   // },
   build: {
     assetsInlineLimit: 4096, // 默认 4KB 以下文件转 Base64
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {

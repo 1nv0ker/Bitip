@@ -186,6 +186,9 @@
                         loadUserInfo()
                     }, 2000);
                 })
+                .catch(() => {
+                    loading.value = false
+                })
             })
         } else {
             current.value = value

@@ -1,7 +1,7 @@
 <template>
     <ModelComponent slot-mode  v-model="open" :width="300">
         <div class=" flex justify-center h-[12rem] items-center">
-            <a-qrcode v-model="qrcode" />
+            <a-qrcode :value="qrcode" />
         </div>
     </ModelComponent>
 </template>
@@ -11,5 +11,7 @@
     // const { t } = useI18n()
     const open = defineModel()
 
-    const qrcode = defineModel('qrcode')
+    defineProps({
+        qrcode: String || undefined
+    })
 </script>

@@ -61,6 +61,10 @@
                     </div>
                 </div>
                 <div class="hidden items-center md:flex gap-[1rem] " v-else>
+                    <div class="w-[4.5rem] flex cursor-pointer z-50" @click="onLanauageChange()">
+                        <img :src="lan=='zh'?lanImg1:lanImg2" class="z-50 w-[1.5rem] h-[1.5rem]" />
+                        <span class="pl-[0.375rem] text-[1rem] font-medium z-50">{{lan =='zh' ? '中文':'EN'}}</span>
+                    </div>
                     <span>{{userStore.userInfo?.tel}}</span>
                     <div class=" bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
                         <span class="font-medium">{{t('login.Backstage')}}</span>

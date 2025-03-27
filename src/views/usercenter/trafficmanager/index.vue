@@ -277,12 +277,14 @@
         })
     }
     const onEditStatus = async (record:updateData, type:number) => {
-        await UpdateAccount({
+        const res:any = await UpdateAccount({
             ...record,
             enabled:type
         })
-        message.success(t('form.success'))
-        loadAccount()
+        if (res.code == 200) {
+            message.success(t('form.success'))
+            loadAccount()
+        }
     }
     const loadD3Chart = () => {
         const dataset = toRaw(datas.value).map((item:any)=>({date: item.date, value:item.value}))

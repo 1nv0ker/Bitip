@@ -73,13 +73,18 @@
         validate()
         .then(async () => {
             if (props.type == 'add') {
-                await AddWhiteList(modelRef)
-                message.success(t('form.success'))
-                emit('onAddComplate')
+                const res:any = await AddWhiteList(modelRef)
+                if (res.code == 200) {
+                    message.success(t('form.success'))
+                    emit('onAddComplate')
+                }
+                
             } else {
-                await EditWhitelist(modelRef)
-                message.success(t('form.success'))
-                emit('onAddComplate')
+                const res:any = await EditWhitelist(modelRef)
+                if (res.code == 200) {
+                    message.success(t('form.success'))
+                    emit('onAddComplate')
+                }
             }
         })
     }

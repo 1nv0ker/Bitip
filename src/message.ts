@@ -471,7 +471,9 @@ export const en = {
         pay1:'WeChat Pay',
         pay2:'Alipay',
         pay3:'Other Pay',
-        confirmButton:'Confirm purchase'
+        confirmButton:'Confirm purchase',
+        confirmButton2:'Payment completed'
+        
     },
     userauth: {
         title: 'User Auth',
@@ -663,6 +665,15 @@ export const en = {
         button5:'Confirm',
         action2:'Delete',
         action1:'Edit',
+    },
+    extra: {
+        title: 'The best agency solution for you'
+    },
+    renew: {
+        title:'Renewal',
+        form1:'Renewal cycle',
+        type1:'Single ISP',
+        type2:'Dual ISP'
     }
 }
 
@@ -1164,7 +1175,8 @@ export const zh = {
         pay1:'微信支付',
         pay2:'支付宝支付',
         pay3:'余额支付',
-        confirmButton:'确认购买'
+        confirmButton:'确认购买',
+        confirmButton2:'已完成付款'
     },
     userauth: {
         title: '实名认证',
@@ -1308,7 +1320,7 @@ export const zh = {
         subtitle:'支付即表示同意',
         content:'退款协议',
         tips:'支付费用',
-        content2:'其他支付方式联系客服'
+        content2:'其他支付方式联系客服',
     },
     plan: {
         title: 'BitIP推广返佣计划，一次推广，永久收益 邀请用户，10%佣金返现无上限',
@@ -1360,5 +1372,11 @@ export const zh = {
         tip2:'为保障您的账户安全,请勿添加公共服务器节点 至白名单列表.',
         button4:'取消',
         button5:'确认'
+    },
+    renew: {
+        title:'续费',
+        form1:'续费周期',
+        type1:'单ISP',
+        type2:'双ISP',
     }
 }

@@ -150,10 +150,12 @@
     }
     const onDelete = async (record:any) => {
         // console.log('record', record)
-        await DeleteWhitelist({
+        const res:any = await DeleteWhitelist({
             id: record.id
         })
-        message.success(t('form.success'))
+        if (res.code == 200) {
+            message.success(t('form.success'))
+        }
         onLoad()
     }
     //批量删除
@@ -164,9 +166,11 @@
         //         id: data.id
         //     })
         // }
-        await BatchDelete(selectedData.value.map((item:any)=>item.id))
+        const res:any = await BatchDelete(selectedData.value.map((item:any)=>item.id))
         selectedData.value = []
-        message.success(t('form.success'))
+        if (res.code == 200) {
+            message.success(t('form.success'))
+        }
         open2.value = false
         onLoad()
     }

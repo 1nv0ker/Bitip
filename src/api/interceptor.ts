@@ -32,7 +32,8 @@ axios.interceptors.response.use(function (response) {
     // console.log('error')
     if (response.data.code && response.data.code !== 200) {
       message.error(response.data.message || response.data.body)
-      throw Error(response.data.message)
+      // return Promise.reject(response.data.message)
+      return Promise.reject(new Error(response.data.message || response.data.body))
     }
     return response.data;
   }, function (error) {

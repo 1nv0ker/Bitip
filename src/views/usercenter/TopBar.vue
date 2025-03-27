@@ -106,6 +106,7 @@
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     import useUserStore from '../../store/user'
+
     const { t } = useI18n()
     const i18n = useI18n()
     const userStore = useUserStore()
@@ -116,10 +117,14 @@
     const showUser = ref(false)
     const onOpenMenu = () => {
         emit('onOpenMenu')
+        
     }
     onMounted(()=> {
         lan.value = i18n.locale.value || 'zh'
         store.changeLanauage(lan.value)
+        userStore.setUserInfo()
+
+        
     })
     const onLanauageChange = () => {
         // console.log('onLanauageChange', value, lan.value)

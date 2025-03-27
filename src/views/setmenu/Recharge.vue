@@ -65,8 +65,9 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref } from 'vue'
+    import { computed, ref, nextTick } from 'vue'
     import RechargeModal from '../../components/RechargeModal.vue'
+    
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const rechargeRef = ref<any>()
@@ -103,5 +104,8 @@
     const onRecharge = (value:number) => {
         cost.value = value
         open.value = true
+        nextTick(() => {
+            rechargeRef.value.init()
+        })
     }
 </script>

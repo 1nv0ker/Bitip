@@ -11,7 +11,7 @@
             </div>
             <div class="w-full h-[16.6875rem] overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys">
                 <div v-for="city in (selectType==0?citys:citys_type2)" :style="customStyle" :class=" `rounded-[0.75rem] border-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center pl-[1rem] cursor-pointer bg-[white]
-                 ${selectedCitys.findIndex(item=>item.key==city.key)>-1?'selected_city':''}`" @click="onSelect(city)">
+                 ${selectedCitys.findIndex(item=>(item.key==city.key && item.type==city.type))>-1?'selected_city':''}`" @click="onSelect(city)">
                     <div class="flex items-center ">
                         <div class="w-[1rem] h-[1rem] rounded-[50%] border-[1px] border-[#191919] flex justify-center items-center box">
                             <div class="w-[0.5rem] h-[0.5rem] bg-[white] rounded-[50%]">
@@ -63,10 +63,11 @@
                         <span>{{staff.name}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
                         <span class="font-bold">￥{{staff.type==0?selected_time?.price:selected_time?.price_single}}/{{t('setmenu.number')}}</span>
                     </div>
-                    <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem] border-[1px] border-[#F5F7FB] flex justify-evenly items-center">
-                        <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onRemove(staff.key, staff.number)">-</span>
-                        <span class="text-[#191919] text-[0.9rem] font-bold" contenteditable>{{staff.number}}</span>
-                        <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onAdd(staff.key)">+</span>
+                    <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem]  flex justify-evenly items-center">
+                        <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onRemove(staff.key, staff.number, staff.type)">-</span>
+                        <!-- <span class="text-[#191919] text-[0.9rem] font-bold" contenteditable>{{staff.number}}</span> -->
+                        <a-input-number  :min="1" :max="1000" :controls="false" :value="staff.number" class="custom_number" @change="(value:number)=>onChangeNumber(value, staff.key, staff.type)"/>
+                        <span class=" cursor-pointer text-[#666666] text-[1.5rem]" @click="onAdd(staff.key, staff.type)">+</span>
                     </div>
                 </div>
             </div>
@@ -93,13 +94,13 @@
                 </div>
             </div>
         </div>
-        <PackageModal v-model="open" :money="cost" :package-name="packageName"/>
+        <PackageModal v-model="open" :money="cost" :package-name="packageName" :purchaseIspInfos="purchaseIspInfos" ref="modalRef"/>
     </div>
 </template>
 <script setup lang="ts">
-    import { ref, onMounted, computed } from 'vue'
+    import { ref, onMounted, computed, nextTick } from 'vue'
     import { useI18n } from 'vue-i18n'
-    import PackageModal from '../../components/PackageModal.vue'
+    import PackageModal from '../../components/StaticPackageModal.vue'
     const { t } = useI18n()
     const images = import.meta.glob('../../assets/nations/*.png')
     const open = ref(false)
@@ -140,6 +141,8 @@
     const citys_type2 = ref<region_type[]>([])
     const buyNumbers = ref<buying_type[]>([])
     const selectType = ref(0)
+    const purchaseIspInfos = ref<any[]>([])
+    const modalRef = ref<any>()
     const timeSelect = computed(():time_type[]=> {
         return [
             {
@@ -166,14 +169,14 @@
             {
                 name:t('setmenu.time4'),
                 price: 198,
-                key: 4,
+                key: 6,
                 discount: 6.6,
                 price_single:99,
             },
             {
                 name:t('setmenu.time5'),
                 price: 336,
-                key: 5,
+                key: 12,
                 discount: 5.6,
                 price_single:168,
             }
@@ -184,69 +187,34 @@
     onMounted(async () => {
         citys.value = [
             {
-                name: '美国-德克萨斯',
-                price: 80,
-                key: '1_0',
-                type: 0,
-                img: await getImage('us')
-            },
-            {
                 name: '美国-弗吉尼亚州',
                 price: 80,
-                key: '2_0',
+                key: 'us-fl',
                 type: 0,
                 img: await getImage('us')
-            },
-            {
-                name: '美国-新泽西州',
-                price: 80,
-                key: '3_0',
-                type: 0,
-                img: await getImage('us')
-            },
-            {
-                name: '美国-加利福尼亚州',
-                price: 80,
-                key: '4_0',
-                type: 0,
-                img: await getImage('us')
-            },
-            {
-                name: '英国-伦敦',
-                price: 80,
-                key: '5_0',
-                type: 0,
-                img: await getImage('uk')
             },
             {
                 name: '德国-黑森州',
                 price: 80,
-                key: '6_0',
+                key: 'gb-ld',
                 type: 0,
                 img: await getImage('ger')
             }
         ]
         citys_type2.value = [
         {
-                name: '美国-德克萨斯',
+                name: '美国-弗吉尼亚州',
                 price: 80,
-                key: '1_1',
+                key: 'us-fl',
                 type: 1,
                 img: await getImage('us')
             },
             {
-                name: '美国-纽约州',
+                name: '德国-黑森州',
                 price: 80,
-                key: '2_1',
+                key: 'gb-ld',
                 type: 1,
-                img: await getImage('us')
-            },
-            {
-                name: '英国伦敦',
-                price: 80,
-                key: '3_1',
-                type: 1,
-                img: await getImage('uk')
+                img: await getImage('ger')
             }
         ]
         selected_time.value = timeSelect.value[0]
@@ -261,9 +229,9 @@
         selected_time.value = time
     }
     const onSelect = (city:region_type) => {
-        const index = selectedCitys.value.findIndex(item=>item.key==city.key)
+        const index = selectedCitys.value.findIndex(item=>(item.key==city.key && item.type ==city.type))
         if (index>-1) {
-            const index2 = buyNumbers.value.findIndex(item=>item.key==city.key)
+            const index2 = buyNumbers.value.findIndex(item=>(item.key==city.key && item.type ==city.type))
             buyNumbers.value.splice(index2, 1)
             selectedCitys.value.splice(index, 1)
         } else {
@@ -279,11 +247,11 @@
             'buyNumbers',buyNumbers.value
         )
     }
-    const onRemove = (key:number|string, number:number) => {
-        const index = buyNumbers.value.findIndex(item=>item.key==key)
+    const onRemove = (key:number|string, number:number, type:any) => {
+        const index = buyNumbers.value.findIndex(item=>(item.key==key && item.type ==type))
         if (number==1) {
             index>-1 && buyNumbers.value.splice(index, 1)
-            const index2 =  selectedCitys.value.findIndex(item=>item.key==key)
+            const index2 =  selectedCitys.value.findIndex(item=>(item.key==key && item.type ==type))
             selectedCitys.value.splice(index2, 1)
         } else {
             if (buyNumbers.value[index]) {
@@ -297,8 +265,20 @@
             'buyNumbers',buyNumbers.value
         )
     }
-    const onAdd = (key:number|string) => {
-        const index = buyNumbers.value.findIndex(item=>item.key==key)
+    const onChangeNumber = (value:number, key:number|string, type:any) =>  {
+        const index = buyNumbers.value.findIndex(item=>(item.key==key && item.type ==type))
+        if (buyNumbers.value[index]) {
+            const newItem = Object.assign({}, buyNumbers.value[index], {
+                number: value
+            })
+            buyNumbers.value.splice(index, 1, newItem)
+        }
+        console.log(
+            'buyNumbers',buyNumbers.value
+        )
+    }
+    const onAdd = (key:number|string, type:any) => {
+        const index = buyNumbers.value.findIndex(item=>(item.key==key && item.type ==type))
         if (buyNumbers.value[index]) {
             const newItem = Object.assign({}, buyNumbers.value[index], {
                 number: buyNumbers.value[index].number+1
@@ -316,16 +296,26 @@
 
     const onRecharge = () => {
         packageName.value = t('setmenu.subtitle2')
+        // console.log(buyNumbers .value, selected_time.value)
+        purchaseIspInfos.value = buyNumbers.value.map((item)=> ({
+            ispType:item.type,
+            ispLocation: item.key,
+            purchaseMonth:selected_time.value?.key,
+            purchaseNum:item.number
+        }))
+        
         if (selectType.value==0) {
             cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price || 0)
         } else {
             cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price_single || 0)
         }
-        
         if (cost.value == 0) {
             return
         }
         open.value = true
+        nextTick(() => {
+            modalRef.value.init()
+        })
     }
 </script>
 <style lang="less" scoped>
@@ -358,4 +348,14 @@
   border-radius: 999px;
   background-clip: content-box;
 }
+</style>
+<style lang="less">
+    .custom_number {
+        border:none;
+        .ant-input-number-input-wrap {
+            &>input {
+                text-align: center;
+            }
+        }
+    }
 </style>

@@ -102,13 +102,19 @@
         validate()
         .then(async () => {
             if (props.type == 'add') {
-                await AddAccount(modelRef)
-                message.success(t('form.success'))
-                emit('onAddComplate')
+                const res:any = await AddAccount(modelRef)
+                if (res.code == 200) {
+                    message.success(t('form.success'))
+                    emit('onAddComplate')
+                }
+                
             } else {
-                await UpdateAccount(modelRef)
-                message.success(t('form.success'))
-                emit('onAddComplate')
+                const res:any = await UpdateAccount(modelRef)
+                if (res.code == 200) {
+                    message.success(t('form.success'))
+                    emit('onAddComplate')
+                }
+                
             }
         })
         
