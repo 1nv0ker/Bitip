@@ -99,7 +99,7 @@
     import { DyPackageRecharge } from '../api/recharge'
     import useUserStore from '../store/user'
     import { useRouter } from 'vue-router';
-    import { message } from 'ant-design-vue';
+    // import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const router = useRouter()
     const open = defineModel()
@@ -146,7 +146,7 @@
         // console.log('res', res)
         if (res && res.code == 200) {
             paying.value = true
-            message.success(t('form.success'))
+            // message.success(t('form.success'))
         }
         if (payMethod.value == 2) {
             userStore.setUserInfo()
@@ -160,6 +160,11 @@
             // setTimeout(() => {
             //     window.open(res.body.url.url, '_blank')
             // }, 1000);
+        }
+        if (payMethod.value == 1) {
+            if (res && res.code == 200) {
+                rechargeLink.value = res.body.url.url
+            }
         }
     }
     const onComplate = () => {

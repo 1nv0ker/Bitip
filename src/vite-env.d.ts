@@ -15,5 +15,11 @@ declare module 'nprogress' {
     }
 
   }
+declare module 'lodash-es' {
+    export {
+      debounce
+    }
+}
+
 
 

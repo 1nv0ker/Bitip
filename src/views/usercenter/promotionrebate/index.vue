@@ -133,7 +133,8 @@
     const params = reactive({
         total: 0,
         pageSize: 3,
-        current: 1
+        current: 1,
+        loading: false
     })
     const inviteRecord = reactive<any>({
         userCount:0,
@@ -205,6 +206,7 @@
                 ellipsis: true
             },
         ]
+        params.loading = true
         const res:any = await GetList({
             PageNo: 1,
             PageSize: 10
@@ -213,9 +215,13 @@
         tableObject.tableDatas = res.body.records.map((item:any)=>Object.assign({}, item, {
             email: item.userInfo.email
         }))
-        params.total = res.body.totalRows
-        params.current = res.body.pageNo
-        params.pageSize = res.body.pageSize
+        params.loading = false
+        if (res.code == 200) {
+            params.total = res.body.totalRows
+            params.current = res.body.pageNo
+            params.pageSize = res.body.pageSize
+        }
+        
     }
     //提款记录
     const loadWithdraw = async () => {

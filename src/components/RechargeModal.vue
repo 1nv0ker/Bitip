@@ -140,10 +140,14 @@
             //     window.open(res.body.url.url, '_blank')
             // }, 1000);
         }
+        if (payMethod.value == 1) {
+            if (res && res.code == 200) {
+                rechargeLink.value = res.body.url.url
+            }
+        }
     }
     const onComplate = () => {
         userStore.setUserInfo()
-        // paying.value = false
         open.value = false
     }
     const onCancel = () => {

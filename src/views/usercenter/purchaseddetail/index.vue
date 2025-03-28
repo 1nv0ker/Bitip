@@ -43,9 +43,9 @@
                 </a-select>
             </div>
             <div class="h-[3rem] flex gap-[1.75rem] " style="width:calc( 75% - 1.75rem * 1/4 )" >
-                <div class="text-[] bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer" @click="loadTable" >
+                <a-button class="text-[] bg-[#01AA44] w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer" @click="loadTable" :loading="params.loading" >
                     <span class="text-[1rem] text-white font-medium">{{t('purchaseddetail.button1')}}</span>
-                </div>
+                </a-button>
                 <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer" @click="onAllRenew">
                     <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button2')}}</span>
                 </div>
@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="w-full mt-[1.75rem] h-[45rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="id" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="id" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false" :loading="params.loading">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -87,7 +87,7 @@
                         </div>
                     </template>
                     <template v-else-if="column.key == 'code'">
-                        <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(record['ip'])"/>
+                        <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(record['code'])"/>
                         <!-- <a-qrcode :value="record[column.key]" :size="24" /> -->
                     </template>
                     <template v-else-if="column.key == 'ispType'">
@@ -136,6 +136,7 @@
     import useI18nStore from '../../../store/i18n'
     import StaticRenew from '../../../components/StaticRenew.vue'
     import { message } from 'ant-design-vue';
+    import { Base64 } from 'js-base64';
     const { t } = useI18n()
     const I18Store = useI18nStore()
     const qrcode = ref('')
@@ -154,7 +155,7 @@
         loading: false,
         IspLocation:'',
         AutoRenew:null,
-        IspType:null
+        IspType:null,
     })
     const columns = computed(() => {
         return [
@@ -219,6 +220,7 @@
         loadTable()
     })
     const loadTable = async () => {
+        params.loading = true
         const res:any = await GetList({
             PageNo: params.current,
             PageSize:params.pageSize,
@@ -229,13 +231,24 @@
             SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
             IspType:params.IspType
         })
+        params.loading = false
         if (res.code == 200) {
-            tableDatas.value = res.body.records
+            tableDatas.value = res.body.records.map((item:any)=>{
+                const proxySplit = item.ip.split(":");
+                let str = Base64.encode(
+                `${proxySplit[2]}:${proxySplit[3]}@${proxySplit[0]}:${proxySplit[1]}`)
+                let codeString = `socks://${str}?obfs=none`
+                return {
+                    ...item,
+                    code: codeString
+                }
+            })
             params.total = res.body.totalRows
         }
     }   
     const onCurrentChange = (num:number) => {
         params.current = num
+        selectedData.value = []
         loadTable()
     }
     const onSizeChange = (num:number,size:number) => {

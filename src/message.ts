@@ -345,7 +345,7 @@ export const en = {
         form1:'Select certified account',
         form1_placeholder: 'Please select',
         form2:'Choose country',
-        form2_placeholder: 'Please select',
+        form2_placeholder: 'Please enter and select',
         form3: 'Choose region',
         form3_placeholder:'Please select',
         form4: 'Choose city',
@@ -356,12 +356,19 @@ export const en = {
         form6_placeholder:'Automatically switch IP',
         form7_placeholder: 'Please select',
         form7: 'Select quantity',
+        
         button1: 'Generate proxy IP',
         button2: 'Generate API links',
         copy: 'copy',
-        switch: 'Switch IP',
+        switch: 'Automatically switch IP',
         agentPlaceholder:'Paste the generated proxy',
-        button3:'Check Proxy'
+        button3:'Check Proxy',
+        form1_rule: 'Please select a sub-account',
+
+        form2_rule:'Please select your country',
+        form3_rule:'Please select IP validity',
+        form4_rule:'Please select quantity',
+        type:'Generate Format'
     },
 
     trafficmanager: {
@@ -375,7 +382,7 @@ export const en = {
         title2:'Account Management',
         add_account:'Add sub-account',
         name:'Account name',
-        limit: 'Traffic Limit(M)',
+        limit: 'Traffic LimitGB)',
         flow: 'Traffic',
         date: 'Add time',
         status: 'State',
@@ -640,7 +647,8 @@ export const en = {
         step4:'Contact customer service to withdraw commission'
     },
     form: {
-        success:'Success'
+        success:'Success',
+        min:'Min'
     },
     whitelist: {
         title: 'Add Whitelist',
@@ -1049,23 +1057,28 @@ export const zh = {
         form1:'选择认证账户',
         form1_placeholder: '请选择',
         form2:'选择国家',
-        form2_placeholder: '请选择',
+        form2_placeholder: '请输入后选择',
         form3: '选择地区',
         form3_placeholder:'请选择',
         form4: '选择城市',
         form4_placeholder:'请选择',
         form5: 'IP时效',
         form5_placeholder: '请选择',
-        form6: '切换IP',
+        form6: '自动切换IP',
         form6_placeholder:'自动切换IP',
         form7_placeholder: '请选择',
         form7: '选择数量',
         button1: '生成代理IP',
         button2: '生成API链接',
         copy: '复制',
-        switch: '切换IP',
+        switch: '自动切换IP',
         agentPlaceholder:'粘贴生成的代理',
-        button3:'检查代理'
+        button3:'检查代理',
+        form1_rule: '请选择子账号',
+        form2_rule:'请选择国家',
+        form3_rule:'请选择IP时效',
+        form4_rule:'请选择数量',
+        type:'生成格式'
     },
     trafficmanager: {
         title: '账户流量统计',
@@ -1078,7 +1091,7 @@ export const zh = {
         title2:'账户管理',
         add_account:'新增子账号',
         name:'账号名称',
-        limit: '流量使用限制(M)',
+        limit: '流量使用限制(GB)',
         flow: '流量消耗',
         date: '添加时间',
         status: '状态',
@@ -1347,7 +1360,8 @@ export const zh = {
         step4:'联系客服提取佣金'
     },
     form: {
-        success:'成功'
+        success:'成功',
+        min:'分钟'
     },
     whitelist: {
         title: '添加白名单',

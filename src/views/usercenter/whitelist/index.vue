@@ -42,7 +42,7 @@
             </a-col>
         </a-row>
         <div class="w-full mt-[1.5rem] h-[44rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false" :row-selection="rowSelection" rowKey="id">
+            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false" :row-selection="rowSelection" rowKey="id" :loading="params.loading">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -114,16 +114,22 @@
     })
     const loadTable = async () => {
         params.loading = true
-        const res:any = await GetList({
+         await GetList({
             PageNo:params.current,
             PageSize:params.pageSize,
             KeyWord: params.KeyWord,
             // SearchBeginTime: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
             // SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined
         })
-        params.total = res.body.totalRows
-        tableDatas.value = res.body.records
-        params.loading = false
+        .then((res:any) => {
+            params.total = res.body.totalRows
+            tableDatas.value = res.body.records
+            params.loading = false
+        })
+        .catch(() => {
+            params.loading = false
+        })
+        
     }
     
     const onLoad = () => {

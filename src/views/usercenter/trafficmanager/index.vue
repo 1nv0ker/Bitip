@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="mt-[1.5rem] h-[18rem]">
-                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'16rem'}" :pagination="false" >
+                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'16rem'}" :pagination="false" :loading="loading">
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -105,6 +105,7 @@
     const I18Store = useI18nStore()
     const type = ref('add')
     const addsubRef = ref<any>()
+    const loading = ref(false)
     let myChart:any = null
     const params = reactive({
         total: 0,
@@ -238,16 +239,23 @@
         myChart.resize(); 
         
     }
-    const loadAccount = async () => {
-        const res:any = await GetSubAccountList({
+    const loadAccount = () => {
+        loading.value = true
+         GetSubAccountList({
             PageNo: params.current,
             PageSize: params.pageSize
         })
+        .then((res:any) => {
+            loading.value = false
+            tableDatas.value = res.body.records
+            params.total = res.body.totalRows
+            params.current = res.body.pageNo
+            params.pageSize = res.body.pageSize
+        })
+        .catch(() => {
+            loading.value = false
+        })
         
-        tableDatas.value = res.body.records
-        params.total = res.body.totalRows
-        params.current = res.body.pageNo
-        params.pageSize = res.body.pageSize
     }
     const onAddComplate = () => {
         loadAccount()

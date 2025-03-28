@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="w-full mt-[1.5rem] h-[44rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false">
+            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false" :loading="params.loading">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -137,8 +137,8 @@
             },
             {
                 title: t('purchasedhistory.column6'),
-                dataIndex: 'sysUpdateTime',
-                key: 'sysUpdateTime',
+                dataIndex: 'sysCreateTime',
+                key: 'sysCreateTime',
                 align:'center',
                 ellipsis: true
             },

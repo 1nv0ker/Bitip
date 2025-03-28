@@ -24,14 +24,7 @@
                             <div class="flex gap-[1.25rem] items-center">
                                 <span class="text-[#191919] text-[1rem] font-medium" style="">{{item.title}} [GB]</span>
                                 <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
-                                <!-- <span class="text-[#191919] text-[1.5rem] font-bold" style="transition: --value 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);line-height: 100%;">
-                                    {{getValue(cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0)}}</span> -->
-                                <!-- {{ cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0 }} -->
                             </div>
-                            <!-- <div class="pl-[0.25rem]" v-if="item.showButton">
-                                <img src="../../../assets/run.png" class="w-[2.5rem] h-[0.75rem]" />
-                            </div> -->
-                            
                         </div>
                     </div>
                 </div>
@@ -39,62 +32,77 @@
 
                 </div>
                 <!-- 定位城市 -->
-                <div class="mt-[1.5rem] pr-[1.5rem]">
-                    <a-form layout="vertical">
-                        <a-row :gutter="[24, 16]">
+                <div class="mt-[2rem] pr-[1.5rem]">
+                    <a-form layout="vertical" :rules="rules" :model="modelRef" ref="formRef">
+                        <a-row :gutter="[24, 24]">
                             <a-col :span="8" class="h-[4.75rem]">
-                                <a-form-item :label="t('proxycity.form1')" required class="">
+                                <a-form-item :label="t('proxycity.form1')" name="userName">
                                     <div class="relative h-[3rem]">
-                                        <a-select :placeholder="t('proxycity.form2_placeholder')" class="proxycity_select" v-model:value="modelRef.account">
-                                            <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option>
-                                        </a-select>
-                                        <div class=" absolute z-20 h-[1.25rem] w-[1.25rem]  cursor-pointer top-[0.875rem] right-[3rem]" @click="onAddSub">
-                                            <img src="../../../assets/proxycity/1.png" class="w-full h-full"/>
-                                        </div>
+                                        <AccountSelect v-model="modelRef.userName" @onSelectAccount="onSelectAccount" />
                                     </div>
                                 </a-form-item>
                             </a-col>
                         </a-row>
-                        <a-row :gutter="[24, 16]" class="mt-[1rem]">
+                        <a-row :gutter="[24, 24]" class="mt-[1.5rem]">
                             <a-col :span="8" v-for="form in formItems" class="h-[4.75rem]">
-                                <a-form-item :label="form.label" required>
+                                <a-form-item :label="form.label" :name="form.key">
                                     <div class="relative h-[3rem]">
-                                        <a-select :placeholder="form.placeholder" class="proxycity_select " :options="form.options || []">
+                                        <a-select :showSearch="form.showSearch" :placeholder="form.placeholder" class="customASelect" :disabled="form.disabled"
+                                         :options="form.options || []" v-model:value="modelRef[form.key]" @select="(_:any,props:any)=>onSelect(form.key, props)">
                                     
                                         </a-select>
-                                        <div class=" absolute z-20 h-[1.25rem] w-[1.25rem]  cursor-pointer top-[0.875rem] right-[3rem]" v-if="form.showButton" @click="onAddSub">
-                                            <img src="../../../assets/proxycity/1.png" class="w-full h-full"/>
-                                        </div>
                                     </div>
                                 </a-form-item>
                             </a-col>
                         </a-row>    
                     </a-form>
                     <div class="pb-[1.5rem] flex gap-[1.75rem] mt-[1.5rem]">
-                        <div class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer">
+                        <a-button class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer" @click="onGenerate">
                             <img src="../../../assets/proxycity/2.png" class="w-[1.25rem] h-[1.25rem]" />
                             <span class=" text-white font-medium text-[1rem]">{{t('proxycity.button1')}}</span>
-                        </div>
+                        </a-button>
 
                         <div class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#FAFAFA] flex justify-evenly items-center border-[1px] border-[#EBEFF8] cursor-pointer">
                             <img src="../../../assets/proxycity/3.png" class="w-[1.25rem] h-[1.25rem]" />
                             <span class=" text-[#191919] font-medium text-[1rem]">{{t('proxycity.button2')}}</span>
                         </div>
+                        <div class="flex items-center">
+                            <span class="pr-[0.5rem]">{{t('proxycity.type')}}:</span>
+                            <a-select  class="customASelect w-[20rem]" v-model:value="modelRef.type">
+                                <a-select-option :value="'0'" label="">
+                                    username:password:hostname:port
+                                </a-select-option>
+                                <a-select-option :value="'1'" label="">
+                                    hostname:port:username:password
+                                </a-select-option>
+                                <a-select-option :value="'2'" label="">
+                                    username:password@hostname:port
+                                </a-select-option>
+                            </a-select>
+                        </div>
                     </div>
                     <div class="w-full h-[20.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]">
-                        <div class=" border-b-[1px] border-[#EBEFF8] flex flex-col gap-[1rem]  text-[#666666] text-[1rem] h-[16.625rem] pt-[1.75rem]">
-                            <span>https://www.figma.com/d91?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-01?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-0套餐1?node-id=</span>
-                            <span>https://www.figma.com/d91?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-01?node-id=1195-1345&t=AMb4pO4N2KjsmNdA-0套餐1?node-id=</span>
+                        <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] h-[16.625rem] pt-[1.75rem]">
+                            <span v-for="item in proxyIPS">
+                                {{showIP(item.hostname_port, item.username_password)}}
+                            </span>
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
-                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
-                                <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem]"/>
-                                <span class="pl-[0.75rem]">{{ t('proxycity.copy') }}</span>
+                            
+                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer" @click="onCopy">
+                                <a-tooltip  trigger="click" :open="copy"  @click="onCopy" :arrow="false" >
+                                    <template #title>
+                                        <span class="text-[1rem]">{{t('promotionrebate.copy')}}</span>
+                                    </template>
+                                    <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem] cursor-pointer"/>
+                                </a-tooltip>
+                                <!-- <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem]"/>
+                                <span class="pl-[0.75rem]">{{ t('proxycity.copy') }}</span> -->
                             </div>
-                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
+                            <!-- <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
                                 <img src="../../../assets/switch.png" class="w-[1.5rem] h-[1.5rem]"/>
                                 <span class="pl-[0.75rem]">{{ t('proxycity.switch') }}</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- <div class="pt-[1.25rem]">
@@ -114,24 +122,54 @@
                 </div>
             </div>
         </div>
-        <AddSubModal v-model="open" @onAddComplate="onAddComplate" />
     </div>
 </template>
 <script setup lang="ts">
     //选择数量1-1000 1 10 100 1000
     import { computed , onMounted, ref, reactive } from 'vue'
-    import AddSubModal from '../trafficmanager/AddSubModal.vue'
     import NumberComponent from '../../../components/NumberComponent.vue'
-    import { GetSubAccountList } from '../../../api/account'
+    import locations from './location.json'
+    import AccountSelect from './AccountSelect.vue'
+    import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
+    import { GetProxyConfig } from '../../../api/proxy'
+    import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
-    const modelRef = reactive({
-        account:''
+    const modelRef = reactive<Record<string, string|undefined>>({
+        userName:undefined,
+        IP:'0',
+        number:undefined,
+        country:undefined,
+        time: undefined,
+        city:undefined,
+        state: undefined,
+        type: '1'
     })
-    const accountList = ref<any[]>([])
-    const open = ref(false)
+    const stateDatas = ref<any[]>([])
+    const cityDatas = ref<any[]>([])
+    const proxyConfig = ref<any>()
+    const formRef = ref<any>()
+    const proxyIPS = ref<any[]>([])
+    const copy = ref(false)
+    let interval2:any
+    const rules = computed<Record<string, Rule[]>>(() => {
+        return {
+            userName: [
+                { required: true, message: t('proxycity.form1_rule'), trigger: 'change' },
+            ],
+            country: [
+                { required: true, message: t('proxycity.form2_rule'), trigger: 'change' },
+            ],
+            time: [
+                { required: modelRef.IP=='0'?true:false, message: t('proxycity.form3_rule'), trigger: 'change' },
+            ],
+            number: [
+                { required: true, message: t('proxycity.form4_rule'), trigger: 'change' },
+            ]
+        }
+    })
     const items = computed(() => {
         return [
             {
@@ -159,47 +197,88 @@
     })
     const formItems = computed(() => {
         return [
-            // {
-            //     label: t('proxycity.form1'),
-            //     placeholder: t('proxycity.form1_placeholder'),
-            //     key:'1',
-            //     showButton:true,
-            //     span: 24
-            // },
             {
                 label: t('proxycity.form2'),
                 placeholder: t('proxycity.form2_placeholder'),
-                key:'2',
-                showButton:false
+                key:'country',
+                showButton:false,
+                showSearch: true,
+                options: locations.map((item=>({
+                    label:item.country,
+                    value:item.country,
+                    state:item.state,
+                    city:item.city
+                })))
             },
             {
                 label: t('proxycity.form3'),
                 placeholder: t('proxycity.form3_placeholder'),
-                key:'3',
-                showButton:false
+                key:'state',
+                showButton:false,
+                options: stateDatas.value
+                // disabled:true
             },
             {
                 label: t('proxycity.form4'),
                 placeholder: t('proxycity.form4_placeholder'),
-                key:'4',
-                showButton:false
+                key:'city',
+                showButton:false,
+                options: cityDatas.value,
+                disabled: !modelRef.state
             },
             {
                 label: t('proxycity.form5'),
                 placeholder: t('proxycity.form5_placeholder'),
-                key:'5',
-                showButton:false
+                key:'time',
+                showButton:false,
+                disabled: modelRef.IP=='0'?false:true,
+                options: [
+                    {
+                        value: 5,
+                        label: 5+t('form.min')
+                    },
+                    {
+                        value: 10,
+                        label: 10+t('form.min')
+                    },
+                    {
+                        value: 15,
+                        label: 15+t('form.min')
+                    },
+                    {
+                        value: 30,
+                        label: 30+t('form.min')
+                    },
+                    {
+                        value: 60,
+                        label: 60+t('form.min')
+                    },
+                    {
+                        value: 120,
+                        label: 120+t('form.min')
+                    }
+                ]
             },
             {
-                label: t('proxycity.form6'),
+                label: t('proxycity.switch'),
                 placeholder: t('proxycity.form6_placeholder'),
-                key:'6',
-                showButton:false
+                key:'IP',
+                showButton:false,
+                options: [
+                    {
+                        value: '1',
+                        label: t('purchaseddetail.yes')
+                    },
+                    {
+                        value: '0',
+                        label: t('purchaseddetail.no')
+                    },
+                ]
             },
             {
                 label: t('proxycity.form7'),
                 placeholder: t('proxycity.form7_placeholder'),
-                key:'7',
+                key:'number',
                 showButton:false,
                 options: [
                     {
@@ -222,7 +301,143 @@
             }
         ]
     })
+    //生成代理
+    const onGenerate = () => {
+        formRef.value.validate()
+        .then(() => {
+            proxyIPS.value = []
+            //生成代理
+            const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName } = proxyConfig.value
+            for (let i=0;i<Number(modelRef.number);i++) {
+                
+                const randomInPortIndex= Math.floor(Math.random() * proxyPort.length)
+                const randomInUrlIndex= Math.floor(Math.random() * proxyUrl.length)
+                if (proxyPort[randomInPortIndex] && proxyUrl[randomInUrlIndex]) {
+                    const url = proxyUrl[randomInUrlIndex]
+                    const port = proxyPort[randomInPortIndex]
+                    let proxyIP = ''
+                    //rotating session存在
+                    const sessiong = modelRef.IP == '0'?generateRandomString():0
+                    const hostname_port = url+':'+port
+                    const username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
+                        + '_sid-'+sessiong + (modelRef.state?('_s-'+modelRef.state):'')
+                        + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')
+                        + ':'+ proxyPwd
+                    if (modelRef.type == '0') {
+                        proxyIP = username_password + ':' + hostname_port
+                    } else if (modelRef.type == '1') {
+                        proxyIP = hostname_port + ':' + username_password
+                    } else {
+                        proxyIP = username_password + '@' + hostname_port
+                    }
+                   
+                    proxyIPS.value.push({
+                        hostname_port: hostname_port,
+                        username_password: username_password
+                    })
+                } else {
+                    message.error('端口号或者url不存在')
+                    break
+                }
+            }
+            // axios.get('http://'+proxyIPS.value[0])
+            // console.log(proxyIPS.value)
+        })
+    }
+    //随机session
+    const generateRandomString = () => {
+        const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('');
+        let currentIndex = chars.length;
+        
+        while (currentIndex > 0) {
+            const randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [chars[currentIndex], chars[randomIndex]] = [chars[randomIndex], chars[currentIndex]];
+        }
+        return chars.slice(0, 8).join('');
+    }
+    const onCopy = () => {
+        if (proxyIPS.value.length == 0) {
+            return
+        }
+        const str = proxyIPS.value.map((item:any)=> {
+            if (modelRef.type == '0') {
+            return item.username_password + ':' + item.hostname_port
+            } else if (modelRef.type == '1') {
+                return item.hostname_port + ':' + item.username_password
+            } else {
+                return item.username_password + '@' + item.hostname_port
+            }
+        }).join(';')
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(str)
+        } else {
+            const input = document.createElement('input');
+            input.value = str;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+        }
+        copy.value = true
+        interval2 && clearInterval(interval2)
+        interval2 = setInterval(() => {
+            copy.value = false
+            clearInterval(interval2)
+        }, 2000);
+    }
+    const showIP = (hostname_port:string, username_password:string) => {
+        if (modelRef.type == '0') {
+            return username_password + ':' + hostname_port
+        } else if (modelRef.type == '1') {
+            return hostname_port + ':' + username_password
+        } else {
+            return username_password + '@' + hostname_port
+        }
+    }
+    //选择账户
+    const onSelectAccount = (_value:string) => {
+        if (modelRef.userName) {
+            GetProxyConfig({
+                userName: modelRef.userName
+            })
+            .then((res:any)=> {
+                proxyConfig.value = res.body
+            })
+        }
+        
+    }
+    const onSelect = (key:string, props:any) => {
+        
+        if (key == 'country') {
+            const { state, city } = props
+            //重新选择清空
+            modelRef.city = undefined
+            modelRef.state = undefined
+            stateDatas.value = state.map((item:any)=>({
+                value:item.label,
+                label:item.label
+            }))
+            cityDatas.value = city.map((item:any)=>({
+                value:item.label,
+                label:item.label
+            }))
+        }
+        if (key == 'state') {
+            modelRef.city = undefined
+        }
+        if(key == 'IP') {
+            const { value } = props
+            console.log('value', value)
+            if (value == '1') {
+                
+            } else {
+
+            }
+        }
+    }
     onMounted(() => {
+        console.log(locations)
         cardDatas.value = [
             {
                 key: 1,
@@ -240,35 +455,14 @@
                 rate: 2.4
             }
         ]
-        loadAccount()
+
     })
-    const loadAccount = () => {
-        GetSubAccountList({
-            PageNo: 1,
-            PageSize: 10000
-        })
-        .then((res:any) => {
-            accountList.value = res.body.records
-                                .filter((item:any)=>item.enabled==1)
-                                .map((item:any)=> ({
-                                    value:item.id,
-                                    label:item.keyName
-                                }))
-        })
-    }
-    const onAddComplate = () => {
-        loadAccount()
-        open.value = false
-    }
     const router = useRouter()
     const onBuyFlow = () => {
         router.push({name:'purchasedflow'})
     }   
     const onFlowManager = () => {
         router.push({name:'trafficmanager'})
-    }
-    const onAddSub = () => {
-        open.value = true
     }
 </script>
 <style scoped>
@@ -281,22 +475,6 @@
     }
 </style>
 <style lang="less">
-    .proxycity_select {
-        .ant-select-selector {
-            height: 3rem!important;
-            border-color: #666666!important;
-            border-radius: 0.75rem!important;
-        }
-        .ant-select-selection-item {
-            line-height: 3rem!important;
-        }
-        .ant-select-selection-placeholder {
-            height: 3rem!important;
-            line-height: 3rem!important;
-            color: #999999;
-            font-size: 1rem;
-        }
-    }
     .customArea {
         border-radius: 1rem;
         textarea {

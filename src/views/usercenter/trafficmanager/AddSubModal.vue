@@ -29,7 +29,7 @@
                     </a-col> -->
                     <a-col :span="12">
                         <a-form-item :label="t('sub.form6')" :labelCol="{span: 24}" v-bind="validateInfos.limited" >
-                            <a-input-number class="w-full customANum "  addon-after="M" v-model:value="modelRef.limited" :min="0" ></a-input-number>
+                            <a-input-number class="w-full customANum "  addon-after="GB" v-model:value="modelRef.limited" :min="0" :max="10000" ></a-input-number>
                         </a-form-item>
                     </a-col>
                     <!-- <a-col :span="12">
