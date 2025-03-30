@@ -8,9 +8,10 @@
      show-search
      @select="onSelect"
      :options="accountList"
-     @search="fetchAccountList"
-    :not-found-content="state.fetching ? undefined : null"
+     
+    :loading="state.fetching"
      >
+     <!-- @search="fetchAccountList" -->
         <!-- <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option> -->
          <!-- <template v-slot:option="{value, label}">
             <span>{{ label }}</span>
@@ -28,7 +29,7 @@
     import { onMounted, ref, reactive } from 'vue'
     import { useI18n } from 'vue-i18n'
     import { GetSubAccountList } from '../../../api/account'
-    import { debounce } from 'lodash-es';
+    // import { debounce } from 'lodash-es';
     import AddSubModal from '../trafficmanager/AddSubModal.vue'
     const { t } = useI18n()
     const account = defineModel()
@@ -44,12 +45,29 @@
         open.value = true
     }
     onMounted(() => {
-        
-    })
-    const fetchAccountList = debounce((value:string) => {
-        state.KeyWord = value
         loadAccountList()
-    }, 300)
+        // GetSubAccountList({
+        //     PageNo:1,
+        //     PageSize: 10000,
+        //     KeyWord:state.KeyWord
+        // })
+        // .then((res:any) => {
+        //     state.fetching = false
+        //     accountList.value = res.body.records
+        //     .filter((item:any)=>item.enabled==1)
+        //     .map((item:any)=> ({
+        //         value:item.keyName,
+        //         label:item.keyName
+        //     }))
+        // })
+        // .catch(() => {
+        //     state.fetching = false
+        // })
+    })
+    // const fetchAccountList = debounce((value:string) => {
+    //     state.KeyWord = value
+    //     loadAccountList()
+    // }, 300)
     const loadAccountList = () => {
         state.fetching = true
         GetSubAccountList({

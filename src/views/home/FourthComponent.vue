@@ -31,11 +31,13 @@
                     <!-- <source src="../../assets/map.mp4" type="video/mp4" /> -->
                 </video>
             </div>
-            <div class="absolute right-0 bottom-0 flex flex-col gap-[1.5rem] justify-end pb-[4rem] w-[15rem]">
-                <div v-for="legend in legendDatas" class="flex items-center justify-between h-[2.8125rem]  w-full">
-                    <img :src="legend.img" class="w-[2.8125rem] "/>
-                    <div class="flex flex-col h-[2.5rem] w-[11.25rem] justify-between">
-                        <div class="w-full flex justify-between">
+            <div class="absolute right-[-4.5rem]  bottom-[4.5rem] flex flex-col gap-[0.5rem] justify-end pb-[4rem] w-[13rem]">
+                <div v-for="legend in legendDatas" class="flex items-center justify-between h-[4.5rem]  w-full rounded-[2rem] bg-[#FAFAFA] p-[0.5rem]">
+                    <img :src="legend.img" class="w-[3.5rem] h-full "/>
+                    <div class="flex flex-col h-full w-[15rem] justify-between pl-[0.5rem]">
+                        <span class="text-[#191919] text-[1.1rem] ">{{legend.name}}</span>
+                        <span class="text-[#191919] text-[1.1rem] ">{{legend.number}}</span>
+                        <!-- <div class="w-full flex justify-between">
                             <span class="text-[#191919] text-[1.375rem] font-medium">{{legend.name}}</span>
                             <span class="text-[#999999] text-[1.375rem] font-medium">{{legend.value}}%</span>
                         </div>
@@ -43,7 +45,7 @@
                             <div :style="`width:${legend.value}%`" class=" h-full rounded-[3.125rem]">
                                 <div class="bg-[#BAD162] rounded-[3.125rem] h-full w-full progress-bar" style="transition: width 2s ease-in-out;width:100%"></div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                  </div>
             </div>
@@ -62,6 +64,7 @@
     import ukImg from '../../assets/uk.png'
     import canImg from '../../assets/can.png'
     import indImg from '../../assets/india.png'
+    import mxImg from '../../assets/nations/mx.png'
     // import mapGif from '../../assets/map.gif'
     const { t } = useI18n()
     const fourthRef = ref<HTMLElement>()
@@ -75,31 +78,43 @@
                 name: t('fourth.ger'),
                 img:gerImg,
                 value: 53,
-                key:'a'
+                key:'a',
+                number:'5,764,386 IPS'
             },
             {
                 name: t('fourth.us'),
                 img:usImg,
                 value: 13,
-                key:'b'
+                key:'b',
+                number:'39,564,281 IPS'
             },
             {
                 name: t('fourth.uk'),
                 img:ukImg,
                 value: 8,
-                key:'c'
+                key:'c',
+                number:'7,121,388 IPS'
+            },
+            {
+                name: t('fourth.mx'),
+                img:mxImg,
+                value: 8,
+                key:'c',
+                number:'6,551,297 IPS'
             },
             {
                 name: t('fourth.can'),
                 img:canImg,
                 value: 10,
-                key:'d'
+                key:'d',
+                number:'4,222,171 IPS'
             },
             {
                 name: t('fourth.ind'),
                 img:indImg,
                 value: 10,
-                key:'e'
+                key:'e',
+                number:'1,203,578 IPS'
             }
         ]
     })

@@ -30,7 +30,7 @@
                 <DySetmenu v-show="selected!=1 && selected !=2"/>
                 <StaticSetmenu v-show="selected==1"/>
                 <Recharge v-show="selected==2"/>
-                <QuestionComponent />
+                <!-- <QuestionComponent /> -->
             </div>
         </ComponentLayout>
     </BasicLayout>
@@ -42,7 +42,7 @@
     import ComponentLayout from '../ComponentLayout.vue';
     import DySetmenu from './DySetmenu.vue';
     import StaticSetmenu from './StaticSetmenu.vue';
-    import QuestionComponent from './QuestionComponent.vue';
+    // import QuestionComponent from './QuestionComponent.vue';
     import Recharge from './Recharge.vue';
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

@@ -99,7 +99,7 @@
     const { t } = useI18n()
     const useForm = Form.useForm;
     const userStore = useUserStore()
-    const current = ref(2)
+    const current = ref(0)
     const router = useRouter()
     const loading = ref(false)
     const authLink = ref('')

@@ -38,11 +38,11 @@
                 items: [
                     {
                         title:t('footer.title1_subtitle1'),
-                        path: 'dyagent'
+                        path: 'dyproxy'
                     },
                     {
                         title:t('footer.title1_subtitle2'),
-                        path: 'staticagent'
+                        path: 'staticproxy'
                     }
                 ]
             },

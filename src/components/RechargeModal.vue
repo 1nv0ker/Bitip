@@ -35,7 +35,7 @@
                     <div class="w-[37.5rem] flex gap-[1.25rem]">
                         <div :class="`w-[10.875rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
                         flex justify-center items-center cursor-pointer relative gap-[1rem]
-                        ${payMethod==1?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=1">
+                        ${payMethod==1?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=1;rechargeLink='';paying=false">
                             <img src="../assets/wechat.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] " />
                             <span>{{t('recharge.pay1')}}</span>
                             <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==1" >
@@ -44,7 +44,7 @@
                         </div>
                         <div :class="`w-[10.875rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
                         flex justify-center items-center cursor-pointer relative gap-[1rem]
-                        ${payMethod==0?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=0">
+                        ${payMethod==0?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=0;rechargeLink='';paying=false">
                             <img src="../assets/alipay.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] "/>
                             <span>{{t('recharge.pay2')}}</span>
                             <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==0" >
@@ -55,7 +55,7 @@
                 </div>
                 <div class="pl-[10rem]" >
                     <!-- <input class="form-check-input customCheck w-[1.5rem] h-[1.5rem] mt-0" type="checkbox" value="" id="flexCheckDefault" v-model="checked"> -->
-                    <span class="pl-[0.75rem] text-[#191919] text-[0.9rem]">{{t('buying.subtitle')}}</span>
+                    <span class=" text-[#191919] text-[0.9rem]">{{t('buying.subtitle')}}</span>
                     <span class="text-[#01AA44] cursor-pointer text-[0.9rem]" @click="onToRefund">《{{t('buying.content')}}》</span>
                     <span class="text-[#191919] cursor-pointer text-[0.9rem]">,{{t('buying.content2')}}</span>
                     <a-button :loading="loading" class="customAbutton h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer mt-[1.25rem]" @click="onConfirm" v-show="!paying">
@@ -107,6 +107,7 @@
     const init = () => {
         payMethod.value = 1
         paying.value = false
+        rechargeLink.value = ''
     }
     defineExpose({
         init

@@ -109,7 +109,7 @@
                 </div>
                 <div class="mt-[1.5rem]">
                     <RippleButton class="h-[3.25rem] w-[13.25rem] rounded-[4.18rem] bg-[#191919] text-[white] text-[1.25rem] 
-                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton1')" @btnClick="router.push({name:'staticagent'})">
+                    font-medium hover:text-[#191919] border-[#191919] border-[1px]" :text="t('second.dynamicButton1')" @btnClick="router.push({name:'staticproxy'})">
                     </RippleButton>
                 </div>
             </div>
@@ -131,7 +131,7 @@ import router from '../../router'
         secondRef: secondRef
     })
     const onFreeUse = () => {
-        router.push({name:'dyagent'})
+        router.push({name:'dyproxy'})
     }
     const onMouseEnter = (key:number) => {
         selected.value = key

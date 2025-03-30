@@ -59,24 +59,24 @@
                     <div class="pb-[1.5rem] flex gap-[1.75rem] mt-[1.5rem]">
                         <a-button :loading="loading" class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer" @click="onGenerate">
                             <img src="../../../assets/proxycity/2.png" class="w-[1.25rem] h-[1.25rem]" />
-                            <span class=" text-white font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button1')">{{t('proxycity.button1')}}</span>
+                            <span class=" text-white font-medium text-[0.9rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button1')">{{t('proxycity.button1')}}</span>
                         </a-button>
 
                         <a-button :loading="loading"  class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#FAFAFA] flex justify-evenly items-center border-[1px] border-[#EBEFF8] cursor-pointer" @click=onGenerateApi>
                             <img src="../../../assets/proxycity/3.png" class="w-[1.25rem] h-[1.25rem]" />
-                            <span class=" text-[#191919] font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button2')">{{t('proxycity.button2')}}</span>
+                            <span class=" text-[#191919] font-medium text-[0.9rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button2')">{{t('proxycity.button2')}}</span>
                         </a-button>
                         <div class="flex items-center">
                             <span class="pr-[0.5rem]">{{t('proxycity.type')}}:</span>
                             <a-select  class="customASelect w-[20rem]" v-model:value="modelRef.type">
-                                <a-select-option :value="'2'" label="">
-                                    username:password:hostname:port
-                                </a-select-option>
                                 <a-select-option :value="'0'" label="">
                                     hostname:port:username:password
                                 </a-select-option>
                                 <a-select-option :value="'1'" label="">
                                     username:password@hostname:port
+                                </a-select-option>
+                                <a-select-option :value="'2'" label="">
+                                    username:password:hostname:port
                                 </a-select-option>
                             </a-select>
                         </div>
@@ -84,7 +84,7 @@
                     <div class="w-full h-[20.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]">
                         <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] h-[16.625rem] pt-[1.75rem]">
                             <span v-for="item in proxyIPS">
-                                {{showIP(item.hostname_port, item.username_password)}}
+                                {{modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item}}
                             </span>
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
@@ -99,10 +99,10 @@
                                 <!-- <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem]"/>
                                 <span class="pl-[0.75rem]">{{ t('proxycity.copy') }}</span> -->
                             </div>
-                            <!-- <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
+                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
                                 <img src="../../../assets/switch.png" class="w-[1.5rem] h-[1.5rem]"/>
-                                <span class="pl-[0.75rem]">{{ t('proxycity.switch') }}</span>
-                            </div> -->
+                                <span class="pl-[0.75rem]">{{ t('proxycity.switch2') }}</span>
+                            </div>
                         </div>
                     </div>
                     <!-- <div class="pt-[1.25rem]">
@@ -145,7 +145,8 @@
         time: undefined,
         city:undefined,
         state: undefined,
-        type: '0'
+        type: '0',
+        generateType:'1'
     })
     const stateDatas = ref<any[]>([])
     const cityDatas = ref<any[]>([])
@@ -270,11 +271,11 @@
                 options: [
                     {
                         value: '1',
-                        label: t('purchaseddetail.yes')
+                        label: t('purchaseddetail.yes') 
                     },
                     {
                         value: '0',
-                        label: t('purchaseddetail.no')
+                        label: t('purchaseddetail.no') 
                     },
                 ]
             },
@@ -283,6 +284,7 @@
                 placeholder: t('proxycity.form7_placeholder'),
                 key:'number',
                 showButton:false,
+                disabled: modelRef.IP=='0'?false:true,
                 options: [
                     {
                         value: 1,
@@ -309,6 +311,7 @@
         formRef.value.validate()
         .then(() => {
             proxyIPS.value = []
+            modelRef.generateType = '1'
             //生成代理
             const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName } = proxyConfig.value
             for (let i=0;i<Number(modelRef.number);i++) {
@@ -352,7 +355,7 @@
         formRef.value.validate()
         .then(() => {
             loading.value = true
-
+            
             GenerateApi({
                 KeyName:modelRef.userName,
                 Num:modelRef.number,
@@ -364,7 +367,8 @@
                 Format: modelRef.type
             })
             .then((res:any) => {
-                // console.log('res', res, res.split(`\n`))
+                modelRef.generateType = '0'
+                console.log('res', res, res.split(`\n`))
                 proxyIPS.value = res.split(`\n`)
                 loading.value = false
             })
@@ -465,7 +469,7 @@
             const { value } = props
             console.log('value', value)
             if (value == '1') {
-                
+                modelRef.number = '1'
             } else {
 
             }

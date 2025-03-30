@@ -6,13 +6,13 @@
         <!-- 移动端下拉菜单 -->
         <NavMobieMenu v-show="showMobie" @onCloseNav="showMobie=false" :status="showMobie"/>
         <!-- <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`" :style="customeStyle"> -->
-        <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center mt-[2.8125rem] z-50 bg-[white] ${acvitityStatus?' mt-[2.8125rem] ':'mt-0'}`" :style="customeStyle">
-            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 col-xxl-2">
+        <div :class="`flex w-full justify-center gx-0 top-[2.8125rem] h-[4rem] items-center mt-[2.8125rem] z-50 bg-[white] ${acvitityStatus?' mt-[2.8125rem] ':'mt-0'}`" :style="customeStyle">
+            <div class="w-[20rem]">
                 <div class="w-full flex justify-center cursor-pointer ml-[2.625rem] z-50" @click="onToHome">
                     <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem] z-50"  />
                 </div>
             </div>
-            <div class="col-8 col-sm-6 col-md-8 col-lg-8 col-xl-8 col-xxl-8 justify-center h-full">
+            <div class="flex justify-center h-full flex-[80rem]">
                 <!-- 桌面导航菜单 -->
                 <NavMenu  class="z-50"/>
                 <div class="flex items-center md:hidden justify-center" v-if="!userStore.userInfo?.tel">
@@ -43,8 +43,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2 col-sm-4 col-md-2 col-lg-2 col-xl-2 col-xxl-2 z-50">
-                <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem] justify-center z-50" v-if="!userStore.userInfo?.tel">
+            <div class="w-[20rem] z-50 h-full flex justify-end pr-[2.625rem]">
+                <div class="hidden items-center md:flex gap-[2rem] sm:gap-[1rem]  justify-center z-50" v-if="!userStore.userInfo?.tel">
                     <div class="w-[4.5rem] flex cursor-pointer z-50" @click="onLanauageChange()">
                         <img :src="lan=='zh'?lanImg1:lanImg2" class="z-50 w-[1.5rem] h-[1.5rem]" />
                         <span class="pl-[0.375rem] text-[1rem] font-medium z-50">{{lan =='zh' ? '中文':'EN'}}</span>

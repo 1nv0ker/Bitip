@@ -145,6 +145,7 @@
     const modalRef = ref<any>()
     const selectRow = ref<any[]>([])
     const selectedData = ref<any[]>([])
+    // const selectRows = ref<any[]>([])
     const dates = ref<[Dayjs, Dayjs]|null>(null);
     const params = reactive({
         total:0,
@@ -156,6 +157,7 @@
         IspLocation:'',
         AutoRenew:null,
         IspType:null,
+        selectKeys:[]
     })
     const columns = computed(() => {
         return [
@@ -198,7 +200,7 @@
                 key: 'ispType',
                 align:'center',
                 ellipsis: true,
-                width:'4rem'
+                width:'6rem'
             },
             {
                 title: t('purchaseddetail.column6'),
@@ -303,16 +305,14 @@
     const tableDatas = ref([
     ])
     const rowSelection = {
-        // selectedRowKeys:toRaw(selectedData.value),
-        onChange: (_selectedRowKeys: string[], selectedRows: any[]) => {
+        selectedRowKeys:params.selectKeys,
+        onChange: (selectedRowKeys: string[], selectedRows: any[]) => {
+            console.log('selectedRowKeys', selectedRowKeys)
+            params.selectKeys = selectedRowKeys as any
             selectedData.value = selectedRows
             
             // console.log(selectedRows)
-        },
-        getCheckboxProps: (record: any) => ({
-            disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
-        }),
+        }
     };
     const onOpenQRcode = (code:string) => {
         console.log('code', code)
