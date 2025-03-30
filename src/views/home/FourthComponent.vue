@@ -27,7 +27,9 @@
         </div> -->
         <div class="mt-[4rem] w-full flex justify-center relative">
             <div class="world-map w-[30rem h-[10rem]]" id="world-map">
-                
+                <video autoplay type="video/mp4" loop  muted src="../../assets/map.mp4" playsinline disablepictureinpicture>
+                    <!-- <source src="../../assets/map.mp4" type="video/mp4" /> -->
+                </video>
             </div>
             <div class="absolute right-0 bottom-0 flex flex-col gap-[1.5rem] justify-end pb-[4rem] w-[15rem]">
                 <div v-for="legend in legendDatas" class="flex items-center justify-between h-[2.8125rem]  w-full">
@@ -52,7 +54,6 @@
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import {ref, onMounted, computed} from 'vue'
-    import * as THREE from 'three';
     import ComponentLayout from '../ComponentLayout.vue'
 
     // import map_bg from '../../assets/map_group.png'
@@ -105,75 +106,12 @@
 
    
     onMounted(() => {
-        loadThree()
+
     })
-    const loadThree = () => {
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color('white')
-        const camera = new THREE.PerspectiveCamera(25, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(1280, 600);
-        const world = document.getElementById('world-map')
-        if (world) {
-            world.appendChild(renderer.domElement)
-        }
-        // 加载地球纹理
-        const textureLoader = new THREE.TextureLoader();
-        const earthTextures = {
-            baseColor: textureLoader.load('https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg'),
-            normalMap: textureLoader.load('https://threejs.org/examples/textures/planets/earth_normal_2048.jpg'),
-            // specularMap: textureLoader.load('https://threejs.org/examples/textures/planets/earth_specular_2048.jpg'),
-            // cloudMap: textureLoader.load('https://threejs.org/examples/textures/planets/earth_clouds_1024.png')
-        };
-
-        // 创建地球材质
-        const earthMaterial = new THREE.MeshPhongMaterial({
-            map: earthTextures.baseColor,
-            normalMap: earthTextures.normalMap,
-            normalScale: new THREE.Vector2(0.8, 0.8),
-            // specularMap: earthTextures.specularMap,
-            // specular: new THREE.Color(0x111111),
-            // shininess: 10,
-        });
-        // 构建地球模型
-        const earthGeometry = new THREE.SphereGeometry(5, 64, 64);
-        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
-        scene.add(earth);
-        // 相机和控制器设置
-        camera.position.z = 15;
-        camera.position.y += 2.5
-        camera.position.x += 0.5
-        // 设置光源
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 3, 5);
-        scene.add(directionalLight);
-        // function addCityMarker(lat, lng) {
-        //     const phi = (90 - lat) * Math.PI / 180;
-        //     const theta = (180 - lng) * Math.PI / 180;
-            
-        //     const marker = new THREE.Mesh(
-        //         new THREE.SphereGeometry(0.05),
-        //         new THREE.MeshBasicMaterial({ color: 0xff0000 })
-        //     );
-            
-        //     marker.position.setFromSphericalCoords(5.1, phi, theta);
-        //     earth.add(marker);
-        // }
-        // addCityMarker()
-        // 动画循环
-        function animate() {
-            requestAnimationFrame(animate);
-            earth.rotation.y -= 0.0025;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-    }
+    
 </script>
 <style>
-/* .world-map {
+.world-map {
    height: 50vh;
    width: 80vw;
   }
@@ -181,7 +119,7 @@
   0% { width: 0; }
   50% { background-color: #BAD162; }
   100% { width: 100%; }
-} */
+}
 
 .progress-bar {
   animation: loading 5s ease-in-out infinite;

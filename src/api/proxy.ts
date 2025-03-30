@@ -15,3 +15,20 @@ export function GetProxyConfig(params:proxyData) {
 export function GetBandwidthAnalysis() {
     return axios.get(`${BASIC_MODULE}/BandwidthAnalysis`)
 }
+
+export interface generateData {
+    KeyName?:string,
+    Num?:string,
+    Country?:string,
+    State?:string,
+    City?:string,
+    SessionTime?:string,
+    AutoSwitch?:string,
+    Format?:string
+}
+
+export function GenerateApi(params:generateData) {
+    return axios.get(`${BASIC_MODULE}/Generate`, {
+        params:params
+    })
+}

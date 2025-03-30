@@ -7,11 +7,17 @@
      allowClear
      show-search
      @select="onSelect"
+     :options="accountList"
      @search="fetchAccountList"
     :not-found-content="state.fetching ? undefined : null"
      >
-        <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option>
-
+        <!-- <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option> -->
+         <!-- <template v-slot:option="{value, label}">
+            <span>{{ label }}</span>
+         </template> -->
+        <template #notFoundContent>
+            <a-spin v-if="state.fetching" />
+        </template>
         </a-select>
     <div class=" absolute z-20 h-[1.25rem] w-[1.25rem]  cursor-pointer top-[0.875rem] right-[3rem]" @click="onAddSub">
         <img src="../../../assets/proxycity/1.png" class="w-full h-full"/>
@@ -43,12 +49,12 @@
     const fetchAccountList = debounce((value:string) => {
         state.KeyWord = value
         loadAccountList()
-    })
+    }, 300)
     const loadAccountList = () => {
         state.fetching = true
         GetSubAccountList({
             PageNo:1,
-            PageSize: 10,
+            PageSize: 10000,
             KeyWord:state.KeyWord
         })
         .then((res:any) => {

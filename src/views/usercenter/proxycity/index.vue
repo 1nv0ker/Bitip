@@ -57,25 +57,25 @@
                         </a-row>    
                     </a-form>
                     <div class="pb-[1.5rem] flex gap-[1.75rem] mt-[1.5rem]">
-                        <a-button class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer" @click="onGenerate">
+                        <a-button :loading="loading" class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer" @click="onGenerate">
                             <img src="../../../assets/proxycity/2.png" class="w-[1.25rem] h-[1.25rem]" />
                             <span class=" text-white font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button1')">{{t('proxycity.button1')}}</span>
                         </a-button>
 
-                        <div class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#FAFAFA] flex justify-evenly items-center border-[1px] border-[#EBEFF8] cursor-pointer">
+                        <a-button :loading="loading"  class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#FAFAFA] flex justify-evenly items-center border-[1px] border-[#EBEFF8] cursor-pointer" @click=onGenerateApi>
                             <img src="../../../assets/proxycity/3.png" class="w-[1.25rem] h-[1.25rem]" />
                             <span class=" text-[#191919] font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button2')">{{t('proxycity.button2')}}</span>
-                        </div>
+                        </a-button>
                         <div class="flex items-center">
                             <span class="pr-[0.5rem]">{{t('proxycity.type')}}:</span>
                             <a-select  class="customASelect w-[20rem]" v-model:value="modelRef.type">
-                                <a-select-option :value="'0'" label="">
+                                <a-select-option :value="'2'" label="">
                                     username:password:hostname:port
                                 </a-select-option>
-                                <a-select-option :value="'1'" label="">
+                                <a-select-option :value="'0'" label="">
                                     hostname:port:username:password
                                 </a-select-option>
-                                <a-select-option :value="'2'" label="">
+                                <a-select-option :value="'1'" label="">
                                     username:password@hostname:port
                                 </a-select-option>
                             </a-select>
@@ -133,7 +133,7 @@
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig, GetBandwidthAnalysis } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi } from '../../../api/proxy'
     import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
@@ -145,7 +145,7 @@
         time: undefined,
         city:undefined,
         state: undefined,
-        type: '1'
+        type: '0'
     })
     const stateDatas = ref<any[]>([])
     const cityDatas = ref<any[]>([])
@@ -153,6 +153,7 @@
     const formRef = ref<any>()
     const proxyIPS = ref<any[]>([])
     const copy = ref(false)
+    const loading = ref(false)
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -215,6 +216,7 @@
                 placeholder: t('proxycity.form3_placeholder'),
                 key:'state',
                 showButton:false,
+                showSearch: true,
                 options: stateDatas.value
                 // disabled:true
             },
@@ -223,6 +225,7 @@
                 placeholder: t('proxycity.form4_placeholder'),
                 key:'city',
                 showButton:false,
+                showSearch: true,
                 options: cityDatas.value,
                 disabled: !modelRef.state
             },
@@ -325,11 +328,11 @@
                         + ':'+ proxyPwd
                     let proxyIP = ''
                     if (modelRef.type == '0') {
-                        proxyIP = username_password + ':' + hostname_port
-                    } else if (modelRef.type == '1') {
                         proxyIP = hostname_port + ':' + username_password
-                    } else {
+                    } else if (modelRef.type == '1') {
                         proxyIP = username_password + '@' + hostname_port
+                    } else {
+                        proxyIP = username_password + ':' + hostname_port
                     }
                     proxyIP = proxyIP
                     proxyIPS.value.push({
@@ -344,6 +347,32 @@
             // axios.get('http://'+proxyIPS.value[0])
             // console.log(proxyIPS.value)
         })
+    }
+    const onGenerateApi = () => {
+        formRef.value.validate()
+        .then(() => {
+            loading.value = true
+
+            GenerateApi({
+                KeyName:modelRef.userName,
+                Num:modelRef.number,
+                Country:modelRef.country,
+                State:modelRef.state,
+                City:modelRef.city,
+                SessionTime:modelRef.time,
+                AutoSwitch: modelRef.IP,
+                Format: modelRef.type
+            })
+            .then((res:any) => {
+                // console.log('res', res, res.split(`\n`))
+                proxyIPS.value = res.split(`\n`)
+                loading.value = false
+            })
+            .catch(() => {
+                loading.value = false
+            })
+        })
+        
     }
     //随机session
     const generateRandomString = () => {
@@ -363,11 +392,11 @@
         }
         const str = proxyIPS.value.map((item:any)=> {
             if (modelRef.type == '0') {
-            return item.username_password + ':' + item.hostname_port
+                return item.hostname_port + ':' + item.username_password 
             } else if (modelRef.type == '1') {
-                return item.hostname_port + ':' + item.username_password
+                return item.username_password + '@' + item.hostname_port 
             } else {
-                return item.username_password + '@' + item.hostname_port
+                return item.username_password + ':' + item.hostname_port
             }
         }).join(';')
         if (navigator.clipboard) {
@@ -389,21 +418,26 @@
     }
     const showIP = (hostname_port:string, username_password:string) => {
         if (modelRef.type == '0') {
-            return username_password + ':' + hostname_port
-        } else if (modelRef.type == '1') {
             return hostname_port + ':' + username_password
+        } else if (modelRef.type == '1') {
+            return  username_password + '@' + hostname_port 
         } else {
-            return username_password + '@' + hostname_port
+            return username_password + ':' + hostname_port
         }
     }
     //选择账户
     const onSelectAccount = (_value:string) => {
         if (modelRef.userName) {
+            loading.value = true
             GetProxyConfig({
                 userName: modelRef.userName
             })
             .then((res:any)=> {
                 proxyConfig.value = res.body
+                loading.value = false
+            })
+            .catch(() => {
+                loading.value = false
             })
         }
         

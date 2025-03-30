@@ -45,9 +45,9 @@
                     </a-col>
                 </a-row>
                 <div class="w-full flex mt-[1.125rem] justify-end">
-                    <div class="w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="onConfirm">
+                    <a-button :loading="modelRef.loading" class="customAbutton w-[6.75rem] h-[3rem] cursor-pointer rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center" @click="onConfirm">
                         <span class="text-[1rem] text-[#FFFFFF] font-bold"> {{t('sub.button')}}</span>
-                    </div>
+                    </a-button>
                 </div>
             </a-form>
         </div>
@@ -67,7 +67,8 @@
         limited: 0,
         enabled: 1,
         remark:'',
-        id:''
+        id:'',
+        loading:false
     });
     const rulesRef = reactive({
         keyName: [
@@ -112,6 +113,7 @@
     const onConfirm = () => {
         validate()
         .then(async () => {
+            modelRef.loading = true
             if (props.type == 'add') {
                 const res:any = await AddAccount(modelRef)
                 if (res.code == 200) {
@@ -119,14 +121,15 @@
                     emit('onAddComplate')
                 }
                 
+                
             } else {
                 const res:any = await UpdateAccount(modelRef)
                 if (res.code == 200) {
                     message.success(t('form.success'))
                     emit('onAddComplate')
                 }
-                
             }
+            modelRef.loading = false
         })
         
     }
