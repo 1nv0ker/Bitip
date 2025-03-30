@@ -47,7 +47,7 @@
                     <span class="text-[1rem] text-white font-medium">{{t('purchaseddetail.button1')}}</span>
                 </a-button>
                 <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer" @click="onAllRenew">
-                    <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button2')}}</span>
+                    <span class="text-[1rem] text-[#191919] ellipsis-single pl-[0.5rem] pr-[0.5rem]" :title="t('purchaseddetail.button2')">{{t('purchaseddetail.button2')}}</span>
                 </div>
                 <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
                     <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button3')}}</span>

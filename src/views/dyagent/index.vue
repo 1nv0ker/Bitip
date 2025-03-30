@@ -112,7 +112,9 @@
     import item3_img from '../../assets/dy/item3.png'
     import item4_img from '../../assets/dy/item4.png'
     import bg from '../../assets/bg_2.png?inline'
+    import { useRouter } from 'vue-router'
     const { t } = useI18n()
+    const router = useRouter()
     const hoverStatus = ref(false)
     const items = computed(() => {
         return [
@@ -222,6 +224,6 @@
 
     }
     const onFreeUse = () => {
-
+        router.push({name:'proxycity'})
     }
 </script>

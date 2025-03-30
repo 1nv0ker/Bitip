@@ -10,20 +10,20 @@
                         <div class="flex gap-[1.25rem]">
                             <div  class="  right-[1rem] w-[5.5rem] h-[2.25rem]  border-[#01AA44] 
                             border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer" @click="onBuyFlow">
-                                <span class="text-[#01AA44] text-[1rem]">{{t('proxycity.card_button')}}</span>
+                                <span class="text-[#01AA44] text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.card_button')">{{t('proxycity.card_button')}}</span>
                             </div>
                             <div  class=" right-[1rem] w-[5.5rem] h-[2.25rem] ] border-[#EBEFF8] bg-[#FAFAFA]
                             border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer" @click="onFlowManager">
-                                <span class="text-[#191919] text-[1rem]">{{t('proxycity.card_button1')}}</span>
+                                <span class="text-[#191919] text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.card_button1')">{{t('proxycity.card_button1')}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex justify-between  gap-[1.75rem] mt-[1.5rem]">
+                    <div class="w-full flex justify-between  gap-[1.75rem] mt-[1rem]">
                         <div v-for="item in items" class="w-[30rem] h-[3.75rem]  rounded-[0.75rem] items-center proxycity_card relative p-[1.75rem] pl-[2rem] pr-[2rem] flex" 
                             style="background: linear-gradient( 145deg, #E6FFF0 0%, #FBFFEC 100%);">
                             <div class="flex gap-[1.25rem] items-center">
                                 <span class="text-[#191919] text-[1rem] font-medium" style="">{{item.title}} [GB]</span>
-                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
+                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :step="1" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
 
                 </div>
                 <!-- 定位城市 -->
-                <div class="mt-[2rem] pr-[1.5rem]">
+                <div class="mt-[1rem] pr-[1.5rem]">
                     <a-form layout="vertical" :rules="rules" :model="modelRef" ref="formRef">
                         <a-row :gutter="[24, 24]">
                             <a-col :span="8" class="h-[4.75rem]">
@@ -59,12 +59,12 @@
                     <div class="pb-[1.5rem] flex gap-[1.75rem] mt-[1.5rem]">
                         <a-button class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#01AA44] flex justify-evenly items-center cursor-pointer" @click="onGenerate">
                             <img src="../../../assets/proxycity/2.png" class="w-[1.25rem] h-[1.25rem]" />
-                            <span class=" text-white font-medium text-[1rem]">{{t('proxycity.button1')}}</span>
+                            <span class=" text-white font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button1')">{{t('proxycity.button1')}}</span>
                         </a-button>
 
                         <div class="w-[9.625rem] h-[3rem] rounded-[0.75rem] bg-[#FAFAFA] flex justify-evenly items-center border-[1px] border-[#EBEFF8] cursor-pointer">
                             <img src="../../../assets/proxycity/3.png" class="w-[1.25rem] h-[1.25rem]" />
-                            <span class=" text-[#191919] font-medium text-[1rem]">{{t('proxycity.button2')}}</span>
+                            <span class=" text-[#191919] font-medium text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.button2')">{{t('proxycity.button2')}}</span>
                         </div>
                         <div class="flex items-center">
                             <span class="pr-[0.5rem]">{{t('proxycity.type')}}:</span>
@@ -133,7 +133,7 @@
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis } from '../../../api/proxy'
     import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
@@ -315,7 +315,7 @@
                 if (proxyPort[randomInPortIndex] && proxyUrl[randomInUrlIndex]) {
                     const url = proxyUrl[randomInUrlIndex]
                     const port = proxyPort[randomInPortIndex]
-                    let proxyIP = ''
+                    
                     //rotating session存在
                     const sessiong = modelRef.IP == '0'?generateRandomString():0
                     const hostname_port = url+':'+port
@@ -323,6 +323,7 @@
                         + '_sid-'+sessiong + (modelRef.state?('_s-'+modelRef.state):'')
                         + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')
                         + ':'+ proxyPwd
+                    let proxyIP = ''
                     if (modelRef.type == '0') {
                         proxyIP = username_password + ':' + hostname_port
                     } else if (modelRef.type == '1') {
@@ -330,7 +331,7 @@
                     } else {
                         proxyIP = username_password + '@' + hostname_port
                     }
-                   
+                    proxyIP = proxyIP
                     proxyIPS.value.push({
                         hostname_port: hostname_port,
                         username_password: username_password
@@ -437,24 +438,23 @@
         }
     }
     onMounted(() => {
-        console.log(locations)
-        cardDatas.value = [
-            {
-                key: 1,
-                value: 2123,
-                rate: 2.4
-            },
-            {
-                key: 2,
-                value: 2123,
-                rate: 2.4
-            },
-            {
-                key: 3,
-                value: 2123,
-                rate: 2.4
-            }
-        ]
+        GetBandwidthAnalysis()
+        .then((res:any) => {
+            cardDatas.value = [
+                {
+                    key: 1,
+                    value: res.body.totalBandWidth-res.body.usedBandwidth
+                },
+                {
+                    key: 2,
+                    value: res.body.totalBandWidth
+                },
+                {
+                    key: 3,
+                    value: res.body.usedBandwidth
+                }
+            ]
+        })
 
     })
     const router = useRouter()

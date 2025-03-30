@@ -95,20 +95,25 @@
             </div>
         </div>
         <PackageModal v-model="open" :packageName="packageName"  :money="cost" :type="selectType" ref="modalRef" />
+        <UserAuthTips v-model="open2"/>
     </div>
 </template>
 <script setup lang="ts">
     import { computed, ref, nextTick } from 'vue'
     import PackageModal from '../../components/PackageModal.vue'
-    
+    import UserAuthTips from '../../components/UserAuthTips.vue'
+    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const selected = ref(0)
     const cost = ref(0)
     const open = ref(false)
+    const open2 = ref(false)
     const packageName = ref('')
     const selectType = ref(0)
     const modalRef = ref<any>()
+    const router = useRouter()
     const cards = computed(() => {
         return [
             {
@@ -170,7 +175,16 @@
         ]
     })
     const onRecharge = (title:string,price:number,value:number, custom:any) => {
+        if (!isLogin()) {
+            
+            router.push({path:'/login'})
+            return
+        }
         if (custom) {
+            return
+        }
+        if (!isVerify()) {
+            open2.value = true
             return
         }
         open.value = true

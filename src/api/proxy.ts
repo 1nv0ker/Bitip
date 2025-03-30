@@ -11,3 +11,7 @@ export function GetProxyConfig(params:proxyData) {
         params: params
     })
 }
+
+export function GetBandwidthAnalysis() {
+    return axios.get(`${BASIC_MODULE}/BandwidthAnalysis`)
+}

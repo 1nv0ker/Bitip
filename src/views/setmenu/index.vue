@@ -16,18 +16,18 @@
                 </div>
                 <div class="w-full flex justify-center mt-[2.25rem] mb-[2.8125rem]">
                     <div class="w-[27rem] h-[3rem] rounded-[3.125rem] bg-[white] z-10 flex">
-                        <div style="transition: background-color 0.5s ease-in-out; /* 动画属性 */" :class="`flex items-center justify-center w-1/3 h-full rounded-[3.125rem] cursor-pointer text-[#191919] ${selected==0?'bg-[#702B12] text-[#FFFFFF] font-medium':'text-[#191919]'}` " @click="selected=0">
-                            <span class="text-[1.1rem]">{{ t('setmenu.subtitle1') }}</span>
+                        <div style="transition: background-color 0.5s ease-in-out; /* 动画属性 */" :class="`flex items-center justify-center w-1/3 h-full rounded-[3.125rem] cursor-pointer text-[#191919] ${(selected!=1 && selected !=2)?'bg-[#702B12] text-[#FFFFFF] font-medium':'text-[#191919]'}` " @click="selected=0">
+                            <span class="text-[1.1rem] pl-[0.5em] pr-[0.5rem] ellipsis-single">{{ t('setmenu.subtitle1') }}</span>
                         </div>
                         <div style="transition: background-color 0.5s ease-in-out; /* 动画属性 */" :class="`flex items-center justify-center w-1/3 h-full rounded-[3.125rem] cursor-pointer ${selected==1?'bg-[#702B12] text-[#FFFFFF] font-medium':'text-[#191919'}`" @click="selected=1">
-                            <span class="text-[1.1rem]">{{ t('setmenu.subtitle2') }}</span>
+                            <span class="text-[1.1rem] pl-[0.5em] pr-[0.5rem] ellipsis-single">{{ t('setmenu.subtitle2') }}</span>
                         </div>
                         <div style="transition: background-color 0.5s ease-in-out; /* 动画属性 */" :class="`flex items-center justify-center w-1/3 h-full rounded-[3.125rem] cursor-pointer ${selected==2?'bg-[#702B12] text-[#FFFFFF] font-medium':'text-[#191919'}`" @click="selected=2">
-                            <span class="text-[1.1rem]">{{ t('setmenu.subtitle3') }}</span>
+                            <span class="text-[1.1rem] pl-[0.5em] pr-[0.5rem] ellipsis-single" :title="t('setmenu.subtitle3')">{{ t('setmenu.subtitle3') }}</span>
                         </div>
                     </div>
                 </div>
-                <DySetmenu v-show="selected==0"/>
+                <DySetmenu v-show="selected!=1 && selected !=2"/>
                 <StaticSetmenu v-show="selected==1"/>
                 <Recharge v-show="selected==2"/>
                 <QuestionComponent />
@@ -36,7 +36,7 @@
     </BasicLayout>
 </template>
 <script setup lang="ts">
-    import { onMounted, ref } from 'vue';
+    import { onMounted, ref, watch } from 'vue';
     import BasicLayout from '../BasicLayout.vue';
     import { useRoute } from 'vue-router'
     import ComponentLayout from '../ComponentLayout.vue';
@@ -50,8 +50,15 @@
     const selected = ref(0)
     onMounted(() => {
         selected.value = Number(route.query.type) || 0
+
     })
-    
+    watch(
+        () => route.query.type,
+        (newId:any) => {
+            console.log('newId', newId)
+            selected.value = newId
+        }
+    )
 </script>
 <style>
 .custome_bg {

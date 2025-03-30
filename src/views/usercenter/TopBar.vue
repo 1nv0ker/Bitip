@@ -66,7 +66,7 @@
                 </div>
                 <div class="flex flex-col pl-[1.375rem] text-[#191919]">
                     <span class="text-[1.1rem] font-bold">{{ t('backend_menu.welcome') }}</span>
-                    <span class="text-[1.1rem] font-bold">px732472025101133</span>
+                    <span class="text-[1.1rem] font-bold">{{userStore.userInfo?.tel}}</span>
                 </div>
             </div>
             <div class="flex w-full gap-[0.5rem] flex-col mt-[1.25rem] border-[#EBEFF8] border-b-[1px] pb-[1.5rem]">

@@ -220,8 +220,8 @@ span,a,li {
   font-family: "Alibaba Sans";
            /* 文字方向控制 */
 }
-/*
-span {
+
+.custom_span {
   white-space: nowrap; 
   overflow: hidden;        
   text-overflow: ellipsis; 
@@ -230,7 +230,7 @@ span {
   line-height: 1.5;         
   direction: ltr;  
 }
-*/
+
 
 .ellipsis-single {
   overflow: hidden;      /* 隐藏溢出内容 */

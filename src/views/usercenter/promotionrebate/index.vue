@@ -45,7 +45,7 @@
                 </div>
                 <div class="h-[7.625rem] rounded-[1rem]  gap-[0.75rem] flex flex-col justify-center items-end"  style="width: calc( (100% - 1.875rem*5)/6 )">
                    <div class="h-[3.25rem] w-[9.625rem] rounded-[0.75rem] border-[1px] border-[#191919] flex justify-center items-center cursor-pointer" @click="onWithdrawalToAccount">
-                        <span class="text-[1.125rem] text-[#191919]">{{t('promotionrebate.title2_button1')}}</span>
+                        <span class="text-[1.125rem] text-[#191919] pl-[0.5em] pr-[0.5rem] ellipsis-single" :title="t('promotionrebate.title2_button1')">{{t('promotionrebate.title2_button1')}}</span>
                    </div>
                    <div class="h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onWithdrawal">
                         <span class="text-[1.125rem] text-[white] font-medium">{{t('promotionrebate.title2_button2')}}</span>

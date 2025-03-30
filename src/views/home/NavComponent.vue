@@ -36,7 +36,7 @@
                 <div class="flex z-50 items-center md:hidden gap-[1rem]" v-else>
                     <span class=" z-50 font-medium">{{userStore.userInfo?.tel}}</span>
                     <div class="z-50 bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
-                        <span class="font-medium">{{t('login.Backstage')}}</span>
+                        <span class="font-medium pl-[0.5em] pr-[0.5rem] ellipsis-single">{{t('login.Backstage')}}</span>
                     </div>
                     <div class="text-[white] cursor-pointer text-[1rem] font-medium bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
                         <span>{{t('login.exit')}}</span>
@@ -67,7 +67,7 @@
                     </div>
                     <span>{{userStore.userInfo?.tel}}</span>
                     <div class=" bg-[#01AA44] text-[white] rounded-[1.1rem] w-[5.75rem] text-[1rem] cursor-pointer h-[2.25rem] flex items-center justify-center" @click="OnEnterBackend">
-                        <span class="font-medium">{{t('login.Backstage')}}</span>
+                        <span class="font-medium pl-[0.5em] pr-[0.5rem] ellipsis-single" :title="t('login.Backstage')">{{t('login.Backstage')}}</span>
                     </div>
                     <div class="text-[white] cursor-pointer text-[1rem] font-medium bg-[#01AA44] w-[5.75rem] h-[2.25rem] rounded-[1.1rem] flex justify-center items-center" @click="onLogout">
                         <span class="font-medium">{{t('login.exit')}}</span>

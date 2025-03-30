@@ -61,6 +61,7 @@ export const en = {
         freeUse: 'Free Trial',
         contact: 'Contact Us',
         cardTitle1:'City-level positioning',
+        cardContent1:'Dynamic global coverage and precise geolocation, supporting IP rotation',
         cardTitle2:'SOCKS5/HTTP/HTTPS Protocol',
         cardContent2: 'Communication protocols are encrypted using a proprietary algorithm',
         // cardContent2: 'Relying on industry-leading agent resources to achieve automatic collection of global web page data',
@@ -306,7 +307,8 @@ export const en = {
 
         recharge_title: 'Recharge the balance',
         recharge_subtitle: 'The balance can be used to purchase dynamic and static packages and renewals',
-        illustrate: 'Optimized price instructions'
+        illustrate: 'Optimized price instructions',
+         tips:'Please select the package first'
     },
     backend_menu: {
         menu1:'Dynamic Residence',
@@ -376,14 +378,15 @@ export const en = {
         time_placeholder: 'Please select a date',
         placeholder1: 'Start date',
         placeholder2:'End date',
+        placeholder3:'Please select a sub-account',
         day:'day',
         month:'month',
         year:'year',
-        title2:'Account Management',
+        title2:'Traffic Management',
         add_account:'Add sub-account',
         name:'Account name',
         limit: 'Traffic LimitGB)',
-        flow: 'Traffic',
+        flow: 'Used traffic (GB)',
         date: 'Add time',
         status: 'State',
         mark:'Remark',
@@ -512,13 +515,15 @@ export const en = {
         placeholder1:'Please select',
         placeholder2:'Please enter',
         form4:'remark',
-        form5:'limit traffic',
+        form5:'limit traffic(0-10000)',
         yes:'Yes',
         no:'No',
         form6:'Set traffic',
         edit:'Edit sub-account',
+        message1:'Please enter a combination of 8-15 characters and numbers',
         message2:'Confirm enable?',
-        message3:'Confirm disable?'
+        message3:'Confirm disable?',
+        message4:'The maximum value cannot exceed 10000'
     },
     setting: {
         title:'Account Settings',
@@ -682,6 +687,22 @@ export const en = {
         form1:'Renewal cycle',
         type1:'Single ISP',
         type2:'Dual ISP'
+    },
+    nations: {
+        usca:'us-ca',
+        usva:'us-va',
+        usnj:'us-nj',
+        ustx:'us-tx',
+        gblondon:'gb-london',
+        dehesse:'de-hesse',
+        sg:'sg',
+        us:'us',
+        cnhk:'cn-hk',
+        cntw:'cn-tw'
+    },
+    tips: {
+        content:'Please complete real-name authentication first',
+        button:'Go to certification'
     }
 }
 
@@ -1019,7 +1040,8 @@ export const zh = {
 
         recharge_title: '充值余额就送,享受更多优惠',
         recharge_subtitle: '余额可用于购买动、静态套餐及续费',
-        illustrate: '优化价格说明'
+        illustrate: '优化价格说明',
+        tips:'请先勾选套餐'
     },
     backend_menu: {
         menu1:'动态住宅',
@@ -1085,14 +1107,15 @@ export const zh = {
         time_placeholder: '请选择日期',
         placeholder1: '开始日期',
         placeholder2:'结束日期',
+        placeholder3:'请选择子账号',
         day:'日',
         month:'月',
         year:'年',
-        title2:'账户管理',
+        title2:'流量管理',
         add_account:'新增子账号',
         name:'账号名称',
         limit: '流量使用限制(GB)',
-        flow: '流量消耗',
+        flow: '已使用流量(GB)',
         date: '添加时间',
         status: '状态',
         mark:'备注',
@@ -1220,16 +1243,17 @@ export const zh = {
         form3:'密码',
         form4:'备注',
         form5:'是否限制流量',
-        form6:'设置流量',
+        form6:'设置流量(0-10000G)',
         yes:'是',
         no:'否',
         button:'确认',
         placeholder1:'请选择',
         placeholder2:'请输入',
         edit:'编辑子账号',
-        message1:'请输入账户名',
+        message1:'请输入8-15位纯字母和数字组合',
         message2:'确认启用',
-        message3:'确认禁用'
+        message3:'确认禁用',
+        message4:'最大不能超过10000'
     },
     setting: {
         title:'账户设置',
@@ -1392,5 +1416,21 @@ export const zh = {
         form1:'续费周期',
         type1:'单ISP',
         type2:'双ISP',
+    },
+    nations: {
+        usca:'美国-加州',
+        usva:'美国-弗吉尼亚州',
+        usnj:'美国-新泽西州',
+        ustx:'美国-德克萨斯州',
+        gblondon:'英国-伦敦',
+        dehesse:'德国-黑森州',
+        sg:'新加坡',
+        us:'美国',
+        cnhk:'中国-香港',
+        cntw:'中国-台湾'
+    },
+    tips: {
+        content:'请先进行实名认证',
+        button:'前往认证'
     }
 }

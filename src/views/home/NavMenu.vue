@@ -74,7 +74,7 @@
                         title: t('navMenu.package_subtitle3'),
                         img: menu3,
                         path:'/setmenu',
-                        type: 0,
+                        type: 2,
                         img2: menu6,
                         show:true,
                         // style:'width:5.5rem;height:1.5rem',

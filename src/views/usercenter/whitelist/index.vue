@@ -31,12 +31,12 @@
                     <div type="primary" @click="onAdd"  class="bg-[#FAFAFA] w-[6.875rem] 
                     border-[#EBEFF8] border-[1px]
                     h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer ">
-                        <span class="text-[1rem] text-[#191919] ">{{t('whitelist.button2')}}</span>
+                        <span class="text-[1rem] text-[#191919]  ellipsis-single pl-[0.5rem] pr-[0.5rem]" :title="t('whitelist.button2')">{{t('whitelist.button2')}}</span>
                     </div>
                     <div type="primary" @click="onOpenDeleteModal"   class="bg-[#FAFAFA] 
                         border-[#EBEFF8] border-[1px]
                         w-[6.875rem] h-full rounded-[0.75rem] flex justify-center items-center cursor-pointer ">
-                        <span class="text-[1rem] text-[#191919] ">{{t('whitelist.button3')}}</span>
+                        <span class="text-[1rem] text-[#191919]  ellipsis-single pl-[0.5rem] pr-[0.5rem]" :title="t('whitelist.button3')">{{t('whitelist.button3')}}</span>
                     </div>
                 </div>
             </a-col>

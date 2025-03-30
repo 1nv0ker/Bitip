@@ -56,9 +56,9 @@
             </label>
         </div>
         
-        <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="cap_button">
+        <a-button :loading="loading" class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" htmlType="submit" id="cap_button">
             <span class="text-[white] text-[1.5rem] font-medium">{{t('login.login')}}</span>
-        </button>
+        </a-button>
         <div class="w-full flex items-center mt-[1.5rem] justify-center">
             <span class="text-[#191919] font-medium text-[1.25rem]">{{t('login.notAccount')}}<span class="text-[#01AA44] pl-[0.2rem] font-medium cursor-pointer" @click="onRegister">{{t('login.registerNow')}}</span></span>
         </div>
@@ -78,9 +78,9 @@
                         </span>
                     </div>
                     <div class="flex justify-evenly mt-[1.2rem]   ">
-                        <div class="w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
-                           <span class=" font-medium"> {{t('login.agreeLogin')}}</span>
-                        </div>
+                        <a-button :loading="loading" class="customAbutton w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
+                           <span class=" font-medium text-[white]"> {{t('login.agreeLogin')}}</span>
+                        </a-button>
                         <div class="w-[6.75rem] h-[2rem] flex justify-center items-center rounded-[0.4rem] border-[#D9D9D9] border-[1px] text-[0.8rem] cursor-pointer" @click="onCancelLogin">
                             <span class="font-medium">{{t('login.disagree')}}</span>
                         </div>
@@ -109,6 +109,7 @@
     const phoneCode = ref('')
     const focusStatus = ref(false)
     const verityFocusStatus = ref(false)
+    const loading = ref(false)
     const modalRef = ref(null)
     const sendCodeStaus = ref(false)
     const codeCount = ref(60)
@@ -156,6 +157,7 @@
         }
     }) 
     const accountLogin = () => {
+        loading.value = true
         Login({
             loginType:'code',
             tel: ''+phoneNum.value,
@@ -163,10 +165,15 @@
         })
         .then((res:any) => {
             console.log('res', res)
+            loading.value = false
             store.setToken(res.body.token)
             store.setUserInfo()
             const redirectPath:any = router.currentRoute.value.query.redirect || '/'
             router.push(redirectPath)
+        })
+        .catch(() => {
+            loading.value = false
+            capRef.value && capRef.value.onRefresh()
         })
         
     }
@@ -218,6 +225,7 @@
                 codeCount.value--
                 if (codeCount.value<=0) {
                     sendCodeStaus.value = false
+                    codeCount.value = 60
                     captchaVerifyParam.value = ''
                     capRef.value && capRef.value.onRefresh()
                     clearInterval(codeCountInterval)

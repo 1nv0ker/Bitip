@@ -13,6 +13,7 @@ declare module 'vue' {
     ACollapse: typeof import('ant-design-vue/es')['Collapse']
     ACollapsePanel: typeof import('ant-design-vue/es')['CollapsePanel']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    AEmpty: typeof import('ant-design-vue/es')['Empty']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
@@ -46,5 +47,6 @@ declare module 'vue' {
     SendCodeForm: typeof import('./src/components/SendCodeForm.vue')['default']
     StaticPackageModal: typeof import('./src/components/StaticPackageModal.vue')['default']
     StaticRenew: typeof import('./src/components/StaticRenew.vue')['default']
+    UserAuthTips: typeof import('./src/components/UserAuthTips.vue')['default']
   }
 }

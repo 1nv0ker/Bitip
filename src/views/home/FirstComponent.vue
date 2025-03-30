@@ -44,11 +44,11 @@
                     <span class="text-[3.43rem] text-[#01AA44] font-extrabold"> IP</span>
                 </div>
                 <div class="flex justify-center items-center w-full">
-                    <span class="text-[#191919] text-[3.43rem] font-bold text-center">{{t('first.subtitle')}}</span>
+                    <span class="text-[#191919] text-[3.43rem] font-bold text-center ">{{t('first.subtitle')}}</span>
                 </div>
 
                 <div class="flex justify-center items-center w-full mt-[1.875rem]">
-                    <span class="text-[#666666] text-[1.25rem] text-center">{{t('first.content')}}
+                    <span class="text-[#666666] text-[1.25rem] text-center  z-50" >{{t('first.content')}}
                         <!-- <span ">200+ -->
                             <NumberComponent class="text-[#191919] text-[1.25rem] font-bold" :number="200" :extra="'+'" :step="1"></NumberComponent>
                         {{t('first.content2')}}</span>

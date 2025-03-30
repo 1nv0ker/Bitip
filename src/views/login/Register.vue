@@ -106,9 +106,9 @@
                 </div>
                 
 
-                <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit">
+                <a-button :loading="loading" class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" htmlType="submit">
                     <span class="text-[white] text-[1.5rem]  font-medium">{{t('login.register')}}</span>
-                </button>
+                </a-button>
                 <div class="w-full flex items-center mt-[1.5rem] justify-center">
                     <span class="text-[#191919] font-medium text-[1.25rem]">{{t('login.haveAccount')}}<span class="text-[#01AA44] pl-[0.2rem] cursor-pointer" @click="onToLogin">{{t('login.login')}}</span></span>
                 </div>
@@ -128,9 +128,9 @@
                                 </span>
                             </div>
                             <div class="flex justify-evenly mt-[1.2rem]   ">
-                                <div class="w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
-                                   <span class=" font-medium">{{t('login.agreeLogin')}}</span>
-                                </div>
+                                <a-button :loading="loading" class="customAbutton w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
+                                   <span class=" font-medium text-[white]">{{t('login.agreeLogin')}}</span>
+                                </a-button>
                                 <div class="w-[6.75rem] h-[2rem] flex justify-center items-center rounded-[0.4rem] border-[#D9D9D9] border-[1px] text-[0.8rem] cursor-pointer" @click="onCancelLogin">
                                     <span class=" font-medium">{{t('login.disagree')}}</span>
                                 </div>
@@ -172,6 +172,7 @@
     const cap_box = ref<HTMLElement|null>()
     let codeCountInterval:any = null
     let modalInstance: any = null
+    const loading = ref(false)
     // const phoneNum = ref('')
     // const password = ref('')
     const checked = ref(false)
@@ -224,6 +225,7 @@
     }) 
     const accountRegister = () => {
         const beInviteCode= route.query.beInviteCode
+        loading.value = true
         Register({
             // captchaVerifyParam:'',
             // account:'',
@@ -235,6 +237,7 @@
         })
         .then((res:any) => {
             console.log('res', res)
+            loading.value = false
             store.setToken(res.body.token)
             message.success({
                 content:t('login.registerSuccess'),
@@ -243,6 +246,10 @@
                     router.push('/login')
                 }
             })
+        })
+        .catch(() => {
+            capRef.value && capRef.value.onRefresh()
+            loading.value = false
         })
     }
     const onContinueLogin = () => {
@@ -294,9 +301,11 @@
                 codeCount.value--
                 if (codeCount.value<=0) {
                     sendCodeStaus.value = false
+                    codeCount.value = 60
                     captchaVerifyParam.value = ''
-                    capRef.value && capRef.value.onRefresh()
                     clearInterval(codeCountInterval)
+                    capRef.value && capRef.value.onRefresh()
+                    
                 }
             }, 1000);
         })

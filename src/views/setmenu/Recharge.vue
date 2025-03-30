@@ -62,16 +62,21 @@
             </div>
         </div>
         <RechargeModal v-model="open" ref="rechargeRef" :money="cost"/>
+        <UserAuthTips v-model="open2"/>
     </div>
 </template>
 <script setup lang="ts">
     import { computed, ref, nextTick } from 'vue'
     import RechargeModal from '../../components/RechargeModal.vue'
-    
+    import UserAuthTips from '../../components/UserAuthTips.vue'
+    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const router = useRouter()
     const rechargeRef = ref<any>()
     const open = ref(false)
+    const open2 = ref(false)
     const cost = ref(0)
     const cards = computed(() => {
         return [
@@ -102,6 +107,14 @@
         ]
     })
     const onRecharge = (value:number) => {
+        if (!isLogin()) {
+            router.push({path:'/login'})
+            return
+        }
+        if (!isVerify()) {
+            open2.value = true
+            return
+        }
         cost.value = value
         open.value = true
         nextTick(() => {

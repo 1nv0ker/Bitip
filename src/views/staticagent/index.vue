@@ -117,8 +117,10 @@
     import item2_img from '../../assets/static/item2.png'
     import item3_img from '../../assets/static/item3.png'
     import item4_img from '../../assets/static/item4.png'
+    import {  useRouter } from 'vue-router'
     import bg from '../../assets/bg_2.png?inline'
     const { t } = useI18n()
+    const router = useRouter()
     const hoverStatus = ref(false)
     const items = computed(() => {
         return [
@@ -182,6 +184,6 @@
 
     }
     const onFreeUse = () => {
-
+        router.push({name:'purchased'})
     }
 </script>

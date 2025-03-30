@@ -19,7 +19,7 @@
                             </div>
                         </div>
                         <div class="pl-[0.75rem] ">
-                                <span class="text-[0.9rem] w-[8rem]  bitip_text" :title="city.name">{{city.name}}</span>
+                                <span class="text-[0.9rem] w-[8rem]  bitip_text" :title="city['name']()">{{city['name']()}}</span>
                             </div>
                         </div>
                         <div class="flex justify-between pr-[0.5rem]">
@@ -57,10 +57,10 @@
 
         </div>
         <div class="flex-[1] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[1rem] pr-[1.25rem]">
-            <div class="w-full pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem]">
+            <div class=" pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem] w-[15rem]">
                 <div class="w-full border-b-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center" v-for="staff in buyNumbers">
-                    <div class="text-[#191919] text-[0.9rem] flex flex-col w-[12rem]">
-                        <span>{{staff.name}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
+                    <div class="text-[#191919] text-[0.9rem] flex flex-col w-[15rem]">
+                        <span class="w-[]">{{staff['name']()}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
                         <span class="font-bold">￥{{staff.type==0?selected_time?.price:selected_time?.price_single}}/{{t('setmenu.number')}}</span>
                     </div>
                     <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem]  flex justify-evenly items-center">
@@ -95,19 +95,26 @@
             </div>
         </div>
         <PackageModal v-model="open" :money="cost" :package-name="packageName" :purchaseIspInfos="purchaseIspInfos" ref="modalRef"/>
+        <UserAuthTips v-model="open2"/>
     </div>
 </template>
 <script setup lang="ts">
     import { ref, onMounted, computed, nextTick } from 'vue'
     import { useI18n } from 'vue-i18n'
     import PackageModal from '../../components/StaticPackageModal.vue'
+    import UserAuthTips from '../../components/UserAuthTips.vue'
+    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { useRouter } from 'vue-router'
+import { message } from 'ant-design-vue'
     const { t } = useI18n()
     const images = import.meta.glob('../../assets/nations/*.png')
     const open = ref(false)
+    const open2 = ref(false)
+    const router = useRouter()
     const cost = ref(0)
     const packageName = ref('')
     interface region_type {
-        name:string,
+        name:any,
         price:number,
         id?:string,
         key:number | string,
@@ -117,7 +124,7 @@
         img?:any
     }
     interface time_type {
-        name:string,
+        name:any,
         price:number,
         price_single?:number,
         key:number,
@@ -126,7 +133,7 @@
     interface buying_type {
         key:number|string,
         number:number,
-        name:string,
+        name:any,
         title?:string,
         type?:string |number
     }
@@ -187,35 +194,77 @@
     onMounted(async () => {
         citys.value = [
             {
-                name: '美国-弗吉尼亚州',
+                name: ():string=>t('nations.usca'),
                 price: 80,
-                key: 'us-fl',
+                key: 'us-ca',
                 type: 0,
                 img: await getImage('us')
             },
             {
-                name: '德国-黑森州',
+                name: ():string=>t('nations.usva'),
                 price: 80,
-                key: 'gb-ld',
+                key: 'us-va',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: ():string=>t('nations.usnj'),
+                price: 80,
+                key: 'us-nj',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: ():string=>t('nations.ustx'),
+                price: 80,
+                key: 'us-tx',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
+                name: ():string=>t('nations.gblondon'),
+                price: 80,
+                key: 'gb-london',
+                type: 0,
+                img: await getImage('uk')
+            },
+            {
+                name: ():string=>t('nations.dehesse'),
+                price: 80,
+                key: 'de-hesse',
                 type: 0,
                 img: await getImage('ger')
+            },
+            {
+                name: ():string=>t('nations.sg'),
+                price: 80,
+                key: 'sg',
+                type: 0,
+                img: await getImage('id')
             }
         ]
         citys_type2.value = [
-        {
-                name: '美国-弗吉尼亚州',
+            {
+                name: ():string=>t('nations.us'),
                 price: 80,
-                key: 'us-fl',
+                key: 'us',
                 type: 1,
                 img: await getImage('us')
             },
             {
-                name: '德国-黑森州',
+                name: ():string=>t('nations.cnhk'),
                 price: 80,
-                key: 'gb-ld',
+                key: 'cn-hk',
                 type: 1,
-                img: await getImage('ger')
-            }
+                img: await getImage('cn')
+            },
+            {
+                name: ():string=>t('nations.cntw'),
+                price: 80,
+                key: 'cn-tw',
+                type: 1,
+                img: await getImage('cn')
+            },
         ]
         selected_time.value = timeSelect.value[0]
     })
@@ -295,6 +344,16 @@
     }
 
     const onRecharge = () => {
+        if (!isLogin()) {
+            
+            router.push({path:'/login'})
+            return
+        }
+        if (!isVerify()) {
+            open2.value = true
+            return
+        }
+
         packageName.value = t('setmenu.subtitle2')
         // console.log(buyNumbers .value, selected_time.value)
         purchaseIspInfos.value = buyNumbers.value.map((item)=> ({
@@ -310,6 +369,7 @@
             cost.value = buyNumbers.value.reduce((a,b)=>a+b.number, 0)*(selected_time.value?.price_single || 0)
         }
         if (cost.value == 0) {
+            message.warn(t('setmenu.tips'))
             return
         }
         open.value = true

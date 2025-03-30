@@ -10,7 +10,7 @@
             </div>
             <div class="flex justify-center flex-col items-center w-full z-10 pt-[5.375rem]">
                 <img src="../../assets/img_logo.png" class="w-[10.4375rem] h-[3.5rem] z-10"/>
-                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center z-10 mt-[1.25rem]">{{t('sixth.title')}}</span>
+                <span class="text-[#FFFFFF] text-[3.5rem] font-bold text-center z-10 mt-[1.25rem] ellipsis-single pl-[2rem] pr-[2rem] w-[80rem]" :title="t('sixth.title')">{{t('sixth.title')}}</span>
             </div>
             <!-- <div class="flex justify-center pt-[0.75rem] z-10">
                 <span class="text-[rgba(255,255,255,0.7)] text-[1.625rem] z-10">{{t('sixth.content')}}</span>

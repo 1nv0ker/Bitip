@@ -4,7 +4,7 @@
             <div class="w-full flex justify-between items-center">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title2')}}</span>
                 <div class="h-[2.5rem] w-[8.75rem] border-[#666666] border-[1px] rounded-[0.75rem] flex justify-center items-center text-[1rem] text-[#191919] font-medium cursor-pointer" @click="onAddSub">
-                    <span>+</span> <span class="pl-[0.5rem] ">{{t('trafficmanager.add_account')}}</span>
+                    <span class="pl-[0.5rem]">+</span> <span class="pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('trafficmanager.add_account')">{{t('trafficmanager.add_account')}}</span>
                 </div>
             </div>
             <div class="mt-[1.5rem] h-[18rem]">
@@ -23,7 +23,7 @@
                                 
                                 <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==0" @confirm="onEditStatus(record, 0)">
                                     <template #title>
-                                        <span>{{t('sub.message2')}}</span>
+                                        <span>{{t('sub.message3')}}</span>
                                     </template>
                                     <div class="w-[1.25rem]  flex justify-center items-center h-[1.25rem]  " :title="t('trafficmanager.disabled')">
                                         <img src="../../../assets/usercenter/flowmanager/disabled.png" :class="`w-full h-full ${record['enabled']==1?'cursor-pointer':'disabled_button'}`"/>
@@ -31,7 +31,7 @@
                                 </a-popconfirm>
                                 <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==1" @confirm="onEditStatus(record, 1)">
                                     <template #title>
-                                        <span>{{t('sub.message3')}}</span>
+                                        <span>{{t('sub.message2')}}</span>
                                     </template>
                                     <div class="w-[1.25rem] 
                                     flex justify-center items-center h-[1.25rem] cursor-pointer ]" :title="t('trafficmanager.enable')">
@@ -59,8 +59,13 @@
             <div class="pb-[1.5rem] flex justify-between">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title')}}</span>
                 <div class="flex items-center gap-[1.75rem]">
+                    <div>
+                        <a-select class="customASelect w-[20rem]" :loading="loading" :placeholder="t('trafficmanager.placeholder3')" @select="onSelected(selected)" v-model:value="KeyName">
+                            <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option>
+                        </a-select>
+                    </div>
                     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
-                        <a-range-picker  :picker="selected" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select" v-model:value="dates" @change="loadFlow">
+                        <a-range-picker  :picker="selected" :placeholder="[t('trafficmanager.placeholder1'), t('trafficmanager.placeholder2')]" class=" traffic_select" v-model:value="dates" @change="onSelected(selected)">
                             <template #suffixIcon>
                                 <div class="w-[1.25rem] h-[1.25rem] ">
                                     <img src="../../../assets/usercenter/date.png" class="w-full h-full"/>
@@ -77,7 +82,14 @@
                 </div>
             </div>
             <div class="w-full h-[25rem]" ref="mainRef">
-                <div id="traffic_chart" class="w-full h-full"></div>
+                <div id="traffic_chart" class="w-full h-full flex justify-center items-center">
+                    <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
+                        <a-empty v-if="isEmpty" />
+                    </a-config-provider>
+                    
+                </div>
+
+                
             </div>
         </div>
         <AddSubModal v-model="open" :type="type" @on-add-complate="onAddComplate" ref="addsubRef" />
@@ -107,6 +119,8 @@
     const addsubRef = ref<any>()
     const loading = ref(false)
     let myChart:any = null
+    const KeyName = ref<any>()
+    const isEmpty = ref(false)
     const params = reactive({
         total: 0,
         pageSize: 3,
@@ -115,6 +129,7 @@
     const datas = ref<any[]>([
 
     ])
+    const accountList = ref<any[]>([])
     const columns = computed(() => {
         return  [
             {
@@ -131,13 +146,13 @@
                 align:'center',
                 ellipsis: true
             },
-            // {
-            //     title: t('trafficmanager.flow'),
-            //     dataIndex: 'flow',
-            //     key: 'flow',
-            //     align:'center',
-            //     ellipsis: true
-            // },
+            {
+                title: t('trafficmanager.flow'),
+                dataIndex: 'usedBandwidth',
+                key: 'usedBandwidth',
+                align:'center',
+                ellipsis: true
+            },
             {
                 title:t('trafficmanager.date'),
                 key: 'sysCreateTime',
@@ -189,21 +204,37 @@
     const onSelected = (type:string) => {
         selected.value = type
         // loadAccount()
-        loadFlow()
+        console.log('onSelected', KeyName.value)
+        if (KeyName.value) {
+            console.log('loadFlow')
+            loadFlow()
+        }
     }
     onMounted(() => {
         // loadD3Chart()
         loadAccount()
-        loadFlow()
+        
     })
     const loadFlow = async () => {
+        isEmpty.value = false
+        myChart?.showLoading('default')
         const res:any = await GetFlow({
             DateBegin: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
             DateEnd: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
             // DateBegin:dayjs().subtract(2, 'day').format('YYYY-MM-DD HH:mm:ss'),
             // DateEnd:dayjs().format('YYYY-MM-DD HH:mm:ss'),
-            KeyName:'test'
+            KeyName:KeyName.value
         })
+        
+        if (res.code != 200) {
+            myChart?.hideLoading()
+            return
+        }
+        if (res.body.length == 0) {
+            isEmpty.value = true
+            myChart?.hideLoading()
+            return
+        }
         const tempDatas:any[] = res.body.map((item:any)=> {
             if (selected.value == 'date') {
                 return {
@@ -251,6 +282,12 @@
             params.total = res.body.totalRows
             params.current = res.body.pageNo
             params.pageSize = res.body.pageSize
+            accountList.value = res.body.records
+            .map((item:any)=> ({
+                value:item.keyName,
+                label:item.keyName
+            }))
+            
         })
         .catch(() => {
             loading.value = false
@@ -301,7 +338,6 @@
         myChart?.dispose();
         myChart = echarts.init(chartDom);
         var option;
-
         option = {
             grid: {
                 top: 10,
@@ -410,7 +446,8 @@
                 }
             ]
         };
-        option && myChart.setOption(option);
+        myChart?.hideLoading();
+        option && myChart?.setOption(option);
     }
 </script>
 <style lang="less">

@@ -20,7 +20,7 @@
         <div v-for="item in items" class="flex flex-col">
             <span class="text-[#9BA2BB] text-[1.2rem] font-medium pb-[1.5rem]">{{item.title}}</span>
             <div v-for="subtitle in item.items" class="flex flex-col gap-[1.25rem]">
-                <span class="text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer" @click="subtitle.path && router.push({name:subtitle.path})">{{subtitle.title}}</span>
+                <span class="text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer pl-[0.5em] pr-[0.5rem] ellipsis-single" @click="subtitle.path && router.push({name:subtitle.path})">{{subtitle.title}}</span>
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
                     </a-col> -->
                     <a-col :span="12">
                         <a-form-item :label="t('sub.form6')" :labelCol="{span: 24}" v-bind="validateInfos.limited" >
-                            <a-input-number class="w-full customANum "  addon-after="GB" v-model:value="modelRef.limited" :min="0" :max="10000" ></a-input-number>
+                            <a-input-number class="w-full customANum "  addon-after="GB" v-model:value="modelRef.limited" :min="0"  ></a-input-number>
                         </a-form-item>
                     </a-col>
                     <!-- <a-col :span="12">
@@ -73,9 +73,20 @@
         keyName: [
             {
                 required:true,
-                message:t('sub.message1')
+                message:t('sub.message1'),
+                pattern:`^[A-Za-z0-9]{8,15}$`
             }
         ],
+        limited: [
+            {
+                validator: (_rule:any, value:number, callback:any) => {
+                    if (value>10000) {
+                        callback(t('sub.message4'))
+                    }
+                    callback()
+                }
+            }
+        ]
     })
     const { validate, validateInfos, resetFields } = useForm(modelRef, rulesRef);
     const props = defineProps({

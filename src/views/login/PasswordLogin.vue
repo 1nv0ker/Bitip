@@ -57,9 +57,9 @@
             <Law />
         </div>
         
-        <button class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" type="submit" id="passLogin_button">
+        <a-button :loading="loading" class="w-full h-[4rem] mt-[2rem] bg-[#01AA44] rounded-[0.75rem] cursor-pointer flex items-center justify-center" htmlType="submit" id="passLogin_button">
             <span class="text-[white] text-[1.5rem] font-medium">{{t('login.login')}}</span>
-        </button>
+        </a-button>
         <div class="w-full h-[4rem] mt-[2rem] border-[1px] border-[#D9D9D9]  rounded-[0.75rem] cursor-pointer flex items-center justify-center" @click="onForgetPass">
             <span class="text-[#191919] text-[1.5rem] font-medium">{{t('login.forgetPassword')}}</span>
         </div>
@@ -82,9 +82,9 @@
                         </span>
                     </div>
                     <div class="flex justify-evenly mt-[1.2rem]   ">
-                        <div class="w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
-                            <span class="font-medium">{{t('login.agreeLogin')}}</span>
-                        </div>
+                        <a-button :loading="loading" class="customAbutton w-[6.75rem] h-[2rem] flex justify-center items-center bg-[#01AA44] rounded-[0.4rem] text-[white] text-[0.8rem] cursor-pointer" @click="onContinueLogin">
+                            <span class="font-medium text-[white]">{{t('login.agreeLogin')}}</span>
+                        </a-button>
                         <div class="w-[6.75rem] h-[2rem] flex justify-center items-center rounded-[0.4rem] border-[#D9D9D9] border-[1px] text-[0.8rem] cursor-pointer" @click="onCancelLogin">
                             <span class="font-medium">{{t('login.disagree')}}</span>
                         </div>
@@ -112,6 +112,7 @@
     import AliyunCaptchaComponent from './AliyunCaptchaComponent.vue';
     const phoneCode = ref('')
     const focusStatus = ref(false)
+    const loading = ref(false)
     const modalRef = ref(null)
     const captchaVerifyParam = ref('')
     const captchaStatus = ref(false)
@@ -162,6 +163,7 @@
         captchaStatus.value = false
     }
     const accountLogin = () => {
+        loading.value = true
         Login({
             loginType:'pwd',
             tel: phoneNum.value,
@@ -170,6 +172,7 @@
             captchaVerifyParam: captchaVerifyParam.value
         })
         .then((res:any) => {
+            loading.value = false
             console.log('res', res)
             store.setToken(res.body.token)
             store.setUserInfo()
@@ -177,6 +180,7 @@
             router.push(redirectPath)
         })
         .catch(() => {
+            loading.value = false
             capRef.value && capRef.value.onRefresh()
         })
         

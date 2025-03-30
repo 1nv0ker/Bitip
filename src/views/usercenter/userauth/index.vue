@@ -80,7 +80,7 @@
                     </div>
                     <span class="text-[#191919] text-[1.25rem] font-bold">{{t('userauth.step3_title')}}</span>
                 </div>
-                <div class="w-[37.125rem] pl-[1.5rem] h-[8rem] rounded-[1rem] border-[1px] justify-center mt-[2rem] border-[#EBEFF8] bg-[#FAFAFA] text-[#191919] text-[0.91rem] flex-col flex gap-[0.75rem]">
+                <div class="w-[37.125rem] pl-[1.5rem] rounded-[1rem] pb-[1rem] pt-[1rem] pr-[1rem] border-[1px] justify-center mt-[2rem] border-[#EBEFF8] bg-[#FAFAFA] text-[#191919] text-[0.91rem] flex-col flex gap-[0.75rem]">
                     <span class="text-[#111111]">{{t('userauth.tip_title')}}</span>
                     <span>{{t('userauth.tip1')}}</span>
                     <span>{{t('userauth.tip2')}}<span class="text-[#01AA44] cursor-pointer" @click="router.push({name:'privatelaw'})">《{{t('login.privacyPolicy')}}》</span>{{t('userauth.tip3')}}</span>
@@ -90,7 +90,7 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref, reactive, onBeforeMount, onBeforeUnmount } from 'vue'
+    import { computed, ref, reactive, onBeforeMount, onBeforeUnmount, onUnmounted } from 'vue'
     import { Form } from 'ant-design-vue';
     import { useRouter } from 'vue-router'
     import { Certification } from '../../../api/login'
@@ -151,12 +151,20 @@
     onBeforeMount(() => {
         loadUserInfo()
     })
+    onUnmounted(() => {
+        console.log('onUnmounted')
+        userauthInterval && clearInterval(userauthInterval)
+    })
     onBeforeUnmount(() => {
+        console.log('onBeforeUnmount')
         userauthInterval && clearInterval(userauthInterval)
     })
     const loadUserInfo = () => {
         userStore.setUserInfo()
-        current.value = userStore.userInfo?.isVerify?2:0
+        if (userStore.userInfo?.isVerify) {
+            current.value = 2
+        }
+        // current.value = userStore.userInfo?.isVerify?2:0
         if (current.value === 2) {
             userauthInterval && clearInterval(userauthInterval)
         }
@@ -192,6 +200,7 @@
             })
         } else {
             current.value = value
+            userauthInterval && clearInterval(userauthInterval)
         }
         
     }
