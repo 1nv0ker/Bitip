@@ -41,7 +41,7 @@
                 <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
             </div>
             <div class="w-[3rem] h-[3rem] ] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer">
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer" @click="showContact=!showContact">
                     <img  src="../../assets/contact.png" class="w-full h-full"/>
                 </div>
             </div>
@@ -95,6 +95,7 @@
                 </div>
             </div>
         </div>
+        <Contact v-show="showContact"/>
     </div>
 </template>
 <script setup lang="ts">
@@ -105,6 +106,7 @@
     import lanImg2 from '../../assets/translate_en.png'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
+    import Contact from '../Contact.vue';
     import useUserStore from '../../store/user'
 
     const { t } = useI18n()
@@ -115,6 +117,7 @@
     const lan = ref()
     const router = useRouter()
     const showUser = ref(false)
+    const showContact = ref(false)
     const onOpenMenu = () => {
         emit('onOpenMenu')
         

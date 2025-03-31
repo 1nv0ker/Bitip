@@ -221,7 +221,7 @@
     })
     
     const onContact = () => {
-
+        window.open('https://work.weixin.qq.com/kfid/kfcf16ce8cd66e324b1', '__blank')
     }
     const onFreeUse = () => {
         router.push({name:'proxycity'})

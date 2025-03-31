@@ -171,7 +171,7 @@
         console.log('OnFreeUse')
     }
     const onContact = () => {
-        
+        window.open('https://work.weixin.qq.com/kfid/kfcf16ce8cd66e324b1', '__blank')
     }
     const onMouseMove = (event:MouseEvent) => {
         // console.log('MouseEvent')

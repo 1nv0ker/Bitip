@@ -82,3 +82,11 @@ export function DeleteISP(params:DeleteData) {
         params: params
     })
 }
+
+//导出
+export function DownloadIsp(params:proxyData) {
+    return axios.get(`${BASIC_MODULE2}/DownIsp`, {
+        params: params,
+        responseType: 'blob'
+    })
+}

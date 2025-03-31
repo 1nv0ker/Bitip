@@ -20,8 +20,9 @@
                                 <div class="w-[1.25rem] h-[1.25rem]  cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit(record)">
                                     <img src="../../../assets/usercenter/flowmanager/edit.png" class="w-full h-full"/>
                                 </div>
-                                
-                                <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==0" @confirm="onEditStatus(record, 0)">
+                                <a-switch :checked="record['enabled']==0?false:true" :checked-children="t('trafficmanager.disabled')" :un-checked-children="t('trafficmanager.enable')" @change="(checked:boolean)=>onEditStatus(record, checked?1:0)">
+                                </a-switch>
+                                <!-- <a-popconfirm placement="topLeft" :ok-text="t('purchaseddetail.yes')" :cancel-text="t('purchaseddetail.no')" :disabled="record['enabled']==0" @confirm="onEditStatus(record, 0)">
                                     <template #title>
                                         <span>{{t('sub.message3')}}</span>
                                     </template>
@@ -37,7 +38,7 @@
                                     flex justify-center items-center h-[1.25rem] cursor-pointer ]" :title="t('trafficmanager.enable')">
                                     <img src="../../../assets/usercenter/flowmanager/enable.png" :class="`w-full h-full ${record['enabled']==0?'cursor-pointer':'disabled_button'}`" />
                                     </div>
-                                </a-popconfirm>
+                                </a-popconfirm> -->
                             </div>
                         </template>
                         <template v-else-if="column.key === 'enabled'">
@@ -121,6 +122,7 @@
     let myChart:any = null
     const KeyName = ref<any>()
     const isEmpty = ref(false)
+    // const checked = ref(false)
     const params = reactive({
         total: 0,
         pageSize: 3,
@@ -322,6 +324,7 @@
         })
     }
     const onEditStatus = async (record:updateData, type:number) => {
+        record.enabled = type
         const res:any = await UpdateAccount({
             ...record,
             enabled:type

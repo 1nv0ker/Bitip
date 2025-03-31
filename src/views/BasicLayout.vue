@@ -1,7 +1,7 @@
 <template>
     <div class="w-full relative">
-        <div class="w-[4.75rem] h-[21.75rem] fixed right-[1.5rem] hidden 
-        md:flex top-[30rem] z-[99] rounded-[6.25rem] bg-[white] 
+        <!-- <div class="w-[4.75rem] h-[21.75rem] fixed right-[1.5rem] 
+        flex top-[30rem] z-[99] rounded-[6.25rem] bg-[white] 
         flex-col items-center 
         justify-evenly" style="box-shadow: 0px 4px 20px 0px rgba(3,42,18,0.08);" v-show="showContact">
             <div class="flex flex-col items-center cursor-pointer">
@@ -12,15 +12,18 @@
                 <img src="../assets/wechat.png" class="w-[2.25rem] h-[2.25rem]" />
                 <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title2') }}</span>
             </div>
-            <div class="flex flex-col items-center cursor-pointer">
-                <img src="../assets/offical.png" class="w-[2.25rem] h-[2.25rem]" />
-                <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title3') }}</span>
-            </div>
+            
             <div class="flex flex-col items-center cursor-pointer">
                 <img src="../assets/tel.png" class="w-[2.25rem] h-[2.25rem]" />
                 <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title4') }}</span>
             </div>
-        </div>
+            
+            <div class="flex flex-col items-center cursor-pointer">
+                <img src="../assets/offical.png" class="w-[2.25rem] h-[2.25rem]" />
+                <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title3') }}</span>
+            </div>
+        </div> -->
+        <Contact v-show="showContact"/>
         <NavComponent ref="navRef" @onCloseActivity="onCloseActivity" :customeStyle="customeStyle" class="z-50" />
         <!-- <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`"> -->
         <div class="w-full ">
@@ -35,13 +38,13 @@
 </template>
 <script setup lang="ts">
     import NavComponent from './home/NavComponent.vue';
-
+    import Contact from './Contact.vue';
     import FooterComponent from './home/FooterComponent.vue';
-    import { useI18n } from 'vue-i18n'
+    // import { useI18n } from 'vue-i18n'
     import { useRoute  } from 'vue-router'
     import { ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'
     import userStore from '../store/user'
-    const { t } = useI18n()
+    // const { t } = useI18n()
     const showContact = ref(false)
     const showButton = ref(false)
     const acvitityStatus = ref(true)

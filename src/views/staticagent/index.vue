@@ -32,7 +32,7 @@
                             <span class="pl-[0.5rem] text-[#191919] text-[1.25rem] font-medium">{{t('first.contact')}}</span>
                         </div> -->
                         <RippleButton  class="w-[13.25rem] h-[3.25rem] rounded-[1.75rem] bg-[white] text-[1.25rem] font-medium hover:text-[white] text-[#191919]
-                        border-[1px] border-[#191919]" :text="t('first.contact')" :color="'#01AA44'" @btn-click="onContact" @mouse-enter="(v)=>hoverStatus=v" @mouse-out="(v)=>hoverStatus=v">
+                        border-[1px] border-[#191919]" :text="t('staticagent.subButton1')" :color="'#01AA44'" @btn-click="onContact" @mouse-enter="(v)=>hoverStatus=v" @mouse-out="(v)=>hoverStatus=v">
                             <img src="../../assets/contact.png" :class="`w-[1.5rem] h-1.5rem mr-[0.5rem] z-10 ${hoverStatus?'invert':''}`"/>
                         </RippleButton>
                     </div>
@@ -181,7 +181,7 @@
         ]
     })
     const onContact = () => {
-
+        window.open('https://work.weixin.qq.com/kfid/kfcf16ce8cd66e324b1', '__blank')
     }
     const onFreeUse = () => {
         router.push({name:'purchased'})

@@ -2,9 +2,9 @@
     <div class="w-full h-full">
         <div class="w-full h-full flex gap-[1.75rem] overflow-y-auto">
             <!-- 基础展示 -->
-            <div class="rounded-[1.5rem] bg-white p-[1.75rem] overflow-y-auto " style="width: calc( 100% - 27rem );">
+            <div class="rounded-[1.5rem] bg-white p-[1.75rem] overflow-y-auto h-full" style="width: calc( 100% - 27rem );">
                 
-                <div class="w-full ">
+                <div class="w-full h-[7rem]">
                     <div class="w-full flex justify-between items-center">
                         <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card1')}}</span>
                         <div class="flex gap-[1.25rem]">
@@ -32,8 +32,8 @@
 
                 </div>
                 <!-- 定位城市 -->
-                <div class="mt-[1rem] pr-[1.5rem]">
-                    <a-form layout="vertical" :rules="rules" :model="modelRef" ref="formRef">
+                <div class="mt-[1rem] pr-[1.5rem] w-full" style="height: calc( 100% - 10rem);">
+                    <a-form layout="vertical" :rules="rules" :model="modelRef" ref="formRef" class="w-full">
                         <a-row :gutter="[24, 24]">
                             <a-col :span="8" class="h-[4.75rem]">
                                 <a-form-item :label="t('proxycity.form1')" name="userName">
@@ -43,11 +43,17 @@
                                 </a-form-item>
                             </a-col>
                         </a-row>
-                        <a-row :gutter="[24, 24]" class="mt-[1.5rem]">
-                            <a-col :span="8" v-for="form in formItems" class="h-[4.75rem]">
-                                <a-form-item :label="form.label" :name="form.key">
+                        <a-row :gutter="[24, 24]" class="mt-[1.5rem] w-full">
+                            <a-col :span="8" v-for="form in formItems" class="h-[4.75rem] w-full">
+                                <a-form-item :label="!form.slot?form.label:null" :name="form.key" class="w-full">
+                                    <template #label v-if="form.slot">
+                                            <div class="flex justify-between w-full">
+                                                <span>{{form.label}}</span>
+                                                <span class=" cursor-pointer text-[#01AA44]" @click="onDownload">{{t('proxycity.download')}}</span>
+                                            </div>
+                                    </template>
                                     <div class="relative h-[3rem]">
-                                        <a-select :showSearch="form.showSearch" :placeholder="form.placeholder" class="customASelect" :disabled="form.disabled"
+                                        <a-select :showSearch="form.showSearch" optionFilterProp="label" :placeholder="form.placeholder" class="customASelect" :disabled="form.disabled"
                                          :options="form.options || []" v-model:value="modelRef[form.key]" @select="(_:any,props:any)=>onSelect(form.key, props)">
                                     
                                         </a-select>
@@ -81,11 +87,12 @@
                             </a-select>
                         </div>
                     </div>
-                    <div class="w-full h-[20.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]">
-                        <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] h-[16.625rem] pt-[1.75rem]">
-                            <span v-for="item in proxyIPS">
-                                {{modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item}}
-                            </span>
+                    <div class="w-full h-[16.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]" style="height: calc( 100% - 23.25rem);">
+                        <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] pt-[1.75rem]" style="height: calc( 100% - 4rem);">
+                            <div v-for="item in proxyIPS" class="flex items-center">
+                                <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item)"/>
+                                <span class="pl-[0.5rem]">{{modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item}}</span>
+                            </div>
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
                             
@@ -99,7 +106,7 @@
                                 <!-- <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem]"/>
                                 <span class="pl-[0.75rem]">{{ t('proxycity.copy') }}</span> -->
                             </div>
-                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer">
+                            <div class="flex items-center text-[#666666] text-[1rem] cursor-pointer" v-show="modelRef.IP == '1'" @click="onSwitchAuto"> 
                                 <img src="../../../assets/switch.png" class="w-[1.5rem] h-[1.5rem]"/>
                                 <span class="pl-[0.75rem]">{{ t('proxycity.switch2') }}</span>
                             </div>
@@ -111,32 +118,38 @@
                 </div>
             </div>
             <div class="h-full w-[25.25rem] bg-[white] rounded-[1.5rem] p-[1.75rem] gap-[1.5rem] flex-col flex">
-                <div class="">
-                    <a-textarea class="customArea"  :placeholder="t('proxycity.agentPlaceholder')" :rows="4" :maxlength="10" show-count />
+                <div class="w-full h-[8.5rem]">
+                    <!-- <a-textarea class="customArea"  :placeholder="t('proxycity.agentPlaceholder')" :rows="4" :maxlength="10" show-count /> -->
+                    <ProxyText class="w-full" v-model="IPS"/>
                 </div>
                 <div class="w-full h-[3rem] rounded-[0.75rem] bg-[#01AA44] cursor-pointer flex justify-center items-center ">
                     <span class="text-white text-[1rem] font-medium">{{ t('proxycity.button3') }}</span>
                 </div>
-                <div class="w-full h-[39rem] border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem]">
+                <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem]" style="height: calc( 100% - 10rem );">
 
                 </div>
             </div>
         </div>
+        <QrCodeModal v-model="open" :qrcode="qrcode"/>
     </div>
 </template>
 <script setup lang="ts">
     //选择数量1-1000 1 10 100 1000
-    import { computed , onMounted, ref, reactive } from 'vue'
+    import { computed , onMounted, ref, reactive, nextTick } from 'vue'
     import NumberComponent from '../../../components/NumberComponent.vue'
-    import locations from './location.json'
+    import QrCodeModal from '../purchaseddetail/QrCodeModal.vue';
+    import locations from '../../../../public/map.json'
+    import { QrcodeOutlined } from '@ant-design/icons-vue';
     import AccountSelect from './AccountSelect.vue'
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi, GenerateApiWhenEnable, SwitchIP } from '../../../api/proxy'
+    import ProxyText from './ProxyText.vue';
     import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
+    const IPS = ref<any[]>([])
     const modelRef = reactive<Record<string, string|undefined>>({
         userName:undefined,
         IP:'0',
@@ -155,6 +168,8 @@
     const proxyIPS = ref<any[]>([])
     const copy = ref(false)
     const loading = ref(false)
+    const open = ref(false)
+    const qrcode = ref('')
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -165,7 +180,7 @@
                 { required: true, message: t('proxycity.form2_rule'), trigger: 'change' },
             ],
             time: [
-                { required: modelRef.IP=='0'?true:false, message: t('proxycity.form3_rule'), trigger: 'change' },
+                { required: modelRef.country=='0'?false:(modelRef.IP=='0'?true:false), message: t('proxycity.form3_rule'), trigger: 'change' },
             ],
             number: [
                 { required: true, message: t('proxycity.form4_rule'), trigger: 'change' },
@@ -204,13 +219,17 @@
                 placeholder: t('proxycity.form2_placeholder'),
                 key:'country',
                 showButton:false,
+                slot: true,
                 showSearch: true,
-                options: locations.map((item=>({
-                    label:item.country,
+                options:[{
+                    label:t('proxycity.countryform'),
+                    value:'0',
+                }].concat(locations.map((item=>({
+                    label:item.name+'-'+item.country,
                     value:item.country,
                     state:item.state,
                     city:item.city
-                })))
+                }))))
             },
             {
                 label: t('proxycity.form3'),
@@ -218,7 +237,8 @@
                 key:'state',
                 showButton:false,
                 showSearch: true,
-                options: stateDatas.value
+                options: stateDatas.value,
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.country
                 // disabled:true
             },
             {
@@ -228,15 +248,19 @@
                 showButton:false,
                 showSearch: true,
                 options: cityDatas.value,
-                disabled: !modelRef.state
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.state
             },
             {
                 label: t('proxycity.form5'),
                 placeholder: t('proxycity.form5_placeholder'),
                 key:'time',
                 showButton:false,
-                disabled: modelRef.IP=='0'?false:true,
+                disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)),
                 options: [
+                    {
+                        value: 0,
+                        label:t('proxycity.IPform')
+                    },
                     {
                         value: 5,
                         label: 5+t('form.min')
@@ -268,6 +292,7 @@
                 placeholder: t('proxycity.form6_placeholder'),
                 key:'IP',
                 showButton:false,
+                disabled: (modelRef.country=='0'?true:false),
                 options: [
                     {
                         value: '1',
@@ -306,12 +331,52 @@
             }
         ]
     })
+    //自动切换
+    const onSwitchAuto = async () => {
+        const {  proxyPwd, userName } = proxyConfig.value
+        const res:any = await SwitchIP({
+            username:userName,
+            password:proxyPwd
+        })
+        .catch(() => {
+            loading.value = false
+        })
+        loading.value = false
+        if (res.code && res.code == 200) {
+            message.success(t('form.success'))
+            // proxyIPS.value = res.body.split(`\n`)
+            // loading.value = false
+        }
+    }
     //生成代理
     const onGenerate = () => {
         formRef.value.validate()
-        .then(() => {
+        .then(async () => {
             proxyIPS.value = []
             modelRef.generateType = '1'
+            if (modelRef.IP == '1') {
+                modelRef.generateType = '0'
+                loading.value = true
+                const params = {
+                    KeyName:modelRef.userName,
+                    Num:modelRef.number,
+                    Country:modelRef.country,
+                    State:modelRef.state,
+                    City:modelRef.city,
+                    SessionTime:modelRef.time,
+                    AutoSwitch: modelRef.IP,
+                    Format: modelRef.type
+                }
+                const res:any = await GenerateApiWhenEnable(params)
+                .catch(() => {
+                    loading.value = false
+                })
+                if (res.code && res.code == 200) {
+                    proxyIPS.value = res.body.split(`\n`)
+                    loading.value = false
+                }
+                return
+            }
             //生成代理
             const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName } = proxyConfig.value
             for (let i=0;i<Number(modelRef.number);i++) {
@@ -325,11 +390,16 @@
                     //rotating session存在
                     const sessiong = modelRef.IP == '0'?generateRandomString():0
                     const hostname_port = url+':'+port
-                    const username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
+                    let username_password = ''
+                    let proxyIP = ''
+                    if (modelRef.country == '0') {
+                        username_password = userName + ':' + proxyPwd
+                    } else {
+                        username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
                         + '_sid-'+sessiong + (modelRef.state?('_s-'+modelRef.state):'')
                         + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')
                         + ':'+ proxyPwd
-                    let proxyIP = ''
+                    }
                     if (modelRef.type == '0') {
                         proxyIP = hostname_port + ':' + username_password
                     } else if (modelRef.type == '1') {
@@ -351,12 +421,20 @@
             // console.log(proxyIPS.value)
         })
     }
+    const onOpenQRcode = (code:string) => {
+        console.log('code', code)
+        
+        open.value = true
+        nextTick(() => {
+            qrcode.value = code
+        })
+    }
     const onGenerateApi = () => {
         formRef.value.validate()
-        .then(() => {
+        .then(async () => {
             loading.value = true
-            
-            GenerateApi({
+            let res:any;
+            const params = {
                 KeyName:modelRef.userName,
                 Num:modelRef.number,
                 Country:modelRef.country,
@@ -365,18 +443,29 @@
                 SessionTime:modelRef.time,
                 AutoSwitch: modelRef.IP,
                 Format: modelRef.type
-            })
-            .then((res:any) => {
-                modelRef.generateType = '0'
-                console.log('res', res, res.split(`\n`))
-                proxyIPS.value = res.split(`\n`)
-                loading.value = false
-            })
+            }
+            res = await GenerateApi(params)
             .catch(() => {
                 loading.value = false
             })
+            // }
+            if (res.code && res.code == 200) {
+                modelRef.generateType = '0'
+                // console.log('res', res, res.split(`\n`))
+                proxyIPS.value = res.split(`\n`)
+                loading.value = false
+            }
         })
         
+    }
+    const onDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/map.json';
+        link.download = '全部地区文件'
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        // window.open('/map.json', "__blank")
     }
     //随机session
     const generateRandomString = () => {
@@ -394,7 +483,7 @@
         if (proxyIPS.value.length == 0) {
             return
         }
-        const str = proxyIPS.value.map((item:any)=> {
+        let str:any = proxyIPS.value.map((item:any)=> {
             if (modelRef.type == '0') {
                 return item.hostname_port + ':' + item.username_password 
             } else if (modelRef.type == '1') {
@@ -403,6 +492,7 @@
                 return item.username_password + ':' + item.hostname_port
             }
         }).join(';')
+        str = str.replace(/(\r\n|\n|\r)/g, '')
         if (navigator.clipboard) {
             navigator.clipboard.writeText(str)
         } else {
@@ -450,17 +540,37 @@
         
         if (key == 'country') {
             const { state, city } = props
-            //重新选择清空
-            modelRef.city = undefined
-            modelRef.state = undefined
-            stateDatas.value = state.map((item:any)=>({
-                value:item.label,
-                label:item.label
-            }))
-            cityDatas.value = city.map((item:any)=>({
-                value:item.label,
-                label:item.label
-            }))
+            if (modelRef.country == '0') {
+                modelRef.city = undefined
+                modelRef.state = undefined
+                modelRef.time = undefined
+            }  else {
+                //重新选择清空
+                modelRef.city = undefined
+                modelRef.state = undefined
+                if (state && state.length==0) {
+                    stateDatas.value = []
+                } else {
+                    stateDatas.value = [{
+                        label:t('proxycity.cityform'),
+                        value:''
+                    }].concat(state.map((item:any)=>({
+                        value:item.label,
+                        label:item.label
+                    })))
+                }
+                if (city && city.length == 0) {
+                    cityDatas.value = []
+                } else {
+                    cityDatas.value = [{
+                        label:t('proxycity.cityform'),
+                        value:''
+                    }].concat(city.map((item:any)=>({
+                        value:item.label,
+                        label:item.label
+                    })))
+                }
+            }
         }
         if (key == 'state') {
             modelRef.city = undefined
@@ -523,5 +633,9 @@
                 font-size: 1rem;
             }
         }
+    }
+    //form label
+    :where(.css-dev-only-do-not-override-1p3hq3p).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-xl-24.ant-form-item-label >label {
+        width: 100%;
     }
 </style>

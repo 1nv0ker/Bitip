@@ -155,7 +155,7 @@ export const en = {
         
     },
     contact: {
-        title1: 'QQ',
+        title1: 'Manager',
         title2: 'WeChat',
         title3: 'Official',
         title4: 'Telegram'
@@ -365,14 +365,18 @@ export const en = {
         copy: 'copy',
         switch: 'Manually switch IP',
         switch2:'Automatically switch IP',
-        agentPlaceholder:'Paste the generated proxy',
+        agentPlaceholder:'Paste the generated proxy (separated by ;)',
         button3:'Check Proxy',
         form1_rule: 'Please select a sub-account',
 
         form2_rule:'Please select your country',
         form3_rule:'Please select IP validity',
         form4_rule:'Please select quantity',
-        type:'Generate Format'
+        type:'Generate Format',
+        download:'Download all region data',
+        IPform:'Change each time request',
+        countryform:'Global Confusion',
+        cityform:'Random Selection'
     },
 
     trafficmanager: {
@@ -585,8 +589,8 @@ export const en = {
         subtitle1:'Strong high IP purity and strong service adaptability',
         subtitle2:'100% exclusive',
         subtitle3:'Customized by enterprises',
-        subButton1:'Free trial',
-        subButton2:'Contact Us',
+        subButton1:'learn more',
+        subButton2:'learn more',
         title2:'Advantages of BitIP Static Residential proxy',
         titl2_item1: 'High IP purity, strong service adaptability',
         title2_subtitle1:'Strict resource screening logic, cleansing specific businesses, and ensuring that they meet business needs.',
@@ -862,7 +866,7 @@ export const zh = {
         subtitle: '立减¥100'
     },
     contact: {
-        title1: 'QQ客服',
+        title1: '客户经理',
         title2: '微信客服',
         title3: '微信公众号',
         title4: 'Telegram'
@@ -1000,7 +1004,7 @@ export const zh = {
         menu6_title:'定制',
         menu6_button:'联系客服',
         title2:'套餐包括什么？',
-        content1: '流量用不过期',
+        content1: '流量永不过期',
         content2: '亿级超大 IP池',
         content3: '无限并发',
         content4: '可变时效',
@@ -1098,13 +1102,17 @@ export const zh = {
         copy: '复制',
         switch: '手动切换IP',
         switch2:'自动切换IP',
-        agentPlaceholder:'粘贴生成的代理',
+        agentPlaceholder:'粘贴生成的代理(;隔开)',
         button3:'检查代理',
         form1_rule: '请选择子账号',
         form2_rule:'请选择国家',
         form3_rule:'请选择IP时效',
         form4_rule:'请选择数量',
-        type:'生成格式'
+        type:'生成格式',
+        download:'下载全部地区数据',
+        IPform:'每次请求更换',
+        countryform:'全球混淆',
+        cityform:'随机选择'
     },
     trafficmanager: {
         title: '账户流量统计',
@@ -1319,8 +1327,8 @@ export const zh = {
         subtitle1:'高纯净度IP，业务适配能力强',
         subtitle2:'100%独享',
         subtitle3:'企业定制',
-        subButton1:'免费试用',
-        subButton2:'联系我们',
+        subButton1:'了解更多',
+        subButton2:'了解更多',
         title2:'BitIP静态住宅代理的优势',
         titl2_item1: '高纯净度IP，业务适配能力强',
         title2_subtitle1:'严格的资源筛选逻辑，针对特定业务进行清洗，确保贴合业务需要。',

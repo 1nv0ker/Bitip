@@ -21,7 +21,7 @@
                 </RippleButton>
 
                 <div class="h-[3.625rem] w-[14.625rem] rounded-[4.18rem]  text-[white] text-[1.25rem] z-10
-                font-medium border-[white] border-[1px] flex justify-center items-center cursor-pointer">
+                font-medium border-[white] border-[1px] flex justify-center items-center cursor-pointer" @click="onContact">
                     <span>{{t('sixth.button2')}}</span>
                 </div>
             </div>
@@ -78,5 +78,8 @@
         imgRef.value.addEventListener('transitionend', () => {
             isAnimating = false;
         }, { once: true });
+    }
+    const onContact = () => {
+        window.open('https://work.weixin.qq.com/kfid/kfcf16ce8cd66e324b1', '__blank')
     }
 </script> 

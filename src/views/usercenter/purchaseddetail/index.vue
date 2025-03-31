@@ -49,9 +49,9 @@
                 <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer" @click="onAllRenew">
                     <span class="text-[1rem] text-[#191919] ellipsis-single pl-[0.5rem] pr-[0.5rem]" :title="t('purchaseddetail.button2')">{{t('purchaseddetail.button2')}}</span>
                 </div>
-                <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
+                <a-button :loading="params.loading " class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer" @click="onDownload">
                     <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button3')}}</span>
-                </div>
+                </a-button>
                 <!-- <div class="flex gap-[1.75rem] h-full">
                     <div class="border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.5rem] flex justify-center items-center h-full w-[6.875rem] cursor-pointer">
                         <span class="text-[1rem] text-[#191919]">{{t('purchaseddetail.button2')}}</span>
@@ -128,7 +128,7 @@
     import  { Dayjs } from 'dayjs';
     import { QrcodeOutlined } from '@ant-design/icons-vue';
     import PaginationComponent from '../../../components/PaginationComponent.vue';
-    import { GetList, SetAutoRenew, DeleteISP } from '../../../api/recharge'
+    import { GetList, SetAutoRenew, DeleteISP, DownloadIsp } from '../../../api/recharge'
     import QrCodeModal from './QrCodeModal.vue';
     import Copy from './Copy.vue';
     import AutoComponent from './AutoComponent.vue';
@@ -233,6 +233,9 @@
             SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
             IspType:params.IspType
         })
+        .catch(() => {
+            params.loading = false
+        })
         params.loading = false
         if (res.code == 200) {
             tableDatas.value = res.body.records.map((item:any)=>{
@@ -321,6 +324,44 @@
         nextTick(() => {
             qrcode.value = code
         })
+    }
+    const onDownload = async () => {
+        params.loading = true
+        
+        // window.location.href = 'https://www.bitip.com/api/UserIsps/DownIsp?PageNo=1&PageSize=10&IspLocation=&KeyWord='
+        // window.open('https://example.com/files/report.pdf', '_blank');
+        const res:any = await DownloadIsp({
+            PageNo: params.current,
+            PageSize:params.pageSize,
+            IspLocation:params.IspLocation,
+            AutoRenew:params.AutoRenew,
+            KeyWord:params.KeyWord,
+            SearchBeginTime: dates.value?dates.value[0].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            SearchEndTime: dates.value?dates.value[1].format('YYYY-MM-DD HH:mm:ss'):undefined,
+            IspType:params.IspType
+        })
+        .catch(() => {
+            params.loading = false
+        })
+        params.loading = false
+        // console.log('res', res, typeof res)
+       
+        // window.locaion = res
+        const url =  URL.createObjectURL(res);
+      
+        // 创建隐藏的下载链接
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = '已购详情.xlsx';
+        
+        // 触发下载
+        document.body.appendChild(a);
+        a.click();
+        
+        // 清理资源
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
     }
 </script>
 
