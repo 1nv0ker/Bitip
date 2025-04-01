@@ -3,7 +3,7 @@
 
         <div class="w-full flex h-full gap-[5.625rem] items-center justify-center">
             <div class=" h-full flex  flex-col gap-[1.875rem] justify-center">
-                <img src="../../assets/logo.png" class="w-[15rem] h-[5rem] cursor-pointer" @click="router.push({name:'home'})"/>
+                <img src="../../assets/logo.svg" class="w-[15rem] h-[5rem] cursor-pointer" @click="router.push({name:'home'})"/>
                 <span class="text-[4rem] w-[39.1825rem] text-[#191919] font-bold pt-[1.75rem] ">{{t('login.loginTitle')}}</span>
             </div>
             <div class="bitip_form">
@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
-  import loginBg from '../../assets/login.webp'
+  import loginBg from '../../assets/login.svg'
   const { t } = useI18n()
   const router = useRouter()
 </script>

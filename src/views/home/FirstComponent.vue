@@ -1,38 +1,39 @@
 <template>
-    <div class="w-full row gx-0 pt-[5.125rem] pb-[7.8125rem] relative" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave">
+    <div class="w-full flex justify-center pt-[5.125rem] pb-[7.8125rem] relative plan_bg" @mousemove="onMouseMove" ref="mouseBoxRef" @mouseleave="onMouseLeave" 
+    :style="`background-image: url(${mask})`">
         <!-- 移动渐变区块 -->
         <img :src="mask_bg" class=" absolute w-[17rem] h-[17rem] pointer-events-none hidden" 
         ref="hoverbgRef" style="transform: translate(-50%, -50%);"/>
         <!-- 背景图片 -->
-        <div class="absolute top-0 right-0 left-0 bottom-0">
-            <img :src="mask" class="  w-full h-full" />
-        </div>
+        <!-- <div class="absolute top-0 right-0 left-0 bottom-0" style="">
+            <img src="../../assets/mask_bg.svg" class="w-full h-full" />
+        </div> -->
 
-        <div class="col"></div>
+        <!-- <div class="col"></div> -->
 
-        <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+        <div class="w-[80rem]">
             <div class="flex justify-center flex-col items-center w-full">
-                <div class="flex justify-center gap-[2.5rem] z-20">
+                <div class="flex justify-center gap-[2.5rem] z-10">
                     <div class="flex cursor-pointer items-center">
-                        <img src="../../assets/star_2.png" class="w-[1.375rem] h-[1.375rem]"/>
+                        <img src="../../assets/star_2.svg" class="w-[1.375rem] h-[1.375rem]"/>
                         <span class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">Trustpilot</span>
                         <div class="flex gap-[0.125rem] items-center">
-                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_2.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_2.svg" class="w-[1.375rem] h-[1.375rem]" />
                         </div>
                     </div>
                     <div class="flex cursor-pointer items-center">
-                        <img src="../../assets/star_1.png" class="w-[1.375rem] h-[1.375rem]"/>
+                        <img src="../../assets/star_1.svg" class="w-[1.375rem] h-[1.375rem]"/>
                         <span  class="pl-[0.5rem] text-[#191919] text-[1rem] font-medium pr-[0.625rem]">G2</span>
                         <div class="flex gap-[0.125rem] items-center">
-                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
-                            <img src="../../assets/stars_1.png" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.svg" class="w-[1.375rem] h-[1.375rem]" />
+                            <img src="../../assets/stars_1.svg" class="w-[1.375rem] h-[1.375rem]" />
                         </div>
                     </div>
                 </div>
@@ -48,7 +49,7 @@
                 </div>
 
                 <div class="flex justify-center items-center w-full mt-[1.875rem]">
-                    <span class="text-[#666666] text-[1.25rem] text-center  z-50" >{{t('first.content')}}
+                    <span class="text-[#666666] text-[1.25rem] text-center  z-10" >{{t('first.content')}}
                         <!-- <span ">200+ -->
                             <NumberComponent class="text-[#191919] text-[1.25rem] font-bold" :number="200" :extra="'+'" :step="1"></NumberComponent>
                         {{t('first.content2')}}</span>
@@ -102,14 +103,14 @@
             </div>
         </div>
 
-        <div class="col"></div>
+        <!-- <div class="col"></div> -->
     </div>
 </template>
 <script setup lang="ts">
     import { useI18n } from 'vue-i18n'
     import RippleButton from '../../components/RippleButton.vue'
     import NumberComponent from '../../components/NumberComponent.vue'
-    import mask from '../../assets/mask_bg.png?inline'
+    import mask from '../../assets/mask_bg.svg'
     import mask_bg from '../../assets/bg_hover.png?inline'
     // import FirstRectComponent from './FirstRectComponent.vue'
     // import img1 from '../../assets/first_1.png'
@@ -217,4 +218,12 @@
 .show_class {
     animation: fadeIn 1s ease; /* referring directly to the animation's @keyframe declaration */
 }
+</style>
+<style  scoped>
+    .plan_bg {
+        
+        background-size: cover; /* 关键属性 */
+        background-image: url('../../assets/mask_bg.svg');
+        background-repeat: no-repeat;
+    }
 </style>

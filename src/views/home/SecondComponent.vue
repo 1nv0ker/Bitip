@@ -8,19 +8,19 @@
                 <div :class="`w-[50%] h-full flex justify-center items-center rounded-[6.25rem] cursor-pointer ${selected==0?'bg-[#01AA44] text-[white]':'text-[#191919] bg-[#F4F4F4]'}`" @click="selected=0" 
                 style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
                 @mouseenter="onMouseEnter(0)" @mouseleave="onMouseLeave">
-                    <span class="text-[1.25rem] font-medium">{{t('second.select1')}}</span>
+                    <span class="text-[1.25rem] font-medium unSelect">{{t('second.select1')}}</span>
                 </div>
                 <div :class="`w-[50%] h-full justify-center items-center flex rounded-[6.25rem] cursor-pointer ${selected==1?'bg-[#01AA44] text-[white]':'text-[#191919] bg-[#F4F4F4]'}`" @click="selected=1"
                  style="transition: background-color 0.5s ease-in-out; /* 动画属性 */"
                 @mouseenter="onMouseEnter(1)" @mouseleave="onMouseLeave">
-                    <span class=" text-[1.25rem] font-medium">{{t('second.select2')}}</span>
+                    <span class=" text-[1.25rem] font-medium unSelect">{{t('second.select2')}}</span>
                 </div>
             </div>
         </div>
         <div class="flex  gap-[1rem] mt-[5.375rem] justify-center animate__animated animate__slideInLeft" v-show="selected==0">
             <div class="w-[43rem] h-[25rem] relative">
                 
-                <img src="../../assets/group1.png" class="w-full h-full" />
+                <img src="../../assets/group1.svg" class="w-full h-full" />
             </div>
             <div class="w-[38.625rem] flex flex-col  justify-center">
                 <div class="flex">
@@ -69,11 +69,11 @@
         <div class="flex  mt-[5.375rem] animate__animated animate__slideInRight gap-[4.125rem]" v-show="selected==1">
             <div class="w-[38.0625rem] h-[25rem] relative">
                 
-                <img src="../../assets/group.png" class="w-full h-full" />
+                <img src="../../assets/group.svg" class="w-full h-full" />
             </div>
             <div class="w-[38.625rem] flex flex-col justify-center">
                 <div class="flex">
-                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent1')}}</span>
+                    <span class="text-[#191919] text-[1.875rem] font-medium unSelect">{{t('second.dynamicContent1')}}</span>
                 </div>
                 <div class="flex flex-col mt-[1.5rem] gap-[1rem]">
                     <div class="flex items-center">

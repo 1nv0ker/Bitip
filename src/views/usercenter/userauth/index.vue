@@ -76,7 +76,7 @@
             <div class="flex flex-col gap-[3.25rem] items-center">
                 <div class="flex flex-col gap-[2rem] items-center">
                     <div class="w-[7.25rem] h-[7.25rem] ">
-                        <img src="../../../assets/usercenter/auth_success.png" class="w-full h-full"/>
+                        <img src="../../../assets/usercenter/auth_success.svg" class="w-full h-full"/>
                     </div>
                     <span class="text-[#191919] text-[1.25rem] font-bold">{{t('userauth.step3_title')}}</span>
                 </div>

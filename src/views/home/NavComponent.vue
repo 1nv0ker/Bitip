@@ -6,10 +6,10 @@
         <!-- 移动端下拉菜单 -->
         <NavMobieMenu v-show="showMobie" @onCloseNav="showMobie=false" :status="showMobie"/>
         <!-- <div :class="`row w-full gx-0 top-[2.8125rem] h-[4rem] items-center fixed z-50 bg-[white] ${acvitityStatus?'top-[2.8125rem]':'top-0'}`" :style="customeStyle"> -->
-        <div :class="`flex w-full justify-center gx-0 top-[2.8125rem] h-[4rem] items-center mt-[2.8125rem] z-50 bg-[white] ${acvitityStatus?' mt-[2.8125rem] ':'mt-0'}`" :style="customeStyle">
+        <div :class="`flex w-full justify-center gx-0  h-[4rem] items-center mt-[2.8125rem]  fixed z-50 bg-[white] ${acvitityStatus?' mt-[2.8125rem] ':'mt-0'}`" :style="customeStyle">
             <div class="w-[20rem]">
                 <div class="w-full flex justify-center cursor-pointer ml-[2.625rem] z-50" @click="onToHome">
-                    <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem] z-50"  />
+                    <img src="../../assets/logo.svg" class="w-[5.25rem] h-[1.75rem] z-50"  />
                 </div>
             </div>
             <div class="flex justify-center h-full flex-[80rem]">
@@ -17,7 +17,7 @@
                 <NavMenu  class="z-50"/>
                 <div class="flex items-center md:hidden justify-center" v-if="!userStore.userInfo?.tel">
                     <div class="w-[4.5rem] flex ">
-                        <img src="../../assets/translate.png" class="w-[1.5rem] h-[1.5rem] z-50" style="transform: scaleX(-1) "/>
+                        <img src="../../assets/translate.svg" class="w-[1.5rem] h-[1.5rem] z-50" style="transform: scaleX(-1) "/>
                         <select class="w-[5rem] cursor-pointer ml-[0.5rem] bitip_font_family font-medium" v-model="lan" @change="onLanauageChange">
                             <option value="zh">中</option>
                             <option value="en">EN</option>
@@ -109,8 +109,8 @@
     import NavMenu from './NavMenu.vue';
     import NavMobieMenu from './NavMobieMenu.vue';
     import useUserStore from '../../store/user'
-    import lanImg1 from '../../assets/translate.png'
-    import lanImg2 from '../../assets/translate_en.png'
+    import lanImg1 from '../../assets/translate.svg'
+    import lanImg2 from '../../assets/translate_en.svg'
     const { t } = useI18n()
     const i18n = useI18n()
     const lan = ref('zh')

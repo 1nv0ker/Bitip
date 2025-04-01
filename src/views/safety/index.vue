@@ -1,17 +1,17 @@
 <template>
     <BasicLayout>
-        <ComponentLayout>
-            <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 z--1 bg-[#F6FDFF]">
+        <ComponentLayout :bg="'#F6FDFF'">
+            <!-- <div class=" absolute top-0 right-0 bottom-0 left-0 z--1 bg-[#F6FDFF]">
                
                 
-            </div>
-            <div class="pt-[8.75rem] pb-[8.75rem] flex gap-[12.5rem] items-center">
-                <div class="flex flex-col z-50">
+            </div> -->
+            <div class="pt-[8.75rem] pb-[8.75rem] flex gap-[12.5rem] items-center ">
+                <div class="flex flex-col">
                     <span class=" max-w-[37.5rem] text-[#191919] font-medium text-[3.375rem] ">{{ t('safety.title') }}</span>
                     <span class="pt-[2rem] max-w-[45.0625rem] text-[#666666] text-[1.25rem] ">{{ t('safety.subtitle') }}</span>
                 </div>
-                <div class="w-[21.125rem] h-[22.5rem] z-50">
-                    <img src="../../assets/safety/card_bg.png" class="w-full h-full" />
+                <div class="w-[21.125rem] h-[22.5rem] ">
+                    <img src="../../assets/safety/card_bg.svg" class="w-full h-full" />
                 </div>
             </div>
         </ComponentLayout>
@@ -26,12 +26,12 @@
                     flex flex-col gap-[1.5rem] items-center justify-center pl-[1.5rem] pr-[1.5rem]" 
                     >
                         
-                        <div class="w-[3rem] h-[3rem]  z-10" >
+                        <div class="w-[3rem] h-[3rem]  " >
                             <img :src="item.img" class="w-full h-full"/>
                         </div>
-                        <span class="text-[1.375rem] font-bold text-[#191919] z-10">{{item.title}}</span>
-                        <span class="max-w-[18.75rem] text-left text-[#191919]  z-10 text-[1rem] font-normal" v-if="!item.special">{{item.subtitle}}</span>
-                        <span class="w-[37.5rem] text-center text-[#191919] z-10 text-[1rem] font-normal" v-else>{{item.subtitle}}</span>
+                        <span class="text-[1.375rem] font-bold text-[#191919]">{{item.title}}</span>
+                        <span class="max-w-[18.75rem] text-left text-[#191919]   text-[1rem] font-normal" v-if="!item.special">{{item.subtitle}}</span>
+                        <span class="w-[37.5rem] text-center text-[#191919]  text-[1rem] font-normal" v-else>{{item.subtitle}}</span>
                      
                     </div>
                 </div>

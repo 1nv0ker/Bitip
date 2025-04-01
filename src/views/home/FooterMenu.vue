@@ -1,7 +1,7 @@
 <template>
     <div class="hidden md:flex justify-between gap-[5rem] pt-[4rem] pb-[4rem] h-auto">
         <div class="flex flex-col gap-[2.25rem] justify-start w-auto">
-            <img src="../../assets/logo.png" class="w-[9.125rem] h-[3rem]"/>
+            <img src="../../assets/logo.svg" class="w-[9.125rem] h-[3rem]"/>
             <div class="flex gap-[1rem] text-[#191919] text-[1rem]">
                 <img src="../../assets/phone.png" class="w-[1.5rem] h-[1.5rem]" />
                 <span>15371927863</span>
@@ -12,15 +12,16 @@
                 <span>support@bitip.com</span>
             </div>
             <div class="flex gap-[1rem] text-[#191919] text-[1rem]">
-                <img src="../../assets/alipay1.png" class="w-[2rem] h-[2rem]" />
-                <img src="../../assets/wechat1.png" class="w-[2rem] h-[2rem]" />
-                <img src="../../assets/unionpay.png" class="w-[2.86rem] h-[1.7725rem]" />
+                <img src="../../assets/alipay1.svg" class="w-[2rem] h-[2rem]" />
+                <img src="../../assets/wechat1.svg" class="w-[2rem] h-[2rem]" />
+                <img src="../../assets/unionpay.svg" class="w-[2.86rem] h-[1.7725rem]" />
             </div>
         </div>
         <div v-for="item in items" class="flex flex-col">
             <span class="text-[#9BA2BB] text-[1.2rem] font-medium pb-[1.5rem]">{{item.title}}</span>
             <div v-for="subtitle in item.items" class="flex flex-col gap-[1.25rem]">
-                <span class="text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer pl-[0.5em] pr-[0.5rem] ellipsis-single" @click="subtitle.path && router.push({name:subtitle.path})">{{subtitle.title}}</span>
+                <span :class="`${subtitle?.selected?'hover:text-[#01AA44]':''} text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer pl-[0.5em] pr-[0.5rem] ellipsis-single`" 
+                @click="subtitle.path && router.push({name:subtitle.path})">{{subtitle.title}}</span>
             </div>
         </div>
     </div>
@@ -39,11 +40,13 @@
                 items: [
                     {
                         title:t('footer.title1_subtitle1'),
-                        path: 'dyproxy'
+                        path: 'dyproxy',
+                        selected:true
                     },
                     {
                         title:t('footer.title1_subtitle2'),
-                        path: 'staticproxy'
+                        path: 'staticproxy',
+                        selected:true
                     }
                 ]
             },
@@ -53,19 +56,23 @@
                 items: [
                     {
                         title:t('footer.title2_subtitle1'),
-                        path:''
+                        path:'',
+                        selected:true
                     },
                     {
                         title:t('footer.title2_subtitle2'),
-                        path:''
+                        path:'',
+                        selected:true
                     },
                     {
                         title:t('footer.title3_subtitle5'),
-                        path:'plan'
+                        path:'plan',
+                        selected:true
                     },
                     {
                         title:t('footer.title3_subtitle6'),
-                        path:''
+                        path:'',
+                        selected:true
                     }
                 ]
             },
@@ -75,23 +82,28 @@
                 items: [
                 {
                         title:t('footer.title3_subtitle3'),
-                        path:'safety'
+                        path:'safety',
+                        selected:true
                     },
                     {
                         title:t('footer.title3_subtitle4'),
-                        path:'service'
+                        path:'service',
+                        selected:true
                     },
                     {
                         title:t('footer.title3_subtitle1'),
-                        path:'privatelaw'
+                        path:'privatelaw',
+                        selected:true
                     },
                     {
                         title:t('footer.title3_subtitle2'),
-                        path:'servicelaw'
+                        path:'servicelaw',
+                        selected:true
                     },
                     {
                         title:t('footer.title4_subtitle7'),
-                        path:'refundlaw'
+                        path:'refundlaw',
+                        selected:true
                     },
                     
                     
@@ -103,23 +115,28 @@
                 items: [
                     {
                         title:t('footer.title4_subtitle1'),
-                        path:''
+                        path:'',
+                        selected:false
                     },
                     {
                         title:t('footer.title4_subtitle2'),
-                        path:''
+                        path:'',
+                        selected:false
                     },
                     {
                         title:t('footer.title4_subtitle3'),
-                        path:''
+                        path:'',
+                        selected:false
                     },
                     {
                         title:t('footer.title4_subtitle4'),
-                        path:''
+                        path:'',
+                        selected:false
                     },
                     {
                         title:t('footer.title4_subtitle5'),
-                        path:''
+                        path:'',
+                        selected:false
                     }
                 ]
             }

@@ -36,7 +36,7 @@
                         <div :class="`w-[10.875rem] h-[3.5rem] rounded-[0.75rem] border-[1px]  
                         flex justify-center items-center cursor-pointer relative gap-[1rem]
                         ${payMethod==1?'border-[#01AA44] bg-[rgba(1,170,68,0.08)]':'border-[#EBEFF8] bg-[#FAFAFA]'}`" @click="payMethod=1;rechargeLink='';paying=false">
-                            <img src="../assets/wechat.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] " />
+                            <img src="../assets/wechat1.png" class="w-[2rem] h-[2rem] rounded-[0.5rem] " />
                             <span>{{t('recharge.pay1')}}</span>
                             <div class=" absolute top-[-0.75rem] right-[-0.75rem] w-[1.5rem] h-[1.5rem] bg-[#01AA44] rounded-[0.75rem] flex items-center justify-center" v-show="payMethod==1" >
                                 <span class="text-[white]">✔</span>

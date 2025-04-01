@@ -1,9 +1,7 @@
 <template>
-    <BasicLayout :customeStyle="{
-        background:'transparent'
-    }">
+    <BasicLayout >
         <ComponentLayout class="bg-[#F6FDFF]">
-            <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 z-0">
+            <div class=" absolute top-[0] right-0 bottom-0 left-0 z-0">
                 <img :src="bg" class="w-full h-full" />
                 
             </div>
@@ -38,7 +36,7 @@
                     </div>
                 </div>
                 <div class="z-20 ">
-                    <img  src="../../assets/static/card_bg.png" class="ml-[19.625rem] w-[45rem]  h-[29rem] z-20" />
+                    <img  src="../../assets/static/card_bg.svg" class="ml-[19.625rem] w-[45rem]  h-[29rem] z-20" />
                 </div>
             </div>
         </ComponentLayout>
@@ -84,7 +82,7 @@
                     </div>
                 </div>
                 <div class="h-full flex items-center">
-                    <img src="../../assets/static/card_bg2.png" class="w-[49.3125rem] h-[38.125rem]" />
+                    <img src="../../assets/static/card_bg2.svg" class="w-[49.3125rem] h-[38.125rem]" />
                 </div>
             </div>
         </ComponentLayout>

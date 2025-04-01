@@ -21,13 +21,13 @@
 <script setup lang="ts">
     import { useRouter, useRoute } from 'vue-router'
     import { computed, ref, onMounted, watch } from 'vue'
-    import proxycityImg from '../../assets/usercenter/dy.png'
-    import staticImg from '../../assets/usercenter/static.png'
+    import proxycityImg from '../../assets/usercenter/dy.svg'
+    import staticImg from '../../assets/usercenter/static.svg'
 
-    import shopImg from '../../assets/usercenter/shop.png'
-    import authImg from '../../assets/usercenter/auth.png'
-    import planImg from '../../assets/usercenter/plan.png'
-    import auth2Img from '../../assets/usercenter/auth_bg.png'
+    import shopImg from '../../assets/usercenter/shop.svg'
+    import authImg from '../../assets/usercenter/auth.svg'
+    import planImg from '../../assets/usercenter/plan.svg'
+    import auth2Img from '../../assets/usercenter/auth_bg.svg'
     import { useI18n } from 'vue-i18n'
     import { h } from 'vue'
     const { t } = useI18n()

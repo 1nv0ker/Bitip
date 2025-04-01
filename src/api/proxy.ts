@@ -60,3 +60,12 @@ export function SwitchIP(params:switchData) {
         params: params
     })
 }
+//ipcheck
+export interface checeData {
+    proxy:string
+}
+export function CheckIP(params:checeData) {
+    return axios.get(`${BASIC_MODULE}/IpCheck`, {
+        params: params
+    })
+}

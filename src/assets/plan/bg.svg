@@ -1,0 +1,75 @@
+<svg width="1920" height="891" viewBox="0 0 1920 891" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="&#228;&#189;&#142;-&#232;&#131;&#140;&#230;&#153;&#175;">
+<rect id="&#229;&#164;&#135;&#233;&#128;&#137;" width="1920" height="891" fill="url(#paint0_linear_1283_2002)"/>
+<g id="Mask group">
+<mask id="mask0_1283_2002" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="891">
+<rect id="&#229;&#164;&#135;&#233;&#128;&#137;_2" width="1920" height="891" fill="url(#paint1_linear_1283_2002)"/>
+</mask>
+<g mask="url(#mask0_1283_2002)">
+<g id="Ellipse 11" filter="url(#filter0_f_1283_2002)">
+<circle cx="1338.5" cy="784.5" r="319.5" fill="#C3FF79" fill-opacity="0.25"/>
+</g>
+<g id="Ellipse 12" filter="url(#filter1_f_1283_2002)">
+<circle cx="648.5" cy="791.5" r="225.5" fill="#C3FF79" fill-opacity="0.15"/>
+</g>
+<g id="Ellipse 12_2" filter="url(#filter2_f_1283_2002)">
+<circle cx="628.5" cy="552.5" r="115.5" fill="#79FFD5" fill-opacity="0.17"/>
+</g>
+</g>
+</g>
+<g id="&#228;&#188;&#152;&#230;&#131;&#160;&#229;&#136;&#184;_coupon 1" clip-path="url(#clip0_1283_2002)">
+<path id="Vector" d="M701.097 539.486L697.446 533.66L720.043 519.5L723.693 525.326C722.764 526.503 722.627 528.191 723.475 529.544C724.323 530.897 725.902 531.51 727.366 531.187L731.016 537.013L708.42 551.173L704.769 545.347C705.698 544.17 705.835 542.482 704.987 541.129C704.139 539.776 702.561 539.163 701.097 539.486Z" stroke="#191919" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_2" d="M708.397 532.305L712.992 533.359L714.047 528.765" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M709.957 536.048L716.736 531.8" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M712.139 539.532L718.918 535.284" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M713.346 533.924L717.594 540.703" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="&#228;&#188;&#152;&#230;&#131;&#160;&#229;&#136;&#184;_coupon 2" clip-path="url(#clip1_1283_2002)">
+<path id="Vector_6" d="M1234.97 537.336L1239.88 532.529L1258.53 551.597L1253.61 556.403C1252.26 555.745 1250.58 555.971 1249.44 557.087C1248.3 558.203 1248.04 559.876 1248.66 561.238L1243.75 566.045L1225.11 546.977L1230.02 542.171C1231.37 542.829 1233.05 542.603 1234.19 541.487C1235.33 540.371 1235.59 538.698 1234.97 537.336Z" stroke="#191919" stroke-width="2" stroke-linejoin="round"/>
+<path id="Vector_7" d="M1243.54 542.942L1243.48 547.656L1248.2 547.709" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M1240.21 545.262L1245.8 550.982" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M1237.27 548.136L1242.86 553.856" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M1243.01 548.122L1237.29 553.714" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="&#229;&#136;&#184;_ticket 1" clip-path="url(#clip2_1283_2002)">
+<path id="Vector_11" d="M1545.53 350.794L1565.42 331.938L1572.96 339.895" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_12" d="M1540.8 352.672L1578.64 337.64L1580.89 343.316C1578.05 344.443 1575.97 347.463 1577.28 350.774C1578.6 354.085 1582.56 355.795 1585.4 354.668L1587.66 360.344L1549.82 375.377L1547.56 369.701C1550.4 368.573 1552.49 365.554 1550.98 361.77C1549.48 357.986 1545.89 357.221 1543.05 358.348L1540.8 352.672Z" stroke="#191919" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_13" d="M1556.62 356.665L1562.3 354.41" stroke="#191919" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector_14" d="M1558.88 362.341L1572.12 357.08" stroke="#191919" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_1283_2002" x="895" y="341" width="887" height="887" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="62" result="effect1_foregroundBlur_1283_2002"/>
+</filter>
+<filter id="filter1_f_1283_2002" x="299" y="442" width="699" height="699" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="62" result="effect1_foregroundBlur_1283_2002"/>
+</filter>
+<filter id="filter2_f_1283_2002" x="389" y="313" width="479" height="479" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="62" result="effect1_foregroundBlur_1283_2002"/>
+</filter>
+<linearGradient id="paint0_linear_1283_2002" x1="960" y1="0" x2="960" y2="891" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FAFFED"/>
+<stop offset="1" stop-color="#FDFFEC"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1283_2002" x1="960" y1="0" x2="960" y2="891" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D8FFD2"/>
+<stop offset="1" stop-color="#FDFFEC"/>
+</linearGradient>
+<clipPath id="clip0_1283_2002">
+<rect width="32" height="32" fill="white" transform="translate(692 529.992) rotate(-32.0724)"/>
+</clipPath>
+<clipPath id="clip1_1283_2002">
+<rect width="32" height="32" fill="white" transform="translate(1242.31 526.428) rotate(45.6453)"/>
+</clipPath>
+<clipPath id="clip2_1283_2002">
+<rect width="48.8607" height="48.8607" fill="white" transform="translate(1531 339.04) rotate(-21.6663)"/>
+</clipPath>
+</defs>
+</svg>

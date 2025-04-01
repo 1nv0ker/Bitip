@@ -43,12 +43,12 @@
     import { useI18n } from 'vue-i18n'
     import ComponentLayout from '../ComponentLayout.vue'
     import { ref, computed } from 'vue'
-    import imag1 from '../../assets/hold.png'
-    import imag2 from '../../assets/ad.png'
-    import imag3 from '../../assets/sign.png'
-    import imag4 from '../../assets/seo.png'
-    import imag5 from '../../assets/media.png'
-    import imag6 from '../../assets/marker.png'
+    import imag1 from '../../assets/hold.svg'
+    import imag2 from '../../assets/ad.svg'
+    import imag3 from '../../assets/sign.svg'
+    import imag4 from '../../assets/seo.svg'
+    import imag5 from '../../assets/media.svg'
+    import imag6 from '../../assets/marker.svg'
     const { t } = useI18n()
     const fifthRef = ref<HTMLElement>()
     const key = ref(0)

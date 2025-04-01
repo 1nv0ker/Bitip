@@ -365,7 +365,7 @@ export const en = {
         copy: 'copy',
         switch: 'Manually switch IP',
         switch2:'Automatically switch IP',
-        agentPlaceholder:'Paste the generated proxy (separated by ;)',
+        agentPlaceholder:'Paste the generated proxy (semicolon separated, format is host:port:username:password)',
         button3:'Check Proxy',
         form1_rule: 'Please select a sub-account',
 
@@ -1102,7 +1102,7 @@ export const zh = {
         copy: '复制',
         switch: '手动切换IP',
         switch2:'自动切换IP',
-        agentPlaceholder:'粘贴生成的代理(;隔开)',
+        agentPlaceholder:'粘贴生成的代理(分号隔开,格式为host:port:username:password)',
         button3:'检查代理',
         form1_rule: '请选择子账号',
         form2_rule:'请选择国家',

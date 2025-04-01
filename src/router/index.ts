@@ -4,7 +4,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
 import UseUserStore from '../store/user'
-
+// import { useMeta } from 'vue-meta'
 
 // 全局配置（可选）
 (NProgress as any).configure({
@@ -42,7 +42,7 @@ import UseUserStore from '../store/user'
 // import StaticAgent from '../views/staticagent/index.vue'
 // import refundVue from '../views/law/refund.vue'
 // import whitelistVue from '../views/usercenter/whitelist/index.vue'
-const routes = [
+export const routes = [
     { path: '/', redirect: '/home' },
     { path: '/', component:() => import('../views/BasicLayout.vue'), children:[
 
@@ -50,7 +50,21 @@ const routes = [
       { path: '/privatelaw', component: () => import('../views/law/private.vue'), name:'privatelaw'},
       { path: '/refundlaw', component: ()=>import(`../views/law/refund.vue`), name:'refundlaw'},
     ] },
-    { path: '/home', name:'home', component: () => import(`../views/home/index.vue`) },
+    { path: '/home', name:'home', component: () => import(`../views/home/index.vue`), 
+      meta: {
+      metaInfo: {
+        title:'全球住宅代理IP企业级',
+        meta: [
+          {
+            name:'Keywords', content:'江苏米亚信息科技有限公司, 爬虫代理,高匿代理ip,刷单代理ip,https代理,http代理,ip代理,代理ip,私密代理ip,免费代理ip,高速代理,独享代理ip,免费ip,在线代理,代理服务器'
+          },
+          {
+            name:'Description', content:'米亚科技，米亚代理,（www.bitip.com）是http代理ip服务供应商，拥有千万级独立ip池，覆盖全球，低延迟高可用率稳定专业！爬虫代理,网页代理ip,企业级代理ip,电脑换ip,https代理,私密代理ip,免费代理ip,独享代理ip,在线代理,代理服务器等!'
+          }
+        ]
+      }
+    } 
+  },
     { path: '/login', component: () => import(`../views/login/Login.vue`) },
     { path: '/forgetPassword', component: () => import(`../views/login/ForgetPassword.vue`) },
     { path: '/register', component: ()=> import(`../views/login/Register.vue`)},
@@ -178,6 +192,25 @@ const router = createRouter({
 router.beforeEach((to, _from, next)=> {
   (NProgress as any).start()
   const userStore = UseUserStore();
+  // console.log('to', to)
+  if (to.meta) {
+    const meta:any = to.meta.metaInfo || {};
+
+    if (meta.title) document.title = meta.title;
+    if (meta.meta) {
+      // console.log('meta', meta.meta)
+      // debugger
+      meta.meta.forEach((item:any)=> {
+        const metadom = document.createElement('meta')
+        metadom.setAttribute('name', item.name)
+        metadom.setAttribute('content', item.content)
+        document.head.appendChild(metadom)
+      })
+    }
+  }
+  // debugger
+  
+
   const isLogin = userStore.token
   if (to.meta.requiresAuth && !isLogin) {
     

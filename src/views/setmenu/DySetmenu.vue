@@ -208,7 +208,7 @@
     .normal_card {
         &:hover {
             // animation-play-state: paused;
-            background: url('../../assets/bei.png');
+            background: url('../../assets/bei.png?inline');
             background-size:cover;
             background-repeat:no-repeat;
             .title,.price1_value, .price1 {

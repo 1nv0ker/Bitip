@@ -3,7 +3,7 @@
         <div class="h-full flex items-center justify-center">
             <div class="flex flex-col ">
                 <span class="text-[#191919] text-[1rem] ">{{t('backend_menu.local')}}:<span class="text-[#999999] text-[1rem]">{{t('backend_menu.tip')}}</span></span>
-                <span class="text-[1.125rem] font-medium">{{userStore.IP}}</span>
+                <span class="text-[1.125rem] font-medium">{{userStore.info?.ip + '-' + userStore.info?.country+'-'+userStore.info?.city }}</span>
             </div>
             <!-- 移动端菜单按钮 -->
             <div class="md:hidden">
@@ -54,7 +54,7 @@
             <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center  cursor-pointer"
              @mouseenter="showUser=true"
              @click="showUser=true">
-                <img src="../../assets/usercenter/avater.png" class="w-full h-full"/>
+                <img src="../../assets/usercenter/avater.svg" class="w-full h-full"/>
             </div>
         </div>
         <!-- 用户下拉框 -->
@@ -62,7 +62,7 @@
         style="box-shadow: 0px 16px 26px 0px rgba(4,27,13,0.06);z-index: 50;" v-show="showUser" @mouseenter="showUser=true" @mouseleave="showUser=false">
             <div class="w-full flex items-center  pb-[1.5rem] border-[#EBEFF8] border-b-[1px]">
                 <div class="w-[4.25rem] h-[4.25rem]  rounded-[3.625rem]">
-                    <img src="../../assets/usercenter/avater.png" class="w-full h-full"/>
+                    <img src="../../assets/usercenter/avater.svg" class="w-full h-full"/>
                 </div>
                 <div class="flex flex-col pl-[1.375rem] text-[#191919]">
                     <span class="text-[1.1rem] font-bold">{{ t('backend_menu.welcome') }}</span>
@@ -102,8 +102,8 @@
     import { ref, onMounted } from 'vue'
     import useI18nStore from '../../store/i18n'
     import { RightOutlined } from '@ant-design/icons-vue';
-    import lanImg1 from '../../assets/translate.png'
-    import lanImg2 from '../../assets/translate_en.png'
+    import lanImg1 from '../../assets/translate.svg'
+    import lanImg2 from '../../assets/translate_en.svg'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     import Contact from '../Contact.vue';

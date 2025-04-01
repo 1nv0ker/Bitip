@@ -1,0 +1,52 @@
+<svg width="647" height="470" viewBox="0 0 647 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1321316559">
+<g id="&#229;&#155;&#190;">
+<circle id="Ellipse 18" cx="398.234" cy="191.766" r="120.766" stroke="#01AA44" stroke-opacity="0.1" stroke-width="58"/>
+<circle id="Ellipse 19" cx="133.522" cy="315.522" r="72.5219" stroke="#01AA44" stroke-opacity="0.04" stroke-width="58"/>
+</g>
+<g id="Group 1321316531">
+<g id="Group 1321316470" filter="url(#filter0_d_2747_6453)">
+<path id="Rectangle 34625646" d="M114.152 122.388C114.152 115.76 119.525 110.388 126.152 110.388H496.847C503.474 110.388 508.847 115.76 508.847 122.388V351.218H114.152V122.388Z" fill="white"/>
+<path id="Rectangle 34625647" d="M114 122.434C114 115.806 119.373 110.434 126 110.434H497C503.627 110.434 509 115.806 509 122.434V132.264H114V122.434Z" fill="#F0F0F0"/>
+<g id="Group 1321316469">
+<circle id="Ellipse 15" cx="133.386" cy="123.173" r="4.18109" fill="#FF5E5B"/>
+<circle id="Ellipse 16" cx="153.455" cy="123.173" r="4.18109" fill="#FFDA44"/>
+<circle id="Ellipse 17" cx="173.525" cy="123.173" r="4.18109" fill="#01AA44"/>
+</g>
+</g>
+<g id="Group 1321316544">
+<path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M264 114C259.582 114 256 117.582 256 122V123V126.475C256 129.328 253.839 131.716 251 132H287H323C320.161 131.716 318 129.328 318 126.475V123V122C318 117.582 314.418 114 310 114H287H264Z" fill="white"/>
+<rect id="Rectangle 34625690" x="263" y="119" width="48" height="10" rx="4" fill="#666666"/>
+<rect id="Rectangle 34625692" x="326" y="119" width="48" height="10" rx="4" fill="#666666" fill-opacity="0.1"/>
+<rect id="Rectangle 34625693" x="380" y="119" width="48" height="10" rx="4" fill="#666666" fill-opacity="0.1"/>
+<rect id="Rectangle 34625694" x="434" y="119" width="48" height="10" rx="4" fill="#666666" fill-opacity="0.1"/>
+<rect id="Rectangle 34625691" x="200" y="119" width="48" height="10" rx="4" fill="#666666" fill-opacity="0.1"/>
+<rect id="Rectangle 34625695" x="129" y="150" width="59" height="185" rx="4" fill="#666666" fill-opacity="0.03"/>
+<rect id="Rectangle 34625696" x="195" y="150" width="297" height="51" rx="4" fill="#666666" fill-opacity="0.03"/>
+<rect id="Rectangle 34625697" x="195" y="208" width="297" height="127" rx="4" fill="#666666" fill-opacity="0.03"/>
+<g id="&#228;&#186;&#186;&#232;&#132;&#184;&#232;&#175;&#134;&#229;&#136;&#171;_face-recognition 1">
+<path id="Vector" d="M336.312 175.562H362.812C366.471 175.562 369.438 178.528 369.438 182.187V208.687M369.438 268.312V294.812C369.438 298.47 366.471 301.437 362.812 301.437H336.312M276.688 301.437H250.188C246.529 301.437 243.562 298.47 243.562 294.812V268.312M243.562 208.687V182.187C243.562 178.528 246.529 175.562 250.188 175.562H276.688" stroke="#01AA44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M306.5 284.875C328.453 284.875 346.25 264.112 346.25 238.5C346.25 212.888 328.453 192.125 306.5 192.125C284.547 192.125 266.75 212.888 266.75 238.5C266.75 264.112 284.547 284.875 306.5 284.875Z" fill="url(#paint0_linear_2747_6453)"/>
+<path id="Vector_3" d="M246.875 238.5H366.125" stroke="#01AA44" stroke-width="2" stroke-linecap="round"/>
+<path id="Vector_4" d="M293.479 258.725C297.679 261.83 302.019 263.382 306.499 263.382C310.978 263.382 315.437 261.83 319.875 258.725" stroke="#01AA44" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_2747_6453" x="0" y="0.387695" width="623" height="468.831" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="57"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.613053 0 0 0 0 0.245221 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2747_6453"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2747_6453" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_2747_6453" x1="277.35" y1="201.005" x2="323.075" y2="283.972" gradientUnits="userSpaceOnUse">
+<stop stop-color="#EEFFE0"/>
+<stop offset="1" stop-color="#B8FFFD"/>
+</linearGradient>
+</defs>
+</svg>

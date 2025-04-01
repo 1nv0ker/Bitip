@@ -4,7 +4,9 @@ import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite';
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteCompression from 'vite-plugin-compression';
-import viteImagemin from 'vite-plugin-imagemin';
+// import viteImagemin from 'vite-plugin-imagemin';
+import sitemap from 'vite-plugin-sitemap'
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,6 +18,12 @@ export default defineConfig({
         }),
       ],
     }),
+    sitemap({
+      hostname: 'https://www.bitip.com',
+      dynamicRoutes:['/', '/home'],
+
+      generateRobotsTxt: true,
+    }),
     // viteCompression({ algorithm: 'brotliCompress' }),
     viteCompression({
       algorithm: 'brotliCompress',  // 替换为 Brotli 算法[5,6](@ref)
@@ -24,7 +32,7 @@ export default defineConfig({
         level: 11                   // 压缩级别（1-11，默认11）[5](@ref)
       }
     }),
-    viteImagemin({ gifsicle: { optimizationLevel: 7 } })
+    // viteImagemin({ gifsicle: { optimizationLevel: 7 } })
   ],
   server: {
     host: '0.0.0.0'

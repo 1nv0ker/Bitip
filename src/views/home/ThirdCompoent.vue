@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="w-[58.3125rem] h-[23rem]  mt-[2rem]">
-                        <img src="../../assets/globalSource.png" class="w-full h-full"/>
+                        <img src="../../assets/globalSource.svg" class="w-full h-full"/>
                     </div>
                 </div>
                 <!-- <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==2">
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
-                        <img src="../../assets/third_2.png" class="w-full h-full"/>
+                        <img src="../../assets/third_2.svg" class="w-full h-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col animate__animated animate__fadeIn w-auto ml-[14.0625rem]" v-show="selected==3">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
-                        <img src="../../assets/third_3.png" class="w-full h-full"/>
+                        <img src="../../assets/third_3.svg" class="w-full h-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col animate__animated animate__fadeIn ml-[15rem]" v-show="selected==4">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem] mt-[2rem]">
-                        <img src="../../assets/third_4.png" class="w-full h-full"/>
+                        <img src="../../assets/third_4.svg" class="w-full h-full"/>
                     </div>
                 </div>
             </div>

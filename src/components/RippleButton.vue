@@ -6,8 +6,10 @@
         @click="onClick"
         ref="bitip_btn_ref">
         <slot></slot>
-        <span class="z-20">{{props.text}}</span>
-        <div :class="`ripple bg-[${props.color}]`" ref="rippleRef"></div>
+        <span class="z-50">{{props.text}}</span>
+        <div :class="`ripple`" ref="rippleRef" :style="{
+            backgroundColor: color
+        }"></div>
     </div>
 </template>
 <script setup lang="ts">

@@ -103,6 +103,9 @@
                 <div class="w-full flex items-center mt-[1.5rem] justify-center">
                     <span class="text-[#191919] font-medium text-[1.25rem]">{{t('login.finshSetting')}}<span class="text-[#01AA44] pl-[0.2rem] cursor-pointer" @click="onToLogin">{{t('login.login')}}</span></span>
                 </div>
+                <div class="w-full flex justify-center">
+                    <span class="text-[#999999] text-[1rem] pt-[0.75rem]">{{t('backend_menu.tip')}}</span>
+                </div>
                 <!-- 弹出框 -->
                 <div class="modal fade" ref="modalRef" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered" >

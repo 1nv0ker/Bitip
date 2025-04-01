@@ -1,6 +1,6 @@
 <template>
-    <div class="w-full animate__fadeIn animate__animated flex gap-[1rem] justify-between">
-        <div :class="`flex-[4] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem]  pr-[1.25rem] ${showPadding?'pl-[1.25rem]':''}`">
+    <div class="w-full animate__fadeIn animate__animated flex gap-[1rem] justify-between ">
+        <div :class="`flex-[4] min-w-0 bg-[white] rounded-[1rem] h-[37.5rem] pl-[0.75rem]  pr-[1.25rem] ${showPadding?'pl-[1.25rem]':''}`">
             <div class="w-full h-[3.375rem] border-b-[1px] border-[#EBEFF8] flex">
                 <div :class="`h-full pl-[1rem] pr-[1rem] border-b-[1px] flex justify-start items-center w-auto cursor-pointer ${selectType==0?'border-[#702B12] ':' '}`" @click="selectType=0">
                     <span class="text-[#702B12] text-[1rem] font-bold">{{t('setmenu.location')}}</span>

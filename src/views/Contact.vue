@@ -4,7 +4,7 @@
     flex-col items-center 
     justify-evenly" style="box-shadow: 0px 4px 20px 0px rgba(3,42,18,0.08);" >
         <div class="flex flex-col items-center cursor-pointer" @click="showManager">
-            <img src="../assets/qq.png" class="w-[2.25rem] h-[2.25rem]" />
+            <img src="../assets/qq.svg" class="w-[2.25rem] h-[2.25rem]" />
             <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title1') }}</span>
         </div>
         <div class="flex flex-col items-center cursor-pointer" @click="openWechatService">
@@ -13,12 +13,12 @@
         </div>
         
         <div class="flex flex-col items-center cursor-pointer" @click="openTelegram">
-            <img src="../assets/tel.png" class="w-[2.25rem] h-[2.25rem]" />
+            <img src="../assets/tel.svg" class="w-[2.25rem] h-[2.25rem]" />
             <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title4') }}</span>
         </div>
         
         <div class="flex flex-col items-center cursor-pointer" @click="oepnWechatAccount">
-            <img src="../assets/offical.png" class="w-[2.25rem] h-[2.25rem]" />
+            <img src="../assets/offical.svg" class="w-[2.25rem] h-[2.25rem]" />
             <span class="pt-[0.25rem] text-[#666666] text-[0.8rem] font-normal">{{ t('contact.title3') }}</span>
         </div>
         <ModelComponent slot-mode v-model="open" :width="300">

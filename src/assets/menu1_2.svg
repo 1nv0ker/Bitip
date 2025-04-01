@@ -1,0 +1,15 @@
+<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ic_static_l3vpn_lined 1" clip-path="url(#clip0_1049_996)">
+<rect id="Rectangle 67" y="0.5" width="24" height="24" rx="4" fill="#01AA44"/>
+<g id="Group 16">
+<path id="Vector" d="M6 12.5C6 15.8137 8.6863 18.5 12 18.5C15.3137 18.5 18 15.8137 18 12.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M12 9.5V18.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M12 9.5C13.1046 9.5 14 8.60457 14 7.5C14 6.39543 13.1046 5.5 12 5.5C10.8954 5.5 10 6.39543 10 7.5C10 8.60457 10.8954 9.5 12 9.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_1049_996">
+<rect width="24" height="24" fill="white" transform="translate(0 0.5)"/>
+</clipPath>
+</defs>
+</svg>

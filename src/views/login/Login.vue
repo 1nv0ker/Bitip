@@ -18,6 +18,7 @@
                 <div class="tab-pane fade" id="nav-phone" role="tabpanel" aria-labelledby="nav-phone-tab" tabindex="0">
                     <TextLogin v-if="selected==1"/>
                 </div>
+
             </div>
         </div>
     </Layout>

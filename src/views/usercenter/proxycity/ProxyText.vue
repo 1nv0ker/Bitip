@@ -3,7 +3,7 @@
         <!-- <textarea :placeholder="t('proxycity.agentPlaceholder')" wrap="soft"  class="border-[1px] border-[#666666] rounded-[1rem] w-full h-[8.5rem] p-[1rem]" :value="text"  @input="onchange">
             
         </textarea> -->
-        <a-textarea v-model:value="text"  :placeholder="t('proxycity.agentPlaceholder')" rows="6" @change="onchange" class="w-full h-[8.5rem] rounded-[1rem]" />
+        <a-textarea v-model:value="text"  :placeholder="t('proxycity.agentPlaceholder')" :rows="6" @change="onchange" class="w-full h-[8.5rem] rounded-[1rem]" />
         <div class="w-full flex justify-end absolute bottom-0 pr-[1rem] pb-[0.5rem]">
             <span class="text-[#666666] text-[1rem]">{{len}}/10</span>
         </div>
@@ -11,11 +11,13 @@
 </template>
 <script setup lang="ts">
     // import type { PropType } from 'vue';
+   
     import { ref } from 'vue'
     import { useI18n  } from 'vue-i18n'
     const { t } = useI18n()
-    const text = ref('')
+    const text = defineModel({type:String})
     const len = ref(0)
+    // const emit = defineEmits(['onGetIP'])
     // const text = computed(() => {
     //     return proxyIPS.value?.slice(0, 10).map((item:any)=>item.hostname_port+'@'+item.username_password).join(';')
     // })
@@ -23,12 +25,13 @@
     const onchange = (event:any) => {
         // console.log('event', event)
         const value = event.target.value
-        
-        text.value = value.replace(/[\s]+/g, ' ').split(';').slice(0, 10).join(';')
-        len.value = value.split(';').slice(0, 10).length
+        console.log('text', text.value)
+        // text.value = value.replace(/[\s]+/g, ' ').split(';').slice(0, 10).join(';')
+        len.value = text.value?.split(';').slice(0, 10).length || 0
         if (!value) {
             len.value = 0
         }
+    
         // console.log('len', len, value)
     }
 

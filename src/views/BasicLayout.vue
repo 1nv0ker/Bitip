@@ -25,10 +25,11 @@
         </div> -->
         <Contact v-show="showContact"/>
         <NavComponent ref="navRef" @onCloseActivity="onCloseActivity" :customeStyle="customeStyle" class="z-50" />
-        <!-- <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`"> -->
+        <div :class="`w-full  ${acvitityStatus?'mt-[6.8725rem]':'mt-[4rem]'}`">
         <div class="w-full ">
             <slot></slot>
             <RouterView></RouterView>
+        </div>
         </div>
         <FooterComponent />
         <div class=" cursor-pointer fixed bottom-[5rem] w-[3rem] h-[3rem] rounded-[1rem] flex justify-center items-center right-[2rem]" @click="scrollToTop" v-show="showButton" style="box-shadow: rgba(3, 42, 18, 0.08) 0px 4px 20px 0px;">

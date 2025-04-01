@@ -12,7 +12,7 @@ import { configure } from 'vee-validate'
 import 'ant-design-vue/dist/reset.css';
 import './echarts'
 import './custom.less'
-
+// import { createMetaManager } from 'vue-meta';
 
 configure({
   validateOnBlur: false, // 关闭全局 blur 事件验证
@@ -21,7 +21,7 @@ configure({
   validateOnModelUpdate: false
 })
 const app = createApp(App)
-
+// app.use(createMetaManager());
 app.use(pinia)
 app.use(router)
 app.use(i18n)

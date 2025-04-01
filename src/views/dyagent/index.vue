@@ -1,13 +1,11 @@
 <template>
-    <BasicLayout :customeStyle="{
-        background:'transparent'
-    }">
+    <BasicLayout >
         <ComponentLayout class="bg-[#F6FDFF]">
-            <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 z--1">
+            <div class=" absolute top-0 right-0 bottom-0 left-0 z--1">
                 <img :src="bg" class="w-full h-full z-0" />
                 
             </div>
-            <div class="w-full h-[31.5625rem] flex items-center z-20 ">
+            <div class="w-full h-[31.5625rem] flex items-center z-20">
                 <div class="flex flex-col gap-[1.25rem] z-10">
                     <span class="text-[#191919] text-[3.375rem] font-medium">{{t('dyagent.title1')}}</span>
                     <div class="w-full flex flex-col gap-[0.9rem] text-[#191919] text-[1.125rem]">
@@ -38,7 +36,7 @@
                     </div>
                 </div>
                 <div class="z-20 ">
-                    <img  src="../../assets/dy_img.png" class="w-[55rem] ml-[15.75rem] h-[36rem] z-20" />
+                    <img  src="../../assets/dy_img.svg" class="w-[55rem] ml-[15.75rem] h-[36rem] z-20" />
                 </div>
             </div>
         </ComponentLayout>

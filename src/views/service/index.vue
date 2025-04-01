@@ -1,18 +1,23 @@
 <template>
     <BasicLayout>
-        <ComponentLayout >
-            <div class=" absolute top-[-4rem] bottom-0 left-0 right-0 h-[31.5625rem]">
+        <ComponentLayout :componetStyle="{
+            background:`url(${bg})`,
+            backgroundSize: '100% 150%',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '100% -100px'
+        }">
+            <!-- <div class=" absolute top-[0] bottom-0 left-0 right-0 ">
                 <img :src="bg" class="w-full h-full" />
-            </div>
-            <div class="w-full z-10">
+            </div> -->
+            <div class="w-full ">
                 <div class="w-full h-[31.5625rem] flex justify-between items-center">
-                    <div class="flex flex-col justify-center gap-[2.625rem] max-w-[36.4375rem] z-50">
+                    <div class="flex flex-col justify-center gap-[2.625rem] max-w-[36.4375rem] ">
                         <span class="text-[#191919] text-[3.4375rem] font-bold ">{{ t('service.title1') }}</span>
                         <span class="text-[#666666] text-[1rem] font-medium">{{ t('service.content1') }}</span>
                     </div>
-                    <div class="w-[19.375rem] h-[19.375rem] bg-[#01AA44]">
+                    <!-- <div class="w-[19.375rem] h-[19.375rem] ">
                         <img src="" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </ComponentLayout>
@@ -106,22 +111,22 @@
     import BasicLayout from '../BasicLayout.vue';
     import ComponentLayout from '../ComponentLayout.vue';
     // import CompanyForm from './CompanyForm.vue';
-    import handImg from '../../assets/hold.png'
-    import item2Img from '../../assets/service/item.png'
-    import item3Img from '../../assets/service/item2.png'
-    import image1 from '../../assets/service/1.png'
-    import image2 from '../../assets/service/2.png'
-    import image3 from '../../assets/service/3.png'
-    import image4 from '../../assets/service/4.png'
-    import company1 from '../../assets/service/huawei.png'
-    import company2 from '../../assets/service/tencent.png'
-    import company3 from '../../assets/service/JD.png'
-    import company4 from '../../assets/service/pdd.png'
-    import company5 from '../../assets/service/mi.png'
-    import company6 from '../../assets/service/bd.png'
-    import company7 from '../../assets/service/ali.png'
-    import company8 from '../../assets/service/meituan.png'
-    import bg from '../../assets/service/bg.png?inline'
+    import handImg from '../../assets/hold.svg'
+    import item2Img from '../../assets/service/item.svg'
+    import item3Img from '../../assets/service/item2.svg'
+    import image1 from '../../assets/service/1.svg'
+    import image2 from '../../assets/service/2.svg'
+    import image3 from '../../assets/service/3.svg'
+    import image4 from '../../assets/service/4.svg'
+    import company1 from '../../assets/service/huawei.svg'
+    import company2 from '../../assets/service/tencent.svg'
+    import company3 from '../../assets/service/JD.svg'
+    import company4 from '../../assets/service/pdd.svg'
+    import company5 from '../../assets/service/mi.svg'
+    import company6 from '../../assets/service/bd.svg'
+    import company7 from '../../assets/service/ali.svg'
+    import company8 from '../../assets/service/meituan.svg'
+    import bg from '../../assets/service/bg.svg'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
@@ -241,5 +246,7 @@
     border-top: 1px solid #333;
     border-right: 1px solid #333;
     transform: translateY(-50%) rotate(45deg);
+    /* background-repeat: no-repeat;
+    background-size: cover; */
 }
 </style>

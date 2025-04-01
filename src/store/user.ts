@@ -17,12 +17,12 @@ const store = defineStore('users', {
     state:():{
         token:string,
         userInfo:UserInfo_data|null,
-        IP:string
+        info:any
     } => {
         return {
             token: '',
             userInfo: null,
-            IP:''
+            info:null
         }
     },
     persist: true,
@@ -47,7 +47,7 @@ const store = defineStore('users', {
             await GetMyIp()
             .then((res:any) => {
                 // console.log('res1', res)
-                this.IP = res.body
+                this.info = res.body
             })
             
         },

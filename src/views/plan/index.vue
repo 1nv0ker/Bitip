@@ -1,13 +1,11 @@
 <template>
-    <BasicLayout :customeStyle="{
-        background:'transparent'
-    }" >
+    <BasicLayout >
         <ComponentLayout >
-            <div class="w-full h-[51.625rem] overflow-hidden pt-[6rem]">
-                <div class=" absolute top-[-4rem] right-0 bottom-0 left-0 plan_bg" :style="`background-image: url(${bg})`">
+            <div class="w-full h-[51.625rem] overflow-hidden pt-[6rem] ">
+                <div class=" absolute top-0 right-0 bottom-0 left-0 plan_bg" :style="`background-image: url(${bg})`">
                     
                 </div>
-                <div class="flex items-center flex-col gap-[2rem]">
+                <div class="flex items-center flex-col gap-[2rem] ">
                     <span class="text-[#191919] text-center z-20 text-[4.125rem] font-bold max-w-[74.124rem]">{{t('plan.title')}}</span>
                     <RippleButton 
                     @click="onToPlan"
@@ -109,11 +107,11 @@
     import { useRouter } from 'vue-router'
     import BasicLayout from '../BasicLayout.vue';
     import ComponentLayout from '../ComponentLayout.vue';
-    import img1 from '../../assets/plan/1.png'
-    import img2 from '../../assets/plan/2.png'
-    import img3 from '../../assets/plan/3.png'
-    import img4 from '../../assets/plan/4.png'
-    import bg from '../../assets/plan/bg.png?inline'
+    import img1 from '../../assets/plan/1.svg'
+    import img2 from '../../assets/plan/2.svg'
+    import img3 from '../../assets/plan/3.svg'
+    import img4 from '../../assets/plan/4.svg'
+    import bg from '../../assets/plan/bg.svg'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

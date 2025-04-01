@@ -218,9 +218,12 @@ input:-moz-placeholder { /* Firefox 18- */
 }
 span,a,li {
   font-family: "Alibaba Sans";
+  
            /* 文字方向控制 */
 }
-
+.unSelect {
+  user-select: none;
+}
 .custom_span {
   white-space: nowrap; 
   overflow: hidden;        

@@ -90,8 +90,8 @@
                     <div class="w-full h-[16.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]" style="height: calc( 100% - 23.25rem);">
                         <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] pt-[1.75rem]" style="height: calc( 100% - 4rem);">
                             <div v-for="item in proxyIPS" class="flex items-center">
-                                <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item)"/>
-                                <span class="pl-[0.5rem]">{{modelRef.generateType=='1'?showIP(item.hostname_port, item.username_password):item}}</span>
+                                <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)"/>
+                                <span class="pl-[0.5rem]">{{item}}</span>
                             </div>
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
@@ -120,13 +120,15 @@
             <div class="h-full w-[25.25rem] bg-[white] rounded-[1.5rem] p-[1.75rem] gap-[1.5rem] flex-col flex">
                 <div class="w-full h-[8.5rem]">
                     <!-- <a-textarea class="customArea"  :placeholder="t('proxycity.agentPlaceholder')" :rows="4" :maxlength="10" show-count /> -->
-                    <ProxyText class="w-full" v-model="IPS"/>
+                    <ProxyText class="w-full" v-model="checkIP"/>
                 </div>
-                <div class="w-full h-[3rem] rounded-[0.75rem] bg-[#01AA44] cursor-pointer flex justify-center items-center ">
+                <a-button :loading="checkLoading" class="w-full h-[3rem] rounded-[0.75rem] bg-[#01AA44] cursor-pointer flex justify-center items-center " @click="onCheckIP">
                     <span class="text-white text-[1rem] font-medium">{{ t('proxycity.button3') }}</span>
-                </div>
-                <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem]" style="height: calc( 100% - 10rem );">
-
+                </a-button>
+                <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem] overflow-auto" style="height: calc( 100% - 10rem );">
+                    <div v-for="content in checkContent" class="flex flex-col gap-y-[0.2rem]">
+                        <span>{{content}}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -144,12 +146,14 @@
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi, GenerateApiWhenEnable, SwitchIP } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi, GenerateApiWhenEnable, SwitchIP, CheckIP } from '../../../api/proxy'
     import ProxyText from './ProxyText.vue';
     import { message } from 'ant-design-vue';
+// import axios from 'axios';
+
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
-    const IPS = ref<any[]>([])
+    const checkIP = ref('')
     const modelRef = reactive<Record<string, string|undefined>>({
         userName:undefined,
         IP:'0',
@@ -170,6 +174,8 @@
     const loading = ref(false)
     const open = ref(false)
     const qrcode = ref('')
+    const checkContent = ref<any[]>([])
+    const checkLoading = ref(false)
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -348,14 +354,33 @@
             // loading.value = false
         }
     }
+    //检查IP
+    const onCheckIP = async () => {
+        let len = checkIP.value.split(';').length
+        checkLoading.value = true
+        for (let i=0;i<len;i++) {
+            const IP = checkIP.value.split(';')[i]
+            const res:any = await CheckIP({
+                proxy:IP
+            })
+            .catch(() => {
+                checkLoading.value = false
+            })
+            if (res.code && res.code == 200) {
+                checkContent.value.push(res.body)
+            }
+        }
+        checkLoading.value = false
+
+    }
     //生成代理
     const onGenerate = () => {
         formRef.value.validate()
         .then(async () => {
             proxyIPS.value = []
-            modelRef.generateType = '1'
+            // modelRef.generateType = '1'
             if (modelRef.IP == '1') {
-                modelRef.generateType = '0'
+                // modelRef.generateType = '0'
                 loading.value = true
                 const params = {
                     KeyName:modelRef.userName,
@@ -378,7 +403,7 @@
                 return
             }
             //生成代理
-            const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName } = proxyConfig.value
+            const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName, proxyGlobalFmt } = proxyConfig.value
             for (let i=0;i<Number(modelRef.number);i++) {
                 
                 const randomInPortIndex= Math.floor(Math.random() * proxyPort.length)
@@ -393,10 +418,10 @@
                     let username_password = ''
                     let proxyIP = ''
                     if (modelRef.country == '0') {
-                        username_password = userName + ':' + proxyPwd
+                        username_password = userName+'_f-'+ proxyGlobalFmt + ':' + proxyPwd
                     } else {
                         username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
-                        + '_sid-'+sessiong + (modelRef.state?('_s-'+modelRef.state):'')
+                        + '_sid-'+sessiong + ((modelRef.state)?('_s-'+modelRef.state):'')
                         + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')
                         + ':'+ proxyPwd
                     }
@@ -408,10 +433,7 @@
                         proxyIP = username_password + ':' + hostname_port
                     }
                     proxyIP = proxyIP
-                    proxyIPS.value.push({
-                        hostname_port: hostname_port,
-                        username_password: username_password
-                    })
+                    proxyIPS.value.push(proxyIP)
                 } else {
                     message.error('端口号或者url不存在')
                     break
@@ -450,7 +472,7 @@
             })
             // }
             if (res.code && res.code == 200) {
-                modelRef.generateType = '0'
+                // modelRef.generateType = '0'
                 // console.log('res', res, res.split(`\n`))
                 proxyIPS.value = res.split(`\n`)
                 loading.value = false
@@ -483,16 +505,24 @@
         if (proxyIPS.value.length == 0) {
             return
         }
-        let str:any = proxyIPS.value.map((item:any)=> {
-            if (modelRef.type == '0') {
-                return item.hostname_port + ':' + item.username_password 
-            } else if (modelRef.type == '1') {
-                return item.username_password + '@' + item.hostname_port 
-            } else {
-                return item.username_password + ':' + item.hostname_port
-            }
-        }).join(';')
+        let str:string = proxyIPS.value.join(';')
+        
+        // if (modelRef.generateType === '0') {
+        //     str = proxyIPS.value.join(';')
+        // } else {
+        //     str = proxyIPS.value.map((item:any)=> {
+        //         if (modelRef.type == '0') {
+        //             return item.hostname_port + ':' + item.username_password 
+        //         } else if (modelRef.type == '1') {
+        //             return item.username_password + '@' + item.hostname_port 
+        //         } else {
+        //             return item.username_password + ':' + item.hostname_port
+        //         }
+        //     }).join(';')
+        // }
+         
         str = str.replace(/(\r\n|\n|\r)/g, '')
+        // checkIP.value = str
         if (navigator.clipboard) {
             navigator.clipboard.writeText(str)
         } else {
@@ -510,15 +540,15 @@
             clearInterval(interval2)
         }, 2000);
     }
-    const showIP = (hostname_port:string, username_password:string) => {
-        if (modelRef.type == '0') {
-            return hostname_port + ':' + username_password
-        } else if (modelRef.type == '1') {
-            return  username_password + '@' + hostname_port 
-        } else {
-            return username_password + ':' + hostname_port
-        }
-    }
+    // const showIP = (hostname_port:string, username_password:string) => {
+    //     if (modelRef.type == '0') {
+    //         return hostname_port + ':' + username_password
+    //     } else if (modelRef.type == '1') {
+    //         return  username_password + '@' + hostname_port 
+    //     } else {
+    //         return username_password + ':' + hostname_port
+    //     }
+    // }
     //选择账户
     const onSelectAccount = (_value:string) => {
         if (modelRef.userName) {
@@ -586,6 +616,8 @@
         }
     }
     onMounted(() => {
+        // axios
+        // axios.get('http://1t7e3st1237:1h7a3lanaoiwnaahgl@proxy.bitip.com:10001')
         GetBandwidthAnalysis()
         .then((res:any) => {
             cardDatas.value = [
