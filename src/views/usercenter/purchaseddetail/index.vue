@@ -62,8 +62,8 @@
                 </div> -->
             </div>
         </div>
-        <div class="w-full mt-[1.75rem] h-[45rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false" :loading="params.loading">
+        <div class="w-full mt-[1.75rem] ">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="max-h-[42rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -182,7 +182,7 @@ import { unref } from 'vue';
                 key: 'expireTime',
                 align:'center',
                 ellipsis: true,
-                width:'12rem'
+                // width:'12rem'
             },
             {
                 title: t('purchaseddetail.column3'),
@@ -190,7 +190,7 @@ import { unref } from 'vue';
                 key: 'ispLocation',
                 align:'center',
                 ellipsis: true,
-                width:'4rem'
+                // width:'4rem'
             },
             
             {
@@ -199,7 +199,7 @@ import { unref } from 'vue';
                 key: 'ip',
                 align:'center',
                 ellipsis: true,
-                width: '36rem',
+                // width: '20rem',
                 
             },
             {
@@ -208,7 +208,7 @@ import { unref } from 'vue';
                 key: 'ispType',
                 align:'center',
                 ellipsis: true,
-                width:'6rem'
+                // width:'6rem'
             },
             {
                 title: t('purchaseddetail.column6'),
@@ -216,7 +216,7 @@ import { unref } from 'vue';
                 key: 'remark',
                 align:'center',
                 ellipsis: true,
-                width:'8rem'
+                // width:'8rem'
             },
             {
                 title: t('purchaseddetail.column7'),

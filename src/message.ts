@@ -178,7 +178,7 @@ export const en = {
         title5: 'Safety and Compliance',
         title6: 'Enterprise customization',
         title7: 'Promotion Plan',
-        title8: 'Static agency'
+        title8: 'Static proxy'
     },
     footer: {
         describe: 'Phone/WeChat',
@@ -330,7 +330,8 @@ export const en = {
         account: 'Account',
         authentication:'Real-name authentication',
         setting:'Account Settings',
-        tip:'(All products only support network environments outside mainland China)'
+        tip:'(All products only support network environments outside mainland China)',
+        menu6:'Tutorial'
     },
     proxycity: {
         card_title1: 'Remain flow',
@@ -349,7 +350,7 @@ export const en = {
         form1_placeholder: 'Please select',
         form2:'Choose country',
         form2_placeholder: 'Please enter and select',
-        form3: 'Choose region',
+        form3: 'Select State/Province',
         form3_placeholder:'Please select',
         form4: 'Choose city',
         form4_placeholder:'Please select',
@@ -367,7 +368,7 @@ export const en = {
         switch2:'Automatically switch IP',
         agentPlaceholder:'Paste the generated proxy (semicolon separated, format is host:port:username:password)',
         button3:'Check Proxy',
-        form1_rule: 'Please select a sub-account',
+        form1_rule: 'Please select account',
 
         form2_rule:'Please select your country',
         form3_rule:'Please select IP validity',
@@ -556,10 +557,10 @@ export const en = {
         titl2_item2: 'Formal source',
         title2_subtitle2:'We only offer and test the world is fastest real residential proxies, 100% anonymity and 100% IP availability.',
         titl2_item3: 'Traffic never expires',
-        title2_subtitle3:'Bitip provides cheap residential agency and high-quality services, and the traffic never expires.',
+        title2_subtitle3:'Bitip provides cheap residential proxy and high-quality services, and the traffic never expires.',
         titl2_item4: 'Easy to integrate',
         title2_subtitle4:'Through API interface, different systems can be integrated, development processes can be simplified, project cooperation can be promoted, and data exchange and expansion can be achieved.',
-        title3:'Explore the best agency solution for you',
+        title3:'Explore the best proxy solution for you',
         title3_item1:'Germany',
         title3_item2:'USA',
         title3_item3:'UK',
@@ -585,7 +586,7 @@ export const en = {
         answer6_1:'We support HTTP, HTTPS, and SOCKS5 proxy protocols to meet different application needs.'
     },
     staticagent: {
-        title1:'Static residential agency',
+        title1:'Static residential proxy',
         subtitle1:'Strong high IP purity and strong service adaptability',
         subtitle2:'100% exclusive',
         subtitle3:'Customized by enterprises',
@@ -639,7 +640,7 @@ export const en = {
         item1_content1:'Commission rebates and permanent income',
         item1_content2:'¥No limit',
         item1_content3:'One-time cash rebate',
-        item1_content4:'Register now to get 200M dynamic traffic',
+        item1_content4:'Invite successfully to get 200M dynamic traffic',
         item1_content5:'Real-name authentication gives 500M dynamic traffic',
         item2_content1:'Send 200M',
         item2_content2:'Dynamic flow',
@@ -686,7 +687,7 @@ export const en = {
         action1:'Edit',
     },
     extra: {
-        title: 'The best agency solution for you'
+        title: 'The best proxy solution for you'
     },
     renew: {
         title:'Renewal',
@@ -866,7 +867,7 @@ export const zh = {
         subtitle: '立减¥100'
     },
     contact: {
-        title1: '客户经理',
+        title1: '大客户经理',
         title2: '微信客服',
         title3: '微信公众号',
         title4: 'Telegram'
@@ -1069,7 +1070,8 @@ export const zh = {
         account:'账户总览',
         authentication:'实名认证',
         setting:'账户设置',
-        tip:'（所有产品仅支持大陆以外网络环境使用）'
+        tip:'（所有产品仅支持大陆以外网络环境使用）',
+        menu6:'使用教程'
     },
     proxycity: {
         card_title1: '剩余流量',
@@ -1087,7 +1089,7 @@ export const zh = {
         form1_placeholder: '请选择',
         form2:'选择国家',
         form2_placeholder: '请输入后选择',
-        form3: '选择地区',
+        form3: '选择州/省',
         form3_placeholder:'请选择',
         form4: '选择城市',
         form4_placeholder:'请选择',
@@ -1104,14 +1106,14 @@ export const zh = {
         switch2:'自动切换IP',
         agentPlaceholder:'粘贴生成的代理(分号隔开,格式为host:port:username:password)',
         button3:'检查代理',
-        form1_rule: '请选择子账号',
+        form1_rule: '请选择账号',
         form2_rule:'请选择国家',
         form3_rule:'请选择IP时效',
         form4_rule:'请选择数量',
         type:'生成格式',
         download:'下载全部地区数据',
         IPform:'每次请求更换',
-        countryform:'全球混淆',
+        countryform:'全球随机',
         cityform:'随机选择'
     },
     trafficmanager: {
@@ -1377,7 +1379,7 @@ export const zh = {
         item1_content1:'佣金返现和永久收益',
         item1_content2:'¥无上限',
         item1_content3:'一次性现金返佣',
-        item1_content4:'注册者送200M动态流量',
+        item1_content4:'邀请成功获得200M动态流量',
         item1_content5:'实名认证送500M动态流量',
         item2_content1:'送200M',
         item2_content2:'动态流量',

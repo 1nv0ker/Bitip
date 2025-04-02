@@ -135,7 +135,7 @@
         //支付宝
         if (payMethod.value == 0) {
             if (res && res.code == 200) {
-                rechargeLink.value = res.body.url.url
+                rechargeLink.value = res.body.url
             }
             // setTimeout(() => {
             //     window.open(res.body.url.url, '_blank')
@@ -143,7 +143,7 @@
         }
         if (payMethod.value == 1) {
             if (res && res.code == 200) {
-                rechargeLink.value = res.body.url.url
+                rechargeLink.value = res.body.url
             }
         }
     }

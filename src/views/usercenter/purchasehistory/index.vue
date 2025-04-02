@@ -34,8 +34,8 @@
                 </a-button>
             </div>
         </div>
-        <div class="w-full mt-[1.5rem] h-[44rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false" :loading="params.loading">
+        <div class="w-full mt-[1.5rem] max-h-[44.5rem]">
+            <a-table :columns="columns" :data-source="tableDatas"  :pagination="false" :loading="params.loading" class="max-h-[41rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -105,7 +105,8 @@
                 dataIndex: 'orderNo',
                 key: 'orderNo',
                 align:'center',
-                ellipsis: true
+                ellipsis: true,
+                width:'20rem'
             },
             {
                 title: t('purchasedhistory.column2'),

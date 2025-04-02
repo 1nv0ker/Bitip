@@ -59,7 +59,7 @@
                 <span :class="`text-[1.25rem] cursor-pointer ${selected==1?'font-bold':''}`" @click="onSelect(1)" >{{t('promotionrebate.tab2')}}</span>
             </div>
             <div class="w-full mt-[1.5rem]">
-                <a-table :columns="tableObject.columns" :data-source="tableObject.tableDatas" :scroll="{y:'11.25rem'}" :pagination="false">
+                <a-table :columns="tableObject.columns" :data-source="tableObject.tableDatas"  :pagination="false" class="h-[15rem]">
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                             {{title}}

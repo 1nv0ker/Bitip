@@ -32,6 +32,7 @@
         </div>
         </div>
         <FooterComponent />
+        
         <div class=" cursor-pointer fixed bottom-[5rem] w-[3rem] h-[3rem] rounded-[1rem] flex justify-center items-center right-[2rem]" @click="scrollToTop" v-show="showButton" style="box-shadow: rgba(3, 42, 18, 0.08) 0px 4px 20px 0px;">
             <img src="../assets/back_top.png" class="w-[2rem] h-[2rem] "/>
         </div>
@@ -41,6 +42,7 @@
     import NavComponent from './home/NavComponent.vue';
     import Contact from './Contact.vue';
     import FooterComponent from './home/FooterComponent.vue';
+   
     // import { useI18n } from 'vue-i18n'
     import { useRoute  } from 'vue-router'
     import { ref, onBeforeMount, onMounted, onBeforeUnmount } from 'vue'

@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
-  import loginBg from '../../assets/login.svg?inline'
+  import loginBg from '../../assets/login.svg'
   const { t } = useI18n()
   const router = useRouter()
 </script>

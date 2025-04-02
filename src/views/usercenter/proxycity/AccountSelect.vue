@@ -28,10 +28,13 @@
     import { onMounted, ref, reactive } from 'vue'
     import { useI18n } from 'vue-i18n'
     import { GetSubAccountList } from '../../../api/account'
+    import useUserStore from '../../../store/user'
+    const userStore = useUserStore()
     // import { debounce } from 'lodash-es';
     import AddSubModal from '../trafficmanager/AddSubModal.vue'
     const { t } = useI18n()
     const account = defineModel()
+    
     const emit = defineEmits(['onSelectAccount'])
     const open = ref(false)
     const accountList = ref<any[]>([])
@@ -44,6 +47,9 @@
         open.value = true
     }
     onMounted(() => {
+        account.value = userStore.userInfo?.mainKey
+
+        emit('onSelectAccount', account.value)
         loadAccountList()
         // GetSubAccountList({
         //     PageNo:1,

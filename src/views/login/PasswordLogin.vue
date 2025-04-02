@@ -179,7 +179,7 @@
             console.log('res', res)
             store.setToken(res.body.token)
             store.setUserInfo()
-            const redirectPath:any = router.currentRoute.value.query.redirect || '/'
+            const redirectPath:any = router.currentRoute.value.query.redirect || '/usercenter/proxycity'
             router.push(redirectPath)
         })
         .catch(() => {

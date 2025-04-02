@@ -20,8 +20,8 @@
         <div v-for="item in items" class="flex flex-col">
             <span class="text-[#9BA2BB] text-[1.2rem] font-medium pb-[1.5rem]">{{item.title}}</span>
             <div v-for="subtitle in item.items" class="flex flex-col gap-[1.25rem]">
-                <span :class="`${subtitle?.selected?'hover:text-[#01AA44]':''} text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer pl-[0.5em] pr-[0.5rem] ellipsis-single`" 
-                @click="subtitle.path && router.push({name:subtitle.path})">{{subtitle.title}}</span>
+                <span :class="`${subtitle?.selected?'hover:text-[#01AA44]':''} text-[#191919] text-[1rem] font-normal pb-[1.25rem] cursor-pointer  pr-[0.5rem] ellipsis-single`" 
+                @click="menuClick(subtitle)">{{subtitle.title}}</span>
             </div>
         </div>
     </div>
@@ -62,7 +62,8 @@
                     {
                         title:t('footer.title2_subtitle2'),
                         path:'',
-                        selected:true
+                        selected:true,
+                        url:'https://bit-ip.gitbook.io/bitip'
                     },
                     {
                         title:t('footer.title3_subtitle5'),
@@ -116,30 +117,34 @@
                     {
                         title:t('footer.title4_subtitle1'),
                         path:'',
-                        selected:false
+                        selected:true
                     },
                     {
                         title:t('footer.title4_subtitle2'),
                         path:'',
-                        selected:false
+                        selected:true
                     },
                     {
                         title:t('footer.title4_subtitle3'),
                         path:'',
-                        selected:false
+                        selected:true
                     },
                     {
                         title:t('footer.title4_subtitle4'),
                         path:'',
-                        selected:false
+                        selected:true
                     },
                     {
                         title:t('footer.title4_subtitle5'),
                         path:'',
-                        selected:false
+                        selected:true
                     }
                 ]
             }
         ]
     })
+    const menuClick = (subtitle:any) => {
+        subtitle.path && router.push({name:subtitle.path})
+        subtitle.url && window.open(subtitle.url, '__blank')
+    }
 </script>

@@ -12,9 +12,9 @@
             :items="items"
             @click="onMenuClick"
             >
-            <template #title>
+            <!-- <template #title>
                 123
-            </template>
+            </template> -->
         </a-menu>
     </div>
     <div class="w-full h-[19rem]">
@@ -32,9 +32,10 @@
     import authImg from '../../assets/usercenter/auth.svg'
     import planImg from '../../assets/usercenter/plan.svg'
     import auth2Img from '../../assets/usercenter/auth_bg.svg'
+    import helpImg from '../../assets/usercenter/help.svg'
     import { useI18n } from 'vue-i18n'
     import { h } from 'vue'
-import { onBeforeUnmount } from 'vue'
+    import { onBeforeUnmount } from 'vue'
     const { t } = useI18n()
     const router = useRouter()
     const route = useRoute()
@@ -140,7 +141,13 @@ import { onBeforeUnmount } from 'vue'
             // title:h('span', {
 
             // }, 'abc')
-        }
+        },
+        {
+            key: 'document',
+            icon: () => getimg(helpImg),
+            label: t('backend_menu.menu6'),
+            title: t('backend_menu.menu6'),
+        },
     ])
     watch(route, () => {
         const name = route.name as string
@@ -155,6 +162,12 @@ import { onBeforeUnmount } from 'vue'
         router.push('/home')
     }
     const onMenuClick = (props:any) => {
+        if (props.key == 'document') {
+            // openKeys.value = []
+            // selectedKeys.value = []
+            window.open('https://bit-ip.gitbook.io/bitip', '__blank')
+            return
+        }
         router.push({name:props.key})
     }
     onMounted(() => {

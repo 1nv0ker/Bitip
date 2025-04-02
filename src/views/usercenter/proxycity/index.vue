@@ -49,10 +49,10 @@
                                     <template #label v-if="form.slot">
                                             <div class="flex justify-between w-full">
                                                 <span>{{form.label}}</span>
-                                                <span class="pl-[1rem] cursor-pointer text-[#01AA44]" @click="onDownload">{{t('proxycity.download')}}</span>
+                                                <span class="pl-[0.5rem] cursor-pointer text-[#01AA44]" @click="onDownload">{{t('proxycity.download')}}</span>
                                             </div>
                                     </template>
-                                    <div class="relative h-[3rem]">
+                                    <div class="relative h-[3rem] ">
                                         <a-select :showSearch="form.showSearch" optionFilterProp="label" :placeholder="form.placeholder" class="customASelect" :disabled="form.disabled"
                                          :options="form.options || []" v-model:value="modelRef[form.key]" @select="(_:any,props:any)=>onSelect(form.key, props)">
                                     
@@ -149,6 +149,8 @@
     import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi, GenerateApiWhenEnable, SwitchIP, CheckIP } from '../../../api/proxy'
     import ProxyText from './ProxyText.vue';
     import { message } from 'ant-design-vue';
+    import useUserStore from '../../../store/user'
+    const userStore = useUserStore()
 // import axios from 'axios';
 
     const { t } = useI18n()
@@ -176,6 +178,7 @@
     const qrcode = ref('')
     const checkContent = ref<any[]>([])
     const checkLoading = ref(false)
+    const autoPassword = ref('')
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -219,6 +222,8 @@
         ]
     })
     const formItems = computed(() => {
+        const targets = ['us', 'uk', 'jp', 'fr', 'au', 'it']
+        let tempLocations:any = locations.filter((item)=>targets.indexOf(item.country)!==-1).concat(locations.filter((item)=>targets.indexOf(item.country)===-1))
         return [
             {
                 label: t('proxycity.form2'),
@@ -230,7 +235,7 @@
                 options:[{
                     label:t('proxycity.countryform'),
                     value:'0',
-                }].concat(locations.map((item=>({
+                }].concat(tempLocations.map(((item:any)=>({
                     label:item.name+'-'+item.country,
                     value:item.country,
                     state:item.state,
@@ -339,10 +344,10 @@
     })
     //自动切换
     const onSwitchAuto = async () => {
-        const {  proxyPwd, userName } = proxyConfig.value
+        const {  userName } = proxyConfig.value
         const res:any = await SwitchIP({
             username:userName,
-            password:proxyPwd
+            password:autoPassword.value
         })
         .catch(() => {
             loading.value = false
@@ -356,9 +361,13 @@
     }
     //检查IP
     const onCheckIP = async () => {
+        if (checkIP.value.length == 0) {
+            return
+        }
         checkContent.value = []
         let len = checkIP.value.split(';').length
         checkLoading.value = true
+        
         for (let i=0;i<len;i++) {
             const IP = checkIP.value.split(';')[i]
             const res:any = await CheckIP({
@@ -398,6 +407,8 @@
                     loading.value = false
                 })
                 if (res.code && res.code == 200) {
+                    const items = res.body.split(':')
+                    autoPassword.value = items.length>0?items[3]:''
                     proxyIPS.value = res.body.split(`\n`)
                     loading.value = false
                 }
@@ -472,7 +483,7 @@
                 loading.value = false
             })
             // }
-            if (res.code && res.code == 200) {
+            if (res) {
                 // modelRef.generateType = '0'
                 // console.log('res', res, res.split(`\n`))
                 proxyIPS.value = res.split(`\n`)
@@ -551,7 +562,7 @@
     //     }
     // }
     //选择账户
-    const onSelectAccount = (_value:string) => {
+    const onSelectAccount = () => {
         if (modelRef.userName) {
             loading.value = true
             GetProxyConfig({
@@ -587,7 +598,9 @@
                         value:''
                     }].concat(state.map((item:any)=>({
                         value:item.label,
-                        label:item.label
+                        label:item.label.toLowerCase().split(/\s+/)
+                        .map((word:string) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')
                     })))
                 }
                 if (city && city.length == 0) {
@@ -599,6 +612,9 @@
                     }].concat(city.map((item:any)=>({
                         value:item.label,
                         label:item.label
+                        .toLowerCase().split(/\s+/)
+                        .map((word:string) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ')
                     })))
                 }
             }
@@ -617,6 +633,7 @@
         }
     }
     onMounted(() => {
+        modelRef.userName = userStore.userInfo?.mainKey
         // axios
         // axios.get('http://1t7e3st1237:1h7a3lanaoiwnaahgl@proxy.bitip.com:10001')
         GetBandwidthAnalysis()
@@ -668,7 +685,8 @@
         }
     }
     //form label
-    :where(.css-dev-only-do-not-override-1p3hq3p).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-xl-24.ant-form-item-label >label {
-        width: 100%;
+    :where(.css-dev-only-do-not-override-1p3hq3p).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-xl-24.ant-form-item-label >label
+    {
+        width: 100%!important;
     }
 </style>

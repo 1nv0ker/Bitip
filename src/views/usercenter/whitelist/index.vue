@@ -41,8 +41,8 @@
                 </div>
             </a-col>
         </a-row>
-        <div class="w-full mt-[1.5rem] h-[44rem]">
-            <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'37.5rem'}" :pagination="false" :row-selection="rowSelection" rowKey="id" :loading="params.loading">
+        <div class="w-full mt-[1.5rem]">
+            <a-table :columns="columns" :data-source="tableDatas"  :pagination="false" :row-selection="rowSelection" rowKey="id" :loading="params.loading" class="max-h-[41rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}

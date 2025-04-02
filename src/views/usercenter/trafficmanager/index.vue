@@ -7,8 +7,8 @@
                     <span class="pl-[0.5rem]">+</span> <span class="pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('trafficmanager.add_account')">{{t('trafficmanager.add_account')}}</span>
                 </div>
             </div>
-            <div class="mt-[1.5rem] h-[18rem]">
-                <a-table :columns="columns" :data-source="tableDatas" :scroll="{y:'16rem'}" :pagination="false" :loading="loading">
+            <div class="mt-[1.5rem] h-[18.75rem]">
+                <a-table :columns="columns" :data-source="tableDatas"  :pagination="false" :loading="loading" class="max-h-[15rem]">
                     <template #headerCell="{ title }">
                         <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -56,7 +56,7 @@
                 <PaginationComponent v-model:total="params.total" v-model:page-size="params.pageSize" v-model="params.current" @onCurrentChange="onCurrentChange" @onSizeChange="onSizeChange"/>
             </div>
         </div>
-        <div class="w-full h-[35rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
+        <div class="w-full h-[28rem] p-[1.75rem] rounded-[1.5rem] bg-[white]">
             <div class="pb-[1.5rem] flex justify-between">
                 <span class="text-[#191919] text-[1.25rem] font-bold">{{t('trafficmanager.title')}}</span>
                 <div class="flex items-center gap-[1.75rem]">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full h-[25rem]" ref="mainRef">
+            <div class="w-full h-[22rem]" ref="mainRef">
                 <div id="traffic_chart" class="w-full h-full flex justify-center items-center">
                     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
                         <a-empty v-if="isEmpty" />

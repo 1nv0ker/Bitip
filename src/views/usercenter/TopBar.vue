@@ -46,14 +46,15 @@
                 </div>
             </div>
             <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer">
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer" @mouseenter="showNotice=true;showUser=false"
+                @click="showNotice=true;showUser=false">
                     <img  src="../../assets/notice.png" class="w-full h-full"/>
                 </div>
             </div>
 
             <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center  cursor-pointer"
-             @mouseenter="showUser=true"
-             @click="showUser=true">
+             @mouseenter="showUser=true;showNotice=false"
+             @click="showUser=true;showNotice=false">
                 <img src="../../assets/usercenter/avater.svg" class="w-full h-full"/>
             </div>
         </div>
@@ -95,6 +96,21 @@
                 </div>
             </div>
         </div>
+        <!-- 通知 -->
+        <div class="fixed w-[18rem] max-h-[17rem] bg-[white] top-[5.875rem] right-[3.5rem] rounded-[1.5rem] border-[1px] border-[#E2E7E4] p-[1.75rem] overflow-auto" 
+        style="box-shadow: 0px 16px 26px 0px rgba(4,27,13,0.06);z-index: 50;" v-show="showNotice" @mouseenter="showNotice=true" @mouseleave="showNotice=false">
+            <div class="flex flex-col border-b-[1px] bordrr-[#d7d7d7] pb-[0.5rem]" v-for="notice in noticeList">
+                <span class="text-[#333] text-[1rem] text-left">[{{notice.title}}]: <span class="text-[#999]"> {{notice.content}}</span></span>
+                
+                <span class="text-[#999] text-left text-[0.9rem]">{{notice.sysCreateTime}}</span>
+            </div>
+            <div class="flex justify-center p-[0.5rem]" v-if="total>noticeNumber">
+                <span class=" cursor-pointer" @click="onLoadMore">加载更多</span>
+            </div>
+            <a-config-provider :locale="store.language=='zh'?zhCN:enUS">
+                <a-empty v-if="noticeList.length==0" />
+            </a-config-provider>
+        </div>
         <Contact v-show="showContact"/>
     </div>
 </template>
@@ -107,8 +123,10 @@
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     import Contact from '../Contact.vue';
+    import { GetNotify } from '../../api/notify'
     import useUserStore from '../../store/user'
-
+    import enUS from 'ant-design-vue/es/locale/en_US';
+    import zhCN from 'ant-design-vue/es/locale/zh_CN';
     const { t } = useI18n()
     const i18n = useI18n()
     const userStore = useUserStore()
@@ -117,7 +135,11 @@
     const lan = ref()
     const router = useRouter()
     const showUser = ref(false)
+    const showNotice = ref(false)
     const showContact = ref(false)
+    const noticeList = ref<any[]>([])
+    const noticeNumber = ref(3)
+    const total = ref(0)
     const onOpenMenu = () => {
         emit('onOpenMenu')
         
@@ -126,9 +148,26 @@
         lan.value = i18n.locale.value || 'zh'
         store.changeLanauage(lan.value)
         userStore.setUserInfo()
-
+        loadNotice()
         
     })
+    const loadNotice = () => {
+        GetNotify({
+            // KeyWord:userStore.userInfo?.tel,
+            PageNo:1,
+            PageSize: noticeNumber.value
+        })
+        .then((res:any)=> {
+            noticeList.value = res.body.records
+            // noticeList.value = noticeList.value.concat(noticeList.value)
+            // noticeList.value = noticeList.value.concat(res.body.records)
+            total.value = res.body.totalRows
+        })
+    }
+    const onLoadMore = () => {
+        noticeNumber.value = noticeNumber.value + 3
+        loadNotice()
+    }
     const onLanauageChange = () => {
         // console.log('onLanauageChange', value, lan.value)
         lan.value == 'zh'?lan.value='en':lan.value='zh'

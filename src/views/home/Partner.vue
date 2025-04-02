@@ -1,7 +1,9 @@
 <template>
     <ComponentLayout>
-       <div v-for="list in lists" class="flex gap-[0.5rem] pb-[6rem]">
-            <span class="text-[1rem] text-[#191919]">{{list}}</span>
+       <div class="w-full flex gap-[1rem] pb-[3rem]">
+            <div v-for="list in lists" class="flex gap-[1rem]">
+                <span class="text-[1.2rem] hover:text-[#01AA44] cursor-pointer text-[#191919]" @click="onLink(list.partnerUrl)">{{list.partnerName}}</span>
+            </div>
        </div>
     </ComponentLayout>
 </template>
@@ -21,5 +23,8 @@
                 lists.value = res.body
             }
         })
+    }
+    const onLink = (url:string) => {
+        window.open(url, '__blank')
     }
 </script>

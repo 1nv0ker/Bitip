@@ -246,7 +246,7 @@
                 content:t('login.registerSuccess'),
                 duration: 2,
                 onClose: ()=> {
-                    router.push('/login')
+                    router.push({path:'/usercenter/proxycity'})
                 }
             })
         })
