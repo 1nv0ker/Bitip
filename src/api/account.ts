@@ -6,7 +6,8 @@ const BASIC_MODULE = '/api/SubAccount'
 export interface listData {
     KeyWord?:string,
     PageNo:number,
-    PageSize:number
+    PageSize:number,
+    IsDropDown?:number
 }
 
 export function GetSubAccountList(params:listData) {

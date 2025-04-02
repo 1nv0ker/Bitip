@@ -3,8 +3,7 @@
     <a-select 
     :placeholder="t('proxycity.form2_placeholder')"
      class="customASelect" v-model:value="account"
-     :filter-option="false" 
-     allowClear
+     
      show-search
      @select="onSelect"
      :options="accountList"
@@ -73,7 +72,8 @@
         GetSubAccountList({
             PageNo:1,
             PageSize: 10000,
-            KeyWord:state.KeyWord
+            KeyWord:state.KeyWord,
+            IsDropDown: 1
         })
         .then((res:any) => {
             state.fetching = false

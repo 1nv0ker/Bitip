@@ -1,15 +1,18 @@
 <template>
-    <div :id="props.element" ref="captchaRef">
+    <div :id="props.element" ref="captchaRef" v-if="isLoaded">
         
     </div>
     <button id="cap_button" style="display:none">test</button>
 </template>
 <script lang="ts" setup>
     import { ref, onMounted, onBeforeMount } from 'vue'
+    import { loadScript } from '../../hooks/userAuth'
     import { useI18n } from 'vue-i18n'
+import { message } from 'ant-design-vue'
     const captchaRef = ref<HTMLElement | null>()
     const captcha = ref<any>(null)
     const i18n = useI18n()
+    const isLoaded = ref(false)
     const emit = defineEmits(['getCaptchaVerifyParam'])
     const props = defineProps({
         element:String,
@@ -25,11 +28,17 @@
         // captchaVerifyFunc: Function
     })
     onMounted(() => {
-    
+        
     })
-    const loadCaptha = (width=0, height=0) => {
+    const loadCaptha = async (width=0, height=0) => {
         console.log('loadCaptha')
-
+        try {
+            await loadScript('https://o.alicdn.com/captcha-frontend/aliyunCaptcha/AliyunCaptcha.js', 'alijs');
+            isLoaded.value = true;
+        } catch (error) {
+            console.error('验证码加载失败请刷新', error);
+            message.error('验证码加载失败请刷新')
+        }
         window.initAliyunCaptcha({
             // 场景ID。通过步骤一添加验证场景后，您可以在验证码场景列表，获取该场景的场景ID
             SceneId: '1hpup7kb',

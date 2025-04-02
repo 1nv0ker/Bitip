@@ -90,11 +90,12 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { computed, ref, reactive, onBeforeMount, onBeforeUnmount, onUnmounted } from 'vue'
-    import { Form } from 'ant-design-vue';
+    import { computed, ref, reactive, onBeforeMount, onBeforeUnmount, onUnmounted, onMounted } from 'vue'
+    import { Form, message } from 'ant-design-vue';
     import { useRouter } from 'vue-router'
     import { Certification } from '../../../api/login'
     import useUserStore from '../../../store/user'
+    import { loadScript } from '../../../hooks/userAuth'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const useForm = Form.useForm;
@@ -147,6 +148,15 @@
                 message: t('userauth.form2_message')
             }
         ]
+    })
+    onMounted(async () => {
+        try {
+            await loadScript('https://o.alicdn.com/yd-cloudauth/cloudauth-cdn/jsvm_all.js', 'authjs');
+            
+        } catch (error) {
+            console.error('实名认证模块加载失败请刷新', error);
+            message.error('实名认证模块加载失败请刷新')
+        }
     })
     onBeforeMount(() => {
         loadUserInfo()

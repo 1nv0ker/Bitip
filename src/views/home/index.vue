@@ -10,6 +10,7 @@
         <FifthComponent class="hiddleClass" ref="fifthRef" />
         <SixthComponent class="hiddleClass" ref="sixthRef" @onFreeUse="onFreeUse" />
         <SeventhComponent class="hiddleClass" ref="seventhRef" />
+        <Partner />
         <!-- <FooterComponent /> -->
     </BasicLayout>
 </template>
@@ -23,8 +24,10 @@
     import SixthComponent from './SixthComponent.vue';
     import SeventhComponent from './SeventhComponent.vue';
     import ExtraComponent from './ExtraComponent.vue';
+    import Partner from './Partner.vue';
     // import FooterComponent from './FooterComponent.vue';
     import BasicLayout from '../BasicLayout.vue'
+
     import { ref, onMounted, onUnmounted } from 'vue'
 
     import useUserStore from '../../store/user'
@@ -65,6 +68,7 @@
     }
     onMounted(() => {
         window.addEventListener('scroll', onScroll)
+
     })
     onUnmounted(() => {
         window.removeEventListener('scroll', onScroll);
@@ -74,20 +78,7 @@
             router.push('/login')
         }
     }
-    // defineOptions({
-    //     metaInfo: {
-    //         title:'bitip123',
-    //         meta: [
-    //             {
-    //                 name:'Keywords', content:'爬虫代理,高匿代理ip,刷单代理ip,https代理,http代理,ip代理,代理ip,私密代理ip,免费代理ip,高速代理,独享代理ip,免费ip,在线代理,代理服务器'
-    //             },
-    //             {
-    //                 name:'Description', content:'（www.bitip.com）是http代理ip服务供应商，拥有千万级独立ip池，覆盖全球，低延迟高可用率稳定专业！爬虫代理,网页代理ip,企业级代理ip,电脑换ip,https代理,私密代理ip,免费代理ip,独享代理ip,在线代理,代理服务器等!'
-    //             }
-    //         ]
-    //     }
-    // })
-    
+
 </script>
 <style scoped>
     .activeClass {

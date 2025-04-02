@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="w-full mt-[1.75rem] h-[45rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="id" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false" :loading="params.loading">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{y:'38.5rem'}" :row-selection="rowSelection" :pagination="false" :loading="params.loading">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -137,6 +137,7 @@
     import StaticRenew from '../../../components/StaticRenew.vue'
     import { message } from 'ant-design-vue';
     import { Base64 } from 'js-base64';
+import { unref } from 'vue';
     const { t } = useI18n()
     const I18Store = useI18nStore()
     const qrcode = ref('')
@@ -145,7 +146,7 @@
     const modalRef = ref<any>()
     const selectRow = ref<any[]>([])
     const selectedData = ref<any[]>([])
-    // const selectRows = ref<any[]>([])
+    const selectedRowKey = ref<any[]>([])
     const dates = ref<[Dayjs, Dayjs]|null>(null);
     const params = reactive({
         total:0,
@@ -161,6 +162,13 @@
     })
     const columns = computed(() => {
         return [
+            // {
+               
+            //     dataIndex: 'id',
+            //     key: 'id',
+            //     colSpan: 0,
+            //     width: 0
+            // },
             {
                 title: t('purchaseddetail.column1'),
                 dataIndex: 'code',
@@ -245,7 +253,8 @@
                 let codeString = `socks://${str}?obfs=none`
                 return {
                     ...item,
-                    code: codeString
+                    code: codeString,
+                    key: ''+item.id
                 }
             })
             params.total = res.body.totalRows
@@ -254,11 +263,14 @@
     const onCurrentChange = (num:number) => {
         params.current = num
         selectedData.value = []
+        selectedRowKey.value = []
         loadTable()
     }
     const onSizeChange = (num:number,size:number) => {
         params.current = num
         params.pageSize = size
+        selectedData.value = []
+        selectedRowKey.value = []
         loadTable()
     }
     const onAllRenew = () => {
@@ -307,16 +319,22 @@
     }
     const tableDatas = ref([
     ])
-    const rowSelection = {
-        selectedRowKeys:params.selectKeys,
-        onChange: (selectedRowKeys: string[], selectedRows: any[]) => {
-            console.log('selectedRowKeys', selectedRowKeys)
-            params.selectKeys = selectedRowKeys as any
-            selectedData.value = selectedRows
-            
-            // console.log(selectedRows)
+    const rowSelection = computed(() => {
+        return {
+            selectedRowKeys:unref(selectedRowKey),
+            // selections: false,
+            fixed: true,
+            // hideDefaultSelections: true,
+            onChange: (selectedRowKeys: string[], selectedRows: any[]) => {
+                
+                selectedRowKey.value = selectedRowKeys
+                console.log('selectedRowKeys', selectedRowKeys, unref(selectedRowKey))
+                selectedData.value = selectedRows
+                
+                // console.log(selectedRows)
+            }
         }
-    };
+    })
     const onOpenQRcode = (code:string) => {
         console.log('code', code)
         

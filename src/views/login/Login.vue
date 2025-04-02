@@ -30,6 +30,7 @@
     import TextLogin from './TextLogin.vue';
     import { useI18n } from 'vue-i18n'
     import { ref } from 'vue'
+
     const { t } = useI18n()
     const selected = ref(0)
 </script>

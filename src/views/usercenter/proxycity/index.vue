@@ -49,7 +49,7 @@
                                     <template #label v-if="form.slot">
                                             <div class="flex justify-between w-full">
                                                 <span>{{form.label}}</span>
-                                                <span class=" cursor-pointer text-[#01AA44]" @click="onDownload">{{t('proxycity.download')}}</span>
+                                                <span class="pl-[1rem] cursor-pointer text-[#01AA44]" @click="onDownload">{{t('proxycity.download')}}</span>
                                             </div>
                                     </template>
                                     <div class="relative h-[3rem]">
@@ -356,6 +356,7 @@
     }
     //检查IP
     const onCheckIP = async () => {
+        checkContent.value = []
         let len = checkIP.value.split(';').length
         checkLoading.value = true
         for (let i=0;i<len;i++) {

@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './style.css'
-import 'animate.css';
+import ('bootstrap/dist/css/bootstrap.min.css')
+import ('./style.css')
+import ('animate.css');
 
 import App from './App.vue';
 import router from './router'
@@ -9,9 +9,9 @@ import i18n from './i18n'
 import './api/interceptor'
 import pinia from './store'
 import { configure } from 'vee-validate'
-import 'ant-design-vue/dist/reset.css';
+import ('ant-design-vue/dist/reset.css')
 import './echarts'
-import './custom.less'
+import ('./custom.less')
 // import { createMetaManager } from 'vue-meta';
 
 configure({

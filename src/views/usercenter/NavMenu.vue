@@ -17,10 +17,14 @@
             </template>
         </a-menu>
     </div>
+    <div class="w-full h-[19rem]">
+        <img v-for="image in tempImage" :src="image" class="w-full h-full" />
+    </div>
 </template>
 <script setup lang="ts">
     import { useRouter, useRoute } from 'vue-router'
     import { computed, ref, onMounted, watch } from 'vue'
+    import { GetImage } from '../../api/site'
     import proxycityImg from '../../assets/usercenter/dy.svg'
     import staticImg from '../../assets/usercenter/static.svg'
 
@@ -30,11 +34,15 @@
     import auth2Img from '../../assets/usercenter/auth_bg.svg'
     import { useI18n } from 'vue-i18n'
     import { h } from 'vue'
+import { onBeforeUnmount } from 'vue'
     const { t } = useI18n()
     const router = useRouter()
     const route = useRoute()
     const selectedKeys = ref<string[]|number[]>([])
     const openKeys = ref<string[]|number[]>(['2'])
+    const images =ref<any[]>([])
+    const index = ref(0)
+    let interval:any;
     const getimg = (img:string) => {
         return h(
                 'img',
@@ -48,6 +56,9 @@
                 }
             )
     }
+    const tempImage = computed(() => {
+        return images.value.slice(index.value, index.value+1)
+    })
     const items = computed(()=>[
         {
             key: '1',
@@ -153,8 +164,25 @@
         const meta = route.meta
         const parent = meta.parent as string || ''
         openKeys.value = [parent]
+        GetImage()
+        .then((res:any) => {
+            if (res.success) {
+                images.value = res.body
+                interval && clearInterval(interval)
+                interval = setInterval(() => {
+                    if (index.value == (images.value.length-1)) {
+                        index.value = 0
+                    } else {
+                        index.value = index.value + 1
+                    }
+                }, 2000);
+            }
+        })
         // console.log('route', selectedKeys.value, openKeys.value)
 
+    })
+    onBeforeUnmount(() => {
+        interval && clearInterval(interval)
     })
 </script>
 <style lang="less">
