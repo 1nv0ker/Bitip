@@ -18,7 +18,7 @@
         </a-menu>
     </div>
     <div class="w-full h-[19rem]">
-        <img v-for="image in tempImage" :src="image" class="w-full h-full" />
+        <img v-for="image in tempImage" :src="image" class="w-full h-full animate__animated animate__fadeIn" />
     </div>
 </template>
 <script setup lang="ts">
@@ -58,6 +58,7 @@
             )
     }
     const tempImage = computed(() => {
+        // console.log('img', images.value.slice(index.value, index.value+1), images.value)
         return images.value.slice(index.value, index.value+1)
     })
     const items = computed(()=>[
@@ -179,7 +180,7 @@
         openKeys.value = [parent]
         GetImage()
         .then((res:any) => {
-            if (res.success) {
+            if (res.code == 200) {
                 images.value = res.body
                 interval && clearInterval(interval)
                 interval = setInterval(() => {
@@ -188,7 +189,7 @@
                     } else {
                         index.value = index.value + 1
                     }
-                }, 2000);
+                }, 5000);
             }
         })
         // console.log('route', selectedKeys.value, openKeys.value)

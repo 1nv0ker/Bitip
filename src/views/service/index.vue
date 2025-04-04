@@ -1,11 +1,6 @@
 <template>
     <BasicLayout>
-        <ComponentLayout :componetStyle="{
-            background:`url(${bg})`,
-            backgroundSize: '100% 150%',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: '100% -100px'
-        }">
+        <ComponentLayout :customClass="'service_bg'">
             <!-- <div class=" absolute top-[0] bottom-0 left-0 right-0 ">
                 <img :src="bg" class="w-full h-full" />
             </div> -->
@@ -111,22 +106,22 @@
     import BasicLayout from '../BasicLayout.vue';
     import ComponentLayout from '../ComponentLayout.vue';
     // import CompanyForm from './CompanyForm.vue';
-    import handImg from '../../assets/hold.svg'
-    import item2Img from '../../assets/service/item.svg'
-    import item3Img from '../../assets/service/item2.svg'
-    import image1 from '../../assets/service/1.svg'
-    import image2 from '../../assets/service/2.svg'
-    import image3 from '../../assets/service/3.svg'
-    import image4 from '../../assets/service/4.svg'
-    import company1 from '../../assets/service/huawei.svg'
-    import company2 from '../../assets/service/tencent.svg'
-    import company3 from '../../assets/service/JD.svg'
-    import company4 from '../../assets/service/pdd.svg'
+    import handImg from '../../assets/hold.svg?inline'
+    import item2Img from '../../assets/service/item.svg?inline'
+    import item3Img from '../../assets/service/item2.svg?inline'
+    import image1 from '../../assets/service/1.svg?inline'
+    import image2 from '../../assets/service/2.svg?inline'
+    import image3 from '../../assets/service/3.svg?inline'
+    import image4 from '../../assets/service/4.svg?inline'
+    import company1 from '../../assets/service/huawei.svg?inline'
+    import company2 from '../../assets/service/tencent.svg?inline'
+    import company3 from '../../assets/service/JD.svg?inline'
+    import company4 from '../../assets/service/pdd.svg?inline?inline'
     import company5 from '../../assets/service/mi.svg'
-    import company6 from '../../assets/service/bd.svg'
-    import company7 from '../../assets/service/ali.svg'
-    import company8 from '../../assets/service/meituan.svg'
-    import bg from '../../assets/service/bg.svg'
+    import company6 from '../../assets/service/bd.svg?inline'
+    import company7 from '../../assets/service/ali.svg?inline'
+    import company8 from '../../assets/service/meituan.svg?inline'
+    // import bg from '../../assets/service/bg.svg'
     import { computed } from 'vue'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()

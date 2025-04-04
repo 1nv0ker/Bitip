@@ -427,7 +427,8 @@ export const en = {
         message:'After opening, it will be automatically deducted from the account balance according to monthly renewal. If the balance is insufficient, the renewal will not be successful.',
         status1:'Paid',
         status2:'Not paid',
-        status3:"All"
+        status3:"All",
+        edit:'Modify remark'
     },
     purchasedhistory: {
         title:'Purchase history',
@@ -1136,7 +1137,8 @@ export const zh = {
         action: '操作',
         edit:'编辑',
         disabled:'禁用',
-        enable:'启用'
+        enable:'启用',
+        
     },
     purchaseddetail: {
         title: '已购IP',
@@ -1163,7 +1165,8 @@ export const zh = {
         message:'开启后从账户余额内按每月续费自动扣除，余额不足则续费不成功',
         status1:'已支付',
         status2:'未支付',
-        status3:'全部'
+        status3:'全部',
+        edit:'修改备注'
     },
     purchasedhistory: {
         title:'购买记录',

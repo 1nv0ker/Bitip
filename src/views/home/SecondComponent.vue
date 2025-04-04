@@ -20,7 +20,7 @@
         <div class="flex  gap-[1rem] mt-[5.375rem] justify-center animate__animated animate__slideInLeft" v-show="selected==0">
             <div class="w-[43rem] h-[25rem] relative">
                 
-                <img src="../../assets/group1.svg" class="w-full h-full" />
+                <img :src="groupImg" class="w-full h-full" />
             </div>
             <div class="w-[38.625rem] flex flex-col  justify-center">
                 <div class="flex">
@@ -69,7 +69,7 @@
         <div class="flex  mt-[5.375rem] animate__animated animate__slideInRight gap-[4.125rem]" v-show="selected==1">
             <div class="w-[38.0625rem] h-[25rem] relative">
                 
-                <img src="../../assets/group.svg" class="w-full h-full" />
+                <img :src="group2Img" class="w-full h-full" />
             </div>
             <div class="w-[38.625rem] flex flex-col justify-center">
                 <div class="flex">
@@ -121,7 +121,9 @@
     import RippleButton from '../../components/RippleButton.vue'
     import ComponentLayout from '../ComponentLayout.vue'
     import { ref, onMounted, onBeforeUnmount } from 'vue'
-import router from '../../router'
+    import router from '../../router'
+    import groupImg from '../../assets/group1.svg?inline'
+    import group2Img from '../../assets/group.svg?inline'
     const emit = defineEmits(['onFreeUse'])
     const selected = ref(0)
     const { t } = useI18n()

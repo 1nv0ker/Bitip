@@ -34,8 +34,8 @@
                 </a-button>
             </div>
         </div>
-        <div class="w-full mt-[1.5rem] max-h-[44.5rem]">
-            <a-table :columns="columns" :data-source="tableDatas"  :pagination="false" :loading="params.loading" class="max-h-[41rem]">
+        <div class="w-full mt-[1.5rem] h-[44.5rem]">
+            <a-table :columns="columns" :data-source="tableDatas"  :pagination="false" :loading="params.loading" class="h-[41rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}

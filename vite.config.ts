@@ -7,7 +7,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
 import viteCompression from 'vite-plugin-compression';
 // import viteImagemin from 'vite-plugin-imagemin';
 import sitemap from 'vite-plugin-sitemap'
-
+// const timestamp = new Date().getTime();
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -40,6 +40,7 @@ export default defineConfig({
       algorithm: 'gzip',
       ext: '.gz',
       threshold: 10240,
+      // filter:/\.(js|mjs|json|css|html|woff2)$/i,
       deleteOriginFile: false  // 保留原始文件[6](@ref)
     })
     // viteImagemin({ gifsicle: { optimizationLevel: 7 } })
@@ -60,6 +61,9 @@ export default defineConfig({
         manualChunks: {
           vendor: ['ant-design-vue', 'axios', 'vue-router', 'bootstrap', 'echarts'],
         },
+        // assetFileNames: 'assets/[name]-[hash].[ext]',  // 图片/字体等
+        // chunkFileNames: `js/[name]-[hash].js`,        // 代码分割块
+        // entryFileNames: `js/[name]-[hash].${timestamp}.js`
       },
     },
     terserOptions: {

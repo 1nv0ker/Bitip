@@ -125,9 +125,11 @@
                 <a-button :loading="checkLoading" class="w-full h-[3rem] rounded-[0.75rem] bg-[#01AA44] cursor-pointer flex justify-center items-center " @click="onCheckIP">
                     <span class="text-white text-[1rem] font-medium">{{ t('proxycity.button3') }}</span>
                 </a-button>
-                <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem] overflow-auto" style="height: calc( 100% - 10rem );">
-                    <div v-for="content in checkContent" class="flex flex-col gap-y-[0.2rem]">
-                        <span>{{content}}</span>
+                <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem] overflow-auto p-[0.75rem]" style="height: calc( 100% - 10rem );">
+                    <div v-for="content in checkContent" class="flex flex-col gap-y-[0.2rem] pb-[0.5rem]">
+                        <div v-for="item in content">
+                            <span>{{item}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,7 +148,7 @@
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApi, GenerateApiWhenEnable, SwitchIP, CheckIP } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApiLink, GenerateApiWhenEnable, SwitchIP, CheckIP } from '../../../api/proxy'
     import ProxyText from './ProxyText.vue';
     import { message } from 'ant-design-vue';
     import useUserStore from '../../../store/user'
@@ -177,6 +179,8 @@
     const open = ref(false)
     const qrcode = ref('')
     const checkContent = ref<any[]>([])
+    const stateList = ref<any[]>([])
+    const cityList = ref<any[]>([])
     const checkLoading = ref(false)
     const autoPassword = ref('')
     let interval2:any
@@ -377,7 +381,8 @@
                 checkLoading.value = false
             })
             if (res.code && res.code == 200) {
-                checkContent.value.push(res.body)
+                const content = res.body.split('\n')
+                checkContent.value.push(content)
             }
         }
         checkLoading.value = false
@@ -465,36 +470,37 @@
     }
     const onGenerateApi = () => {
         formRef.value.validate()
-        .then(async () => {
-            loading.value = true
-            let res:any;
+        .then( () => {
+            // loading.value = true
+            // let res:any;
             const params = {
                 KeyName:modelRef.userName,
                 Num:modelRef.number,
-                Country:modelRef.country,
+                Country:modelRef.country=='0'?undefined:modelRef.country,
                 State:modelRef.state,
                 City:modelRef.city,
                 SessionTime:modelRef.time,
                 AutoSwitch: modelRef.IP,
                 Format: modelRef.type
             }
-            res = await GenerateApi(params)
-            .catch(() => {
-                loading.value = false
-            })
+            const link = GenerateApiLink(params)
+            // res = await GenerateApi(params)
+            // .catch(() => {
+            //     loading.value = false
+            // })
             // }
-            if (res) {
+            // if (res) {
                 // modelRef.generateType = '0'
                 // console.log('res', res, res.split(`\n`))
-                proxyIPS.value = res.split(`\n`)
-                loading.value = false
-            }
+                proxyIPS.value = link.split(`\n`)
+            //     loading.value = false
+            // }
         })
         
     }
     const onDownload = () => {
         const link = document.createElement('a');
-        link.href = '/map.json';
+        link.href = '/locations.xlsx';
         link.download = '全部地区文件'
         document.body.appendChild(link);
         link.click();
@@ -590,6 +596,8 @@
                 //重新选择清空
                 modelRef.city = undefined
                 modelRef.state = undefined
+                stateList.value = state
+                cityList.value = city
                 if (state && state.length==0) {
                     stateDatas.value = []
                 } else {
@@ -603,24 +611,38 @@
                         .join(' ')
                     })))
                 }
-                if (city && city.length == 0) {
-                    cityDatas.value = []
-                } else {
-                    cityDatas.value = [{
-                        label:t('proxycity.cityform'),
-                        value:''
-                    }].concat(city.map((item:any)=>({
-                        value:item.label,
-                        label:item.label
-                        .toLowerCase().split(/\s+/)
-                        .map((word:string) => word.charAt(0).toUpperCase() + word.slice(1))
-                        .join(' ')
-                    })))
-                }
+                // if (city && city.length == 0) {
+                //     cityDatas.value = []
+                // } 
+                cityDatas.value = []
+                // else {
+                //     cityDatas.value = [{
+                //         label:t('proxycity.cityform'),
+                //         value:''
+                //     }].concat(city.map((item:any)=>({
+                //         value:item.label,
+                //         label:item.label
+                //         .toLowerCase().split(/\s+/)
+                //         .map((word:string) => word.charAt(0).toUpperCase() + word.slice(1))
+                //         .join(' ')
+                //     })))
+                // }
             }
         }
         if (key == 'state') {
             modelRef.city = undefined
+               cityDatas.value = [{
+                label:t('proxycity.cityform'),
+                value:''
+            }].concat(cityList.value
+                .filter((item:any)=>(item.value.indexOf(modelRef.state) !== -1) && item.value.indexOf(modelRef.country) !== -1)
+                .map((item:any)=>({
+                value:item.label,
+                label:item.label
+                .toLowerCase().split(/\s+/)
+                .map((word:string) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')
+            })))
         }
         if(key == 'IP') {
             const { value } = props
@@ -685,8 +707,8 @@
         }
     }
     //form label
-    :where(.css-dev-only-do-not-override-1p3hq3p).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-xl-24.ant-form-item-label >label
-    {
-        width: 100%!important;
-    }
+    // :where(.css-dev-only-do-not-override-1p3hq3p).ant-form-vertical .ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-24.ant-form-item-label >label, :where(.css-dev-only-do-not-override-1p3hq3p).ant-col-xl-24.ant-form-item-label >label
+    // {
+    //     width: 100%!important;
+    // }
 </style>

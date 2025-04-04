@@ -32,6 +32,16 @@ export function GenerateApi(params:generateData) {
         params:params
     })
 }
+export function GenerateApiLink(params:any) {
+    let link:string = ''
+    for (let key in params) {
+        if (params[key]!==undefined) {
+            link = link + key + '='+ params[key] + "&"
+        }
+    }
+
+    return  axios.defaults.baseURL + `${BASIC_MODULE}/Generate?`+link.slice(0, -1)
+}
 
 //手动切换为是
 export interface generateData {

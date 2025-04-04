@@ -62,8 +62,8 @@
                 </div> -->
             </div>
         </div>
-        <div class="w-full mt-[1.75rem] ">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="key"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="max-h-[42rem]">
+        <div class="w-full mt-[1.75rem] h-[40rem]">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '130rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[37rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -72,6 +72,9 @@
                 <template #bodyCell="{ column, record }">
                     <template v-if="column.key === 'action'">
                         <div class="flex gap-[1.75rem] justify-center action_button text-[#5E6F94] text-[1rem] font-medium items-center">
+                            <div class="w-[1.25rem] h-[1.25rem]  cursor-pointer" :title="t('trafficmanager.edit')" @click="onEdit(record)">
+                                    <img src="../../../assets/usercenter/flowmanager/edit.png" class="w-full h-full"/>
+                                </div>
                             <AutoComponent  :checked="record['autoRenew']==1?true:false" @onRenewal="(checked:boolean)=>onRenewal(checked, record)"/>
                             <span class="font-medium cursor-pointer" @click="onSetRenew(record)">{{t('purchaseddetail.action2')}}</span>
 
@@ -117,7 +120,8 @@
             <PaginationComponent v-model:total="params.total" v-model:page-size="params.pageSize" v-model="params.current" @onCurrentChange="onCurrentChange" @onSizeChange="onSizeChange"/>
         </div>
         <QrCodeModal v-model="open" :qrcode="qrcode"/>
-        <StaticRenew v-model="openRenew" ref="modalRef" :selectRow="selectRow"/>
+        <StaticRenew v-model="openRenew" ref="modalRef" :selectRow="selectRow" @onComplate="onComplate"/>
+        <RemarkModal v-model="open2"  ref="remarkRef" @onComplate="onComplate"/>
     </div>
 </template>
 <script setup lang="ts">
@@ -134,19 +138,22 @@
     import AutoComponent from './AutoComponent.vue';
     import { useI18n } from 'vue-i18n'
     import useI18nStore from '../../../store/i18n'
+    import RemarkModal from './RemarkModal.vue';
     import StaticRenew from '../../../components/StaticRenew.vue'
     import { message } from 'ant-design-vue';
     import { Base64 } from 'js-base64';
-import { unref } from 'vue';
+    import { unref } from 'vue';
     const { t } = useI18n()
     const I18Store = useI18nStore()
     const qrcode = ref('')
     const open = ref(false)
+    const open2 = ref(false)
     const openRenew = ref(false)
     const modalRef = ref<any>()
     const selectRow = ref<any[]>([])
     const selectedData = ref<any[]>([])
     const selectedRowKey = ref<any[]>([])
+    const remarkRef = ref<any>()
     const dates = ref<[Dayjs, Dayjs]|null>(null);
     const params = reactive({
         total:0,
@@ -199,7 +206,7 @@ import { unref } from 'vue';
                 key: 'ip',
                 align:'center',
                 ellipsis: true,
-                // width: '20rem',
+                width: '22rem',
                 
             },
             {
@@ -222,13 +229,19 @@ import { unref } from 'vue';
                 title: t('purchaseddetail.column7'),
                 key: 'action',
                 align:'center',
-                width: '20rem'
+                width: '24rem'
             },
         ]
     })
     onMounted(() => {
         loadTable()
     })
+    const onEdit = (record:any) => {
+        open2.value = true
+        nextTick(() => {
+            remarkRef.value.init(record)
+        })
+    }
     const loadTable = async () => {
         params.loading = true
         const res:any = await GetList({
@@ -319,6 +332,10 @@ import { unref } from 'vue';
     }
     const tableDatas = ref([
     ])
+    const onComplate = () => {
+        params.current = 1
+        loadTable()
+    }
     const rowSelection = computed(() => {
         return {
             selectedRowKeys:unref(selectedRowKey),

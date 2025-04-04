@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="w-[58.3125rem] h-[23rem]  mt-[2rem]">
-                        <img src="../../assets/globalSource.svg" class="w-full h-full"/>
+                        <img :src="third1" class="w-full h-full"/>
                     </div>
                 </div>
                 <!-- <div class="flex flex-col animate__animated animate__fadeIn w-auto" v-show="selected==2">
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
-                        <img src="../../assets/third_2.svg" class="w-full h-full"/>
+                        <img :src="third2" class="w-full h-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col animate__animated animate__fadeIn w-auto ml-[14.0625rem]" v-show="selected==3">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem]  mt-[2rem]">
-                        <img src="../../assets/third_3.svg" class="w-full h-full"/>
+                        <img :src="third3" class="w-full h-full"/>
                     </div>
                 </div>
                 <div class="flex flex-col animate__animated animate__fadeIn ml-[15rem]" v-show="selected==4">
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="w-[39.625rem] h-[25.625rem] mt-[2rem]">
-                        <img src="../../assets/third_4.svg" class="w-full h-full"/>
+                        <img :src="third4" class="w-full h-full"/>
                     </div>
                 </div>
             </div>
@@ -85,6 +85,10 @@
     import dome3 from '../../assets/gif/2.gif'
     import dome4 from '../../assets/gif/3.gif'
     import dome5 from '../../assets/gif/4.gif'
+    import third1 from '../../assets/globalSource.svg?inline'
+    import third2 from '../../assets/third_2.svg?inline'
+    import third3 from '../../assets/third_3.svg?inline'
+    import third4 from '../../assets/third_4.svg?inline'
     const { t } = useI18n()
     const thirdRef = ref<HTMLElement>()
     const selected = ref(1)

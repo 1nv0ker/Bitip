@@ -28,12 +28,12 @@
     import ComponentLayout from '../ComponentLayout.vue'
     import { useI18n } from 'vue-i18n'
     import { ref, computed } from 'vue'
-    import planImg1 from '../../assets/plan1.svg'
-    import planImg2 from '../../assets/home/1.png'
-    import planImg3 from '../../assets/plan3.svg'
-    import planImg4 from '../../assets/plan4.svg'
-    import planImg5 from '../../assets/plan5.svg'
-    import locationImg from '../../assets/location.svg'
+    import planImg1 from '../../assets/plan1.svg?inline'
+    import planImg2 from '../../assets/home/1.png?inline'
+    import planImg3 from '../../assets/plan3.svg?inline'
+    import planImg4 from '../../assets/plan4.svg?inline'
+    import planImg5 from '../../assets/plan5.svg?inline'
+    import locationImg from '../../assets/location.svg?inline'
     const { t } = useI18n()
     const extraRef = ref()
     defineExpose({

@@ -89,6 +89,11 @@
                 value:item.keyName,
                 label:item.keyName
             }))
+            
+            accountList.value.unshift({
+                value: userStore.userInfo?.mainKey,
+                label:userStore.userInfo?.mainKey
+            })
         })
         .catch(() => {
             state.fetching = false

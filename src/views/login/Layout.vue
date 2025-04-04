@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n'
   import { useRouter } from 'vue-router'
-  import loginBg from '../../assets/login.svg'
+  import loginBg from '../../assets/login.svg?inline'
   const { t } = useI18n()
   const router = useRouter()
 </script>
@@ -27,7 +27,7 @@
         
     }
     .login-bg {
-        // background-image: url('../../assets/login.png');
+        background-image: url('../../assets/login.svg?inline');
         background-size:cover;
         background-repeat: no-repeat;
     }

@@ -151,6 +151,7 @@
             default:[]
         }
     })
+    const emit = defineEmits(['onComplate'])
     const init = () => {
         payMethod.value = 1
         paying.value = false
@@ -258,10 +259,12 @@
     }
     const onComplate = () => {
         userStore.setUserInfo()
+        emit('onComplate')
         open.value = false
     }
     const onCancel = () => {
         userStore.setUserInfo()
+        emit('onComplate')
         open.value = false
     }
 </script>
