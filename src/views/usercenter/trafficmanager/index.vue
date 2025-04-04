@@ -62,7 +62,7 @@
                 <div class="flex items-center gap-[1.75rem]">
                     <div>
                         <a-select class="customASelect w-[20rem]" :loading="loading" :placeholder="t('trafficmanager.placeholder3')" @select="onSelected(selected)" v-model:value="KeyName">
-                            <a-select-option :value="item.value" v-for="item in accountList">{{item.label}}</a-select-option>
+                            <a-select-option :value="item.value" v-for="item in chartList">{{item.label}}</a-select-option>
                         </a-select>
                     </div>
                     <a-config-provider :locale="I18Store.language=='zh'?zhCN:enUS">
@@ -108,6 +108,7 @@
     import enUS from 'ant-design-vue/es/locale/en_US';
     import zhCN from 'ant-design-vue/es/locale/zh_CN';
     import useI18nStore from '../../../store/i18n'
+    import useUserStore from '../../../store/user'
     import * as echarts from 'echarts';
     import { message } from 'ant-design-vue';
     const { t } = useI18n()
@@ -122,6 +123,8 @@
     let myChart:any = null
     const KeyName = ref<any>()
     const isEmpty = ref(false)
+    const chartList = ref<any[]>([])
+    const userStore = useUserStore()
     // const checked = ref(false)
     const params = reactive({
         total: 0,
@@ -289,6 +292,11 @@
                 value:item.keyName,
                 label:item.keyName
             }))
+            chartList.value = accountList.value
+            chartList.value.unshift({
+                value: userStore.userInfo?.mainKey,
+                label: userStore.userInfo?.mainKey
+            })
             
         })
         .catch(() => {

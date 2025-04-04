@@ -18,12 +18,14 @@ const store = defineStore('users', {
     state:():{
         token:string,
         userInfo:UserInfo_data|null,
-        info:any
+        info:any,
+        showConcat: Boolean
     } => {
         return {
             token: '',
             userInfo: null,
-            info:null
+            info:null,
+            showConcat: false
         }
     },
     persist: true,
@@ -57,6 +59,9 @@ const store = defineStore('users', {
         },
         clearToken() {
             this.token = ''
+        },
+        setConcat() {
+            this.showConcat = !this.showConcat
         },
         logout() {
             this.token = ''

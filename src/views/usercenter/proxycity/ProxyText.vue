@@ -25,9 +25,11 @@
     const onchange = (event:any) => {
         // console.log('event', event)
         const value = event.target.value
-        console.log('text', text.value)
+       
         // text.value = value.replace(/[\s]+/g, ' ').split(';').slice(0, 10).join(';')
-        len.value = text.value?.split(';').slice(0, 10).length || 0
+        len.value = value?.split(';').slice(0, 10).length || 0
+        console.log('text', len.value, value?.split(';').slice(0, 10).length )
+        // console.log('len',  value)
         if (!value) {
             len.value = 0
         }

@@ -4,13 +4,18 @@
             <span class="text-[#191919] text-[1.25rem] font-bold">{{t('backend_menu.menu1')}}-{{t('backend_menu.menu1_sub2')}}</span>
         </div>
         <!-- style="grid-template-columns: repeat(4, 19rem);grid-template-rows: repeat(2, 22.125rem);" -->
-        <DySetmenu />
+        <DySetmenu @on-open-contact="openConcat"/>
     </div>
 </template>
 <script setup lang="ts">
     import DySetmenu from '../../setmenu/DySetmenu.vue'
+    import useUserStore from '../../../store/user'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
+    const useStore = useUserStore()
+    const openConcat = () => {
+        useStore.setConcat()
+    }
 </script>
 <style lang="less" scoped>
     .normal_card {

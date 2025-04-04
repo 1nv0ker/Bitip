@@ -3,7 +3,11 @@
         <div class="p-[1.75rem]">
             <form  @submit.prevent="onSubmit">
             <!-- 手机号 -->
-                <PhoneForm v-model="phoneNum" :phonenumAttrs="phonebumAttrs" class="w-[26.875rem] h-[4rem]" :errormessage="errormessage"/>
+            <PasswordInput :password-attrs="passwordAttrs" 
+                :errormessage="errormessage"
+                v-model="password" 
+                :tips="t('login.passwordTips')" :error-tips="t('login.passwordValidateNew')" 
+                :placeholder="t('login.passwordPlaceholder')" />
                 
                 <!-- 邮箱 -->
                 <EmailForm v-model="email" class="w-[26.875rem] h-[4rem] mt-[2rem]" :errormessage="errormessage" :emain-attrs="emainAttrs" />
@@ -27,8 +31,8 @@
 
     import UseUserStore from '../../../store/user'
     import { message } from 'ant-design-vue'
-    import PhoneForm from '../../../components/PhoneForm.vue';
-
+    // import PhoneForm from '../../../components/PhoneForm.vue';
+    import PasswordInput from '../../../components/PasswordInput.vue';
     import EmailForm from '../../../components/EmailForm.vue';
     const store = UseUserStore()
 
@@ -52,7 +56,7 @@
         init: init
     })
     const schema = yup.object({
-        phoneNum: yup.string().required().length(11),
+        password: yup.string().required().min(6).max(12),
         email: yup.string().email().required()
     })
     const { defineField, errors, handleSubmit, resetForm } = useForm({
@@ -60,7 +64,7 @@
         
     })
     const errormessage = computed(()=>errors.value)
-    const [phoneNum, phonebumAttrs] = defineField('phoneNum');
+    const [password, passwordAttrs] = defineField('password');
 
     const [ email, emainAttrs] = defineField('email')
     const onSubmit = handleSubmit(() => {
@@ -70,12 +74,13 @@
 
     const modifyEamil = () => {
         ModifyEamil({
-            tel: phoneNum.value,
+            passWord: password.value,
             email:email.value
         })
         .then((res) => {
             console.log('res', res)
             message.success(t('login.modifyMessage'))
+            open.value = false
             store.setUserInfo()
         })
     }

@@ -31,8 +31,8 @@
         <div class="h-full flex items-center">
             <div class="w-auto p-[0.375rem] border-[1px] border-[#999999] rounded-[3.125rem] gap-[2.8rem] flex items-center h-[3rem]">
                 <span class="pl-[1rem] text-[#191919] text-[1rem]">{{t('backend_menu.Balance')}}:<span class="pl-[0.5rem] text-[#191919] text-[1.1rem] font-bold">￥{{userStore.userInfo?.accountBalance}}</span></span>
-                <div class="w-[5.75rem] h-full rounded-[1.125rem] bg-[#01AA44] flex justify-center items-center cursor-pointer" @click="onRecharge">
-                    <span class="text-[#FFFFFF] text-[1rem] font-medium">{{t('backend_menu.recharge')}}</span>
+                <div class="w-[5.75rem] h-full rounded-[1.125rem] bg-[#01AA44] flex justify-center  items-center bitip_button cursor-pointer" @click="onRecharge">
+                    <span class="text-[#FFFFFF] text-[1rem] font-medium ">{{t('backend_menu.recharge')}}</span>
                 </div>
             </div>
             <div class="p-[0.375rem] pl-[1.5rem] pr-[1.5rem] w-[auto] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] cursor-pointer flex items-center ml-[1.75rem]" @click="onLanauageChange">
@@ -41,21 +41,21 @@
                 <span class="pl-[0.375rem] text-[1rem] font-medium">{{lan =='zh' ? '中文':'EN'}}</span>
             </div>
             <div class="w-[3rem] h-[3rem] ] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer" @click="showContact=!showContact">
-                    <img  src="../../assets/contact.png" class="w-full h-full"/>
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer bitip_button" @click="onOpenContact">
+                    <img  src="../../assets/contact.png" class="w-full h-full bitip_button"/>
                 </div>
             </div>
-            <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center">
-                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer" @mouseenter="showNotice=true;showUser=false"
+            <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center " >
+                <div class="w-[1.5rem] h-[1.5rem] cursor-pointer bitip_button" @mouseenter="showNotice=true;showUser=false"
                 @click="showNotice=true;showUser=false">
-                    <img  src="../../assets/notice.png" class="w-full h-full"/>
+                    <img  src="../../assets/notice.png" class="w-full h-full bitip_button"/>
                 </div>
             </div>
 
-            <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center  cursor-pointer"
+            <div class="w-[3rem] h-[3rem] border-[1px] border-[#999999] rounded-[3.125rem] flex items-center ml-[1.75rem] justify-center bitip_button  cursor-pointer"
              @mouseenter="showUser=true;showNotice=false"
              @click="showUser=true;showNotice=false">
-                <img src="../../assets/usercenter/avater.svg" class="w-full h-full"/>
+                <img src="../../assets/usercenter/avater.svg" class="w-full h-full bitip_button" />
             </div>
         </div>
         <!-- 用户下拉框 -->
@@ -111,7 +111,7 @@
                 <a-empty v-if="noticeList.length==0" />
             </a-config-provider>
         </div>
-        <Contact v-show="showContact"/>
+        <Contact v-show="userStore.showConcat"/>
     </div>
 </template>
 <script setup lang="ts">
@@ -136,7 +136,7 @@
     const router = useRouter()
     const showUser = ref(false)
     const showNotice = ref(false)
-    const showContact = ref(false)
+    // const showContact = ref(false)
     const noticeList = ref<any[]>([])
     const noticeNumber = ref(3)
     const total = ref(0)
@@ -167,6 +167,9 @@
     const onLoadMore = () => {
         noticeNumber.value = noticeNumber.value + 3
         loadNotice()
+    }
+    const onOpenContact = () => {
+        userStore.setConcat()
     }
     const onLanauageChange = () => {
         // console.log('onLanauageChange', value, lan.value)

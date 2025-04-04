@@ -365,7 +365,7 @@ export const en = {
         button2: 'Generate API links',
         copy: 'copy',
         switch: 'Manually switch IP',
-        switch2:'Automatically switch IP',
+        switch2:'Click to switch the IP corresponding to this proxy',
         agentPlaceholder:'Paste the generated proxy (semicolon separated, format is host:port:username:password)',
         button3:'Check Proxy',
         form1_rule: 'Please select account',
@@ -661,7 +661,9 @@ export const en = {
     },
     form: {
         success:'Success',
-        min:'Min'
+        min:'Min',
+        tip:'Please scan the QR code to pay',
+        clear:'clear'
     },
     whitelist: {
         title: 'Add Whitelist',
@@ -1104,7 +1106,7 @@ export const zh = {
         button2: '生成API链接',
         copy: '复制',
         switch: '手动切换IP',
-        switch2:'自动切换IP',
+        switch2:'点击后切换此条代理对应的IP',
         agentPlaceholder:'粘贴生成的代理(分号隔开,格式为host:port:username:password)',
         button3:'检查代理',
         form1_rule: '请选择账号',
@@ -1402,7 +1404,9 @@ export const zh = {
     },
     form: {
         success:'成功',
-        min:'分钟'
+        min:'分钟',
+        tip:'请扫码支付',
+        clear:'清空'
     },
     whitelist: {
         title: '添加白名单',

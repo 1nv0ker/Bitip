@@ -89,7 +89,7 @@
                         <span class="text-[#191919] font-semibold text-[1rem]">￥{{buyNumbers.reduce((a,b)=>a+(b.number*((b.type==0?selected_time?.price:selected_time?.price_single) || 0)), 0) }}</span>
                     </div>
                 </div>
-                <div class="w-full h-[3.25rem] rounded-[1.75rem] mt-[2rem] flex justify-center items-center cursor-pointer" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" @click="onRecharge">
+                <div class="w-full h-[3.25rem] rounded-[1.75rem] mt-[2rem] flex justify-center items-center cursor-pointer bitip_button" style="background: linear-gradient( 95deg, #4B3585 0%, #342B4B 100%);" @click="onRecharge">
                     <span class="text-[#FFEEC1] text-[1rem] font-medium">{{ t('setmenu.buyButton') }}</span>
                 </div>
             </div>

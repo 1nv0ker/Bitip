@@ -15,7 +15,7 @@
                 <div class="w-full pt-[2rem]">
                     <div class="w-full flex justify-between">
                         <span class="text-[#191919] text-[1.125rem] price2_label">- {{t('setmenu.price')}}</span>
-                        <span class="text-[#191919] text-[1.125rem] font-semibold price2_value">{{ card.unitPrice }}/GB</span>
+                        <span class="text-[#191919] text-[1.125rem] font-semibold price2_value">￥{{ card.unitPrice }}/GB</span>
                     </div>
                     <div class="w-full flex justify-between">
                         <span class="text-[#191919] text-[1.125rem] originPrice_label">- {{t('setmenu.originPrice')}}</span>
@@ -23,8 +23,8 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center mt-[1.5rem]" @click="onRecharge(card.title, card.price, card.value, card.custom)">
-                    <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer">
-                        <span class="text-[#FFEEC1] text-[1rem] font-medium">{{t('setmenu.discount')}}</span>
+                    <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer bitip_button">
+                        <span class="text-[#FFEEC1] text-[1rem] font-medium bitip_button">{{t('setmenu.discount')}}</span>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <div class="w-full pt-[2rem]">
                     <div class="w-full flex justify-between" v-if="card.custom" style="visibility: hidden;">
                         <span class="text-[#191919] text-[1.125rem] originPrice_label">- {{t('setmenu.originPrice')}}</span>
-                        <span class="text-[#702B12] text-[1.125rem] font-semibold originPrice_value line-through">{{ card.originPrice }}</span>
+                        <span class="text-[#702B12] text-[1.125rem] font-semibold originPrice_value line-through">￥{{ card.originPrice }}</span>
                     </div>
                     <div class="w-full flex justify-between" >
                         <span class="text-[#191919] text-[1.125rem] price2_label">- {{t('setmenu.price')}}</span>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center mt-[1.5rem]" >
-                    <div style="" class="discount_button rounded-[3.5rem] w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer" @click="onRecharge(card.title, card.price,card.value, card.custom)">
+                    <div style="" class="discount_button rounded-[3.5rem] bitip_button w-[15.25rem] h-[3.25rem] flex justify-center items-center cursor-pointer" @click="onRecharge(card.title, card.price,card.value, card.custom)">
                         <span class="text-[#FFEEC1] text-[1rem] font-medium">{{card.custom?t('setmenu.menu6_button'):t('setmenu.discount')}}</span>
                     </div>
                 </div>
@@ -114,6 +114,7 @@
     const selectType = ref(0)
     const modalRef = ref<any>()
     const router = useRouter()
+    const emit = defineEmits(['onOpenContact'])
     const cards = computed(() => {
         return [
             {
@@ -181,6 +182,7 @@
             return
         }
         if (custom) {
+            emit('onOpenContact')
             return
         }
         if (!isVerify()) {

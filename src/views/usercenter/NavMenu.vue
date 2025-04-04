@@ -1,8 +1,8 @@
 <template>
-    <div class="w-full h-[5.75rem] flex pl-[1.25rem] items-center">
+    <div class="w-full h-[6rem] flex pl-[1.25rem] items-center">
         <img src="../../assets/logo.png" class="w-[5.25rem] h-[1.75rem] cursor-pointer" @click="onHome"/>
     </div>
-    <div class="w-full p-[1.5rem]">
+    <div class="w-full p-[1.5rem] pt-[0]">
         <a-menu
             mode="inline"
             class="bitip_menu"
@@ -17,7 +17,7 @@
             </template> -->
         </a-menu>
     </div>
-    <div class="w-full h-[19rem]">
+    <div class="w-full h-[19rem] overflow-auto">
         <img v-for="image in tempImage" :src="image" class="w-full h-full animate__animated animate__fadeIn" />
     </div>
 </template>

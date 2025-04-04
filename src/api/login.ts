@@ -77,9 +77,10 @@ export function SendSms(smsCode:SmsCodeData) {
 
 export interface modifyData {
     "name"?: string,//用户昵称(非账号)
-    "tel": string,//绑定的手机号
+    "tel"?: string,//绑定的手机号
     "email"?: string,//绑定的邮箱
-    "remark"?: string//备注信息
+    "remark"?: string,//备注信息,
+    passWord?:string
 }
 
 export function ModifyEamil(modify:modifyData) {

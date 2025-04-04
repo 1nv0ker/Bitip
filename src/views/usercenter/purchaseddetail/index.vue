@@ -189,7 +189,7 @@
                 key: 'expireTime',
                 align:'center',
                 ellipsis: true,
-                // width:'12rem'
+                width:'12rem'
             },
             {
                 title: t('purchaseddetail.column3'),
@@ -197,7 +197,7 @@
                 key: 'ispLocation',
                 align:'center',
                 ellipsis: true,
-                // width:'4rem'
+                width:'4rem'
             },
             
             {
@@ -215,7 +215,7 @@
                 key: 'ispType',
                 align:'center',
                 ellipsis: true,
-                // width:'6rem'
+                width:'6rem'
             },
             {
                 title: t('purchaseddetail.column6'),
@@ -223,13 +223,13 @@
                 key: 'remark',
                 align:'center',
                 ellipsis: true,
-                // width:'8rem'
+                width:'8rem'
             },
             {
                 title: t('purchaseddetail.column7'),
                 key: 'action',
                 align:'center',
-                width: '24rem'
+                width: '20rem'
             },
         ]
     })

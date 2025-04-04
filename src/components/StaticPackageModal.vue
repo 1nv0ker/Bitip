@@ -83,7 +83,8 @@
                     </a-button>
                 </div>
             </div>
-            <div class="w-[17rem] flex justify-center items-center">
+            <div class="w-[17rem] flex flex-col justify-center items-center">
+                <span v-show="rechargeLink" class="pb-[0.5rem] font-medium">{{t('form.tip')}}</span>
                 <div class="w-[12.5rem] h-[12.5rem]" v-show="rechargeLink">
                     <a-qrcode :value="rechargeLink"  :size="12.5*16"/>
                 </div>

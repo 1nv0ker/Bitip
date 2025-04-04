@@ -53,6 +53,7 @@
     const acvitityStatus = ref(true)
     const store = userStore()
     const route = useRoute()
+    const navRef = ref<any>()
 
     defineProps({
         customeStyle: Object
@@ -83,6 +84,13 @@
     const checkScroll = () => {
         showButton.value = window.scrollY > 200
     }
+    const openContact = () => {
+        showContact.value = !showContact.value
+    }
+    defineExpose({
+        openContact:openContact
+    })
+    
 </script>
 <style scoped>
     .activeClass {

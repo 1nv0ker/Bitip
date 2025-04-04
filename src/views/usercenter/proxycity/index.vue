@@ -8,11 +8,11 @@
                     <div class="w-full flex justify-between items-center">
                         <span class="text-[#191919] text-[1.25rem] font-bold">{{t('proxycity.card1')}}</span>
                         <div class="flex gap-[1.25rem]">
-                            <div  class="  right-[1rem] w-[5.5rem] h-[2.25rem]  border-[#01AA44] 
-                            border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer" @click="onBuyFlow">
+                            <div  class=" right-[1rem] w-[5.5rem] h-[2.25rem]  border-[#01AA44] 
+                            border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer bitip_button" @click="onBuyFlow">
                                 <span class="text-[#01AA44] text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.card_button')">{{t('proxycity.card_button')}}</span>
-                            </div>
-                            <div  class=" right-[1rem] w-[5.5rem] h-[2.25rem] ] border-[#EBEFF8] bg-[#FAFAFA]
+                            </div >
+                            <div  class="bitip_button right-[1rem] w-[5.5rem] h-[2.25rem] ] border-[#EBEFF8] bg-[#FAFAFA]
                             border-[1px] rounded-[0.5rem] flex justify-center items-center cursor-pointer" @click="onFlowManager">
                                 <span class="text-[#191919] text-[1rem] pl-[0.5rem] pr-[0.5rem] ellipsis-single" :title="t('proxycity.card_button1')">{{t('proxycity.card_button1')}}</span>
                             </div>
@@ -122,8 +122,11 @@
                     <!-- <a-textarea class="customArea"  :placeholder="t('proxycity.agentPlaceholder')" :rows="4" :maxlength="10" show-count /> -->
                     <ProxyText class="w-full" v-model="checkIP"/>
                 </div>
-                <a-button :loading="checkLoading" class="w-full h-[3rem] rounded-[0.75rem] bg-[#01AA44] cursor-pointer flex justify-center items-center " @click="onCheckIP">
-                    <span class="text-white text-[1rem] font-medium">{{ t('proxycity.button3') }}</span>
+                <a-button @click="checkContent=[];checkIP=''">
+                    <span class="bitip_button">{{t('form.clear')}}</span>
+                </a-button>
+                <a-button :loading="checkLoading" class="w-full h-[3rem] rounded-[0.75rem] bitip_button bg-[#01AA44] cursor-pointer flex justify-center items-center " @click="onCheckIP">
+                    <span class="text-white text-[1rem] font-medium ">{{ t('proxycity.button3') }}</span>
                 </a-button>
                 <div class="w-full  border-[1px] border-[#EBEFF8] bg-[#FAFAFA] rounded-[0.75rem] overflow-auto p-[0.75rem]" style="height: calc( 100% - 10rem );">
                     <div v-for="content in checkContent" class="flex flex-col gap-y-[0.2rem] pb-[0.5rem]">
@@ -349,6 +352,9 @@
     //自动切换
     const onSwitchAuto = async () => {
         const {  userName } = proxyConfig.value
+        if (!userName || !autoPassword.value) {
+            return
+        }
         const res:any = await SwitchIP({
             username:userName,
             password:autoPassword.value

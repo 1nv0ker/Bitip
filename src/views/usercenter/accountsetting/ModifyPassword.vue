@@ -95,6 +95,7 @@
         .then((res)=> {
             console.log(res)
             message.success(t('login.modifyMessage'))
+            open.value = false
         })
     }
         

@@ -1,5 +1,5 @@
 <template>
-    <BasicLayout >
+    <BasicLayout ref="basicRef">
         <!-- :customeStyle="{
         background:'transparent'
     }" -->
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <DySetmenu v-show="selected!=1 && selected !=2"/>
+                <DySetmenu v-show="selected!=1 && selected !=2" @onOpenContact="onOpenContact"/>
                 <StaticSetmenu v-show="selected==1" showPadding />
                 <Recharge v-show="selected==2"/>
                 <!-- <QuestionComponent /> -->
@@ -49,6 +49,7 @@
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
     const route = useRoute()
+    const basicRef = ref<any>()
     const selected = ref(0)
     onMounted(() => {
         selected.value = Number(route.query.type) || 0
@@ -61,6 +62,9 @@
             selected.value = newId
         }
     )
+    const onOpenContact = () => {
+        basicRef.value && basicRef.value.openContact()
+    }
 </script>
 <style scoped>
 /* .custome_bg {
