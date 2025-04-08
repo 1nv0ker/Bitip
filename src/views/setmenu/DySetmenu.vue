@@ -51,7 +51,7 @@
                     </div>
                     <div class="w-full flex justify-between" >
                         <span class="text-[#191919] text-[1.125rem] price2_label">- {{t('setmenu.price')}}</span>
-                        <span class="text-[#191919] text-[1.125rem] font-semibold price2_value">{{ card.custom?card.title:card.unitPrice +'/GB'}}</span>
+                        <span class="text-[#191919] text-[1.125rem] font-semibold price2_value">￥{{ card.custom?card.title:card.unitPrice +'/GB'}}</span>
                     </div>
                     <div class="w-full flex justify-between" v-if="!card.custom">
                         <span class="text-[#191919] text-[1.125rem] originPrice_label">- {{t('setmenu.originPrice')}}</span>
@@ -102,7 +102,7 @@
     import { computed, ref, nextTick } from 'vue'
     import PackageModal from '../../components/PackageModal.vue'
     import UserAuthTips from '../../components/UserAuthTips.vue'
-    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { isLogin} from '../../hooks/userAuth'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
@@ -185,10 +185,10 @@
             emit('onOpenContact')
             return
         }
-        if (!isVerify()) {
-            open2.value = true
-            return
-        }
+        // if (!isVerify()) {
+        //     open2.value = true
+        //     return
+        // }
         open.value = true
         nextTick(() => {
             modalRef.value.init()

@@ -28,7 +28,9 @@
        
         // text.value = value.replace(/[\s]+/g, ' ').split(';').slice(0, 10).join(';')
         len.value = value?.split(';').slice(0, 10).length || 0
-        console.log('text', len.value, value?.split(';').slice(0, 10).length )
+        text.value = value?.split(';').slice(0, 10).join(';')
+        console.log('text', text.value?.split(';').length)
+        // console.log('text', len.value, value?.split(';').slice(0, 10).length )
         // console.log('len',  value)
         if (!value) {
             len.value = 0

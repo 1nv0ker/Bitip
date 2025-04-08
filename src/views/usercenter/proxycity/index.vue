@@ -122,7 +122,7 @@
                     <!-- <a-textarea class="customArea"  :placeholder="t('proxycity.agentPlaceholder')" :rows="4" :maxlength="10" show-count /> -->
                     <ProxyText class="w-full" v-model="checkIP"/>
                 </div>
-                <a-button @click="checkContent=[];checkIP=''">
+                <a-button @click="onCancelCheck">
                     <span class="bitip_button">{{t('form.clear')}}</span>
                 </a-button>
                 <a-button :loading="checkLoading" class="w-full h-[3rem] rounded-[0.75rem] bitip_button bg-[#01AA44] cursor-pointer flex justify-center items-center " @click="onCheckIP">
@@ -157,7 +157,7 @@
     import useUserStore from '../../../store/user'
     const userStore = useUserStore()
 // import axios from 'axios';
-
+    const controller = new AbortController();
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
     const checkIP = ref('')
@@ -186,6 +186,7 @@
     const cityList = ref<any[]>([])
     const checkLoading = ref(false)
     const autoPassword = ref('')
+    const stopCheck = ref(false)
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -369,29 +370,42 @@
             // loading.value = false
         }
     }
+    const onCancelCheck = () => {
+        checkContent.value=[];checkIP.value='';stopCheck.value=true;
+        controller.abort();
+    }
     //检查IP
     const onCheckIP = async () => {
         if (checkIP.value.length == 0) {
             return
         }
+        stopCheck.value = false
         checkContent.value = []
         let len = checkIP.value.split(';').length
         checkLoading.value = true
-        
+        let batchRequests:any[]= []
         for (let i=0;i<len;i++) {
             const IP = checkIP.value.split(';')[i]
-            const res:any = await CheckIP({
+            batchRequests.push(CheckIP({
                 proxy:IP
-            })
-            .catch(() => {
-                checkLoading.value = false
-            })
-            if (res.code && res.code == 200) {
+            }, controller)
+            .then((res:any) => {
                 const content = res.body.split('\n')
                 checkContent.value.push(content)
-            }
+            }))
         }
-        checkLoading.value = false
+        Promise.all(batchRequests)
+        .then(() => {
+            checkLoading.value = false
+        })
+        .catch(() => {
+            console.log('请求被终止')
+            checkLoading.value = false
+            // if (err.name === 'CanceledError') {
+            //     console.log('请求被终止'); // [3,4](@ref)
+            // }
+        });
+        
 
     }
     //生成代理

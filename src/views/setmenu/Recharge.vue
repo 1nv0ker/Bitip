@@ -69,7 +69,7 @@
     import { computed, ref, nextTick } from 'vue'
     import RechargeModal from '../../components/RechargeModal.vue'
     import UserAuthTips from '../../components/UserAuthTips.vue'
-    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { isLogin} from '../../hooks/userAuth'
     import { useRouter } from 'vue-router'
     import { useI18n } from 'vue-i18n'
     const { t } = useI18n()
@@ -111,10 +111,10 @@
             router.push({path:'/login'})
             return
         }
-        if (!isVerify()) {
-            open2.value = true
-            return
-        }
+        // if (!isVerify()) {
+        //     open2.value = true
+        //     return
+        // }
         cost.value = value
         open.value = true
         nextTick(() => {

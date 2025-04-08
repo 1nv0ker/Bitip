@@ -74,8 +74,9 @@ export function SwitchIP(params:switchData) {
 export interface checeData {
     proxy:string
 }
-export function CheckIP(params:checeData) {
+export function CheckIP(params:checeData, controller:AbortController) {
     return axios.get(`${BASIC_MODULE}/IpCheck`, {
-        params: params
+        params: params,
+        signal: controller.signal
     })
 }

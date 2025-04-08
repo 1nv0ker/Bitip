@@ -103,7 +103,7 @@
     import { useI18n } from 'vue-i18n'
     import PackageModal from '../../components/StaticPackageModal.vue'
     import UserAuthTips from '../../components/UserAuthTips.vue'
-    import { isLogin, isVerify} from '../../hooks/userAuth'
+    import { isLogin} from '../../hooks/userAuth'
     import { useRouter } from 'vue-router'
 import { message } from 'ant-design-vue'
     const { t } = useI18n()
@@ -349,10 +349,10 @@ import { message } from 'ant-design-vue'
             router.push({path:'/login'})
             return
         }
-        if (!isVerify()) {
-            open2.value = true
-            return
-        }
+        // if (!isVerify()) {
+        //     open2.value = true
+        //     return
+        // }
 
         packageName.value = t('setmenu.subtitle2')
         // console.log(buyNumbers .value, selected_time.value)

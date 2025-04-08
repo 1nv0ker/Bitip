@@ -33,6 +33,7 @@ axios.interceptors.response.use(function (response) {
     if (response.data.code && response.data.code !== 200) {
       message.error(response.data.message || response.data.body)
       // return Promise.reject(response.data.message)
+      console.log('', response.data.message || response.data.body)
       return Promise.reject(new Error(response.data.message || response.data.body))
     }
     return response.data;
@@ -49,7 +50,7 @@ axios.interceptors.response.use(function (response) {
       router.push({path:'/home'})
       //重置token和userinfo
     } else {
-      message.error(error.message)
+      if (error.status) message.error(error.message)
     }
     
     

@@ -63,7 +63,7 @@
             </div>
         </div>
         <div class="w-full mt-[1.75rem] h-[40rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '130rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[37rem]">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '80rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[37rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -206,7 +206,7 @@
                 key: 'ip',
                 align:'center',
                 ellipsis: true,
-                width: '22rem',
+                width: '25rem',
                 
             },
             {
