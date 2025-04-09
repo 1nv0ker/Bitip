@@ -60,7 +60,7 @@
             <div class=" pt-[0.625rem] pb-[0.625rem] overflow-y-auto coustom_overflow h-[20rem] w-[15rem]">
                 <div class="w-full border-b-[1px] border-[#E2E7E4] h-[3.125rem] justify-between flex items-center" v-for="staff in buyNumbers">
                     <div class="text-[#191919] text-[0.9rem] flex flex-col w-[15rem]">
-                        <span class="w-[]">{{staff['name']()}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
+                        <span class="max-w-[8rem] bitip_text" :title="`${staff['name']()} (${staff.type==0?t('setmenu.type2'):t('setmenu.type1')})`">{{staff['name']()}} ({{staff.type==0?t('setmenu.type2'):t('setmenu.type1')}})</span>
                         <span class="font-bold">￥{{staff.type==0?selected_time?.price:selected_time?.price_single}}/{{t('setmenu.number')}}</span>
                     </div>
                     <div class="max-w-[5.625rem] w-[5.625rem] h-[1.75rem] rounded-[1.5rem]  flex justify-evenly items-center">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full">
+            <div class="w-[15rem]">
                 <div class="w-full h-[3rem] flex justify-end items-center border-b-[1px] border-[#EBEFF8]">
                     <span class="text-[#666666] text-[0.9rem] font-bold cursor-pointer" @click="onClear">{{t('setmenu.clear')}}</span>
                 </div>
@@ -403,7 +403,7 @@ import { message } from 'ant-design-vue'
 }
 
 .coustom_overflow::-webkit-scrollbar-thumb {
-  background: #2196F3;
+  background: #d7d7d7;
   border: 4px solid transparent;
   border-radius: 999px;
   background-clip: content-box;

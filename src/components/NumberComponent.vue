@@ -16,7 +16,7 @@
         },
         step: {
             type:Number,
-            default: 10
+            default: 0.05
         },
         extra: {
             type:String,
@@ -32,7 +32,7 @@
     })
     
     const animate = () => {
-        count.value = count.value + step.value
+        count.value = Math.round(Number(count.value + step.value)*100)/100
         if (count.value<number.value) {
             animatioId = requestAnimationFrame(animate)
         } else {

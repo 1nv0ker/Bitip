@@ -663,7 +663,8 @@ export const en = {
         success:'Success',
         min:'Min',
         tip:'Please scan the QR code to pay',
-        clear:'clear'
+        clear:'clear',
+        name:'Product Name'
     },
     whitelist: {
         title: 'Add Whitelist',
@@ -1406,7 +1407,8 @@ export const zh = {
         success:'成功',
         min:'分钟',
         tip:'请扫码支付',
-        clear:'清空'
+        clear:'清空',
+        name:'产品名称'
     },
     whitelist: {
         title: '添加白名单',

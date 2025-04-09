@@ -99,15 +99,17 @@
                          <span>{{record[column.key]==0?t('setmenu.location'):t('setmenu.location2')}}</span>
                     </template>
                     <template v-else-if="column.key == 'ip'">
-                        <div class="p-[0.5rem] relative ip_box">
+                        <!-- <div class="p-[0.5rem] relative ip_box"> -->
+                            <div class="p-[0.5rem] relative flex items-center justify-center "> 
                             <span class="text-[#191919] text-[1rem]" :title="record[column.key]">
                             {{ record[column.key] }}
                             </span>
-                            <div class=" absolute top-0 bottom-0 left-0 right-0 w-full h-full ip_mask flex items-center justify-center" style="z-index: 100;background-color: rgba(0, 0, 0, 0.5);">
-                                <!-- <img src="../../../assets/copy.png" class="w-[1.5rem] h-[1.5rem] cursor-pointer" /> -->
+                            <Copy2 :message="record[column.key]"/>
+                            <!-- <CopyOutlined class="text-[1.5rem] cursor-pointer text-[#5E6F94] ml-[4px]" /> -->
+                            <!-- <div class=" absolute top-0 bottom-0 left-0 right-0 w-full h-full ip_mask flex items-center justify-center" style="z-index: 100;background-color: rgba(0, 0, 0, 0.5);">
                                
                                 <Copy :message="record[column.key]" />
-                            </div>
+                            </div> -->
                         </div>
                     </template>
                     <template v-else>
@@ -134,7 +136,9 @@
     import PaginationComponent from '../../../components/PaginationComponent.vue';
     import { GetList, SetAutoRenew, DeleteISP, DownloadIsp } from '../../../api/recharge'
     import QrCodeModal from './QrCodeModal.vue';
-    import Copy from './Copy.vue';
+    import Copy2 from './Copy2.vue';
+    // import { CopyOutlined } from '@ant-design/icons-vue';
+    // import Copy from './Copy.vue';
     import AutoComponent from './AutoComponent.vue';
     import { useI18n } from 'vue-i18n'
     import useI18nStore from '../../../store/i18n'

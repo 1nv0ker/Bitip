@@ -84,6 +84,7 @@
                 </div>
             </div>
             <div class="w-[17rem] flex flex-col justify-center items-center">
+                <span v-show="rechargeLink" class="pb-[2rem] font-medium pl-[1rem] pr-[1rem]">{{t('form.name')}}: <span>{{produceName}}</span></span>
                 <span v-show="rechargeLink" class="pb-[0.5rem] font-medium">{{t('form.tip')}}</span>
                 <div class="w-[12.5rem] h-[12.5rem]" v-show="rechargeLink">
                     <a-qrcode :value="rechargeLink"  :size="12.5*16"/>
@@ -100,6 +101,7 @@
     import { DyPackageRecharge } from '../api/recharge'
     import useUserStore from '../store/user'
     import { useRouter } from 'vue-router';
+    import { message } from 'ant-design-vue';
     // import { message } from 'ant-design-vue';
     const { t } = useI18n()
     const router = useRouter()
@@ -109,6 +111,7 @@
     const userStore = useUserStore()
     const rechargeLink = ref('')
     const paying = ref(false)
+    const produceName = ref('')
     // const checked = ref(false)
     const props = defineProps({
         money:{
@@ -151,10 +154,12 @@
             // message.success(t('form.success'))
         }
         if (payMethod.value == 2) {
+            message.success(t('form.success'))
             userStore.setUserInfo()
         }
         //支付宝
         if (payMethod.value == 0) {
+            produceName.value = res.body.orderName
             // paying.value = true
             if (res && res.code == 200) {
                 rechargeLink.value = res.body.url
@@ -164,6 +169,7 @@
             // }, 1000);
         }
         if (payMethod.value == 1) {
+            produceName.value = res.body.orderName
             if (res && res.code == 200) {
                 rechargeLink.value = res.body.url
             }

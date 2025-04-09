@@ -84,6 +84,7 @@
                 </div>
             </div>
             <div class="w-[17rem] flex flex-col justify-center items-center">
+                <span v-show="rechargeLink" class="pb-[2rem] font-medium pl-[1rem] pr-[1rem]">{{t('form.name')}}: <span>{{produceName}}</span></span>
                 <span v-show="rechargeLink" class="pb-[0.5rem] font-medium">{{t('form.tip')}}</span>
                 <div class="w-[12.5rem] h-[12.5rem]" v-show="rechargeLink">
                     <a-qrcode :value="rechargeLink"  :size="12.5*16"/>
@@ -109,6 +110,7 @@
     const userStore = useUserStore()
     const rechargeLink = ref('')
     const paying = ref(false)
+    const produceName = ref('')
     // const checked = ref(false)
     const props = defineProps({
         money:{
@@ -155,6 +157,7 @@
         //支付宝
         if (payMethod.value == 0) {
             if (res && res.code == 200) {
+                produceName.value = res.body.orderName
                 rechargeLink.value = res.body.url
             }
             
@@ -164,6 +167,7 @@
         }
         if (payMethod.value == 1) {
             if (res && res.code == 200) {
+                produceName.value = res.body.orderName
                 rechargeLink.value = res.body.url
             }
         }

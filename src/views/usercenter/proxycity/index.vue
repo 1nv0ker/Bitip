@@ -23,7 +23,7 @@
                             style="background: linear-gradient( 145deg, #E6FFF0 0%, #FBFFEC 100%);">
                             <div class="flex gap-[1.25rem] items-center">
                                 <span class="text-[#191919] text-[1rem] font-medium" style="">{{item.title}} [GB]</span>
-                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :step="1" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
+                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :step="0.05" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
                             </div>
                         </div>
                     </div>

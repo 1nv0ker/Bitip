@@ -85,7 +85,7 @@
         showButton.value = window.scrollY > 200
     }
     const openContact = () => {
-        showContact.value = !showContact.value
+        showContact.value = true
     }
     defineExpose({
         openContact:openContact

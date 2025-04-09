@@ -43,7 +43,7 @@
 }
 
 .coustom_overflow::-webkit-scrollbar-thumb {
-  background: #2196F3;
+  background: #d7d7d7;
   border: 4px solid transparent;
   border-radius: 999px;
   background-clip: content-box;
