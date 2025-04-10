@@ -59,10 +59,10 @@
                     <span class="text-[#01AA44] cursor-pointer text-[0.9rem]" @click="onToRefund">《{{t('buying.content')}}》</span>
                     <span class="text-[#191919] cursor-pointer text-[0.9rem]">,{{t('buying.content2')}}</span>
                     <a-button :loading="loading" class="customAbutton h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer mt-[1.25rem]" @click="onConfirm" v-show="!paying">
-                        <span class="text-[1.125rem] text-[white] font-medium">{{t('recharge.confirmButton')}}</span>
+                        <span class="text-[1.125rem] text-[white] font-medium ellipsis-single" :title="t('recharge.confirmButton')">{{t('recharge.confirmButton')}}</span>
                     </a-button>
                     <a-button :loading="loading" class="customAbutton h-[3.25rem] w-[9.625rem] rounded-[0.75rem] bg-[#01AA44] flex justify-center items-center cursor-pointer mt-[1.25rem]" @click="onComplate" v-show="paying">
-                        <span class="text-[1.125rem] text-[white] font-medium">{{t('recharge.confirmButton2')}}</span>
+                        <span class="text-[1.125rem] text-[white] font-medium ellipsis-single" :title="t('recharge.confirmButton2')">{{t('recharge.confirmButton2')}}</span>
                     </a-button>
                 </div>
                 <!-- <div class="pl-[10rem]">
@@ -92,6 +92,7 @@
     import { useRouter } from 'vue-router';
     import { RechargeBalance } from '../api/recharge'
     import useUserStore from '../store/user'
+import { Modal } from 'ant-design-vue';
     const { t } = useI18n()
     const open = defineModel()
     const payMethod = ref(1)
@@ -157,7 +158,19 @@
         open.value = false
     }
     const onCancel = () => {
-        paying.value = false
+        Modal.confirm({
+            title: t('form.buy'),
+            centered: true,
+            onOk() {
+                open.value = false
+                userStore.setUserInfo()
+                // emit('onComplate')
+            },
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
+            onCancel() {
+                open.value = true
+            },
+        })
         // userStore.setUserInfo()
     }
 </script>

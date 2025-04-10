@@ -43,14 +43,8 @@ import UseUserStore from '../store/user'
 // import refundVue from '../views/law/refund.vue'
 // import whitelistVue from '../views/usercenter/whitelist/index.vue'
 export const routes = [
-    { path: '/', redirect: '/home' },
-    { path: '/', component:() => import('../views/BasicLayout.vue'), children:[
-
-      { path: '/servicelaw', component: () => import('../views/law/service.vue'), name:'servicelaw'},
-      { path: '/privatelaw', component: () => import('../views/law/private.vue'), name:'privatelaw'},
-      { path: '/refundlaw', component: ()=>import(`../views/law/refund.vue`), name:'refundlaw'},
-    ] },
-    { path: '/home', name:'home', component: () => import(`../views/home/index.vue`), 
+    // { path: '/', redirect: '/home' },
+    { path: '/', name:'home', component: () => import(`../views/home/index.vue`), 
       meta: {
       metaInfo: {
         title:'全球住宅代理IP企业级',
@@ -65,6 +59,13 @@ export const routes = [
       }
     } 
   },
+    { path: '/', component:() => import('../views/BasicLayout.vue'), children:[
+
+      { path: '/servicelaw', component: () => import('../views/law/service.vue'), name:'servicelaw'},
+      { path: '/privatelaw', component: () => import('../views/law/private.vue'), name:'privatelaw'},
+      { path: '/refundlaw', component: ()=>import(`../views/law/refund.vue`), name:'refundlaw'},
+    ] },
+    
     { path: '/login', component: () => import(`../views/login/Login.vue`) },
     { path: '/forgetPassword', component: () => import(`../views/login/ForgetPassword.vue`) },
     { path: '/register', component: ()=> import(`../views/login/Register.vue`)},
@@ -154,7 +155,7 @@ export const routes = [
     ]},
     // { path: '/servicelaw', component: LawServiceComponent, name:'servicelaw'},
     
-    { path: '/:catchAll(.*)', redirect: '/home'}
+    { path: '/:catchAll(.*)', redirect: '/'}
 ]
 
 const router = createRouter({

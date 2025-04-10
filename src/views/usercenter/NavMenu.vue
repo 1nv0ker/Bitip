@@ -160,7 +160,7 @@
         // console.log('route', 123)
     })
     const onHome = () => {
-        router.push('/home')
+        router.push('/')
     }
     const onMenuClick = (props:any) => {
         if (props.key == 'document') {

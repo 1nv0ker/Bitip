@@ -47,7 +47,7 @@ axios.interceptors.response.use(function (response) {
       message.error(error.message)
       userStore.clearToken()
       userStore.clearUserInfo()
-      router.push({path:'/home'})
+      router.push({path:'/'})
       //重置token和userinfo
     } else {
       if (error.status) message.error(error.message)

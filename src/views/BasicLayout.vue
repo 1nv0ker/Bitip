@@ -59,7 +59,7 @@
         customeStyle: Object
     })
     onBeforeMount(() => {
-        const paths = ['/home']
+        const paths = ['/']
         if (paths.indexOf(route.path) !== -1) {
             showContact.value = true
         }

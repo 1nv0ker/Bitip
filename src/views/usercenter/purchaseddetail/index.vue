@@ -20,7 +20,11 @@
                     <a-select-option value="jack">Jack</a-select-option>
                     <a-select-option value="lucy">Lucy</a-select-option>
                     <a-select-option value="Yiminghe">yiminghe</a-select-option> -->
-                    <a-input  :placeholder="t('purchaseddetail.search3')" size="large" class="customAInput" v-model:value="params.IspLocation" allowClear />
+                    <!-- <a-input  :placeholder="t('purchaseddetail.search3')" size="large" class="customAInput" v-model:value="params.IspLocation" allowClear /> -->
+                    <a-select :placeholder="t('purchaseddetail.search3')"  class="customASelect h-[3rem] w-full" :options="regions" v-model:value="params.IspLocation" allowClear>
+                        <!-- <a-select-option :value="1">{{t('setmenu.location2')}}</a-select-option>
+                        <a-select-option :value="0">{{t('setmenu.location')}}</a-select-option> -->
+                    </a-select>
                 <!-- </a-select> -->
             </div>
             
@@ -166,10 +170,54 @@
         KeyWord: '',
         Status: undefined,
         loading: false,
-        IspLocation:'',
+        IspLocation:undefined,
         AutoRenew:null,
         IspType:null,
         selectKeys:[]
+    })
+    const regions = computed(() => {
+        return [
+        {
+            value: 'us-ca',
+            label:t('nations.usca')
+        },
+        {
+            value: 'us-va',
+            label:t('nations.usva')
+        },
+        {
+            value: 'us-nj',
+            label:t('nations.usnj')
+        },
+        {
+            value: 'us-tx',
+            label:t('nations.ustx')
+        },
+        {
+            value: 'gb-london',
+            label:t('nations.gblondon')
+        },
+        {
+            value: 'de-hesse',
+            label:t('nations.dehesse')
+        },
+        {
+            value: 'sg',
+            label:t('nations.sg')
+        },
+        {
+            value: 'us',
+            label:t('nations.us')
+        },
+        {
+            value: 'cn-hk',
+            label:t('nations.cnhk')
+        },
+        {
+            value: 'cn-tw',
+            label:t('nations.cntw')
+        }
+    ]
     })
     const columns = computed(() => {
         return [

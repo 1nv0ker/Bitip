@@ -140,7 +140,7 @@
         router.push('/register')
     }
     const onToHome = () => {
-        router.push('/home')
+        router.push('/')
     }
     const onLogout = () => {
         userStore.logout()
