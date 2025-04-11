@@ -88,6 +88,14 @@ export const routes = [
         }
       },
       {
+        path:'tutorial',
+        name:'tutorial',
+        component: ()=>import(`../views/usercenter/tutorial/index.vue`),
+        meta: {
+          parent:'1'
+        }
+      },
+      {
         path:'purchasedflow',
         name:'purchasedflow',
         component: ()=>import(`../views/usercenter/purchaseprocess/index.vue`),

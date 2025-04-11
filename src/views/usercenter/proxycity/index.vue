@@ -36,9 +36,26 @@
                     <a-form layout="vertical" :rules="rules" :model="modelRef" ref="formRef" class="w-full">
                         <a-row :gutter="[24, 24]">
                             <a-col :span="8" class="h-[4.75rem]">
+                                <a-form-item :label="t('proxycity.form8')" >
+                                    <a-select v-model:value="modelRef.way"  :placeholder="t('proxycity.form8_placeholder')" class="customASelect" 
+                                         @select="onSelectWay" :options="[
+                                            {
+                                                label:t('proxycity.form8_item1'),
+                                                value:'1'
+                                            },
+                                            {
+                                                label:t('proxycity.form8_item2'),
+                                                value:'2'
+                                            }
+                                        ]">
+                                    
+                                    </a-select>
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="8" class="h-[4.75rem]">
                                 <a-form-item :label="t('proxycity.form1')" name="userName">
                                     <div class="relative h-[3rem]">
-                                        <AccountSelect v-model="modelRef.userName" @onSelectAccount="onSelectAccount" />
+                                        <AccountSelect v-model="modelRef.userName" @onSelectAccount="onSelectAccount" :disabled="modelRef.way=='2'" />
                                     </div>
                                 </a-form-item>
                             </a-col>
@@ -88,10 +105,15 @@
                         </div>
                     </div>
                     <div class="w-full h-[16.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]" style="height: calc( 100% - 23.25rem);">
-                        <div class=" border-b-[1px] border-[#EBEFF8] overflow-auto flex flex-col gap-[1rem]  text-[#666666] text-[1rem] pt-[1.75rem]" style="height: calc( 100% - 4rem);">
-                            <div v-for="item in proxyIPS" class="flex items-center">
-                                <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)"/>
-                                <span class="pl-[0.5rem]">{{item}}</span>
+                        <div class=" border-b-[1px] border-[#EBEFF8]  text-[#666666] text-[1rem] pt-[1.75rem] flex" style="height: calc( 100% - 4rem);">
+                            <div class="w-2/3 h-full border-r-1 border-[#d7d7d7] flex flex-col gap-[1rem] overflow-auto ">
+                                <div v-for="item in proxyIPS" class="flex items-center">
+                                    <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)"/>
+                                    <span class="pl-[0.5rem]">{{item}}</span>
+                                </div>
+                            </div>
+                            <div class="w-1/3 h-full">
+                                <params v-model="modelRef.way" />
                             </div>
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
@@ -145,13 +167,14 @@
     import { computed , onMounted, ref, reactive, nextTick } from 'vue'
     import NumberComponent from '../../../components/NumberComponent.vue'
     import QrCodeModal from '../purchaseddetail/QrCodeModal.vue';
+    import params from './params.vue'
     import locations from '../../../../public/map.json'
     import { QrcodeOutlined } from '@ant-design/icons-vue';
     import AccountSelect from './AccountSelect.vue'
     import type { Rule } from 'ant-design-vue/es/form';
     import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
-    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApiLink, GenerateApiWhenEnable, SwitchIP, CheckIP } from '../../../api/proxy'
+    import { GetProxyConfig, GetBandwidthAnalysis, GenerateApiLink, GenerateApiWhenEnable, SwitchIP, CheckIP, GenerateWhitelist,GenerateWhitelistLink } from '../../../api/proxy'
     import ProxyText from './ProxyText.vue';
     import { message } from 'ant-design-vue';
     import useUserStore from '../../../store/user'
@@ -170,7 +193,8 @@
         city:undefined,
         state: undefined,
         type: '0',
-        generateType:'1'
+        generateType:'1',
+        way: '1'
     })
     const stateDatas = ref<any[]>([])
     const cityDatas = ref<any[]>([])
@@ -197,7 +221,7 @@
                 { required: true, message: t('proxycity.form2_rule'), trigger: 'change' },
             ],
             time: [
-                { required: modelRef.country=='0'?false:(modelRef.IP=='0'?true:false), message: t('proxycity.form3_rule'), trigger: 'change' },
+                { required: (modelRef.country=='0' || modelRef.way == '2')?false:(modelRef.IP=='0'?true:false), message: t('proxycity.form3_rule'), trigger: 'change' },
             ],
             number: [
                 { required: true, message: t('proxycity.form4_rule'), trigger: 'change' },
@@ -233,6 +257,7 @@
         const targets = ['us', 'uk', 'jp', 'fr', 'au', 'it']
         let tempLocations:any = locations.filter((item)=>targets.indexOf(item.country)!==-1).concat(locations.filter((item)=>targets.indexOf(item.country)===-1))
         return [
+            
             {
                 label: t('proxycity.form2'),
                 placeholder: t('proxycity.form2_placeholder'),
@@ -240,6 +265,7 @@
                 showButton:false,
                 slot: true,
                 showSearch: true,
+                
                 options:[{
                     label:t('proxycity.countryform'),
                     value:'0',
@@ -257,7 +283,7 @@
                 showButton:false,
                 showSearch: true,
                 options: stateDatas.value,
-                disabled: (modelRef.country=='0'?true:false) || !modelRef.country
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.country || modelRef.way =='2'
                 // disabled:true
             },
             {
@@ -267,14 +293,14 @@
                 showButton:false,
                 showSearch: true,
                 options: cityDatas.value,
-                disabled: (modelRef.country=='0'?true:false) || !modelRef.state
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.state || modelRef.way =='2'
             },
             {
                 label: t('proxycity.form5'),
                 placeholder: t('proxycity.form5_placeholder'),
                 key:'time',
                 showButton:false,
-                disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)),
+                disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)) || modelRef.way =='2',
                 options: [
                     {
                         value: 0,
@@ -311,7 +337,7 @@
                 placeholder: t('proxycity.form6_placeholder'),
                 key:'IP',
                 showButton:false,
-                disabled: (modelRef.country=='0'?true:false),
+                disabled: (modelRef.country=='0'?true:false) || modelRef.way =='2',
                 options: [
                     {
                         value: '1',
@@ -350,6 +376,13 @@
             }
         ]
     })
+    const onSelectWay = () => {
+        console.log(modelRef.way)
+        if (modelRef.way == '2') {
+            console.log('modelRef')
+            modelRef.IP = '0'
+        }
+    }
     //自动切换
     const onSwitchAuto = async () => {
         const {  userName } = proxyConfig.value
@@ -412,8 +445,23 @@
     const onGenerate = () => {
         formRef.value.validate()
         .then(async () => {
+            loading.value = true
             proxyIPS.value = []
             // modelRef.generateType = '1'
+            if (modelRef.way == '2') {
+                GenerateWhitelist({
+                    Num: modelRef.number,
+                    Country: modelRef.country
+                }).
+                then((res:any) => {
+                    loading.value = false
+                    proxyIPS.value = res.split(`\n`)
+                })
+                .catch(()=> {
+                    loading.value = false
+                })
+                return
+            }
             if (modelRef.IP == '1') {
                 // modelRef.generateType = '0'
                 loading.value = true
@@ -493,6 +541,15 @@
         .then( () => {
             // loading.value = true
             // let res:any;
+            if (modelRef.way == '2') {
+                const params = {
+                    Num:modelRef.number,
+                    Country:modelRef.country,
+                }
+                const link = GenerateWhitelistLink(params)
+                proxyIPS.value = link.split(`\n`)
+                return
+            }
             const params = {
                 KeyName:modelRef.userName,
                 Num:modelRef.number,

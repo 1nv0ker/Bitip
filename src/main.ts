@@ -12,8 +12,11 @@ import { configure } from 'vee-validate'
 import 'ant-design-vue/dist/reset.css'
 import './echarts'
 import './custom.less'
+
 // import { createMetaManager } from 'vue-meta';
 
+import hljsVue from '@highlightjs/vue-plugin';
+import 'highlight.js/styles/atom-one-dark.css'; 
 configure({
   validateOnBlur: false, // 关闭全局 blur 事件验证
   validateOnInput: true,  // ,
@@ -24,5 +27,6 @@ const app = createApp(App)
 // app.use(createMetaManager());
 app.use(pinia)
 app.use(router)
+app.use(hljsVue)
 app.use(i18n)
 app.mount('#app')

@@ -88,6 +88,11 @@
                     key:'whitelist',
                     label:t('backend_menu.menu1_sub4'),
                     title:t('backend_menu.menu1_sub4')
+                },
+                {
+                    key:'tutorial',
+                    label:t('backend_menu.menu7'),
+                    title:t('backend_menu.menu7')
                 }
             ]
         },
@@ -166,7 +171,7 @@
         if (props.key == 'document') {
             // openKeys.value = []
             // selectedKeys.value = []
-            window.open('https://bit-ip.gitbook.io/bitip', '__blank')
+            window.open('https://bit_ip.helplook.com/', '__blank')
             return
         }
         router.push({name:props.key})

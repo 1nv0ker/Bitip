@@ -80,3 +80,23 @@ export function CheckIP(params:checeData, controller:AbortController) {
         signal: controller.signal
     })
 }
+//代理生成白名单模式
+export interface GenerateWhitelistData {
+    Num?:any,
+    Country?:string
+}
+export function GenerateWhitelist(params:GenerateWhitelistData) {
+    return axios.get(`${BASIC_MODULE}/GenerateWhitelist`, {
+        params: params
+    })
+}
+export function GenerateWhitelistLink(params:any) {
+    let link:string = ''
+    for (let key in params) {
+        if (params[key]!==undefined) {
+            link = link + key + '='+ params[key] + "&"
+        }
+    }
+
+    return  axios.defaults.baseURL + `${BASIC_MODULE}/GenerateWhitelist?`+link.slice(0, -1)
+}

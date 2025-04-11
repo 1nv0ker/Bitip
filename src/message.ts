@@ -260,7 +260,7 @@ export const en = {
         menu4: 'Pro',
 
         menu5: 'Company',
-
+        menu7:'tutorial(Demo)',
         menu6: 'Unlimited',
         menu6_title:'Custom',
         menu6_button:'Contact customer service',
@@ -323,6 +323,7 @@ export const en = {
         menu3: 'Purchase history',
         menu4: 'Promotion rebate',
         menu5:'User Auth',
+        menu7:'Tutorial(Demo)',
         local:'Current IP',
         Balance:'Balance',
         recharge:'Recharge',
@@ -345,7 +346,8 @@ export const en = {
         describe3: 'describe3',
         card1: 'Dynamic residential proxy generation',
         card2:'card2',
-
+        form8:'the way to get it',
+        form8_placeholder:"Please select",
         form1:'Select certified account',
         form1_placeholder: 'Please select',
         form2:'Choose country',
@@ -360,7 +362,8 @@ export const en = {
         form6_placeholder:'Automatically switch IP',
         form7_placeholder: 'Please select',
         form7: 'Select quantity',
-        
+        form8_item1:'Auth',
+        form8_item2:'Whitelist',
         button1: 'Generate proxy IP',
         button2: 'Generate API links',
         copy: 'copy',
@@ -377,7 +380,16 @@ export const en = {
         download:'Download all region data',
         IPform:'Change each time request',
         countryform:'Global Confusion',
-        cityform:'Random Selection'
+        cityform:'Random Selection',
+        params: {
+            title:'Interface parameter comments',
+            requesttitle:'Request parameter annotations',
+            requestName1:'name',
+            requestName2:'type',
+            requestName3:'Required',
+            requestName4:'illustrate',
+            responsetitle:'Result return example',
+        }
     },
 
     trafficmanager: {
@@ -715,6 +727,15 @@ export const en = {
     tips: {
         content:'Please complete real-name authentication first',
         button:'Go to certification'
+    },
+    tutorial: {
+        title1:'API Tutorial Demo',
+        title2:'Account and password tutorial Demo',
+        subtitle:'Example:',
+        button:'Direct Download',
+        question:'Encountering a problem?',
+        question1:'Contact Customer Service',
+        example:'Examples:'
     }
 }
 
@@ -1068,6 +1089,7 @@ export const zh = {
         menu3: '购买记录',
         menu4: '推广返利',
         menu5:'实名认证',
+        menu7:'教程(Demo)',
         local:'当前IP',
         Balance:'账户余额',
         recharge:'充值',
@@ -1103,6 +1125,10 @@ export const zh = {
         form6: '自动切换IP',
         form6_placeholder:'自动切换IP',
         form7_placeholder: '请选择',
+        form8:'获取方式',
+        form8_placeholder:"请选择",
+        form8_item1:'账密认证',
+        form8_item2:'白名单',
         form7: '选择数量',
         button1: '生成代理IP',
         button2: '生成API链接',
@@ -1119,7 +1145,16 @@ export const zh = {
         download:'下载全部地区数据',
         IPform:'每次请求更换',
         countryform:'全球随机',
-        cityform:'随机选择'
+        cityform:'随机选择',
+        params: {
+            title:'接口参数注释',
+            requesttitle:'请求参数注释',
+            requestName1:'名称',
+            requestName2:'类型',
+            requestName3:'必选',
+            requestName4:'说明',
+            responsetitle:'结果返回示例',
+        }
     },
     trafficmanager: {
         title: '账户流量统计',
@@ -1457,5 +1492,14 @@ export const zh = {
     tips: {
         content:'请先进行实名认证',
         button:'前往认证'
+    },
+    tutorial: {
+        title1:'API教程Demo',
+        title2:'账密教程Demo',
+        subtitle:'示例:',
+        button:'直接下载',
+        question:'遇到问题?',
+        question1:'联系客服',
+        example:'实例:'
     }
 }

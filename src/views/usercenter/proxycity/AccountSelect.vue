@@ -3,7 +3,7 @@
     <a-select 
     :placeholder="t('proxycity.form2_placeholder')"
      class="customASelect" v-model:value="account"
-     
+     :disabled="disabled"
      show-search
      @select="onSelect"
      :options="accountList"
@@ -34,7 +34,9 @@
     import AddSubModal from '../trafficmanager/AddSubModal.vue'
     const { t } = useI18n()
     const account = defineModel()
-    
+    defineProps({
+        disabled:Boolean
+    })
     const emit = defineEmits(['onSelectAccount'])
     const open = ref(false)
     const accountList = ref<any[]>([])

@@ -4,11 +4,11 @@
             <div class="flex justify-center">
                 <span class="text-[#191919] text-[3.25rem] font-bold">{{t('seventh.title')}}</span>
             </div>
-            <div class="gap-x-[1rem] gap-y-[1rem] grid-cols-4 grid grid-rows-3 pt-[3.75rem]">
+            <div class="gap-x-[1rem] gap-y-[1rem] grid-cols-4 grid grid-rows-3  pt-[3.75rem]">
                 <div v-for="content in contents" class="border-[1px] bitip_logo
                 flex justify-center items-center
                  border-[#EBEFF8] bg-[#FAFAFA] rounded-[2rem] h-[9.125rem] ">
-                    <img :src="content.img" :style="`width:${content.w}rem;height:${content.h}rem`"/>
+                    <img :src="content.img" :style="`width:${content.w}rem;height:${content.h}rem`" class="border-none" />
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
             },
             {
                 img: logo8,
-                w: 17.75,
+                w: 16.75,
                 h:4.125
             },
             {
@@ -106,7 +106,7 @@
             },
             {
                 img: logo12,
-                w: 17.75,
+                w: 16.75,
                 h:4.125
             }
         ]
