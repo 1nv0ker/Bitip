@@ -108,7 +108,7 @@
                         <div class=" border-b-[1px] border-[#EBEFF8]  text-[#666666] text-[1rem] pt-[1.75rem] flex" style="height: calc( 100% - 4rem);">
                             <div class="w-2/3 h-full border-r-1 border-[#d7d7d7] flex flex-col gap-[1rem] overflow-auto ">
                                 <div v-for="item in proxyIPS" class="flex items-center">
-                                    <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)"/>
+                                    <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)" v-show="generateType==1"/>
                                     <span class="pl-[0.5rem]">{{item}}</span>
                                 </div>
                             </div>
@@ -211,6 +211,7 @@
     const checkLoading = ref(false)
     const autoPassword = ref('')
     const stopCheck = ref(false)
+    const generateType = ref(1)
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
         return {
@@ -445,6 +446,7 @@
     const onGenerate = () => {
         formRef.value.validate()
         .then(async () => {
+            generateType.value = 1
             loading.value = true
             proxyIPS.value = []
             // modelRef.generateType = '1'
@@ -485,6 +487,7 @@
                     proxyIPS.value = res.body.split(`\n`)
                     loading.value = false
                 }
+                loading.value = false
                 return
             }
             //生成代理
@@ -524,6 +527,7 @@
                     break
                 }
             }
+            loading.value = false
             // axios.get('http://'+proxyIPS.value[0])
             // console.log(proxyIPS.value)
         })
@@ -541,6 +545,8 @@
         .then( () => {
             // loading.value = true
             // let res:any;
+            
+            generateType.value = 2
             if (modelRef.way == '2') {
                 const params = {
                     Num:modelRef.number,
@@ -558,7 +564,8 @@
                 City:modelRef.city,
                 SessionTime:modelRef.time,
                 AutoSwitch: modelRef.IP,
-                Format: modelRef.type
+                Format: modelRef.type,
+                crc: userStore.userInfo?.passWord
             }
             const link = GenerateApiLink(params)
             // res = await GenerateApi(params)

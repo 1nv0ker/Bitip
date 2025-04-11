@@ -35,7 +35,7 @@ int GetUrlHTTP(char *url, char *buff)
 		if (res == CURLE_OK){
 			return res;
 		}else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -64,7 +64,7 @@ int GetUrlSocks5(char *url, char *buff)
 			return res;
 		}
 		else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -93,7 +93,7 @@ int GetUrl(char *url, char *buff)
 			return res;
 		}
 		else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -105,15 +105,15 @@ int main()
 	memset(buff, 0, 1024 * 1024);
 
 	GetUrl("http://baidu.com", buff);
-	printf("不使用代理：%s\n", buff);
+	printf("不使用代理：%s\\n", buff);
 
 	memset(buff, 0, 1024 * 1024);
 	GetUrlHTTP("http://baidu.com", buff);
-	printf("http结果：%s\n", buff);
+	printf("http结果：%s\\n", buff);
 
 	memset(buff, 0,1024 * 1024);
 	GetUrlSocks5("http://baidu.com", buff);
-	printf("socks5结果：%s\n", buff);
+	printf("socks5结果：%s\\n", buff);
 
 	free(buff);
 	Sleep(10 * 1000);//等待10秒退出
@@ -480,7 +480,7 @@ int GetUrlHTTP(char *url, char *buff)
 		if (res == CURLE_OK){
 			return res;
 		}else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -510,7 +510,7 @@ int GetUrlSocks5(char *url, char *buff)
 			return res;
 		}
 		else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -540,7 +540,7 @@ int GetUrl(char *url, char *buff)
 			return res;
 		}
 		else {
-			printf("错误代码:%d\n", res);
+			printf("错误代码:%d\\n", res);
 			MessageBox(NULL, TEXT("获取IP错误"), TEXT("助手"), MB_ICONINFORMATION | MB_YESNO);
 		}
 	}
@@ -552,15 +552,15 @@ int main()
 	memset(buff, 0, 1024 * 1024);
 	//不使用http代理
 	GetUrl("http://myip.top", buff);
-	printf("不使用代理：%s\n", buff);
+	printf("不使用代理：%s\\n", buff);
 	//使用http代理
 	memset(buff, 0, 1024 * 1024);
 	GetUrlHTTP("http://www.bitip.com", buff);
-	printf("http结果：%s\n", buff);
+	printf("http结果：%s\\n", buff);
 	//使用socks5代理
 	memset(buff, 0,1024 * 1024);
 	GetUrlSocks5("http://www.bitip.com", buff);
-	printf("socks5结果：%s\n", buff);
+	printf("socks5结果：%s\\n", buff);
 
 	free(buff);
 	Sleep(10 * 1000);//等待10秒退出

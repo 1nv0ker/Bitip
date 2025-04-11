@@ -12,7 +12,8 @@ interface UserInfo_data {
     realName:string,
     idCard:string,
     inviteCode:string,
-    mainKey:string
+    mainKey:string,
+    passWord:string
 }
 const store = defineStore('users', {
     state:():{
