@@ -21,7 +21,7 @@
                     <a-select-option value="lucy">Lucy</a-select-option>
                     <a-select-option value="Yiminghe">yiminghe</a-select-option> -->
                     <!-- <a-input  :placeholder="t('purchaseddetail.search3')" size="large" class="customAInput" v-model:value="params.IspLocation" allowClear /> -->
-                    <a-select :placeholder="t('purchaseddetail.search3')"  class="customASelect h-[3rem] w-full" :options="regions" v-model:value="params.IspLocation" allowClear>
+                    <a-select :placeholder="t('purchaseddetail.search3')"  class="customASelect h-[3rem] w-full" :loading="selectLoading" :options="regions" v-model:value="params.IspLocation" allowClear>
                         <!-- <a-select-option :value="1">{{t('setmenu.location2')}}</a-select-option>
                         <a-select-option :value="0">{{t('setmenu.location')}}</a-select-option> -->
                     </a-select>
@@ -138,7 +138,7 @@
     import  { Dayjs } from 'dayjs';
     import { QrcodeOutlined } from '@ant-design/icons-vue';
     import PaginationComponent from '../../../components/PaginationComponent.vue';
-    import { GetList, SetAutoRenew, DeleteISP, DownloadIsp } from '../../../api/recharge'
+    import { GetList, SetAutoRenew, DeleteISP, DownloadIsp, GetSelectList } from '../../../api/recharge'
     import QrCodeModal from './QrCodeModal.vue';
     import Copy2 from './Copy2.vue';
     // import { CopyOutlined } from '@ant-design/icons-vue';
@@ -163,6 +163,7 @@
     const selectedRowKey = ref<any[]>([])
     const remarkRef = ref<any>()
     const dates = ref<[Dayjs, Dayjs]|null>(null);
+    const selectLoading = ref(false)
     const params = reactive({
         total:0,
         pageSize: 10,
@@ -175,50 +176,51 @@
         IspType:null,
         selectKeys:[]
     })
-    const regions = computed(() => {
-        return [
-        {
-            value: 'us-ca',
-            label:t('nations.usca')
-        },
-        {
-            value: 'us-va',
-            label:t('nations.usva')
-        },
-        {
-            value: 'us-nj',
-            label:t('nations.usnj')
-        },
-        {
-            value: 'us-tx',
-            label:t('nations.ustx')
-        },
-        {
-            value: 'gb-london',
-            label:t('nations.gblondon')
-        },
-        {
-            value: 'de-hesse',
-            label:t('nations.dehesse')
-        },
-        {
-            value: 'sg',
-            label:t('nations.sg')
-        },
-        {
-            value: 'us',
-            label:t('nations.us')
-        },
-        {
-            value: 'cn-hk',
-            label:t('nations.cnhk')
-        },
-        {
-            value: 'cn-tw',
-            label:t('nations.cntw')
-        }
-    ]
-    })
+    const regions = ref([])
+    // const regions = computed(() => {
+    //     return [
+    //     {
+    //         value: 'us-ca',
+    //         label:t('nations.usca')
+    //     },
+    //     {
+    //         value: 'us-va',
+    //         label:t('nations.usva')
+    //     },
+    //     {
+    //         value: 'us-nj',
+    //         label:t('nations.usnj')
+    //     },
+    //     {
+    //         value: 'us-tx',
+    //         label:t('nations.ustx')
+    //     },
+    //     {
+    //         value: 'gb-london',
+    //         label:t('nations.gblondon')
+    //     },
+    //     {
+    //         value: 'de-hesse',
+    //         label:t('nations.dehesse')
+    //     },
+    //     {
+    //         value: 'sg',
+    //         label:t('nations.sg')
+    //     },
+    //     {
+    //         value: 'us',
+    //         label:t('nations.us')
+    //     },
+    //     {
+    //         value: 'cn-hk',
+    //         label:t('nations.cnhk')
+    //     },
+    //     {
+    //         value: 'cn-tw',
+    //         label:t('nations.cntw')
+    //     }
+    // ]
+    // })
     const columns = computed(() => {
         return [
             // {
@@ -287,6 +289,15 @@
     })
     onMounted(() => {
         loadTable()
+        selectLoading.value = true
+        GetSelectList()
+        .then((res:any) => {
+            regions.value = res.body
+            selectLoading.value = false
+        })
+        .catch(() => {
+            selectLoading.value = false
+        })
     })
     const onEdit = (record:any) => {
         open2.value = true

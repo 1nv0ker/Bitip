@@ -23,7 +23,8 @@
                             style="background: linear-gradient( 145deg, #E6FFF0 0%, #FBFFEC 100%);">
                             <div class="flex gap-[1.25rem] items-center">
                                 <span class="text-[#191919] text-[1rem] font-medium" style="">{{item.title}} [GB]</span>
-                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :step="0.05" :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:0"/>
+                                <NumberComponent class="text-[#191919] text-[1.5rem] font-bold" :step="0.05" :mode="'loading'"
+                                :number="cardDatas.find(data=>data.key==item.key)?cardDatas.find(data=>data.key==item.key)['value']:-1"/>
                             </div>
                         </div>
                     </div>
@@ -211,6 +212,9 @@
     const checkLoading = ref(false)
     const autoPassword = ref('')
     const stopCheck = ref(false)
+    // const number_1 = ref<any>()
+    // const number_2 = ref<any>()
+    // const number_3= ref<any>()
     const generateType = ref(1)
     let interval2:any
     const rules = computed<Record<string, Rule[]>>(() => {
@@ -758,6 +762,10 @@
                     value: res.body.usedBandwidth
                 }
             ]
+            // console.log(number_1.value, number_2.value)
+            // number_1.value[0] && number_1.value[0].stopAnimate()
+            // number_2.value[0] && number_2.value[0].stopAnimate()
+            // number_3.value[0] && number_3.value[0].stopAnimate()
         })
 
     })

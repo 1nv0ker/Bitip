@@ -90,3 +90,7 @@ export function DownloadIsp(params:proxyData) {
         responseType: 'blob'
     })
 }
+
+export function GetSelectList() {
+    return axios.get(`${BASIC_MODULE2}/LocationDropdownList`)
+}

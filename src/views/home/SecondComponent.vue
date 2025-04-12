@@ -24,7 +24,7 @@
             </div>
             <div class="w-[38.625rem] flex flex-col  justify-center">
                 <div class="flex">
-                    <span class="text-[#191919] text-[1.875rem] font-medium">{{t('second.dynamicContent')}}</span>
+                    <span class="text-[#191919] text-[1.875rem] font-medium unSelect">{{t('second.dynamicContent')}}</span>
                 </div>
                 <div class="flex flex-col mt-[1.5rem] gap-[1rem]">
                     <div class="flex items-center">
