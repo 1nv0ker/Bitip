@@ -677,7 +677,8 @@ export const en = {
         tip:'Please scan the QR code to pay',
         clear:'clear',
         name:'Product Name',
-        buy:'Confirm whether to exit purchase'
+        buy:'Confirm whether to exit purchase',
+        tip2:'Login expired, please log in again'
     },
     whitelist: {
         title: 'Add Whitelist',
@@ -1445,7 +1446,8 @@ export const zh = {
         tip:'请扫码支付',
         clear:'清空',
         name:'产品名称',
-        buy:'确认是否退出购买'
+        buy:'确认是否退出购买',
+        tip2:'登录过期,请重新登陆'
     },
     whitelist: {
         title: '添加白名单',
