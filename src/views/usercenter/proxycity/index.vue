@@ -107,15 +107,15 @@
                     </div>
                     <div class="w-full h-[16.625rem] bg-[#FAFAFA] rounded-[0.75rem] border-[#EBEFF8] border-[1px] pl-[1.75rem] pr-[1.75rem]" style="height: calc( 100% - 23.25rem);">
                         <div class=" border-b-[1px] border-[#EBEFF8]  text-[#666666] text-[1rem] pt-[1.75rem] flex" style="height: calc( 100% - 4rem);">
-                            <div class="w-2/3 h-full border-r-1 border-[#d7d7d7] flex flex-col gap-[1rem] overflow-auto ">
+                            <div class="w-full h-full border-r-1 border-[#d7d7d7] flex flex-col gap-[1rem] overflow-auto ">
                                 <div v-for="item in proxyIPS" class="flex items-center">
                                     <QrcodeOutlined class="text-[1.5rem] cursor-pointer text-[#666666]" @click="onOpenQRcode(item)" v-show="generateType==1"/>
                                     <span class="pl-[0.5rem]">{{item}}</span>
                                 </div>
                             </div>
-                            <div class="w-1/3 h-full">
+                            <!-- <div class="w-1/3 h-full">
                                 <params v-model="modelRef.way" />
-                            </div>
+                            </div> -->
                         </div>
                         <div class="w-full flex gap-[2.75rem] h-[4rem]">
                             
@@ -168,7 +168,7 @@
     import { computed , onMounted, ref, reactive, nextTick } from 'vue'
     import NumberComponent from '../../../components/NumberComponent.vue'
     import QrCodeModal from '../purchaseddetail/QrCodeModal.vue';
-    import params from './params.vue'
+    // import params from './params.vue'
     import locations from '../../../../public/map.json'
     import { QrcodeOutlined } from '@ant-design/icons-vue';
     import AccountSelect from './AccountSelect.vue'
@@ -181,7 +181,7 @@
     import useUserStore from '../../../store/user'
     const userStore = useUserStore()
 // import axios from 'axios';
-    const controller = new AbortController();
+    let controller:any = null
     const { t } = useI18n()
     const cardDatas = ref<any[]>([])
     const checkIP = ref('')
@@ -410,10 +410,12 @@
     }
     const onCancelCheck = () => {
         checkContent.value=[];checkIP.value='';stopCheck.value=true;
-        controller.abort();
+        controller && controller.abort();
     }
     //检查IP
     const onCheckIP = async () => {
+        controller = new AbortController();
+
         if (checkIP.value.length == 0) {
             return
         }

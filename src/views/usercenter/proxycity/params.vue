@@ -1,13 +1,13 @@
 <template>
-    <div class="w-full h-full overflow-auto">
+    <div class="w-full overflow-auto">
         <div>
             <span class="text-[#18181b] text-[1.2rem] font-bold">{{t('proxycity.params.title')}}</span>
         </div>
-        <div class="w-full border-1 border-[#edeff2] p-[0.5rem]" :style="way=='1'?'height:20rem':'height:8rem'">
+        <div class="w-full border-1 border-[#edeff2] p-[0.5rem]" :style="way=='4'?'height: 20rem':'height: 8rem'" >
             <div>
                 <span>{{t('proxycity.params.requesttitle')}}</span>
             </div>
-            <div class="w-full flex mt-[0.5rem]">
+            <div class="w-full flex pt-[0.1rem]">
                 <div v-for="item in names" class="w-1/4 h-[2rem]">
                     <div class="h-[2rem] w-full bg-[#f0f9ff] flex items-center justify-center ">
                         <span>{{item.name}}</span>
@@ -19,10 +19,10 @@
             </div>
             
         </div>
-        <div class="mt-[0.5rem]">
+        <div class="pt-[0.5rem]">
             <span>{{t('proxycity.params.responsetitle')}}</span>
         </div>
-        <div class="w-full  h-[4rem]  pt-[0.5rem]">
+        <div class="w-full  pt-[0.25rem]">
             <highlightjs :code="codes"  class="" />
         </div>
     </div>
@@ -52,7 +52,7 @@
             message: "成功"
 }`
         const way2 = `xxx:xxx:xxx:xxx`
-        return way.value=='1'?way1:way2
+        return way.value=='4'?way1:way2
     })
    
     const datas = computed(():any[] => {
@@ -119,6 +119,6 @@
                 description:'国家'
             },]
 
-        return way.value=='1'?way1:way2
+        return way.value=='4'?way1:way2
     })
 </script>

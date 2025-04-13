@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full bg-[white] p-[2rem] rounded-[1.75rem]">
+    <div class="w-full bg-[white] p-[1.75rem] rounded-[1.75rem] pt-[1.5rem] h-full">
         <a-tabs v-model:activeKey="activeKey">
             <a-tab-pane key="1" >
                 <template #tab>
@@ -11,8 +11,18 @@
                     <span class="text-[1rem]">{{t('tutorial.title2')}}</span>
                 </template>
             </a-tab-pane>
+            <a-tab-pane key="3" >
+                <template #tab>
+                    <span class="text-[1rem]">{{t('tutorial.title3')}}</span>
+                </template>
+            </a-tab-pane>
+            <a-tab-pane key="4" >
+                <template #tab>
+                    <span class="text-[1rem]">{{t('tutorial.title4')}}</span>
+                </template>
+            </a-tab-pane>
         </a-tabs>
-        <div class="w-full pt-[1.75rem]">
+        <div class="w-full h-[4rem] " v-show="activeKey=='1' || activeKey =='2'">
             <div class="h-[2rem]  w-auto flex">
                 <div :class="`pl-[1rem] pr-[1rem] h-[2rem] cursor-pointer flex items-center justify-center ${item.type==choose?'bg-[#01AA44] text-[white] shadow-[0 2px 6px 0 rgba(0,0,0,.1)]':'bg-[#999999] text-[]'}`" 
                 v-for="item in codes" @click="choose=item.type">
@@ -26,9 +36,12 @@
                 </div>
                 <span>{{t('tutorial.question')}} <span class="cursor-pointer underline decoration-1" @click="onContact">{{t('tutorial.question1')}}</span></span>
             </div>
-            <div class="w-full  h-[50rem] overflow-auto">
-                <highlightjs :code="codeString" :language="choose" class="pl-[1.75rem]" />
-            </div>
+        </div>
+        <div class="w-full overflow-auto mt-[4rem]" style="height: calc( 100% - 11rem)" v-show="activeKey=='1' || activeKey =='2'">
+            <highlightjs :code="codeString" :language="choose" class="pl-[1.75rem]" />
+        </div>
+        <div class="w-full " v-show="activeKey=='3' || activeKey =='4'">
+            <params v-model="activeKey"/>
         </div>
     </div>
 </template>
@@ -36,6 +49,7 @@
     import { ref, computed } from 'vue'
     import userStore from '../../../store/user'
     import { useI18n } from 'vue-i18n'
+    import params from '../proxycity/params.vue'
     const { t } = useI18n()
     import { cpp, go, cpp2, go2, nodejs, nodejs2, php, php2, java, java2, python, python2, selenium, selenium2 } from './text'
     const useUserStore = userStore()
@@ -133,6 +147,6 @@
         }
     }
     .hljs {
-        padding: 3rem!important;
+        padding: 1.5rem!important;
     }
 </style>

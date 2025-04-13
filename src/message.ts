@@ -736,7 +736,9 @@ export const en = {
         button:'Direct Download',
         question:'Encountering a problem?',
         question1:'Contact Customer Service',
-        example:'Examples:'
+        example:'Examples:',
+        title3:'API interface parameters',
+        title4:'Account and password interface parameters',
     }
 }
 
@@ -1498,6 +1500,8 @@ export const zh = {
     tutorial: {
         title1:'API教程Demo',
         title2:'账密教程Demo',
+        title3:'API接口参数',
+        title4:'账密接口参数',
         subtitle:'示例:',
         button:'直接下载',
         question:'遇到问题?',
