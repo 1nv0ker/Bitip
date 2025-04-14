@@ -18,7 +18,7 @@
         </a-menu>
     </div>
     <div class="w-full h-[19rem] overflow-auto">
-        <img v-for="image in tempImage" :src="image" class="w-full h-full animate__animated animate__fadeIn" />
+        <img v-for="image in tempImage" :src="image.imagesURL" class=" cursor-pointer w-full h-full animate__animated animate__fadeIn" @click="onOpen(image.link)" :style="`width:${image.imagesWide}px;height:${image.imagesHeiget}px`" />
     </div>
 </template>
 <script setup lang="ts">
@@ -175,6 +175,9 @@
             return
         }
         router.push({name:props.key})
+    }
+    const onOpen = (link:string) => {
+        window.open(link, '__blank')
     }
     onMounted(() => {
         const name = route.name as string

@@ -2,7 +2,7 @@ import axios from 'axios'
 import UseUserStore from '../store/user'
 import { message } from 'ant-design-vue'
 import router from '../router'
-import { useI18n } from 'vue-i18n'
+// import { useI18n } from 'vue-i18n'
 axios.defaults.baseURL = 'https://www.bitip.com'
 // axios.defaults.baseURL = 'http://47.102.127.12'
 axios.defaults.timeout = 0
@@ -46,8 +46,8 @@ axios.interceptors.response.use(function (response) {
     console.log('error', error.status)
     if (error.status == 401) {
       const userStore = UseUserStore()
-      const { t } = useI18n()
-      message.error(t('form.tip2'))
+      // const { t } = useI18n()
+      // message.error(t('form.tip2'))
       userStore.clearToken()
       userStore.clearUserInfo()
       router.push({path:'/'})

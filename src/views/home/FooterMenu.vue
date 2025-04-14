@@ -56,14 +56,14 @@
                 items: [
                     {
                         title:t('footer.title2_subtitle1'),
-                        path:'',
+                        path:'tutorial',
                         selected:true
                     },
                     {
                         title:t('footer.title2_subtitle2'),
                         path:'',
                         selected:true,
-                        url:'https://bit-ip.gitbook.io/bitip'
+                        url:'https://bit_ip.helplook.com/'
                     },
                     {
                         title:t('footer.title3_subtitle5'),
