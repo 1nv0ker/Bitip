@@ -70,11 +70,11 @@
                         path:'plan',
                         selected:true
                     },
-                    {
-                        title:t('footer.title3_subtitle6'),
-                        path:'',
-                        selected:true
-                    }
+                    // {
+                    //     title:t('footer.title3_subtitle6'),
+                    //     path:'',
+                    //     selected:true
+                    // }
                 ]
             },
             {

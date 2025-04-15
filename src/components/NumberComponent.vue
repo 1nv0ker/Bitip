@@ -82,11 +82,11 @@
     defineExpose({
         stopAnimate: stopAnimate
     })
-    watch(number, () => {
-        console.log('number', number)
-        count.value = 0
-        animate()
-    })
+    // watch(number, () => {
+    //     console.log('number', number)
+    //     count.value = 0
+    //     animate()
+    // })
     onUnmounted(() => {
         animatioId && cancelAnimationFrame(animatioId)
     })

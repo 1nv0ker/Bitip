@@ -1,4 +1,5 @@
 export const en = {
+    link:'Friendly Links',
     login: {
         passwordLogin: 'Password login',
         loginTitle: 'Global residential proxy IP enterprise-level big data collection solution',
@@ -743,6 +744,7 @@ export const en = {
 }
 
 export const zh = {
+    link:'友情链接',
     login: {
         passwordLogin: '密码登录',
         smsLogin: '短信登录',
