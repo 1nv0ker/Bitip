@@ -13,7 +13,8 @@
                     style="transition: background-color 0.5s ease-in-out;"
                     v-for="button in buttons" @click="selected=button.key">
                         <!-- <img :src="button.img" :class="selected==button.key?'changeColor-img w-[1.5rem] h-[1.5rem]':'w-[1.5rem] h-[1.5rem] '"  /> -->
-                        <img :src="selected==button.key?button.img:button.staticImg" :class="selected==button.key?'w-[1.5rem] h-[1.5rem]':' w-[1.5rem] h-[1.5rem] '"  />
+                        <img :src="button.img" :class="selected==button.key?'w-[1.5rem] h-[1.5rem]':' w-[1.5rem] h-[1.5rem] '"  v-show="selected==button.key"/>
+                        <img :src="button.staticImg" :class="selected==button.key?'w-[1.5rem] h-[1.5rem]':' w-[1.5rem] h-[1.5rem] '"  v-show="selected!=button.key"/>
                         <img  src="../../assets/button_arrow.png" :class=" `absolute top-0 right-0 left-0 bottom-0 ${selected==button.key?'change_arrow_img':''}`"/>
                         <span class=" text-[1.5rem] pl-[1.25rem] font-medium">{{button.title}}</span>
                     </div>

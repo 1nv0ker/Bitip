@@ -753,15 +753,15 @@
             cardDatas.value = [
                 {
                     key: 1,
-                    value: res.body.totalBandWidth-res.body.usedBandwidth
+                    value: (res.body.totalBandWidth-res.body.usedBandwidth).toFixed(2)
                 },
                 {
                     key: 2,
-                    value: res.body.totalBandWidth
+                    value: res.body.totalBandWidth.toFixed(2)
                 },
                 {
                     key: 3,
-                    value: res.body.usedBandwidth
+                    value: res.body.usedBandwidth.toFixed(2)
                 }
             ]
             // console.log(number_1.value, number_2.value)
