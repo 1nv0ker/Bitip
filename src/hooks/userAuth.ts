@@ -26,4 +26,9 @@ export const loadScript = (url: string, id: string): Promise<void> => {
       
       document.head.appendChild(script);
     });
-};
+}
+
+//判断是否为手机端
+export function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}

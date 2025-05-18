@@ -34,7 +34,7 @@
             </div>
 
             <div class="w-full overflow-y-auto pt-[1.25rem] pb-[1.25rem] flex gap-[0.75rem] flex-wrap all_citys coustom_overflow">
-                <div v-for="time in timeSelect" :style="customStyle" :class=" `rounded-[0.75rem] border-[1px] relative border-[#E2E7E4] h-[4rem] flex items-center justify-between pl-[1rem] pr-[2rem] cursor-pointer bg-[white]
+                <div v-for="time in timeSelect" :style="customStyle" :class=" `rounded-[0.75rem] border-[1px] relative border-[#E2E7E4] h-[4rem] flex items-center justify-between pl-[0.5rem] pr-[0.8rem] cursor-pointer bg-[white]
                  ${selected_time?.key==time.key?'selected_city':''}`" @click="onSelectTime(time)">
                     <div class=" absolute top-0 right-0 w-[2.5rem] h-[1.125rem] rounded-tr-[0.75rem] rounded-bl-[0.75rem] bg-[#4B3585] flex justify-center items-center">
                         <span class="text-[#FFEEC1] text-[0.75rem] font-medium">{{ time.discount }}{{ t('setmenu.off') }}</span>

@@ -26,29 +26,21 @@
            </div>
         </div> -->
         <div class="mt-[4rem] w-full flex justify-center relative">
-            <div class="world-map w-[30rem h-[10rem]]" id="world-map">
+            <div class="world-map w-[80rem] h-[50rem] relative bg-red" id="world-map">
                 <video autoplay type="video/mp4" loop  muted src="../../assets/map.mp4" playsinline disablepictureinpicture>
                     <!-- <source src="../../assets/map.mp4" type="video/mp4" /> -->
                 </video>
-            </div>
-            <div class="absolute right-[-4.5rem]  bottom-[0rem] flex flex-col gap-[0.5rem] justify-end pb-[4rem] w-[13rem]">
-                <div v-for="legend in legendDatas" class="flex items-center justify-between h-[4.5rem]  w-full rounded-[2rem] bg-[#FAFAFA] p-[0.5rem]">
-                    <img :src="legend.img" class="w-[3.5rem] h-full "/>
-                    <div class="flex flex-col h-full w-[15rem] justify-between pl-[0.5rem]">
-                        <span class="text-[#191919] text-[1.1rem] ">{{legend.name}}</span>
-                        <span class="text-[#191919] text-[1.1rem] ">{{legend.number}}</span>
-                        <!-- <div class="w-full flex justify-between">
-                            <span class="text-[#191919] text-[1.375rem] font-medium">{{legend.name}}</span>
-                            <span class="text-[#999999] text-[1.375rem] font-medium">{{legend.value}}%</span>
+                <div class="absolute right-[-4.5rem]  bottom-[8rem] flex flex-col gap-[0.5rem] justify-end pb-[4rem] w-[13rem]">
+                    <div v-for="legend in legendDatas" class="flex items-center justify-between h-[4.5rem]  w-full rounded-[2rem] bg-[#FAFAFA] p-[0.5rem]">
+                        <img :src="legend.img" class="w-[3.5rem] h-full "/>
+                        <div class="flex flex-col h-full w-[15rem] justify-between pl-[0.5rem]">
+                            <span class="text-[#191919] text-[1.1rem] ">{{legend.name}}</span>
+                            <span class="text-[#191919] text-[1.1rem] ">{{legend.number}}</span>
                         </div>
-                        <div class="w-full h-[0.375rem] bg-[#E4F0EB] rounded-[3.125rem]">
-                            <div :style="`width:${legend.value}%`" class=" h-full rounded-[3.125rem]">
-                                <div class="bg-[#BAD162] rounded-[3.125rem] h-full w-full progress-bar" style="transition: width 2s ease-in-out;width:100%"></div>
-                            </div>
-                        </div> -->
-                    </div>
-                 </div>
+                        </div>
+                </div>
             </div>
+            
         </div>
         
     </ComponentLayout>
@@ -127,13 +119,13 @@
 </script>
 <style>
 .world-map {
-   height: 50vh;
+   /* height: 50vh;
    width: 80vw;
   }
   @keyframes loading {
   0% { width: 0; }
   50% { background-color: #BAD162; }
-  100% { width: 100%; }
+  100% { width: 100%; } */
 }
 
 .progress-bar {
