@@ -66,8 +66,8 @@
                 </div> -->
             </div>
         </div>
-        <div class="w-full mt-[1.75rem] h-[40rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '80rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[37rem]">
+        <div class="w-full pt-[1.75rem] h-[47rem]">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '80rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[41rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -176,6 +176,7 @@
         IspType:null,
         selectKeys:[]
     })
+    // const tableH = ref('')
     const regions = ref([])
     // const regions = computed(() => {
     //     return [
@@ -288,7 +289,8 @@
         ]
     })
     onMounted(() => {
-        loadTable()
+        // loadTable()
+        // tableDatas.value = [1,2,3,4,5,6,7,8,9,10]
         selectLoading.value = true
         GetSelectList()
         .then((res:any) => {
