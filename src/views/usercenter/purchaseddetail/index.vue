@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="w-full pt-[1.75rem] h-[47rem]">
-            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '80rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[41rem]">
+            <a-table :columns="columns" :data-source="tableDatas" rowKey="key" :scroll="{x: '80rem', y:tableDatas.length>0?'37.5rem':'0rem'}"  :row-selection="rowSelection" :pagination="false" :loading="params.loading" class="h-[41rem]">
                 <template #headerCell="{ title }">
                     <span class="text-[#191919] text-[1rem] font-medium">
                         {{title}}
@@ -289,8 +289,8 @@
         ]
     })
     onMounted(() => {
-        // loadTable()
-        // tableDatas.value = [1,2,3,4,5,6,7,8,9,10]
+        loadTable()
+        // tableDatas.value = [1,2,3,4,5,6,7,8,9,10, 11]
         selectLoading.value = true
         GetSelectList()
         .then((res:any) => {

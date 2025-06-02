@@ -241,7 +241,14 @@ import { message } from 'ant-design-vue'
                 key: 'sg',
                 type: 0,
                 img: await getImage('id')
-            }
+            },
+            {
+                name: ():string=>t('nations.cnhk'),
+                price: 80,
+                key: 'cn-hk',
+                type: 0,
+                img: await getImage('cn')
+            },
         ]
         citys_type2.value = [
             {
@@ -251,13 +258,13 @@ import { message } from 'ant-design-vue'
                 type: 1,
                 img: await getImage('us')
             },
-            {
-                name: ():string=>t('nations.cnhk'),
-                price: 80,
-                key: 'cn-hk',
-                type: 1,
-                img: await getImage('cn')
-            },
+            // {
+            //     name: ():string=>t('nations.cnhk'),
+            //     price: 80,
+            //     key: 'cn-hk',
+            //     type: 1,
+            //     img: await getImage('cn')
+            // },
             {
                 name: ():string=>t('nations.cntw'),
                 price: 80,
