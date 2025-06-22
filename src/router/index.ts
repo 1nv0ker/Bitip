@@ -53,7 +53,7 @@ export const routes = [
             name:'Keywords', content:'江苏米亚信息科技有限公司, 爬虫代理,高匿代理ip,刷单代理ip,https代理,http代理,ip代理,代理ip,私密代理ip,免费代理ip,高速代理,独享代理ip,免费ip,在线代理,代理服务器'
           },
           {
-            name:'Description', content:'米亚科技，米亚代理,（www.bitip.com）是http代理ip服务供应商，拥有千万级独立ip池，覆盖全球，低延迟高可用率稳定专业！爬虫代理,网页代理ip,企业级代理ip,电脑换ip,https代理,私密代理ip,免费代理ip,独享代理ip,在线代理,代理服务器等!'
+            name:'Description', content:'比特代理,（www.bitip.com）是http代理ip服务供应商，拥有千万级独立ip池，覆盖全球，低延迟高可用率稳定专业！爬虫代理,网页代理ip,企业级代理ip,电脑换ip,https代理,私密代理ip,免费代理ip,独享代理ip,在线代理,代理服务器等!'
           }
         ]
       }

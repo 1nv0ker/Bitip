@@ -249,6 +249,13 @@ import { message } from 'ant-design-vue'
                 type: 0,
                 img: await getImage('cn')
             },
+            {
+                name: ():string=>t('nations.cntw'),
+                price: 80,
+                key: 'cn-tw',
+                type: 0,
+                img: await getImage('cn')
+            },
         ]
         citys_type2.value = [
             {
