@@ -256,6 +256,20 @@ import { message } from 'ant-design-vue'
                 type: 0,
                 img: await getImage('cn')
             },
+            {
+                name: ():string=>t('nations.frparis'),
+                price: 80,
+                key: 'fr-paris',
+                type: 0,
+                img: await getImage('fr')
+            },
+            {
+                name: ():string=>t('nations.jptokyo'),
+                price: 80,
+                key: 'jp-tokyo',
+                type: 0,
+                img: await getImage('jp')
+            },
         ]
         citys_type2.value = [
             {
@@ -272,13 +286,13 @@ import { message } from 'ant-design-vue'
             //     type: 1,
             //     img: await getImage('cn')
             // },
-            {
-                name: ():string=>t('nations.cntw'),
-                price: 80,
-                key: 'cn-tw',
-                type: 1,
-                img: await getImage('cn')
-            },
+            // {
+            //     name: ():string=>t('nations.cntw'),
+            //     price: 80,
+            //     key: 'cn-tw',
+            //     type: 1,
+            //     img: await getImage('cn')
+            // },
         ]
         selected_time.value = timeSelect.value[0]
     })

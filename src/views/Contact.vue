@@ -44,7 +44,7 @@
         window.open('https://work.weixin.qq.com/kfid/kfcf16ce8cd66e324b1', '__blank')
     }
     const openTelegram = () => {
-        window.open('https://t.me/bitipsupport', '__blank')
+        window.open('https://t.me/bitip111', '__blank')
     }
     const oepnWechatAccount = () => {
         open.value = true

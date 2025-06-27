@@ -724,7 +724,9 @@ export const en = {
         sg:'sg',
         us:'us',
         cnhk:'cn-hk',
-        cntw:'cn-tw'
+        cntw:'cn-tw',
+        frparis:'fr-paris',
+        jptokyo:'jp-tokyo'
     },
     tips: {
         content:'Please complete real-name authentication first',
@@ -1493,7 +1495,9 @@ export const zh = {
         sg:'新加坡',
         us:'美国',
         cnhk:'中国-香港',
-        cntw:'中国-台湾'
+        cntw:'中国-台湾',
+        frparis:'法国-巴黎',
+        jptokyo:'日本-东京'
     },
     tips: {
         content:'请先进行实名认证',
