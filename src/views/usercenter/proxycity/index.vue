@@ -307,10 +307,10 @@
                 showButton:false,
                 disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)) || modelRef.way =='2',
                 options: [
-                    {
-                        value: 0,
-                        label:t('proxycity.IPform')
-                    },
+                    // {
+                    //     value: 0,
+                    //     label:t('proxycity.IPform')
+                    // },
                     {
                         value: 5,
                         label: 5+t('form.min')
@@ -512,7 +512,7 @@
                     let username_password = ''
                     let proxyIP = ''
                     if (modelRef.country == '0') {
-                        username_password = userName+'_f-'+ proxyGlobalFmt + ':' + proxyPwd
+                        username_password = userName+'_f-'+ proxyGlobalFmt +  '_sid-'+sessiong +':' + proxyPwd
                     } else {
                         username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
                         + '_sid-'+sessiong + ((modelRef.state)?('_s-'+modelRef.state):'')
