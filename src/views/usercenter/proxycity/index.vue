@@ -507,7 +507,7 @@
                     const port = proxyPort[randomInPortIndex]
                     
                     //rotating session存在
-                    const sessiong = modelRef.IP == '0'?generateRandomString():0
+                    const sessiong = modelRef.IP == '0'?generateNum():0
                     const hostname_port = url+':'+port
                     let username_password = ''
                     let proxyIP = ''
@@ -598,16 +598,26 @@
         // window.open('/map.json', "__blank")
     }
     //随机session
-    const generateRandomString = () => {
-        const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('');
-        let currentIndex = chars.length;
+    // const generateRandomString = () => {
+    //     const chars = 'abcdefghijklmnopqrstuvwxyz0123456789'.split('');
+    //     let currentIndex = chars.length;
         
-        while (currentIndex > 0) {
-            const randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [chars[currentIndex], chars[randomIndex]] = [chars[randomIndex], chars[currentIndex]];
-        }
-        return chars.slice(0, 8).join('');
+    //     while (currentIndex > 0) {
+    //         const randomIndex = Math.floor(Math.random() * currentIndex);
+    //         currentIndex--;
+    //         [chars[currentIndex], chars[randomIndex]] = [chars[randomIndex], chars[currentIndex]];
+    //     }
+    //     return chars.slice(0, 8).join('');
+    // }
+    const generateNum = () => {
+        const length = Math.floor(Math.random() * 5) + 5;
+  
+        // 生成最小值和最大值
+        const min = Math.pow(10, length - 1);
+        const max = Math.pow(10, length) - 1;
+        
+        // 生成随机整数
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     const onCopy = () => {
         if (proxyIPS.value.length == 0) {
