@@ -288,7 +288,7 @@
                 showButton:false,
                 showSearch: true,
                 options: stateDatas.value,
-                disabled: (modelRef.country=='0'?true:false) || !modelRef.country || modelRef.way =='2'
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.country || modelRef.way =='2' || modelRef.time == "0"
                 // disabled:true
             },
             {
@@ -298,7 +298,7 @@
                 showButton:false,
                 showSearch: true,
                 options: cityDatas.value,
-                disabled: (modelRef.country=='0'?true:false) || !modelRef.state || modelRef.way =='2'
+                disabled: (modelRef.country=='0'?true:false) || !modelRef.state || modelRef.way =='2' || modelRef.time == "0"
             },
             {
                 label: t('proxycity.form5'),
@@ -307,14 +307,14 @@
                 showButton:false,
                 disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)) || modelRef.way =='2',
                 options: [
-                    // {
-                    //     value: 0,
-                    //     label:t('proxycity.IPform')
-                    // },
                     {
-                        value: 5,
-                        label: 5+t('form.min')
+                        value: 0,
+                        label:t('proxycity.IPform')
                     },
+                    // {
+                    //     value: 5,
+                    //     label: 5+t('form.min')
+                    // },
                     {
                         value: 10,
                         label: 10+t('form.min')
@@ -326,15 +326,16 @@
                     {
                         value: 30,
                         label: 30+t('form.min')
-                    },
-                    {
-                        value: 60,
-                        label: 60+t('form.min')
-                    },
-                    {
-                        value: 120,
-                        label: 120+t('form.min')
                     }
+                    // ,
+                    // {
+                    //     value: 60,
+                    //     label: 60+t('form.min')
+                    // },
+                    // {
+                    //     value: 120,
+                    //     label: 120+t('form.min')
+                    // }
                 ]
             },
             {
@@ -497,7 +498,7 @@
                 return
             }
             //生成代理
-            const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName, proxyGlobalFmt } = proxyConfig.value
+            const { proxyCityFmt, proxyCountryFmt, proxyPort, proxyPwd, proxyStateFmt, proxyUrl, userName, proxyGlobalFmt, proxyRotateFmt } = proxyConfig.value
             for (let i=0;i<Number(modelRef.number);i++) {
                 
                 const randomInPortIndex= Math.floor(Math.random() * proxyPort.length)
@@ -512,11 +513,16 @@
                     let username_password = ''
                     let proxyIP = ''
                     if (modelRef.country == '0') {
-                        username_password = userName+'_f-'+ proxyGlobalFmt +  '_sid-'+sessiong +':' + proxyPwd
-                    } else {
+                        username_password = userName+'_f-'+ proxyGlobalFmt  +':' + proxyPwd
+                    } 
+                    else if(modelRef.time=='0'){
+                        username_password = userName+'_g-'+ modelRef.country + '_f-' + proxyRotateFmt                        
+                        + ':'+ proxyPwd
+                    }
+                    else {
                         username_password = userName+'_g-'+ modelRef.country + '_f-' + (modelRef.city?proxyCityFmt:(modelRef.state?proxyStateFmt:proxyCountryFmt))
-                        + '_sid-'+sessiong + ((modelRef.state)?('_s-'+modelRef.state):'')
-                        + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')
+                        + (modelRef.time?('_sid-'+sessiong):'') + ((modelRef.state)?('_s-'+modelRef.state):'')
+                        + (modelRef.city?('_c-'+modelRef.city):'') + (modelRef.time?('_l-'+modelRef.time):'')                        
                         + ':'+ proxyPwd
                     }
                     if (modelRef.type == '0') {
@@ -685,7 +691,12 @@
         
     }
     const onSelect = (key:string, props:any) => {
-        
+        if (key == 'time'){
+            if(modelRef.time == '0'){
+                modelRef.city = undefined
+                modelRef.state = undefined
+            }
+        }
         if (key == 'country') {
             const { state, city } = props
             if (modelRef.country == '0') {

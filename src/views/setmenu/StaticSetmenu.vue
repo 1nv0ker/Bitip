@@ -194,6 +194,13 @@ import { message } from 'ant-design-vue'
     onMounted(async () => {
         citys.value = [
             {
+                name: ():string=>t('nations.usny'),
+                price: 80,
+                key: 'us-ny',
+                type: 0,
+                img: await getImage('us')
+            },
+            {
                 name: ():string=>t('nations.usca'),
                 price: 80,
                 key: 'us-ca',
@@ -270,6 +277,13 @@ import { message } from 'ant-design-vue'
                 type: 0,
                 img: await getImage('jp')
             },
+            {
+                name: ():string=>t('nations.vnhanoi'),
+                price: 80,
+                key: 'vn-hanoi',
+                type: 0,
+                img: await getImage('vn')
+            }
         ]
         citys_type2.value = [
             {

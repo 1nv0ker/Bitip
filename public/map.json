@@ -4916,62 +4916,6 @@
         "name": "喀麦隆"
     },
     {
-        "country": "CN",
-        "state": [
-            {
-                "value": "guangdong",
-                "label": "guangdong"
-            },
-            {
-                "value": "hebei",
-                "label": "hebei"
-            },
-            {
-                "value": "henan",
-                "label": "henan"
-            },
-            {
-                "value": "hunan",
-                "label": "hunan"
-            },
-            {
-                "value": "jiangsu",
-                "label": "jiangsu"
-            },
-            {
-                "value": "zhejiang",
-                "label": "zhejiang"
-            }
-        ],
-        "city": [
-            {
-                "value": "CN-guangdong-guangzhou",
-                "label": "guangzhou"
-            },
-            {
-                "value": "CN-hebei-shijiazhuang",
-                "label": "shijiazhuang"
-            },
-            {
-                "value": "CN-henan-zhengzhou",
-                "label": "zhengzhou"
-            },
-            {
-                "value": "CN-hunan-qingyuan",
-                "label": "qingyuan"
-            },
-            {
-                "value": "CN-jiangsu-nanjing",
-                "label": "nanjing"
-            },
-            {
-                "value": "CN-zhejiang-hangzhou",
-                "label": "hangzhou"
-            }
-        ],
-        "name": "中国"
-    },
-    {
         "country": "CO",
         "state": [
             {
@@ -20341,7 +20285,7 @@
                 "label": "newport"
             }
         ],
-        "name": "未知"
+        "name": "英国"
     },
     {
         "country": "US",
@@ -24954,29 +24898,5 @@
             }
         ],
         "name": "津巴布韦"
-    },
-    {
-        "country": "GB",
-        "state": [
-            {
-                "value": "england",
-                "label": "england"
-            }
-        ],
-        "city": [
-            {
-                "value": "GB-england-cottingham",
-                "label": "cottingham"
-            },
-            {
-                "value": "GB-england-hull",
-                "label": "hull"
-            },
-            {
-                "value": "GB-england-london",
-                "label": "london"
-            }
-        ],
-        "name": "英国"
     }
 ]

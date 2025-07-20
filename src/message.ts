@@ -715,6 +715,7 @@ export const en = {
         type2:'Dual ISP'
     },
     nations: {
+        usny:'us-ny',
         usca:'us-ca',
         usva:'us-va',
         usnj:'us-nj',
@@ -726,7 +727,8 @@ export const en = {
         cnhk:'cn-hk',
         cntw:'cn-tw',
         frparis:'fr-paris',
-        jptokyo:'jp-tokyo'
+        jptokyo:'jp-tokyo',
+        vnhanoi:'vn-hanoi'
     },
     tips: {
         content:'Please complete real-name authentication first',
@@ -1486,6 +1488,7 @@ export const zh = {
         type2:'双ISP',
     },
     nations: {
+        usny:'美国-纽约州',
         usca:'美国-加州',
         usva:'美国-弗吉尼亚州',
         usnj:'美国-新泽西州',
@@ -1497,7 +1500,8 @@ export const zh = {
         cnhk:'中国-香港',
         cntw:'中国-台湾',
         frparis:'法国-巴黎',
-        jptokyo:'日本-东京'
+        jptokyo:'日本-东京',
+        vnhanoi:'越南-河内'
     },
     tips: {
         content:'请先进行实名认证',
