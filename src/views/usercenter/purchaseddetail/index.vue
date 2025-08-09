@@ -105,7 +105,7 @@
                     <template v-else-if="column.key == 'ip'">
                         <!-- <div class="p-[0.5rem] relative ip_box"> -->
                             <div class="p-[0.5rem] relative flex items-center justify-center "> 
-                            <span class="text-[#191919] text-[1rem]" :title="record[column.key]">
+                            <span class="text-[#191919] text-[1rem] max-w-[90%] overflow-hidden" :title="record[column.key]">
                             {{ record[column.key] }}
                             </span>
                             <Copy2 :message="record[column.key]"/>

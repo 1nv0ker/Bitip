@@ -293,13 +293,13 @@ import { message } from 'ant-design-vue'
                 type: 1,
                 img: await getImage('us')
             },
-            // {
-            //     name: ():string=>t('nations.cnhk'),
-            //     price: 80,
-            //     key: 'cn-hk',
-            //     type: 1,
-            //     img: await getImage('cn')
-            // },
+            {
+                name: ():string=>t('nations.cnhk'),
+                price: 80,
+                key: 'hk',
+                type: 1,
+                img: await getImage('cn')
+            },
             // {
             //     name: ():string=>t('nations.cntw'),
             //     price: 80,

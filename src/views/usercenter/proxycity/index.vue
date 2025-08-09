@@ -305,7 +305,8 @@
                 placeholder: t('proxycity.form5_placeholder'),
                 key:'time',
                 showButton:false,
-                disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)) || modelRef.way =='2',
+                disabled: modelRef.IP=='0'?false:true || modelRef.way =='2',
+                // disabled: (modelRef.country=='0'?true:(modelRef.IP=='0'?false:true)) || modelRef.way =='2',
                 options: [
                     {
                         value: 0,
@@ -512,7 +513,9 @@
                     const hostname_port = url+':'+port
                     let username_password = ''
                     let proxyIP = ''
-                    if (modelRef.country == '0') {
+                    if (modelRef.country == '0'&&modelRef.time!='0') {
+                        username_password = userName+'_f-'+ proxyGlobalFmt+'_sid-'+sessiong+'_l-'+modelRef.time  +':' + proxyPwd
+                    } else if (modelRef.country == '0') {
                         username_password = userName+'_f-'+ proxyGlobalFmt  +':' + proxyPwd
                     } 
                     else if(modelRef.time=='0'){
@@ -616,7 +619,8 @@
     //     return chars.slice(0, 8).join('');
     // }
     const generateNum = () => {
-        const length = Math.floor(Math.random() * 5) + 5;
+        const length = 9;
+        // const length = Math.floor(Math.random() * 5) + 5;
   
         // 生成最小值和最大值
         const min = Math.pow(10, length - 1);
